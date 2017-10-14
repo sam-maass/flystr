@@ -23,7 +23,7 @@ class App extends Component {
       if (token) {
         const {
           data: profile
-        } = await axios.get('https://779e8d9c.ngrok.io/user/profile', {
+        } = await axios.get('http://localhost:3000/user/profile', {
           params: { token }
         });
         this.setState({ profile });
@@ -33,7 +33,7 @@ class App extends Component {
 
   onSuccess = async args => {
     window.localStorage.setItem('currentJWT', args.tokenObj.id_token);
-    await axios.post('https://779e8d9c.ngrok.io/user/login', {
+    await axios.post('http://localhost:3000/user/login', {
       token: args.tokenObj.id_token
     });
     this.getUserProfile();
