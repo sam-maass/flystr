@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 class Profile extends Component {
   render() {
@@ -17,5 +18,11 @@ class Profile extends Component {
     );
   }
 }
+
+Profile.propTypes = {
+  firstName: PropTypes.string,
+  lastName: PropTypes.string,
+  email: PropTypes.string
+};
 
 export default Profile;

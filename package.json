@@ -2,18 +2,36 @@
   "name": "web",
   "version": "0.1.0",
   "private": true,
+  "bundlesize": [
+    {
+      "path": "./build/static/js/main*.js",
+      "maxSize": "100 kB"
+    }
+  ],
   "dependencies": {
     "axios": "0.16.2",
+    "prop-types": "^15.6.0",
     "react": "16.0.0",
     "react-dom": "16.0.0",
     "react-google-login": "3.0.1",
+    "react-redux": "^5.0.6",
     "react-scripts": "1.0.14",
+    "redux": "^3.7.2",
+    "redux-logger": "^3.0.6",
+    "redux-promise-middleware": "^4.4.1",
+    "redux-thunk": "^2.2.0",
     "styled-components": "^2.2.1"
   },
   "scripts": {
     "start": "PORT=3001 react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "lint": "eslint src/*.js",
+    "test": "npm run lint && bundlesize && react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "bundlesize": "^0.15.3",
+    "eslint-plugin-react": "^7.4.0",
+    "prettier": "^1.7.4"
   }
 }

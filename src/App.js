@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import GoogleLogin from 'react-google-login';
 import Profile from './Profile';
-import { HeaderContainer } from './components/Header';
+import HeaderContainer from './components/Header';
+import { fetchUser, loginUser } from './actions/userActions';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-class App extends Component {
+class AppContainer extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,34 +18,23 @@ class App extends Component {
     this.getUserProfile();
   }
 
-  async getUserProfile() {
+  getUserProfile() {
     if (window.localStorage) {
       const token = window.localStorage.getItem('currentJWT');
       if (token) {
-        const {
-          data: profile
-        } = await axios.get('http://localhost:3000/user/profile', {
-          params: { token }
-        });
-        this.setState({ profile });
+        this.props.fetchUser(token);
       }
     }
   }
 
   onSuccess = async args => {
     window.localStorage.setItem('currentJWT', args.tokenObj.id_token);
-    await axios.post('http://localhost:3000/user/login', {
-      token: args.tokenObj.id_token
-    });
-    this.getUserProfile();
+    this.props.loginUser(args.tokenObj.id_token);
   };
 
-  onFailure(...args) {
-    console.log(args);
-  }
+  onFailure() {}
 
   render() {
-    const { profile } = this.state;
     return (
       <div className="App">
         <HeaderContainer />
@@ -56,10 +47,24 @@ class App extends Component {
           onSuccess={this.onSuccess}
           onFailure={this.onFailure}
         />
-        <Profile {...profile} />
+        <Profile {...this.props.user} />
       </div>
     );
   }
 }
+
+AppContainer.propTypes = {
+  fetchUser: PropTypes.func,
+  user: PropTypes.object,
+  loginUser: PropTypes.func
+};
+
+const mapStateToProps = store => {
+  return {
+    user: store.user
+  };
+};
+
+const App = connect(mapStateToProps, { loginUser, fetchUser })(AppContainer);
 
 export default App;

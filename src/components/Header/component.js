@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { colors, padding } from '../../utils/styleVars';
-
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Wrapper = styled.section`
@@ -9,15 +9,21 @@ const Wrapper = styled.section`
   color: #fafafa;
 `;
 
-console.log(styled);
 class Header extends Component {
   render() {
-    return (
-      <Wrapper>
-        <div>Hello {this.props.name}</div>
-      </Wrapper>
-    );
+    const { user } = this.props;
+    if (user && user._id)
+      return (
+        <Wrapper>
+          <div>Hello {user.email}</div>
+        </Wrapper>
+      );
+    else return <Wrapper>Login</Wrapper>;
   }
 }
+
+Header.propTypes = {
+  user: PropTypes.object
+};
 
 export default Header;
