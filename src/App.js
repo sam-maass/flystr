@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import GoogleLogin from 'react-google-login';
-import logo from './logo.svg';
-import './App.css';
 import Profile from './Profile';
+import { HeaderContainer } from './components/Header';
 
 class App extends Component {
   constructor(props) {
@@ -47,10 +46,7 @@ class App extends Component {
     const { profile } = this.state;
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
+        <HeaderContainer />
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
