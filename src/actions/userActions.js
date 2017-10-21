@@ -9,9 +9,14 @@ export function fetchUser(token) {
 }
 export function loginUser(token) {
   return {
-    type: 'LOGIIN_USER',
+    type: 'LOGIN_USER',
     payload: axios.post('http://localhost:3000/user/login', {
       token
     })
+  };
+}
+export function logoutUser() {
+  return {
+    type: 'LOGOUT_USER'
   };
 }

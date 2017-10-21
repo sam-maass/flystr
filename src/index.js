@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import './index.css';
-import AppContainer from './App';
 import store from './store';
+import LayoutContainer from './Layout';
 import registerServiceWorker from './registerServiceWorker';
 
 ReactDOM.render(
   <Provider store={store}>
-    <AppContainer />
+    <LayoutContainer />
   </Provider>,
   document.getElementById('root')
 );

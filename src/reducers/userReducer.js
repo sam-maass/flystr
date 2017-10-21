@@ -13,6 +13,8 @@ export default function reducer(state = {}, action) {
       };
     case 'LOGIN_USER_FULFILLED':
       return { ...state, ...action.payload.data };
+    case 'LOGOUT_USER':
+      return {};
     default:
       return state;
   }
