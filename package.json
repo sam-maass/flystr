@@ -26,11 +26,13 @@
     "start": "PORT=3001 react-scripts start",
     "build": "react-scripts build",
     "lint": "eslint src/*.js",
-    "test": "npm run lint && bundlesize && react-scripts test --env=jsdom",
+    "test":
+      "npm run lint && react-scripts test --env=jsdom && npm run build && bundlesize",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
     "bundlesize": "^0.15.3",
+    "eslint": "^4.9.0",
     "eslint-plugin-react": "^7.4.0",
     "prettier": "^1.7.4"
   }
