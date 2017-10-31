@@ -1,65 +1,20 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
-import Home from './pages/Home';
-import Index from './pages/Index';
-import Login from './pages/Login';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ImageHeader from './components/ImageHeader';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { fetchUser } from './actions/userActions';
+import { loggedInRoutes, loggedOutRoutes } from './routes';
 
-const loggedInRoutes = [
-  {
-    path: '/',
-    exact: true,
-    main: () => <Redirect path="/home" />
-  },
-  {
-    path: '/login',
-    exact: true,
-    main: () => (
-      <Redirect
-        to={{
-          pathname: '/home'
-        }}
-      />
-    )
-  },
-  {
-    path: '/home',
-    main: () => <Home />
-  }
-];
-
-const loggedOutRoutes = [
-  {
-    path: '/',
-    exact: true,
-    main: () => <Index />
-  },
-  {
-    path: '/login',
-    exact: true,
-    main: () => <Login />
-  },
-  {
-    path: '/home',
-    main: () => (
-      <Redirect
-        to={{
-          pathname: '/login'
-        }}
-      />
-    )
-  }
-];
-
-const Layout = ({ loggedIn }) => {
+const Layout = ({ loggedIn, fetchUser }) => {
+  const jwt = window.localStorage.getItem('currentJWT');
+  fetchUser(jwt);
   const routes = loggedIn ? loggedInRoutes : loggedOutRoutes;
   return (
-    <div>
-      <ImageHeader />
-      <Router>
-        <div className="main">
+    <Router>
+      <div className="main">
+        <ImageHeader />
+        <Switch>
           {routes.map((route, index) => (
             <Route
               key={index}
@@ -68,14 +23,15 @@ const Layout = ({ loggedIn }) => {
               component={route.main}
             />
           ))}
-        </div>
-      </Router>
-    </div>
+        </Switch>
+      </div>
+    </Router>
   );
 };
 
 Layout.propTypes = {
-  loggedIn: PropTypes.bool
+  loggedIn: PropTypes.bool,
+  fetchUser: PropTypes.func
 };
 
 const mapStateToProps = store => {
@@ -83,6 +39,6 @@ const mapStateToProps = store => {
     loggedIn: !!store.user._id
   };
 };
-const LayoutContainer = connect(mapStateToProps)(Layout);
+const LayoutContainer = connect(mapStateToProps, { fetchUser })(Layout);
 
 export default LayoutContainer;

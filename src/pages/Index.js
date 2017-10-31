@@ -1,12 +1,13 @@
 import React from 'react';
 import { Container, Heading3, FlowText, FlexRow } from './../style-components';
+import { Link } from 'react-router-dom';
 import TripTile from '../components/TripTile';
 
 const Home = () => {
   return (
     <div className="index_page">
       <Container>
-        <Heading3>Stop Searching for cheap flights</Heading3>
+        <Heading3>Flystr watches flight prices, you relax</Heading3>
         <FlowText>
           Stop wasting your time crawling blogs and flight search engines for
           your next trip. Just enter places you want to go visit and get
@@ -28,6 +29,7 @@ const Home = () => {
             status="active"
           />
         </FlexRow>
+        <Link to="/new-trip"> Add your own trip </Link>
       </Container>
     </div>
   );

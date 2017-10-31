@@ -10,12 +10,18 @@ class HeaderContainerInner extends Component {
     this.props.loginUser(args.tokenObj.id_token);
   };
 
+  onLogout = () => {
+    const jwt = window.localStorage.getItem('currentJWT');
+    this.props.logoutUser(jwt);
+  };
+
   onLoginFailure() {}
   render() {
     return (
       <Header
         {...this.props}
         onLoginSuccess={this.onLoginSuccess}
+        onLogout={this.onLogout}
         onLoginFailure={this.onLoginFailure}
       />
     );
@@ -23,7 +29,8 @@ class HeaderContainerInner extends Component {
 }
 
 HeaderContainerInner.propTypes = {
-  loginUser: PropTypes.func
+  loginUser: PropTypes.func,
+  logoutUser: PropTypes.func
 };
 
 const mapStateToProps = store => {
@@ -32,7 +39,6 @@ const mapStateToProps = store => {
   };
 };
 
-const HeaderContainer = connect(mapStateToProps, { loginUser, logoutUser })(
+export default connect(mapStateToProps, { loginUser, logoutUser })(
   HeaderContainerInner
 );
-export default HeaderContainer;
