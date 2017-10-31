@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import Home from './pages/Home';
 import Index from './pages/Index';
-import HeaderContainer from './components/Header';
+import Login from './pages/Login';
+import ImageHeader from './components/ImageHeader';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -38,10 +39,10 @@ const loggedOutRoutes = [
   {
     path: '/login',
     exact: true,
-    main: () => <Index />
+    main: () => <Login />
   },
   {
-    path: '/',
+    path: '/home',
     main: () => (
       <Redirect
         to={{
@@ -52,29 +53,26 @@ const loggedOutRoutes = [
   }
 ];
 
-class Layout extends Component {
-  render() {
-    const { loggedIn } = this.props;
-    const routes = loggedIn ? loggedInRoutes : loggedOutRoutes;
-    return (
-      <div>
-        <HeaderContainer />
-        <Router>
-          <div className="main">
-            {routes.map((route, index) => (
-              <Route
-                key={index}
-                path={route.path}
-                exact={route.exact}
-                component={route.main}
-              />
-            ))}
-          </div>
-        </Router>
-      </div>
-    );
-  }
-}
+const Layout = ({ loggedIn }) => {
+  const routes = loggedIn ? loggedInRoutes : loggedOutRoutes;
+  return (
+    <div>
+      <ImageHeader />
+      <Router>
+        <div className="main">
+          {routes.map((route, index) => (
+            <Route
+              key={index}
+              path={route.path}
+              exact={route.exact}
+              component={route.main}
+            />
+          ))}
+        </div>
+      </Router>
+    </div>
+  );
+};
 
 Layout.propTypes = {
   loggedIn: PropTypes.bool
