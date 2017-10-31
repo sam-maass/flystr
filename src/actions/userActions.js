@@ -1,22 +1,22 @@
 import axios from 'axios';
 export function fetchUser(token) {
+  axios.defaults.headers.common['Authorization'] = token;
   return {
     type: 'FETCH_USER',
-    payload: axios.get('http://localhost:3000/user/profile', {
-      params: { token }
-    })
+    payload: axios.get('http://localhost:3000/user/profile')
   };
 }
 export function loginUser(token) {
+  axios.defaults.headers.common['Authorization'] = token;
   return {
     type: 'LOGIN_USER',
-    payload: axios.post('http://localhost:3000/user/login', {
-      token
-    })
+    payload: axios.post('http://localhost:3000/user/login')
   };
 }
-export function logoutUser() {
+export function logoutUser(token) {
+  axios.defaults.headers.common['Authorization'] = token;
   return {
-    type: 'LOGOUT_USER'
+    type: 'LOGOUT_USER',
+    payload: axios.post('http://localhost:3000/user/logout')
   };
 }

@@ -3,7 +3,7 @@ export default function reducer(state = {}, action) {
     case 'FETCH_USER_PENDING':
       return { ...state, fetching: true };
     case 'FETCH_USER_REJECTED':
-      return { ...state, fetching: false, error: action.payload };
+      return { fetchFailed: true, fetching: false, error: action.payload };
     case 'FETCH_USER_FULFILLED':
       return {
         ...state,
@@ -13,7 +13,7 @@ export default function reducer(state = {}, action) {
       };
     case 'LOGIN_USER_FULFILLED':
       return { ...state, ...action.payload.data };
-    case 'LOGOUT_USER':
+    case 'LOGOUT_USER_FULFILLED':
       return {};
     default:
       return state;

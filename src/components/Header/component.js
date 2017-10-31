@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { color, padding } from '../../style-components/vars';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
@@ -39,21 +40,27 @@ const Header = ({
   user,
   onLoginSuccess,
   onLoginFailure,
-  logoutUser,
+  onLogout,
   transparent
 }) => {
   if (user && user._id)
     return (
-      <Wrapper>
-        <div>Hello {user.email}</div>
-        <button onClick={logoutUser}>Logout</button>
+      <Wrapper transparent={transparent}>
+        <LogoWrapper>
+          <Link to="/">
+            <img src="./logo.png" alt="Flystr Logo" />
+          </Link>
+        </LogoWrapper>
+        <button onClick={onLogout}>Logout</button>
       </Wrapper>
     );
   else
     return (
       <Wrapper transparent={transparent}>
         <LogoWrapper>
-          <img src="./logo.png" alt="Flystr Logo" />
+          <Link to="/">
+            <img src="./logo.png" alt="Flystr Logo" />
+          </Link>
         </LogoWrapper>
         <GoogleLogin
           clientId="1059931024943-1u64m1fh6glpodhalllbkbul1hbsdbfh.apps.googleusercontent.com"
@@ -70,7 +77,7 @@ Header.propTypes = {
   user: PropTypes.object,
   onLoginSuccess: PropTypes.func,
   onLoginFailure: PropTypes.func,
-  logoutUser: PropTypes.func,
+  onLogout: PropTypes.func,
   transparent: PropTypes.bool
 };
 
