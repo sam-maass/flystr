@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
+import TripList from '../components/TripList';
 
-class UserHome extends Component {
-  render() {
-    return (
-      <div>
-        <h1>Welcome back, user</h1>
-      </div>
-    );
-  }
-}
+const UserHome = () => {
+  return (
+    <div>
+      <h1>Welcome back, user</h1>
+      <TripList />
+    </div>
+  );
+};
 
 export default UserHome;

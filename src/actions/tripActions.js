@@ -15,3 +15,12 @@ export function changeNewTrip(change) {
     payload: change
   };
 }
+export function getUserTrips() {
+  axios.defaults.headers.common['Authorization'] = window.localStorage.getItem(
+    'currentJWT'
+  );
+  return {
+    type: 'GET_USER_TRIPS',
+    payload: axios.get('http://localhost:3000/trip')
+  };
+}
