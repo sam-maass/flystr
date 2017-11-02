@@ -6,7 +6,10 @@ export function submitNewTrip(newTrip) {
   );
   return {
     type: 'SUBMIT_NEW_TRIP',
-    payload: axios.post('http://localhost:3000/trip', newTrip)
+    payload: axios.post('http://localhost:3000/trip', {
+      ...newTrip,
+      destinations: newTrip.destinations.split(',')
+    })
   };
 }
 export function changeNewTrip(change) {

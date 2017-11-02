@@ -3,7 +3,7 @@ export default function reducer(state = [], action) {
     case 'GET_USER_TRIPS':
       return [...state];
     case 'GET_USER_TRIPS_FULFILLED':
-      return [...state, ...action.payload.data];
+      return [...action.payload.data];
     default:
       return state;
   }
