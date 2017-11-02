@@ -20,13 +20,13 @@ const StatusBar = styled.div`
   color: #fafafa;
 `;
 
-const TripTile = ({ name, duration, season, priceLimit, status }) => {
+const TripTile = ({ destinations, duration, startDate, maxPrice, status }) => {
   return (
     <StyledTripTile>
-      <div>{name}</div>
-      <div>{duration}</div>
-      <div>{season}</div>
-      <div>{priceLimit}</div>
+      <div>Trip to:{destinations.join(',')}</div>
+      <div>Start: {startDate}</div>
+      <div>Duration: {duration} days</div>
+      <div>Max: {maxPrice} €</div>
       <StatusBar status={status}>2 Deals found</StatusBar>
     </StyledTripTile>
   );
