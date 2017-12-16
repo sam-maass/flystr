@@ -1,37 +1,20 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { withFormik } from 'formik';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import NewTripForm from './component';
+import Yup from 'yup';
+
 import { submitNewTrip, changeNewTrip } from '../../actions/tripActions';
 
 class NewTripFormContainer extends Component {
-  submitNewTrip = e => {
-    e.preventDefault();
-    this.props.submitNewTrip(this.props.newTrip);
+  submitNewTrip = values => {
+    console.log(values);
+    this.props.submitNewTrip(values);
   };
 
-  onInputChange = e => {
-    this.props.changeNewTrip({ [e.target.name]: e.target.value });
-  };
   render() {
-    if (this.props.newTrip.submitted)
-      return (
-        <Redirect
-          to={{
-            pathname: '/home'
-          }}
-        />
-      );
-    else {
-      return (
-        <NewTripForm
-          {...this.props}
-          submitNewTrip={this.submitNewTrip}
-          onInputChange={this.onInputChange}
-        />
-      );
-    }
+    return <FormikForm {...this.props} submitNewTrip={this.submitNewTrip} />;
   }
 }
 
@@ -47,6 +30,32 @@ const mapStateToProps = store => {
     newTrip: store.newTrip
   };
 };
+
+const FormikForm = withFormik({
+  mapPropsToValues: () => {
+    return {
+      destinations: '',
+      origins: '',
+      startDate: '',
+      endDate: '',
+      budget: ''
+    };
+  },
+  validationSchema: Yup.object().shape({
+    destinations: Yup.string()
+      .min(3)
+      .required(),
+    origins: Yup.string()
+      .min(3)
+      .required(),
+    startDate: Yup.string(),
+    endDate: Yup.string(),
+    budget: Yup.number().positive()
+  }),
+  handleSubmit: (values, { props }) => {
+    props.submitNewTrip(values);
+  }
+})(NewTripForm);
 
 export default connect(mapStateToProps, { submitNewTrip, changeNewTrip })(
   NewTripFormContainer
