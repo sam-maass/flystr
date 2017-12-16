@@ -1,14 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TripTile from '../TripTile';
-import { FlexRow } from '../../style-components';
+import TripRow from '../TripRow';
 
 const TripList = ({ trips = [] }) => {
-  return (
-    <FlexRow>
-      {trips.map((item, key) => <TripTile key={key} {...item} />)}
-    </FlexRow>
-  );
+  return <div>{trips.map((item, key) => <TripRow key={key} {...item} />)}</div>;
 };
 
 TripList.propTypes = { trips: PropTypes.array };
