@@ -23,3 +23,8 @@ export const lineHeight = {
   medium: 1.45,
   base: 1.45
 };
+
+export const typo = {
+  heading: `font-size: ${fontSize.normal}; color: ${color.primary}; line-height: ${lineHeight.medium}; font-family: 'Comfortaa', sans-serif; font-weight:bold; letter-spacing: 1px;`,
+  normal: `font-size: ${fontSize.base}; color: ${color.primary}; line-height: ${lineHeight.base}; font-family: 'Raleway', sans-serif;`
+};
