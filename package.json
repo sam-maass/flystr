@@ -10,9 +10,10 @@
   ],
   "dependencies": {
     "axios": "0.17.1",
+    "formik": "^0.10.5",
     "prop-types": "^15.6.0",
-    "react-dom": "16.1.0",
     "react": "16.1.1",
+    "react-dom": "16.1.0",
     "react-google-login": "3.0.2",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
@@ -22,7 +23,8 @@
     "redux-logger": "^3.0.6",
     "redux-promise-middleware": "^5.0.0",
     "redux-thunk": "^2.2.0",
-    "styled-components": "^2.2.1"
+    "styled-components": "^2.2.1",
+    "yup": "^0.23.0"
   },
   "scripts": {
     "start": "PORT=3001 react-scripts start",

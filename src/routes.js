@@ -9,7 +9,13 @@ export const loggedInRoutes = [
   {
     path: '/',
     exact: true,
-    main: () => <Index />
+    main: () => (
+      <Redirect
+        to={{
+          pathname: '/home'
+        }}
+      />
+    )
   },
   {
     path: '/login',
