@@ -1,75 +1,76 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Form, Field } from 'formik';
+import TextField from 'material-ui/TextField';
+import Button from 'material-ui/Button';
 
-const FormRow = props => {
+const FormikTextField = ({
+  elemKey,
+  type = 'text',
+  label,
+  values,
+  errors,
+  touched,
+  handleChange,
+  handleBlur
+}) => {
   return (
-    <div
-      className="form-row"
-      style={{
-        display: 'grid',
-        gridTemplateColumns: '1fr 1fr'
-      }}
-    >
-      {props.children}
-    </div>
+    <TextField
+      name={elemKey}
+      label={label}
+      type={type}
+      value={values[elemKey]}
+      error={touched[elemKey] && !!errors[elemKey]}
+      helperText={touched[elemKey] && errors[elemKey]}
+      onChange={handleChange}
+      onBlur={handleBlur}
+    />
   );
 };
 
-const NewTripForm = ({ errors, touched }) => {
+FormikTextField.propTypes = {
+  elemKey: PropTypes.string,
+  type: PropTypes.string,
+  label: PropTypes.string,
+  values: PropTypes.object,
+  errors: PropTypes.object,
+  touched: PropTypes.object,
+  handleChange: PropTypes.func,
+  handleBlur: PropTypes.func
+};
+
+const NewTripForm = props => {
   return (
     <Form style={{ display: 'grid' }}>
-      <FormRow>
-        <label htmlFor="origins">Origins:</label>
-        <Field
-          style={{ gridColumnStart: 2 }}
-          type="text"
-          name="origins"
-          placeholder="AMS, JFK, LHR"
-        />
-        {errors.origins && (
-          <div className="hint" style={{ gridColumn: '1 / span 2' }}>
-            {errors.origins}
-          </div>
-        )}
-      </FormRow>
-      <FormRow>
-        <label htmlFor="startDate">Start Date:</label>
-        <Field type="text" name="startDate" placeholder="01.10.2017" />
-        {errors.startDate && (
-          <div className="hint" style={{ gridColumn: '1 / span 2' }}>
-            {errors.startDate}
-          </div>
-        )}
-      </FormRow>
-      <FormRow>
-        <label htmlFor="endDate">Return Date:</label>
-        <Field type="text" name="endDate" placeholder="10.10.2017" />
-        {errors.endDate && (
-          <div className="hint" style={{ gridColumn: '1 / span 2' }}>
-            {errors.endDate}
-          </div>
-        )}
-      </FormRow>
-      <FormRow>
-        <label htmlFor="destinations">Destinations:</label>
-        <Field type="text" name="destinations" placeholder="MIA, HNL, SIN" />
-        {errors.destinations && (
-          <div className="hint" style={{ gridColumn: '1 / span 2' }}>
-            {errors.destinations}
-          </div>
-        )}
-      </FormRow>
-      <FormRow>
-        <label htmlFor="budget">Budget:</label>
-        <Field type="number" name="budget" placeholder="400" />
-        {errors.budget && (
-          <div className="hint" style={{ gridColumn: '1 / span 2' }}>
-            {errors.budget}
-          </div>
-        )}
-      </FormRow>
-      <input type="submit" value="Send" />
+      <FormikTextField
+        elemKey="origins"
+        label="Where do you fly form?"
+        {...props}
+      />
+      <FormikTextField
+        elemKey="startDate"
+        label="When do you want to fly?"
+        {...props}
+      />
+      <FormikTextField
+        elemKey="endDate"
+        label="When do you want to return?"
+        {...props}
+      />
+      <FormikTextField
+        elemKey="destinations"
+        label="Where do you want to fly to?"
+        {...props}
+      />
+      <FormikTextField
+        elemKey="budget"
+        type="number"
+        label="What is your max buget?"
+        {...props}
+      />
+      <Button raised color="primary" onClick={props.handleSubmit}>
+        Send
+      </Button>
     </Form>
   );
 };
@@ -77,7 +78,8 @@ const NewTripForm = ({ errors, touched }) => {
 NewTripForm.propTypes = {
   values: PropTypes.object,
   errors: PropTypes.object,
-  touched: PropTypes.object
+  touched: PropTypes.object,
+  handleSubmit: PropTypes.func
 };
 
 export default NewTripForm;

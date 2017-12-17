@@ -6,7 +6,7 @@ const NewTrip = () => {
   return (
     <div>
       <Container>
-        <Heading1>Create your first trip</Heading1>
+        <Heading1>Add a trip</Heading1>
         <NewTripForm />
       </Container>
     </div>

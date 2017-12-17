@@ -1,37 +1,18 @@
 import React, { Component } from 'react';
 import { withFormik } from 'formik';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import NewTripForm from './component';
 import Yup from 'yup';
-
-import { submitNewTrip, changeNewTrip } from '../../actions/tripActions';
-
-class NewTripFormContainer extends Component {
-  submitNewTrip = values => {
-    console.log(values);
-    this.props.submitNewTrip(values);
-  };
-
-  render() {
-    return <FormikForm {...this.props} submitNewTrip={this.submitNewTrip} />;
-  }
-}
-
-NewTripFormContainer.propTypes = {
-  submitNewTrip: PropTypes.func,
-  changeNewTrip: PropTypes.func,
-  newTrip: PropTypes.any
-};
+import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 
 const mapStateToProps = store => {
   return {
-    user: store.user,
-    newTrip: store.newTrip
+    user: store.user
   };
 };
 
-const FormikForm = withFormik({
+const formikSettings = {
   mapPropsToValues: () => {
     return {
       destinations: '',
@@ -48,15 +29,36 @@ const FormikForm = withFormik({
     origins: Yup.string()
       .min(3)
       .required(),
-    startDate: Yup.string(),
-    endDate: Yup.string(),
-    budget: Yup.number().positive()
+    startDate: Yup.string().required(),
+    endDate: Yup.string().required(),
+    budget: Yup.number()
+      .positive()
+      .required()
   }),
-  handleSubmit: (values, { props }) => {
-    props.submitNewTrip(values);
+  handleSubmit: async (values, { setStatus }) => {
+    const res = await axios.post('http://localhost:3000/trip', {
+      ...values
+    });
+    console.log(res);
+    setStatus('done');
   }
-})(NewTripForm);
+};
 
-export default connect(mapStateToProps, { submitNewTrip, changeNewTrip })(
-  NewTripFormContainer
-);
+const RoutingWrapper = props => {
+  const isSubmitted = props.status === 'done';
+  if (isSubmitted) {
+    return (
+      <Redirect
+        to={{
+          pathname: '/home'
+        }}
+      />
+    );
+  } else {
+    return <NewTripForm {...props} />;
+  }
+};
+
+const FormikForm = withFormik(formikSettings)(RoutingWrapper);
+const TripFormContainer = connect(mapStateToProps)(FormikForm);
+export default TripFormContainer;
