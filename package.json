@@ -5,13 +5,14 @@
   "bundlesize": [
     {
       "path": "./build/static/js/main*.js",
-      "maxSize": "100 kB"
+      "maxSize": "200 kB"
     }
   ],
   "dependencies": {
     "axios": "0.17.1",
     "formik": "^0.10.5",
     "material-ui": "^1.0.0-beta.24",
+    "moment": "^2.20.0",
     "prop-types": "^15.6.0",
     "react": "16.1.1",
     "react-dom": "16.1.0",
@@ -31,7 +32,8 @@
     "start": "PORT=3001 react-scripts start",
     "build": "react-scripts build",
     "lint": "eslint src/*.js",
-    "test": "npm run lint && react-scripts test --env=jsdom && npm run build && bundlesize",
+    "test":
+      "npm run lint && react-scripts test --env=jsdom && npm run build && bundlesize",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
