@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Form, Field } from 'formik';
+import { Form } from 'formik';
 import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
 
