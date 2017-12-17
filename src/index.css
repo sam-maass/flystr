@@ -1,5 +1,11 @@
 body {
+  font-family: 'Raleway';
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+}
+
+input {
+  border: none;
+  border-bottom: 1px solid #444;
 }
