@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { StyledTripRow } from './style';
 import moment from 'moment';
 
@@ -28,6 +29,12 @@ const TripRow = ({
   );
 };
 
-TripRow.propTypes = {};
+TripRow.propTypes = {
+  status: PropTypes.string,
+  startDate: PropTypes.string,
+  duration: PropTypes.string,
+  maxPrice: PropTypes.string,
+  destinations: PropTypes.arrayOf(PropTypes.string)
+};
 
 export default TripRow;
