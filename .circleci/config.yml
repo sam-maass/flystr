@@ -44,7 +44,7 @@ jobs:
           key: bundle-{{ .BuildNum }}
 
   deploy-job:
-    machine:
+    docker:
       # specify the version you desire here
       - image: cgswong/aws:latest
     steps:
