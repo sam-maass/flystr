@@ -49,7 +49,7 @@ jobs:
       - image: circleci/node:8
     steps:
       - restore_cache:
-        keys:
+          keys:
           - bundle-{{ .BuildNum }}
           # fallback to using the latest cache if no exact match is found
           - bundle-
