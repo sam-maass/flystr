@@ -39,6 +39,7 @@
     "bundlesize": "^0.15.3",
     "eslint": "^4.9.0",
     "eslint-plugin-react": "^7.4.0",
+    "jest-cli": "^22.0.4",
     "prettier": "^1.7.4",
     "redux-devtools-extension": "^2.13.2"
   }
