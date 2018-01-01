@@ -63,7 +63,7 @@ jobs:
 
       - run :
           name: deploy to AWS
-          command: aws s3 sync build s3://www.flystr.com/ --delete
+          command: aws configure set default.region us-west-2 && aws s3 sync build s3://flystr.com/ --delete
 
 workflows:
   version: 2
