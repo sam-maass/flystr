@@ -46,7 +46,7 @@ jobs:
   deploy-job:
     machine:
       # specify the version you desire here
-      - image: cgswong/aws
+      - image: cgswong/aws:latest
     steps:
       - restore_cache:
           keys:
