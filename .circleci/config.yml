@@ -50,9 +50,9 @@ jobs:
     steps:
       - restore_cache:
         keys:
-        - bundle-{{ .BuildNum }}
-        # fallback to using the latest cache if no exact match is found
-        - bundle-
+          - bundle-{{ .BuildNum }}
+          # fallback to using the latest cache if no exact match is found
+          - bundle-
       - run :
           name: deploy to AWS
           command:
