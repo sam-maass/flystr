@@ -45,14 +45,14 @@ jobs:
 
   deploy-job:
     docker:
-    # specify the version you desire here
-    - image: circleci/node:8
-    - restore_cache:
-      keys:
-      - bundle-{{ .BuildNum }}
-      # fallback to using the latest cache if no exact match is found
-      - bundle-
+      # specify the version you desire here
+      - image: circleci/node:8
     steps:
+      - restore_cache:
+        keys:
+        - bundle-{{ .BuildNum }}
+        # fallback to using the latest cache if no exact match is found
+        - bundle-
       - run :
           name: deploy to AWS
           command:
