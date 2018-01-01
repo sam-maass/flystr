@@ -55,8 +55,7 @@ jobs:
           - bundle-
       - run :
           name: deploy to AWS
-          command:
-            - aws s3 sync build s3://flystr/ --delete
+          command: aws s3 sync build s3://flystr/ --delete
 
 workflows:
   version: 2
