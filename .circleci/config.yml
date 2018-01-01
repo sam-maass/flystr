@@ -37,3 +37,9 @@ jobs:
         
       # run tests!
       - run: npm run test
+
+deployment:
+  prod:
+    branch: master
+    commands:
+      - aws s3 sync build s3://flystr/ --delete
