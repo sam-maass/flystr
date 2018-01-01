@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/node:7.10
+      - image: circleci/node:latest
       
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
@@ -19,6 +19,10 @@ jobs:
     steps:
       - checkout
 
+      - run:
+          name: update-npm
+          command: 'sudo npm install -g npm@latest'
+          
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -26,7 +30,7 @@ jobs:
           # fallback to using the latest cache if no exact match is found
           - v1-dependencies-
 
-      - run: yarn install
+      - run: npm install
 
       - save_cache:
           paths:
