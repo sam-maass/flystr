@@ -44,9 +44,9 @@ jobs:
           key: bundle-{{ .BuildNum }}
 
   deploy-job:
-    docker:
+    machine:
       # specify the version you desire here
-      - image: circleci/node:8
+      - image: cgswong/aws
     steps:
       - restore_cache:
           keys:
