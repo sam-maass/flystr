@@ -38,7 +38,20 @@ jobs:
       # run tests!
       - run: npm run test
 
+      - save_cache:
+          paths:
+            - build
+          key: bundle-{{ .BuildNum }}
+
   deploy-job:
+    docker:
+    # specify the version you desire here
+    - image: circleci/node:8
+    - restore_cache:
+      keys:
+      - bundle-{{ .BuildNum }}
+      # fallback to using the latest cache if no exact match is found
+      - bundle-
     steps:
       - run :
           name: deploy to AWS
