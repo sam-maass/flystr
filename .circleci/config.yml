@@ -27,10 +27,6 @@ jobs:
           - v1-dependencies-
 
       - run:
-          name: Install aws cli
-          command: npm install -g aws-cli
-          
-      - run:
           name: Update npm dependencies
           command: npm install
 
@@ -47,6 +43,10 @@ jobs:
       # specify the version you desire here
       - image: circleci/node:8
     steps:
+      - run:
+          name: Install AWS CLI
+          command: sudo apt-get -y -qq install awscli 
+
       - checkout
 
       - restore_cache:
@@ -63,7 +63,7 @@ jobs:
 
       - run :
           name: deploy to AWS
-          command: aws s3 sync build s3://flystr/ --delete
+          command: aws s3 sync build s3://www.flystr.com/ --delete
 
 workflows:
   version: 2
