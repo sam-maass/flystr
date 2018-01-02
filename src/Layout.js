@@ -1,6 +1,5 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import ImageHeader from './components/ImageHeader';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchUser } from './actions/userActions';
@@ -17,15 +16,22 @@ const Layout = ({ loggedIn, fetchUser }) => {
         <Reboot />
         <Switch>
           {routes.map((route, index) => (
-            <div key={route}>
-              {route.withHeader && <ImageHeader />}
-              <Route
-                key={index}
-                path={route.path}
-                exact={route.exact}
-                component={route.main}
-              />
-            </div>
+            <Route
+              key={index}
+              path={route.path}
+              exact={route.exact}
+              component={route.header || null}
+            />
+          ))}
+        </Switch>
+        <Switch>
+          {routes.map((route, index) => (
+            <Route
+              key={index}
+              path={route.path}
+              exact={route.exact}
+              component={route.main}
+            />
           ))}
         </Switch>
       </div>
