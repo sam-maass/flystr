@@ -54,17 +54,28 @@ const Index = () => {
               Flystr is here to make frugal travel easy again.
               <ul style={listStyle}>
                 <li>
-                  <span role="img">🌍</span> Add all your destinations
+                  <span role="img" aria-label="globe">
+                    🌍
+                  </span>{' '}
+                  Add all your destinations
                 </li>
                 <li>
-                  <span role="img">🤖</span> Let our bot do the searching
+                  <span role="img" aria-label="Bot">
+                    🤖
+                  </span>{' '}
+                  Let our bot do the searching
                 </li>
                 <li>
-                  <span role="img">📨</span> Get notified when a good deal comes
-                  up
+                  <span role="img" aria-label="message">
+                    📨
+                  </span>{' '}
+                  Get notified when a good deal comes up
                 </li>
                 <li>
-                  <span role="img">🛫</span> Save money, go everywhere
+                  <span role="img" aria-label="airplane">
+                    🛫
+                  </span>{' '}
+                  Save money, go everywhere
                 </li>
               </ul>
               <b>No more searching, no more overpaying.</b>
