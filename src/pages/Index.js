@@ -53,10 +53,19 @@ const Index = () => {
               you a snapshot of whats happening, but prices change all the time.
               Flystr is here to make frugal travel easy again.
               <ul style={listStyle}>
-                <li> 🌍 Add all your destinations</li>
-                <li> 🤖 Let our bot do the searching</li>
-                <li> 📨 Get notified when a good deal comes up</li>
-                <li> 🛫 Save money, go everywhere</li>
+                <li>
+                  <span role="img">🌍</span> Add all your destinations
+                </li>
+                <li>
+                  <span role="img">🤖</span> Let our bot do the searching
+                </li>
+                <li>
+                  <span role="img">📨</span> Get notified when a good deal comes
+                  up
+                </li>
+                <li>
+                  <span role="img">🛫</span> Save money, go everywhere
+                </li>
               </ul>
               <b>No more searching, no more overpaying.</b>
               <br />
