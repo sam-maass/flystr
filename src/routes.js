@@ -4,6 +4,7 @@ import Index from './pages/Index';
 import Login from './pages/Login';
 import NewTrip from './pages/NewTrip';
 import React from 'react';
+import ImageHeader from './components/ImageHeader';
 
 export const loggedInRoutes = [
   {
@@ -31,12 +32,12 @@ export const loggedInRoutes = [
   {
     path: '/new-trip',
     exact: true,
-    withHeader: true,
+    header: () => <ImageHeader />,
     main: () => <NewTrip />
   },
   {
     path: '/home',
-    withHeader: true,
+    header: () => <ImageHeader />,
     main: () => <Home />
   }
 ];
@@ -50,13 +51,13 @@ export const loggedOutRoutes = [
   {
     path: '/login',
     exact: true,
-    withHeader: true,
+    header: () => <ImageHeader />,
     main: () => <Login />
   },
   {
     path: '/new-trip',
     exact: true,
-    withHeader: true,
+    header: () => <ImageHeader />,
     main: () => <NewTrip />
   },
   {
