@@ -31,10 +31,12 @@ export const loggedInRoutes = [
   {
     path: '/new-trip',
     exact: true,
+    withHeader: true,
     main: () => <NewTrip />
   },
   {
     path: '/home',
+    withHeader: true,
     main: () => <Home />
   }
 ];
@@ -48,11 +50,13 @@ export const loggedOutRoutes = [
   {
     path: '/login',
     exact: true,
+    withHeader: true,
     main: () => <Login />
   },
   {
     path: '/new-trip',
     exact: true,
+    withHeader: true,
     main: () => <NewTrip />
   },
   {

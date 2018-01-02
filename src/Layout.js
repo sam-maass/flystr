@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchUser } from './actions/userActions';
 import { loggedInRoutes, loggedOutRoutes } from './routes';
+import Reboot from 'material-ui/Reboot';
 
 const Layout = ({ loggedIn, fetchUser }) => {
   const jwt = window.localStorage.getItem('currentJWT');
@@ -13,15 +14,18 @@ const Layout = ({ loggedIn, fetchUser }) => {
   return (
     <Router>
       <div className="main">
-        <ImageHeader />
+        <Reboot />
         <Switch>
           {routes.map((route, index) => (
-            <Route
-              key={index}
-              path={route.path}
-              exact={route.exact}
-              component={route.main}
-            />
+            <div key={route}>
+              {route.withHeader && <ImageHeader />}
+              <Route
+                key={index}
+                path={route.path}
+                exact={route.exact}
+                component={route.main}
+              />
+            </div>
           ))}
         </Switch>
       </div>
