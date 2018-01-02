@@ -52,6 +52,8 @@ const Index = () => {
               make a living of your money. And Flight Search Engines only give
               you a snapshot of whats happening, but prices change all the time.
               Flystr is here to make frugal travel easy again.
+            </Typography>
+            <Typography>
               <ul style={listStyle}>
                 <li>
                   <span role="img" aria-label="globe">
@@ -78,9 +80,11 @@ const Index = () => {
                   Save money, go everywhere
                 </li>
               </ul>
+            </Typography>
+            <Typography component="p">
               <b>No more searching, no more overpaying.</b>
               <br />
-              <i>Coming soon.</i>
+              <i>Coming soon...</i>
             </Typography>
           </CardContent>
         </Card>
