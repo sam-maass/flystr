@@ -1,22 +1,24 @@
 import axios from 'axios';
+import { apiUrl } from '../settings';
+
 export function fetchUser(token) {
   axios.defaults.headers.common['Authorization'] = token;
   return {
     type: 'FETCH_USER',
-    payload: axios.get('https://api.flystr.com/user/profile')
+    payload: axios.get(`${apiUrl}/user/profile`)
   };
 }
 export function loginUser(token) {
   axios.defaults.headers.common['Authorization'] = token;
   return {
     type: 'LOGIN_USER',
-    payload: axios.post('https://api.flystr.com/user/login')
+    payload: axios.post(`${apiUrl}/user/login`)
   };
 }
 export function logoutUser(token) {
   axios.defaults.headers.common['Authorization'] = token;
   return {
     type: 'LOGOUT_USER',
-    payload: axios.post('https://api.flystr.com/user/logout')
+    payload: axios.post(`${apiUrl}/user/logout`)
   };
 }

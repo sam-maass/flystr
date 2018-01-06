@@ -5,6 +5,7 @@ import NewTripForm from './component';
 import Yup from 'yup';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
+import { apiUrl } from '../../settings';
 
 const mapStateToProps = store => {
   return {
@@ -36,7 +37,7 @@ const formikSettings = {
       .required()
   }),
   handleSubmit: async (values, { setStatus }) => {
-    const res = await axios.post('https://api.flystr.com/trip', {
+    const res = await axios.post(`${apiUrl}/trip`, {
       ...values
     });
     console.log(res);
