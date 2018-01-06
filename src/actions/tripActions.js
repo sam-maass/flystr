@@ -12,6 +12,6 @@ export function getUserTrips() {
   );
   return {
     type: 'GET_USER_TRIPS',
-    payload: axios.get('http://localhost:3000/trip')
+    payload: axios.get('https://api.flystr.com/trip')
   };
 }
