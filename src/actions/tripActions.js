@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import { apiUrl } from '../settings';
 export function changeNewTrip(change) {
   return {
     type: 'NEW_TRIP_CHANGE',
@@ -12,6 +12,6 @@ export function getUserTrips() {
   );
   return {
     type: 'GET_USER_TRIPS',
-    payload: axios.get('https://api.flystr.com/trip')
+    payload: axios.get(`${apiUrl}/trip`)
   };
 }
