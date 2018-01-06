@@ -36,7 +36,7 @@ const formikSettings = {
       .required()
   }),
   handleSubmit: async (values, { setStatus }) => {
-    const res = await axios.post('http://localhost:3000/trip', {
+    const res = await axios.post('https://api.flystr.com/trip', {
       ...values
     });
     console.log(res);
