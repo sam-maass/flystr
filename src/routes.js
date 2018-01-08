@@ -4,7 +4,7 @@ import Index from './pages/Index';
 import Login from './pages/Login';
 import NewTrip from './pages/NewTrip';
 import React from 'react';
-import ImageHeader from './components/ImageHeader';
+import { CustomAppBar } from './components/CustomAppBar';
 
 export const loggedInRoutes = [
   {
@@ -32,12 +32,12 @@ export const loggedInRoutes = [
   {
     path: '/new-trip',
     exact: true,
-    header: () => <ImageHeader />,
+    header: () => <CustomAppBar title="Create a new trip" />,
     main: () => <NewTrip />
   },
   {
     path: '/home',
-    header: () => <ImageHeader />,
+    header: () => <CustomAppBar title="Your Flights" />,
     main: () => <Home />
   }
 ];
@@ -51,13 +51,13 @@ export const loggedOutRoutes = [
   {
     path: '/login',
     exact: true,
-    header: () => <ImageHeader />,
+    header: () => <CustomAppBar title="Login" />,
     main: () => <Login />
   },
   {
     path: '/new-trip',
     exact: true,
-    header: () => <ImageHeader />,
+    header: () => <CustomAppBar title="Create a new trip" />,
     main: () => <NewTrip />
   },
   {
