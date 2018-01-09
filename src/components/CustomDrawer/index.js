@@ -7,14 +7,16 @@ import Drawer from 'material-ui/Drawer';
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 import FlightIcon from 'material-ui-icons/Flight';
 import PinDropIcon from 'material-ui-icons/PinDrop';
+import SignOutIcon from 'material-ui-icons/PowerSettingsNew';
+import UserIcon from 'material-ui-icons/PermIdentity';
+import DealIcon from 'material-ui-icons/MonetizationOn';
 import Divider from 'material-ui/Divider';
 
 const styles = {
   logo: {
-    marginTop: 10,
     marginLeft: 10,
     width: '80%',
-    height: 40,
+    height: 30,
     maxWidth: 400,
     justifySelf: 'center',
     gridColumn: 2,
@@ -59,14 +61,30 @@ class TemporaryDrawer extends React.Component {
             </ListItemIcon>
             <ListItemText primary="Price Alarms" />
           </ListItem>
-        </List>
-        <Divider />
-        <List>
           <ListItem button>
             <ListItemIcon>
               <PinDropIcon />
             </ListItemIcon>
-            <ListItemText primary="Your Destinations" />
+            <ListItemText primary="Watchlist" />
+          </ListItem>
+          <ListItem button>
+            <ListItemIcon>
+              <UserIcon />
+            </ListItemIcon>
+            <ListItemText primary="Profile" />
+          </ListItem>
+          <ListItem button>
+            <ListItemIcon>
+              <DealIcon />
+            </ListItemIcon>
+            <ListItemText primary="Report a Deal" />
+          </ListItem>
+          <Divider />
+          <ListItem button>
+            <ListItemIcon>
+              <SignOutIcon />
+            </ListItemIcon>
+            <ListItemText primary="Logout" />
           </ListItem>
         </List>
       </div>
