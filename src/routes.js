@@ -1,5 +1,8 @@
 import { Redirect } from 'react-router-dom';
-import Home from './pages/Home';
+import Destinations from './pages/Destinations';
+import Flights from './pages/Flights';
+import Profile from './pages/Profile';
+import NewDeal from './pages/NewDeal';
 import Index from './pages/Index';
 import Login from './pages/Login';
 import NewTrip from './pages/NewTrip';
@@ -13,7 +16,7 @@ export const loggedInRoutes = [
     main: () => (
       <Redirect
         to={{
-          pathname: '/home'
+          pathname: '/flights'
         }}
       />
     )
@@ -24,7 +27,7 @@ export const loggedInRoutes = [
     main: () => (
       <Redirect
         to={{
-          pathname: '/home'
+          pathname: '/flights'
         }}
       />
     )
@@ -36,9 +39,24 @@ export const loggedInRoutes = [
     main: () => <NewTrip />
   },
   {
-    path: '/home',
-    header: () => <CustomAppBar title="Your Flights" />,
-    main: () => <Home />
+    path: '/flights',
+    header: () => <CustomAppBar title="Matching Flights" />,
+    main: () => <Flights />
+  },
+  {
+    path: '/destinations',
+    header: () => <CustomAppBar title="Destinations" />,
+    main: () => <Destinations />
+  },
+  {
+    path: '/profile',
+    header: () => <CustomAppBar title="Profile" />,
+    main: () => <Profile />
+  },
+  {
+    path: '/new-deal',
+    header: () => <CustomAppBar title="Add a deal" />,
+    main: () => <NewDeal />
   }
 ];
 
