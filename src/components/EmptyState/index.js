@@ -41,7 +41,7 @@ const EmptyStateComponent = ({ classes, icon, title }) => {
 
 EmptyStateComponent.propTypes = {
   classes: PropTypes.object,
-  icon: PropTypes.func,
+  icon: PropTypes.object,
   title: PropTypes.string
 };
 

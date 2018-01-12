@@ -1,13 +1,13 @@
 import React from 'react';
 import Button from 'material-ui/Button';
 import PropTypes from 'prop-types';
-import GoogleLogin, { GoogleLogout } from 'react-google-login';
+import GoogleLogin /*GoogleLogout*/ from 'react-google-login';
 
 export const LoginLogoutButtonComponent = ({
   loggedIn,
   onLoginFailure,
-  onLoginSuccess,
-  onLogout
+  onLoginSuccess
+  // onLogout
 }) => {
   if (!loggedIn) {
     return (
@@ -22,11 +22,7 @@ export const LoginLogoutButtonComponent = ({
       </GoogleLogin>
     );
   } else {
-    return (
-      <GoogleLogout style={{}} tag="div" onLogoutSuccess={onLogout}>
-        <Button color="contrast">Logout</Button>
-      </GoogleLogout>
-    );
+    return null;
   }
 };
 
