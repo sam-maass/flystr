@@ -8,9 +8,14 @@ import UserIcon from 'material-ui-icons/PermIdentity';
 import DealIcon from 'material-ui-icons/MonetizationOn';
 import Divider from 'material-ui/Divider';
 import withStyles from 'material-ui/styles/withStyles';
+import { GoogleLogout } from 'react-google-login';
 import { Link } from 'react-router-dom';
+import { logoutUser } from '../../actions/userActions';
+import { connect } from 'react-redux';
 
-const SideListComponent = ({ classes }) => {
+const SideListComponent = ({ classes, dispatch, logoutUser }) => {
+  console.log(dispatch);
+  const jwt = window.localStorage.getItem('currentJWT');
   return (
     <div className={classes.list}>
       <List>
@@ -53,19 +58,27 @@ const SideListComponent = ({ classes }) => {
           </ListItem>
         </Link>
         <Divider />
-        <ListItem button>
-          <ListItemIcon>
-            <SignOutIcon />
-          </ListItemIcon>
-          <ListItemText primary="Logout" />
-        </ListItem>
+        <GoogleLogout
+          style={{}}
+          tag="div"
+          onLogoutSuccess={() => dispatch(logoutUser(jwt))}
+        >
+          <ListItem button>
+            <ListItemIcon>
+              <SignOutIcon />
+            </ListItemIcon>
+            <ListItemText primary="Logout" />
+          </ListItem>
+        </GoogleLogout>
       </List>
     </div>
   );
 };
 
 SideListComponent.propTypes = {
-  classes: PropTypes.object
+  classes: PropTypes.object,
+  dispatch: PropTypes.func,
+  logoutUser: PropTypes.func
 };
 
 const styles = {
@@ -87,4 +100,12 @@ const styles = {
   }
 };
 
-export const SideList = withStyles(styles)(SideListComponent);
+const mapStateToProps = (store, props) => {
+  return {
+    ...props
+  };
+};
+
+export const SideList = withStyles(styles)(
+  connect(mapStateToProps, { logoutUser })(SideListComponent)
+);
