@@ -14,7 +14,6 @@ import { logoutUser } from '../../actions/userActions';
 import { connect } from 'react-redux';
 
 const SideListComponent = ({ classes, dispatch, logoutUser }) => {
-  console.log(dispatch);
   const jwt = window.localStorage.getItem('currentJWT');
   return (
     <div className={classes.list}>
