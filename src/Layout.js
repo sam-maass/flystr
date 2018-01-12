@@ -5,14 +5,15 @@ import { connect } from 'react-redux';
 import { fetchUser } from './actions/userActions';
 import { loggedInRoutes, loggedOutRoutes } from './routes';
 import Reboot from 'material-ui/Reboot';
+import withStyles from 'material-ui/styles/withStyles';
 
-const Layout = ({ loggedIn, fetchUser }) => {
+const Layout = ({ loggedIn, fetchUser, classes }) => {
   const jwt = window.localStorage.getItem('currentJWT');
   fetchUser(jwt);
   const routes = loggedIn ? loggedInRoutes : loggedOutRoutes;
   return (
     <Router>
-      <div className="main">
+      <div className={classes.main}>
         <Reboot />
         <Switch>
           {routes.map((route, index) => (
@@ -40,15 +41,25 @@ const Layout = ({ loggedIn, fetchUser }) => {
 };
 
 Layout.propTypes = {
+  classes: PropTypes.bool,
   loggedIn: PropTypes.bool,
   fetchUser: PropTypes.func
 };
 
-const mapStateToProps = store => {
+const mapStateToProps = (store, props) => {
   return {
+    ...props,
     loggedIn: !!store.user._id
   };
 };
 const LayoutContainer = connect(mapStateToProps, { fetchUser })(Layout);
 
-export default LayoutContainer;
+const styles = {
+  main: {
+    display: 'grid',
+    height: '100vh',
+    gridTemplateRows: 'min-content auto'
+  }
+};
+
+export default withStyles(styles)(LayoutContainer);
