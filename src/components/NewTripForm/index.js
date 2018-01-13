@@ -40,7 +40,6 @@ const formikSettings = {
     const res = await axios.post(`${apiUrl}/trip`, {
       ...values
     });
-    console.log(res);
     setStatus('done');
   }
 };
@@ -51,7 +50,7 @@ const RoutingWrapper = props => {
     return (
       <Redirect
         to={{
-          pathname: '/home'
+          pathname: '/destinations'
         }}
       />
     );
