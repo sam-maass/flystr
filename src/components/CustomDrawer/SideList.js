@@ -13,8 +13,11 @@ import { Link } from 'react-router-dom';
 import { logoutUser } from '../../actions/userActions';
 import { connect } from 'react-redux';
 
-const SideListComponent = ({ classes, dispatch, logoutUser }) => {
-  const jwt = window.localStorage.getItem('currentJWT');
+const SideListComponent = ({ classes, logoutUser }) => {
+  const logoutWithJWT = () => {
+    const jwt = window.localStorage.getItem('currentJWT');
+    logoutUser(jwt);
+  };
   return (
     <div className={classes.list}>
       <List>
@@ -57,11 +60,7 @@ const SideListComponent = ({ classes, dispatch, logoutUser }) => {
           </ListItem>
         </Link>
         <Divider />
-        <GoogleLogout
-          style={{}}
-          tag="div"
-          onLogoutSuccess={() => dispatch(logoutUser(jwt))}
-        >
+        <GoogleLogout style={{}} tag="div" onLogoutSuccess={logoutWithJWT}>
           <ListItem button>
             <ListItemIcon>
               <SignOutIcon />
@@ -76,7 +75,6 @@ const SideListComponent = ({ classes, dispatch, logoutUser }) => {
 
 SideListComponent.propTypes = {
   classes: PropTypes.object,
-  dispatch: PropTypes.func,
   logoutUser: PropTypes.func
 };
 
@@ -99,12 +97,6 @@ const styles = {
   }
 };
 
-const mapStateToProps = (store, props) => {
-  return {
-    ...props
-  };
-};
-
-export const SideList = withStyles(styles)(
-  connect(mapStateToProps, { logoutUser })(SideListComponent)
+export const SideList = connect(null, { logoutUser })(
+  withStyles(styles)(SideListComponent)
 );
