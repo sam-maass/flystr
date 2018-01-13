@@ -1,9 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { StyledTripRow } from './style';
 import moment from 'moment';
+import Card, { CardActions, CardContent } from 'material-ui/Card';
+import withStyles from 'material-ui/styles/withStyles';
+import Typography from 'material-ui/Typography/Typography';
+import Button from 'material-ui/Button/Button';
+import hash from 'string-hash';
 
 const TripRow = ({
+  classes,
+  origins = [],
   status,
   startDate,
   duration,
@@ -11,30 +17,61 @@ const TripRow = ({
   destinations = []
 }) => {
   const formattedStartDate = moment(startDate).format('DD.MM.YYYY');
+  const dest = destinations.join();
+  const colors = [
+    '#F44336',
+    '#E91E63',
+    '#9C27B0',
+    '#673AB7',
+    '#3F51B5',
+    '#2196F3',
+    '#03A9F4',
+    '#00BCD4',
+    '#009688',
+    '#4CAF50',
+    '#8BC34A',
+    '#CDDC39',
+    '#FFEB3B',
+    '#FFC107',
+    '#FF9800',
+    '#FF5722'
+  ];
+  const bghash = hash(dest) % colors.length;
+  const bg = colors[bghash];
   return (
-    <StyledTripRow>
-      <div className="bg">
-        <div className="status">{status}</div>
-      </div>
-      <div className="content">
-        <div className="title">{destinations.join(',')}</div>
-        <div className="info">
-          {' '}
+    <Card>
+      <CardContent>
+        <Typography style={{ color: bg }} type="headline">
+          {destinations.join(',')}
+        </Typography>
+        <Typography type="subheading">From {origins.join(',')}</Typography>
+        <div className={classes.details}>
           <div>{formattedStartDate}</div>
           <div>{duration} days</div>
           <div>{maxPrice} €</div>
         </div>
-      </div>
-    </StyledTripRow>
+      </CardContent>
+    </Card>
   );
 };
 
 TripRow.propTypes = {
+  classes: PropTypes.object,
   status: PropTypes.string,
   startDate: PropTypes.string,
   duration: PropTypes.string,
   maxPrice: PropTypes.string,
-  destinations: PropTypes.arrayOf(PropTypes.string)
+  destinations: PropTypes.arrayOf(PropTypes.string),
+  origins: PropTypes.arrayOf(PropTypes.string)
 };
 
-export default TripRow;
+const styles = {
+  details: {
+    marginTop: 16,
+    display: 'grid',
+    gridTemplateColumns: 'repeat(3,1fr)',
+    color: '#888'
+  }
+};
+
+export default withStyles(styles)(TripRow);
