@@ -6,6 +6,7 @@ import Yup from 'yup';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 import { apiUrl } from '../../settings';
+import moment from 'moment';
 
 const mapStateToProps = store => {
   return {
@@ -18,8 +19,10 @@ const formikSettings = {
     return {
       destinations: '',
       origins: '',
-      startDate: '',
-      endDate: '',
+      startDate: moment().format('YYYY-MM-DD'),
+      endDate: moment()
+        .add(4, 'weeks')
+        .format('YYYY-MM-DD'),
       budget: ''
     };
   },
@@ -37,6 +40,7 @@ const formikSettings = {
       .required()
   }),
   handleSubmit: async (values, { setStatus }) => {
+    console.log(values);
     await axios.post(`${apiUrl}/trip`, {
       ...values
     });

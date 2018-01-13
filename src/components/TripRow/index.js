@@ -10,8 +10,8 @@ const TripRow = ({
   classes,
   origins = [],
   startDate,
-  duration,
-  maxPrice,
+  endDate,
+  budget,
   destinations = []
 }) => {
   const formattedStartDate = moment(startDate).format('DD.MM.YYYY');
@@ -36,6 +36,7 @@ const TripRow = ({
   ];
   const bghash = hash(dest) % colors.length;
   const bg = colors[bghash];
+  const days = moment(endDate).diff(moment(startDate), 'days');
   return (
     <Card>
       <CardContent>
@@ -45,8 +46,8 @@ const TripRow = ({
         <Typography type="subheading">From {origins.join(',')}</Typography>
         <div className={classes.details}>
           <div>{formattedStartDate}</div>
-          <div>{duration} days</div>
-          <div>{maxPrice} €</div>
+          <div>max {days} days</div>
+          <div>max {budget} €</div>
         </div>
       </CardContent>
     </Card>
@@ -57,8 +58,7 @@ TripRow.propTypes = {
   classes: PropTypes.object,
   status: PropTypes.string,
   startDate: PropTypes.string,
-  duration: PropTypes.string,
-  maxPrice: PropTypes.string,
+  budget: PropTypes.string,
   destinations: PropTypes.arrayOf(PropTypes.string),
   origins: PropTypes.arrayOf(PropTypes.string)
 };

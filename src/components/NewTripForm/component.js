@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 import { Form } from 'formik';
 import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
+import withStyles from 'material-ui/styles/withStyles';
 
 const FormikTextField = ({
   elemKey,
   type = 'text',
   label,
+  defaultValue,
   values,
   errors,
   touched,
@@ -18,8 +20,9 @@ const FormikTextField = ({
     <TextField
       name={elemKey}
       label={label}
+      defaultValue={defaultValue}
       type={type}
-      value={values[elemKey]}
+      value={values[elemKey] || defaultValue}
       error={touched[elemKey] && !!errors[elemKey]}
       helperText={touched[elemKey] && errors[elemKey]}
       onChange={handleChange}
@@ -33,6 +36,7 @@ FormikTextField.propTypes = {
   type: PropTypes.string,
   label: PropTypes.string,
   values: PropTypes.object,
+  defaultValue: PropTypes.object,
   errors: PropTypes.object,
   touched: PropTypes.object,
   handleChange: PropTypes.func,
@@ -41,31 +45,25 @@ FormikTextField.propTypes = {
 
 const NewTripForm = props => {
   return (
-    <Form style={{ display: 'grid' }}>
-      <FormikTextField
-        elemKey="origins"
-        label="Where do you fly form?"
-        {...props}
-      />
+    <Form className={props.classes.form}>
+      <FormikTextField elemKey="origins" label="From" {...props} />
+      <FormikTextField elemKey="destinations" label="To" {...props} />
       <FormikTextField
         elemKey="startDate"
-        label="When do you want to fly?"
+        type="date"
+        label="When"
         {...props}
       />
       <FormikTextField
         elemKey="endDate"
-        label="When do you want to return?"
-        {...props}
-      />
-      <FormikTextField
-        elemKey="destinations"
-        label="Where do you want to fly to?"
+        type="date"
+        label="Returning on"
         {...props}
       />
       <FormikTextField
         elemKey="budget"
         type="number"
-        label="What is your max buget?"
+        label="Max buget"
         {...props}
       />
       <Button raised color="primary" onClick={props.handleSubmit}>
@@ -76,10 +74,19 @@ const NewTripForm = props => {
 };
 
 NewTripForm.propTypes = {
+  classes: PropTypes.object,
   values: PropTypes.object,
   errors: PropTypes.object,
   touched: PropTypes.object,
   handleSubmit: PropTypes.func
 };
 
-export default NewTripForm;
+const styles = {
+  form: {
+    margin: 8,
+    display: 'grid',
+    gridRowGap: '16px'
+  }
+};
+
+export default withStyles(styles)(NewTripForm);
