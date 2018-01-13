@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import AddIcon from 'material-ui-icons/Add';
 import Button from 'material-ui/Button/Button';
 import withStyles from 'material-ui/styles/withStyles';
+import PropTypes from 'prop-types';
 
 const DestinationsPage = ({ classes }) => {
   return (
@@ -16,6 +17,10 @@ const DestinationsPage = ({ classes }) => {
       </Link>
     </div>
   );
+};
+
+DestinationsPage.propTypes = {
+  classes: PropTypes.object
 };
 
 const styles = {
