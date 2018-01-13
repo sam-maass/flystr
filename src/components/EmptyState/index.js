@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 const styles = {
   pageContainer: {
     display: 'grid',
+    height: '100%',
     justifyItems: 'center',
     alignItems: 'center'
   },
