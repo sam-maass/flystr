@@ -7,49 +7,55 @@ import { loggedInRoutes, loggedOutRoutes } from './routes';
 import Reboot from 'material-ui/Reboot';
 import withStyles from 'material-ui/styles/withStyles';
 
-const Layout = ({ loggedIn, fetchUser, classes }) => {
+const Layout = ({ loggedIn, ready, fetchUser, classes }) => {
   const jwt = window.localStorage.getItem('currentJWT');
   fetchUser(jwt);
   const routes = loggedIn ? loggedInRoutes : loggedOutRoutes;
-  return (
-    <Router>
-      <div className={classes.main}>
-        <Reboot />
-        <Switch>
-          {routes.map((route, index) => (
-            <Route
-              key={index}
-              path={route.path}
-              exact={route.exact}
-              component={route.header || null}
-            />
-          ))}
-        </Switch>
-        <Switch>
-          {routes.map((route, index) => (
-            <Route
-              key={index}
-              path={route.path}
-              exact={route.exact}
-              component={route.main}
-            />
-          ))}
-        </Switch>
-      </div>
-    </Router>
-  );
+  if (!ready) {
+    return null;
+  } else {
+    return (
+      <Router>
+        <div className={classes.main}>
+          <Reboot />
+          <Switch>
+            {routes.map((route, index) => (
+              <Route
+                key={index}
+                path={route.path}
+                exact={route.exact}
+                component={route.header || null}
+              />
+            ))}
+          </Switch>
+          <Switch>
+            {routes.map((route, index) => (
+              <Route
+                key={index}
+                path={route.path}
+                exact={route.exact}
+                component={route.main}
+              />
+            ))}
+          </Switch>
+        </div>
+      </Router>
+    );
+  }
 };
 
 Layout.propTypes = {
   classes: PropTypes.bool,
   loggedIn: PropTypes.bool,
+  ready: PropTypes.bool,
   fetchUser: PropTypes.func
 };
 
 const mapStateToProps = (store, props) => {
   return {
     ...props,
-    loggedIn: !!store.user._id
+    loggedIn: !!store.user._id,
+    ready: store.user.ready
   };
 };
 const LayoutContainer = connect(mapStateToProps, { fetchUser })(Layout);
