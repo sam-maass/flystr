@@ -37,7 +37,7 @@ const formikSettings = {
       .required()
   }),
   handleSubmit: async (values, { setStatus }) => {
-    const res = await axios.post(`${apiUrl}/trip`, {
+    await axios.post(`${apiUrl}/trip`, {
       ...values
     });
     setStatus('done');
