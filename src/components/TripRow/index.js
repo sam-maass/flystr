@@ -1,16 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import Card, { CardActions, CardContent } from 'material-ui/Card';
+import Card, { CardContent } from 'material-ui/Card';
 import withStyles from 'material-ui/styles/withStyles';
 import Typography from 'material-ui/Typography/Typography';
-import Button from 'material-ui/Button/Button';
 import hash from 'string-hash';
 
 const TripRow = ({
   classes,
   origins = [],
-  status,
   startDate,
   duration,
   maxPrice,
