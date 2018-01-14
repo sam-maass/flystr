@@ -5,8 +5,6 @@ import Card, { CardContent } from 'material-ui/Card';
 import withStyles from 'material-ui/styles/withStyles';
 import Typography from 'material-ui/Typography/Typography';
 import hash from 'string-hash';
-import IconButton from 'material-ui/IconButton/IconButton';
-import SettingsIcon from 'material-ui-icons/Settings';
 const TripRow = ({
   classes,
   origins = [],
