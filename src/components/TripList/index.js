@@ -29,7 +29,6 @@ TripListContainer.propTypes = {
 const mapStateToProps = store => {
   return {
     user: store.user,
-    newTrip: store.newTrip,
     trips: store.trips
   };
 };

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import Card, { CardContent } from 'material-ui/Card';
@@ -7,16 +6,13 @@ import withStyles from 'material-ui/styles/withStyles';
 import Typography from 'material-ui/Typography/Typography';
 import hash from 'string-hash';
 import IconButton from 'material-ui/IconButton/IconButton';
-import FavoriteIcon from 'material-ui-icons/FlightTakeoff';
-import qs from 'qs';
 import SettingsIcon from 'material-ui-icons/Settings';
 const TripRow = ({
   classes,
   origins = [],
   startDate,
   endDate,
-  matchingDeals,
-  budget,
+  price,
   destinations = []
 }) => {
   const formattedStartDate = moment(startDate).format('DD.MM.YYYY');
@@ -42,37 +38,22 @@ const TripRow = ({
   ];
   const bghash = hash(dest) % colors.length;
   const bg = colors[bghash];
-  const days = moment(endDate).diff(moment(startDate), 'days');
-  const searchString = qs.stringify({ ids: matchingDeals });
   return (
     <Card>
       <CardContent>
         <div className={classes.titleBar}>
           <Typography style={{ color: bg }} type="headline">
-            <span>{destinations.join(',')}</span>
+            <span>
+              {destinations.join(',')} for {price} €
+            </span>
           </Typography>
-          <div>
-            <Link
-              className={classes.noLink}
-              to={{ pathname: '/deals', search: searchString }}
-            >
-              <IconButton aria-label="See deals">
-                {matchingDeals.length}
-                <FavoriteIcon />
-              </IconButton>
-            </Link>
-            <IconButton aria-label="See deals">
-              <SettingsIcon />
-            </IconButton>
-          </div>
+          <div />
         </div>
         <Typography type="subheading">From {origins.join(',')}</Typography>
         <div className={classes.details}>
           <div>
             {formattedStartDate} - {formattedEndDate}
           </div>
-          <div>max {days} days</div>
-          <div>max {budget} €</div>
         </div>
       </CardContent>
     </Card>
@@ -84,7 +65,7 @@ TripRow.propTypes = {
   status: PropTypes.string,
   startDate: PropTypes.string,
   endDate: PropTypes.string,
-  budget: PropTypes.string,
+  price: PropTypes.string,
   destinations: PropTypes.arrayOf(PropTypes.string),
   origins: PropTypes.arrayOf(PropTypes.string),
   matchingDeals: PropTypes.array
@@ -101,9 +82,6 @@ const styles = {
     display: 'grid',
     gridTemplateColumns: 'repeat(1,1fr)',
     color: '#888'
-  },
-  noLink: {
-    textDecoration: 'none'
   }
 };
 
