@@ -24,7 +24,7 @@ function ButtonAppBar(props) {
   const { classes, title } = props;
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar positionFixed>
         <Toolbar>
           <CustomDrawer />
           <Typography type="title" color="inherit" className={classes.flex}>
