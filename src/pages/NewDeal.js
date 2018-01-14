@@ -1,9 +1,12 @@
 import React from 'react';
-import LaterIcon from 'material-ui-icons/WatchLater';
-import EmptyState from '../components/EmptyState';
+import NewDealForm from '../components/NewDealForm';
 
 const NewDealPage = () => {
-  return <EmptyState title="Coming soon" icon={<LaterIcon />} />;
+  return (
+    <div>
+      <NewDealForm />
+    </div>
+  );
 };
 
 export default NewDealPage;
