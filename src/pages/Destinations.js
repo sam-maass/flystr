@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 
 const DestinationsPage = ({ classes }) => {
   return (
-    <div>
+    <div className={classes.pageContainer}>
       <TripList />
       <Link to="/new-trip">
         <Button fab color="primary" aria-label="add" className={classes.fab}>
@@ -24,6 +24,10 @@ DestinationsPage.propTypes = {
 };
 
 const styles = {
+  pageContainer: {
+    marginRight: 8,
+    marginLeft: 8
+  },
   fab: {
     position: 'fixed',
     bottom: 16,
