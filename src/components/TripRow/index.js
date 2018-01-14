@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import Card, { CardContent, CardActions } from 'material-ui/Card';
+import Card, { CardContent } from 'material-ui/Card';
 import withStyles from 'material-ui/styles/withStyles';
 import Typography from 'material-ui/Typography/Typography';
 import hash from 'string-hash';
-import Badge from 'material-ui/Badge';
 import IconButton from 'material-ui/IconButton/IconButton';
 import FavoriteIcon from 'material-ui-icons/FlightTakeoff';
 import SettingsIcon from 'material-ui-icons/Settings';
