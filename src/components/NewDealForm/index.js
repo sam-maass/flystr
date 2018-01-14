@@ -41,7 +41,6 @@ const formikSettings = {
       .required()
   }),
   handleSubmit: async (values, { setStatus }) => {
-    console.log(values);
     await axios.post(`${apiUrl}/deal`, {
       ...values
     });
