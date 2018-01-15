@@ -8,7 +8,6 @@ import UserIcon from 'material-ui-icons/PermIdentity';
 import DealIcon from 'material-ui-icons/MonetizationOn';
 import Divider from 'material-ui/Divider';
 import withStyles from 'material-ui/styles/withStyles';
-import { GoogleLogout } from 'react-google-login';
 import { Link } from 'react-router-dom';
 import { logoutUser } from '../../actions/userActions';
 import { connect } from 'react-redux';
@@ -60,14 +59,12 @@ const SideListComponent = ({ classes, logoutUser }) => {
           </ListItem>
         </Link>
         <Divider />
-        <GoogleLogout style={{}} tag="div" onLogoutSuccess={logoutWithJWT}>
-          <ListItem button>
-            <ListItemIcon>
-              <SignOutIcon />
-            </ListItemIcon>
-            <ListItemText primary="Logout" />
-          </ListItem>
-        </GoogleLogout>
+        <ListItem button onClick={logoutWithJWT}>
+          <ListItemIcon>
+            <SignOutIcon />
+          </ListItemIcon>
+          <ListItemText primary="Logout" />
+        </ListItem>
       </List>
     </div>
   );

@@ -84,7 +84,7 @@ TripRow.propTypes = {
   status: PropTypes.string,
   startDate: PropTypes.string,
   endDate: PropTypes.string,
-  budget: PropTypes.string,
+  budget: PropTypes.number,
   destinations: PropTypes.arrayOf(PropTypes.string),
   origins: PropTypes.arrayOf(PropTypes.string),
   matchingDeals: PropTypes.array
