@@ -18,7 +18,9 @@ export const LoginLogoutButtonComponent = ({
         onSuccess={onLoginSuccess}
         onFailure={onLoginFailure}
       >
-        <Button color="contrast">Login</Button>
+        <Button raised color="primary">
+          Login with Google
+        </Button>
       </GoogleLogin>
     );
   } else {
