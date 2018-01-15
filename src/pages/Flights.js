@@ -1,11 +1,8 @@
 import React from 'react';
-import AirplanemodeIcon from 'material-ui-icons/AirplanemodeInactive';
-import EmptyState from '../components/EmptyState';
+import DealList from '../components/DealList';
 
 const FlightsPage = () => {
-  return (
-    <EmptyState title="No matching flights yet " icon={<AirplanemodeIcon />} />
-  );
+  return <DealList allUserDeals />;
 };
 
 export default FlightsPage;
