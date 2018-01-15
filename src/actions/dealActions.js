@@ -10,3 +10,13 @@ export function getDeals(dealParams) {
     payload: axios.get(`${apiUrl}/deal`, { params: dealParams })
   };
 }
+
+export function getAllDeals() {
+  axios.defaults.headers.common['Authorization'] = window.localStorage.getItem(
+    'currentJWT'
+  );
+  return {
+    type: 'GET_DEALS',
+    payload: axios.get(`${apiUrl}/deal/all`)
+  };
+}
