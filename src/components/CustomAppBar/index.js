@@ -8,32 +8,26 @@ import { LoginLogoutButton } from '../LoginLogutButton';
 import { CustomDrawer } from '../CustomDrawer';
 
 const styles = {
-  root: {
-    width: '100%'
-  },
   flex: {
     flex: 1
   },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20
+  appBar: {
+    position: 'sticky'
   }
 };
 
 function ButtonAppBar(props) {
   const { classes, title } = props;
   return (
-    <div className={classes.root}>
-      <AppBar positionFixed>
-        <Toolbar>
-          <CustomDrawer />
-          <Typography type="title" color="inherit" className={classes.flex}>
-            {title}
-          </Typography>
-          <LoginLogoutButton />
-        </Toolbar>
-      </AppBar>
-    </div>
+    <AppBar className={classes.appBar}>
+      <Toolbar>
+        <CustomDrawer />
+        <Typography type="title" color="inherit" className={classes.flex}>
+          {title}
+        </Typography>
+        <LoginLogoutButton />
+      </Toolbar>
+    </AppBar>
   );
 }
 
