@@ -3,11 +3,11 @@ import Button from 'material-ui/Button';
 import PropTypes from 'prop-types';
 import GoogleLogin /*GoogleLogout*/ from 'react-google-login';
 
-export const LoginLogoutButtonComponent = ({
+export const GoogleButtonComponent = ({
   loggedIn,
   onLoginFailure,
-  onLoginSuccess
-  // onLogout
+  onLoginSuccess,
+  text
 }) => {
   if (!loggedIn) {
     return (
@@ -19,7 +19,7 @@ export const LoginLogoutButtonComponent = ({
         onFailure={onLoginFailure}
       >
         <Button raised color="primary">
-          Login with Google
+          {text}
         </Button>
       </GoogleLogin>
     );
@@ -28,9 +28,9 @@ export const LoginLogoutButtonComponent = ({
   }
 };
 
-LoginLogoutButtonComponent.propTypes = {
+GoogleButtonComponent.propTypes = {
   onLoginFailure: PropTypes.func.isRequired,
   onLoginSuccess: PropTypes.func.isRequired,
-  onLogout: PropTypes.func.isRequired,
+  text: PropTypes.string.isRequired,
   loggedIn: PropTypes.bool.isRequired
 };

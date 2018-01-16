@@ -8,6 +8,13 @@ export function fetchUser(token) {
     payload: axios.get(`${apiUrl}/user/profile`)
   };
 }
+export function signupUser(token) {
+  axios.defaults.headers.common['Authorization'] = token;
+  return {
+    type: 'SIGNUP_USER',
+    payload: axios.post(`${apiUrl}/user/signup`)
+  };
+}
 export function loginUser(token) {
   axios.defaults.headers.common['Authorization'] = token;
   return {

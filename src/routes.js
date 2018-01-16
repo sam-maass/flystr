@@ -6,6 +6,7 @@ import NewDeal from './pages/NewDeal';
 import Deals from './pages/Deals';
 import Index from './pages/Index';
 import Login from './pages/Login';
+import Signup from './pages/Signup';
 import NewTrip from './pages/NewTrip';
 import React from 'react';
 import { CustomAppBar } from './components/CustomAppBar';
@@ -24,6 +25,17 @@ export const loggedInRoutes = [
   },
   {
     path: '/login',
+    exact: true,
+    main: () => (
+      <Redirect
+        to={{
+          pathname: '/flights'
+        }}
+      />
+    )
+  },
+  {
+    path: '/signup',
     exact: true,
     main: () => (
       <Redirect
@@ -77,6 +89,12 @@ export const loggedOutRoutes = [
     exact: true,
     header: () => <CustomAppBar title="Login" />,
     main: () => <Login />
+  },
+  {
+    path: '/signup',
+    exact: true,
+    header: () => <CustomAppBar title="Sign up" />,
+    main: () => <Signup />
   },
   {
     path: '/new-trip',
