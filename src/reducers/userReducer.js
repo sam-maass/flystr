@@ -19,6 +19,8 @@ export default function reducer(state = { ready: false }, action) {
       };
     case 'LOGIN_USER_FULFILLED':
       return { ...state, ...action.payload.data, ready: true };
+    case 'SIGNUP_USER_FULFILLED':
+      return { ...state, ...action.payload.data, ready: true };
     case 'LOGOUT_USER_FULFILLED':
       return { ready: true };
     default:

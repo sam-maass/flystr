@@ -11,22 +11,22 @@ import Typography from 'material-ui/Typography/Typography';
 import { colors } from 'material-ui';
 import { Link } from 'react-router-dom';
 
-const Login = ({ classes }) => {
+const SignupPage = ({ classes }) => {
   return (
     <div className={classes.page}>
       <Card className={classes.card}>
-        <CardHeader title="Login" subheader="Login with Google" />
+        <CardHeader title="Sign up" subheader="Sign up with Google" />
         <CardContent>
-          <GoogleButton action="login" text="Login" />
+          <GoogleButton action="signup" text="Sign up" />
         </CardContent>
         <CardActions className={classes.actions}>
           <div>
             <Typography className={classes.buttonText}>
-              new to flystr?
+              already a member?
             </Typography>
-            <Link className={classes.noLink} to="/signup">
+            <Link className={classes.noLink} to="/login">
               <Button dense color="primary">
-                Sign up
+                Login
               </Button>
             </Link>
           </div>
@@ -36,7 +36,7 @@ const Login = ({ classes }) => {
   );
 };
 
-Login.propTypes = {
+SignupPage.propTypes = {
   classes: PropTypes.object
 };
 
@@ -65,4 +65,4 @@ const styles = {
   }
 };
 
-export default withStyles(styles)(Login);
+export default withStyles(styles)(SignupPage);
