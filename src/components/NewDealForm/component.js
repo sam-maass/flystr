@@ -4,6 +4,7 @@ import { Form } from 'formik';
 import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
 import withStyles from 'material-ui/styles/withStyles';
+import AirportSuggest from '../AirportSuggest';
 
 const FormikTextField = ({
   elemKey,
@@ -46,8 +47,8 @@ FormikTextField.propTypes = {
 const NewDealForm = props => {
   return (
     <Form className={props.classes.form}>
-      <FormikTextField elemKey="origins" label="From" {...props} />
-      <FormikTextField elemKey="destinations" label="To" {...props} />
+      <AirportSuggest elemKey="origins" label="From" placeholder="From where does the flight leave?" {...props}></AirportSuggest>
+      <AirportSuggest elemKey="destinations" label="To" placeholder="Where does the flight go?" {...props}></AirportSuggest>
       <FormikTextField
         elemKey="startDate"
         type="date"
