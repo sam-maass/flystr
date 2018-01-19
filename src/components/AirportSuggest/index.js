@@ -1,0 +1,229 @@
+import React from 'react';
+import PropTypes from 'prop-types';
+import Autosuggest from 'react-autosuggest';
+import match from 'autosuggest-highlight/match';
+import parse from 'autosuggest-highlight/parse';
+import TextField from 'material-ui/TextField';
+import Paper from 'material-ui/Paper';
+import { MenuItem } from 'material-ui/Menu';
+import { withStyles } from 'material-ui/styles';
+import { suggestions } from './suggestions';
+import Chip from 'material-ui/Chip';
+
+
+function renderInput(inputProps) {
+    const { classes, helperText, autoFocus, label, placeholder, value, ref, ...other } = inputProps;
+
+    return (
+        <TextField
+            helperText={helperText}
+            error={!!helperText}
+            label={label}
+            placeholder={placeholder}
+            autoFocus={autoFocus}
+            className={classes.textField}
+            value={value}
+            inputRef={ref}
+            InputProps={{
+                classes: {
+                    input: classes.input,
+                },
+                ...other,
+            }}
+        />
+    );
+}
+
+function renderSuggestion(suggestion, { query, isHighlighted }) {
+    const matches = match(suggestion.label, query);
+    const parts = parse(suggestion.label, matches);
+
+    return (
+        <MenuItem selected={isHighlighted} component="div">
+            <div>
+                {parts.map((part, index) => {
+                    return part.highlight ? (
+                        <span key={String(index)} style={{ fontWeight: 300, color: 'red' }}>
+                            {part.text}
+                        </span>
+                    ) : (
+                            <strong key={String(index)} style={{ fontWeight: 500 }}>
+                                {part.text}
+                            </strong>
+                        );
+                })}
+            </div>
+        </MenuItem>
+    );
+}
+
+function renderSuggestionsContainer(options) {
+    const { containerProps, children } = options;
+
+    return (
+        <Paper {...containerProps} square>
+            {children}
+        </Paper>
+    );
+}
+
+function getSuggestionValue(suggestion) {
+    return suggestion.value;
+}
+
+function getSuggestions(value) {
+    const inputValue = value.split(',').pop().trim().toLowerCase();
+    const inputLength = inputValue.length;
+    let count = 0;
+
+    return inputLength === 0
+        ? []
+        : suggestions.filter(suggestion => {
+            const keep =
+                count < 5 && suggestion.label.toLowerCase().indexOf(inputValue) >= 0;
+
+            if (keep) {
+                count += 1;
+            }
+
+            return keep;
+        });
+}
+
+const styles = theme => ({
+    container: {
+        flexGrow: 1,
+        position: 'relative',
+    },
+    suggestionsContainerOpen: {
+        zIndex: 2,
+        position: 'absolute',
+        marginTop: theme.spacing.unit,
+        marginBottom: theme.spacing.unit * 3,
+        left: 0,
+        right: 0,
+    },
+    suggestion: {
+        display: 'block',
+    },
+    suggestionsList: {
+        margin: 0,
+        padding: 0,
+        listStyleType: 'none',
+    },
+    textField: {
+        width: '100%',
+    },
+    chipContainer: {
+        flexWrap: 'wrap',
+        display: 'flex',
+    },
+    chip: {
+        margin: '8px 8px 0 0'
+    }
+});
+
+class IntegrationAutosuggest extends React.Component {
+    state = {
+        value: '',
+        suggestions: [],
+        selectedAirports: new Set([])
+    };
+
+    handleSuggestionsFetchRequested = ({ value }) => {
+        this.setState({
+            suggestions: getSuggestions(value),
+        });
+    };
+
+    handleSuggestionsClearRequested = () => {
+        this.setState({
+            suggestions: [],
+        });
+    };
+
+    handleChange = (event, { newValue }) => {
+        this.setState({
+            value: newValue,
+        });
+    };
+
+    selectByEnter = (event) => {
+        if (event.key === 'Enter') {
+            this.onSelect();
+        }
+    }
+
+    onSelect = () => {
+        this.setState((prevState) => {
+            if (!prevState.suggestions[0]) return;
+            const suggestion = getSuggestions(prevState.value);
+            const nextAirport = suggestion[0].value;
+            const selectedAirports = prevState.selectedAirports.add(nextAirport);
+            const value = '';
+            this.props.setFieldValue(this.props.elemKey, [...selectedAirports].join(','));
+            return { value, selectedAirports };
+        });
+    }
+
+    onDeleteItem = (value) => {
+        this.setState((prevState) => {
+            const selectedAirports = prevState.selectedAirports;
+            selectedAirports.delete(value);
+            this.props.setFieldValue(this.props.elemKey, [...selectedAirports].join(','));
+            return { selectedAirports };
+        });
+    }
+
+    render() {
+        const { classes, touched, elemKey, errors, label, placeholder, setFieldTouched } = this.props;
+
+        return (
+            <div>
+                <Autosuggest
+                    theme={{
+                        container: classes.container,
+                        suggestionsContainerOpen: classes.suggestionsContainerOpen,
+                        suggestionsList: classes.suggestionsList,
+                        suggestion: classes.suggestion,
+                    }}
+                    renderInputComponent={renderInput}
+                    suggestions={this.state.suggestions}
+                    onSuggestionsFetchRequested={this.handleSuggestionsFetchRequested}
+                    onSuggestionsClearRequested={this.handleSuggestionsClearRequested}
+                    renderSuggestionsContainer={renderSuggestionsContainer}
+                    getSuggestionValue={getSuggestionValue}
+                    renderSuggestion={renderSuggestion}
+                    onSuggestionSelected={this.onSelect}
+                    inputProps={{
+                        helperText: touched[elemKey] && errors[elemKey],
+                        label,
+                        placeholder,
+                        classes,
+                        onBlur: () => setFieldTouched(elemKey, true),
+                        value: this.state.value,
+                        onChange: this.handleChange,
+                        onKeyUp: this.selectByEnter
+                    }}
+                />
+                <div className={classes.chipContainer}>
+                    {[...this.state.selectedAirports].map(item => <Chip className={classes.chip} key={item} label={item} onDelete={() => this.onDeleteItem(item)} />)}
+                </div>
+            </div>
+        );
+    }
+}
+
+
+IntegrationAutosuggest.propTypes = {
+    touched: PropTypes.object,
+    errors: PropTypes.object,
+    elemKey: PropTypes.string,
+    label: PropTypes.string.isRequired,
+    placeholder: PropTypes.string,
+    classes: PropTypes.object.isRequired,
+    setFieldValue: PropTypes.func,
+    setFieldTouched: PropTypes.func
+};
+
+export default withStyles(styles)(IntegrationAutosuggest);
