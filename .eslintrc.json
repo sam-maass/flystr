@@ -1,7 +1,12 @@
 {
   "parser": "babel-eslint",
-  "extends": ["eslint:recommended", "plugin:react/recommended"],
-  "plugins": ["react"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
+  "plugins": [
+    "react"
+  ],
   "parserOptions": {
     "ecmaVersion": 6,
     "sourceType": "module",
@@ -10,12 +15,11 @@
       "experimentalObjectRestSpread": true
     }
   },
-
   "env": {
     "browser": true,
-    "node": true
+    "node": true,
+    "es6": true
   },
-
   "rules": {
     "semi": 2,
     "react/display-name": "off",
