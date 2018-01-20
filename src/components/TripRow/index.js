@@ -67,13 +67,15 @@ const TripRow = ({
           </div>
         </div>
         <Typography type="subheading">From {origins.join(',')}</Typography>
-        <div className={classes.details}>
-          <div>
-            {formattedStartDate} - {formattedEndDate}
+        <Typography>
+          <div className={classes.details}>
+            <div>
+              {formattedStartDate} - {formattedEndDate}
+            </div>
+            <div>max {days} days</div>
+            <div>max {budget} €</div>
           </div>
-          <div>max {days} days</div>
-          <div>max {budget} €</div>
-        </div>
+        </Typography>
       </CardContent>
     </Card>
   );
