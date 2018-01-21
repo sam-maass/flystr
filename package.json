@@ -30,7 +30,7 @@
     "redux-promise-middleware": "^5.0.0",
     "redux-thunk": "^2.2.0",
     "string-hash": "^1.1.3",
-    "yup": "^0.23.0"
+    "yup": "^0.24.0"
   },
   "scripts": {
     "start": "PORT=3001 react-scripts start",
