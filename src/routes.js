@@ -48,7 +48,7 @@ export const loggedInRoutes = [
   {
     path: '/new-trip',
     exact: true,
-    header: () => <CustomAppBar title="Create a new trip" />,
+    header: () => <CustomAppBar withReturn title="Create a new trip" />,
     main: () => <NewTrip />
   },
   {
@@ -68,7 +68,7 @@ export const loggedInRoutes = [
   },
   {
     path: '/new-deal',
-    header: () => <CustomAppBar title="Add a deal" />,
+    header: () => <CustomAppBar withReturn title="Add a deal" />,
     main: () => <NewDeal />
   },
   {
@@ -87,20 +87,14 @@ export const loggedOutRoutes = [
   {
     path: '/login',
     exact: true,
-    header: () => <CustomAppBar title="Login" />,
+    header: () => <CustomAppBar withDrawer={false} title="Login" />,
     main: () => <Login />
   },
   {
     path: '/signup',
     exact: true,
-    header: () => <CustomAppBar title="Sign up" />,
+    header: () => <CustomAppBar withDrawer={false} title="Sign up" />,
     main: () => <Signup />
-  },
-  {
-    path: '/new-trip',
-    exact: true,
-    header: () => <CustomAppBar title="Create a new trip" />,
-    main: () => <NewTrip />
   },
   {
     path: '/',
