@@ -5,6 +5,9 @@ import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
 import { CustomDrawer } from '../CustomDrawer';
+import BackIcon from 'material-ui-icons/ArrowBack';
+import { withRouter } from 'react-router';
+import IconButton from 'material-ui/IconButton/IconButton';
 
 const styles = {
   flex: {
@@ -16,11 +19,16 @@ const styles = {
 };
 
 function ButtonAppBar(props) {
-  const { classes, title } = props;
+  const { classes, title, withDrawer = true, withReturn, history } = props;
   return (
     <AppBar className={classes.appBar}>
       <Toolbar>
-        <CustomDrawer />
+        {withDrawer && !withReturn && <CustomDrawer />}
+        {withReturn &&
+          <IconButton onClick={() => history.goBack()}>
+            <BackIcon color="contrast"></BackIcon>
+          </IconButton>
+        }
         <Typography type="title" color="inherit" className={classes.flex}>
           {title}
         </Typography>
@@ -30,8 +38,13 @@ function ButtonAppBar(props) {
 }
 
 ButtonAppBar.propTypes = {
+  history: PropTypes.object,
   classes: PropTypes.object.isRequired,
-  title: PropTypes.string
+  title: PropTypes.string,
+  withDrawer: PropTypes.bool,
+  withReturn: PropTypes.bool,
 };
 
-export const CustomAppBar = withStyles(styles)(ButtonAppBar);
+const RouterWrapper = withRouter(ButtonAppBar);
+
+export const CustomAppBar = withStyles(styles)(RouterWrapper);
