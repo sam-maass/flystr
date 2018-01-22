@@ -2,8 +2,8 @@ import { GoogleButtonComponent } from './component';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { loginUser, logoutUser, signupUser } from '../../actions/userActions';
-
 import React, { Component } from 'react';
+import { addError } from '../../actions/errorActions';
 
 class GoogleButtonContainer extends Component {
   constructor(props) {
@@ -19,8 +19,9 @@ class GoogleButtonContainer extends Component {
   };
 
   onLoginFailure = () => {
-    alert('Login failed');
+    this.props.addError("Network issues. Please try again");
   };
+
   render() {
     return (
       <GoogleButtonComponent
@@ -35,6 +36,7 @@ class GoogleButtonContainer extends Component {
 
 GoogleButtonContainer.propTypes = {
   loginUser: PropTypes.func.isRequired,
+  addError: PropTypes.func.isRequired,
   signupUser: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
   text: PropTypes.string,
@@ -51,5 +53,6 @@ const mapStateToProps = (store, props) => {
 export const GoogleButton = connect(mapStateToProps, {
   loginUser,
   logoutUser,
-  signupUser
+  signupUser,
+  addError
 })(GoogleButtonContainer);

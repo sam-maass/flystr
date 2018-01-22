@@ -6,8 +6,13 @@ import { fetchUser } from './actions/userActions';
 import { loggedInRoutes, loggedOutRoutes } from './routes';
 import Reboot from 'material-ui/Reboot';
 import withStyles from 'material-ui/styles/withStyles';
+import Snackbar from 'material-ui/Snackbar/Snackbar';
+import IconButton from 'material-ui/IconButton/IconButton';
+import CloseIcon from 'material-ui-icons/Close';
+import { deleteError } from './actions/errorActions';
 
-const Layout = ({ loggedIn, ready, fetchUser, classes }) => {
+
+const Layout = ({ loggedIn, ready, fetchUser, classes, error, deleteError }) => {
   const jwt = window.localStorage.getItem('currentJWT');
   fetchUser(jwt);
   const routes = loggedIn ? loggedInRoutes : loggedOutRoutes;
@@ -38,6 +43,30 @@ const Layout = ({ loggedIn, ready, fetchUser, classes }) => {
               />
             ))}
           </Switch>
+          <Snackbar
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'left',
+            }}
+            open={!!error}
+            autoHideDuration={4000}
+            onClose={deleteError}
+            SnackbarContentProps={{
+              'aria-describedby': 'message-id',
+            }}
+            message={<span id="message-id">{error}</span>}
+            action={[
+              <IconButton
+                key="close"
+                aria-label="Close"
+                color="inherit"
+                className={classes.close}
+                onClick={deleteError}
+              >
+                <CloseIcon />
+              </IconButton>,
+            ]}
+          />
         </div>
       </Router>
     );
@@ -45,20 +74,23 @@ const Layout = ({ loggedIn, ready, fetchUser, classes }) => {
 };
 
 Layout.propTypes = {
-  classes: PropTypes.bool,
+  classes: PropTypes.object,
   loggedIn: PropTypes.bool,
   ready: PropTypes.bool,
-  fetchUser: PropTypes.func
+  fetchUser: PropTypes.func,
+  deleteError: PropTypes.func,
+  error: PropTypes.string,
 };
 
 const mapStateToProps = (store, props) => {
   return {
     ...props,
     loggedIn: !!store.user._id,
-    ready: store.user.ready
+    ready: store.user.ready,
+    error: store.errors[0] && store.errors[0].error
   };
 };
-const LayoutContainer = connect(mapStateToProps, { fetchUser })(Layout);
+const LayoutContainer = connect(mapStateToProps, { fetchUser, deleteError })(Layout);
 
 const styles = {
   main: {
