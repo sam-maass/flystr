@@ -21,9 +21,8 @@ const FormikTextField = ({
     <TextField
       name={elemKey}
       label={label}
-      defaultValue={defaultValue}
       type={type}
-      value={values[elemKey] || defaultValue}
+      value={values[elemKey]}
       error={touched[elemKey] && !!errors[elemKey]}
       helperText={touched[elemKey] && errors[elemKey]}
       onChange={handleChange}
@@ -37,7 +36,7 @@ FormikTextField.propTypes = {
   type: PropTypes.string,
   label: PropTypes.string,
   values: PropTypes.object,
-  defaultValue: PropTypes.object,
+  defaultValue: PropTypes.any,
   errors: PropTypes.object,
   touched: PropTypes.object,
   handleChange: PropTypes.func,
