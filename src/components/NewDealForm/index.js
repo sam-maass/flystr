@@ -36,9 +36,7 @@ const formikSettings = {
       .required(),
     startDate: Yup.string().required(),
     endDate: Yup.string().required(),
-    price: Yup.number()
-      .positive()
-      .required()
+    price: Yup.number().required()
   }),
   handleSubmit: async (values, { setStatus }) => {
     await axios.post(`${apiUrl}/deal`, {
