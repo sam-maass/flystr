@@ -5,7 +5,7 @@ import Card, { CardContent } from 'material-ui/Card';
 import withStyles from 'material-ui/styles/withStyles';
 import Typography from 'material-ui/Typography/Typography';
 import hash from 'string-hash';
-const TripRow = ({
+const DealRow = ({
   classes,
   origins = [],
   startDate,
@@ -60,12 +60,12 @@ const TripRow = ({
   );
 };
 
-TripRow.propTypes = {
+DealRow.propTypes = {
   classes: PropTypes.object,
   status: PropTypes.string,
   startDate: PropTypes.string,
   endDate: PropTypes.string,
-  price: PropTypes.string,
+  price: PropTypes.number,
   destinations: PropTypes.arrayOf(PropTypes.string),
   origins: PropTypes.arrayOf(PropTypes.string),
   matchingDeals: PropTypes.array
@@ -85,4 +85,4 @@ const styles = {
   }
 };
 
-export default withStyles(styles)(TripRow);
+export default withStyles(styles)(DealRow);
