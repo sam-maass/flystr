@@ -67,15 +67,13 @@ const TripRow = ({
           </div>
         </div>
         <Typography type="subheading">From {origins.join(',')}</Typography>
-        <Typography>
-          <div className={classes.details}>
-            <div>
-              {formattedStartDate} - {formattedEndDate}
-            </div>
-            <div>max {days} days</div>
-            <div>max {budget} €</div>
-          </div>
-        </Typography>
+        <div className={classes.details}>
+          <Typography color="secondary">
+            {formattedStartDate} - {formattedEndDate}
+          </Typography>
+          <Typography color="secondary">max {days} days</Typography>
+          <Typography color="secondary">max {budget} €</Typography>
+        </div>
       </CardContent>
     </Card>
   );
@@ -102,7 +100,6 @@ const styles = {
     marginTop: 16,
     display: 'grid',
     gridTemplateColumns: 'repeat(1,1fr)',
-    color: '#888'
   },
   noLink: {
     textDecoration: 'none'
