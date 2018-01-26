@@ -48,12 +48,8 @@ const DealRow = ({
           <div />
         </div>
         <Typography type="subheading">From {origins.join(',')}</Typography>
-        <Typography>
-          <div className={classes.details}>
-            <div>
-              {formattedStartDate} - {formattedEndDate}
-            </div>
-          </div>
+        <Typography className={classes.details}>
+          {formattedStartDate} - {formattedEndDate}
         </Typography>
       </CardContent>
     </Card>
