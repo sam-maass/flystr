@@ -36,8 +36,6 @@ const formikSettings = {
     startDate: Yup.string().required(),
     endDate: Yup.string().required(),
     budget: Yup.number()
-      .positive()
-      .required()
   }),
   handleSubmit: async (values, { setStatus }) => {
     await axios.post(`${apiUrl}/trip`, {
