@@ -10,7 +10,6 @@ const FormikTextField = ({
   elemKey,
   type = 'text',
   label,
-  defaultValue,
   values,
   errors,
   touched,
@@ -21,9 +20,8 @@ const FormikTextField = ({
     <TextField
       name={elemKey}
       label={label}
-      defaultValue={defaultValue}
       type={type}
-      value={values[elemKey] || defaultValue}
+      value={values[elemKey]}
       error={touched[elemKey] && !!errors[elemKey]}
       helperText={touched[elemKey] && errors[elemKey]}
       onChange={handleChange}
@@ -44,9 +42,9 @@ FormikTextField.propTypes = {
   handleBlur: PropTypes.func
 };
 
-const NewDealForm = props => {
+const NewDealForm = ({ classes, ...props }) => {
   return (
-    <Form className={props.classes.form}>
+    <Form className={classes.form}>
       <AirportSuggest elemKey="origins" label="From" placeholder="From where does the flight leave?" {...props}></AirportSuggest>
       <AirportSuggest elemKey="destinations" label="To" placeholder="Where does the flight go?" {...props}></AirportSuggest>
       <FormikTextField
