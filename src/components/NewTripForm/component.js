@@ -44,9 +44,9 @@ FormikTextField.propTypes = {
   handleBlur: PropTypes.func
 };
 
-const NewTripForm = props => {
+const NewTripForm = ({ classes, ...props }) => {
   return (
-    <Form className={props.classes.form}>
+    <Form className={classes.form}>
       <AirportSuggest elemKey="origins" label="From" placeholder="From where do yow wanna fly?" {...props}></AirportSuggest>
       <AirportSuggest elemKey="destinations" label="To" placeholder="Where do yow wanna fly?" {...props}></AirportSuggest>
       <FormikTextField
