@@ -48,7 +48,7 @@ const DealRow = ({
           <div />
         </div>
         <Typography type="subheading">From {origins.join(',')}</Typography>
-        <Typography className={classes.details}>
+        <Typography color="secondary" className={classes.details}>
           {formattedStartDate} - {formattedEndDate}
         </Typography>
       </CardContent>
@@ -77,7 +77,6 @@ const styles = {
     marginTop: 16,
     display: 'grid',
     gridTemplateColumns: 'repeat(1,1fr)',
-    color: '#888'
   }
 };
 
