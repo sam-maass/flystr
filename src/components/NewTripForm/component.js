@@ -10,7 +10,6 @@ const FormikTextField = ({
   elemKey,
   type = 'text',
   label,
-  defaultValue,
   values,
   errors,
   touched,
