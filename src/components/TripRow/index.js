@@ -5,14 +5,18 @@ import moment from 'moment';
 import Card, { CardContent } from 'material-ui/Card';
 import withStyles from 'material-ui/styles/withStyles';
 import Typography from 'material-ui/Typography/Typography';
-import hash from 'string-hash';
 import IconButton from 'material-ui/IconButton/IconButton';
 import FavoriteIcon from 'material-ui-icons/FlightTakeoff';
 import qs from 'qs';
 import SettingsIcon from 'material-ui-icons/Settings';
+import ArrowRight from "material-ui-icons/ArrowForward";
+import AirportChips from '../AirportChips';
+
+
 const TripRow = ({
   classes,
   origins = [],
+  name,
   startDate,
   endDate,
   matchingDeals,
@@ -21,35 +25,14 @@ const TripRow = ({
 }) => {
   const formattedStartDate = moment(startDate).format('DD.MM.YYYY');
   const formattedEndDate = moment(endDate).format('DD.MM.YYYY');
-  const dest = destinations.join();
-  const colors = [
-    '#F44336',
-    '#E91E63',
-    '#9C27B0',
-    '#673AB7',
-    '#3F51B5',
-    '#2196F3',
-    '#03A9F4',
-    '#00BCD4',
-    '#009688',
-    '#4CAF50',
-    '#8BC34A',
-    '#CDDC39',
-    '#FFEB3B',
-    '#FFC107',
-    '#FF9800',
-    '#FF5722'
-  ];
-  const bghash = hash(dest) % colors.length;
-  const bg = colors[bghash];
   const days = moment(endDate).diff(moment(startDate), 'days');
   const searchString = qs.stringify({ ids: matchingDeals });
   return (
     <Card>
       <CardContent>
         <div className={classes.titleBar}>
-          <Typography style={{ color: bg }} type="headline">
-            <span>{destinations.join(',')}</span>
+          <Typography type="headline">
+            <span>{name}</span>
           </Typography>
           <div>
             <Link
@@ -66,7 +49,11 @@ const TripRow = ({
             </IconButton>
           </div>
         </div>
-        <Typography type="subheading">From {origins.join(',')}</Typography>
+        <Typography type="subheading" className={classes.chipContainer}>
+          <AirportChips airports={origins} styleClass={classes.chip}></AirportChips>
+          <ArrowRight />
+          <AirportChips airports={destinations} styleClass={classes.chip}></AirportChips>
+        </Typography>
         <div className={classes.details}>
           <Typography color="secondary">
             {formattedStartDate} - {formattedEndDate}
@@ -84,6 +71,7 @@ TripRow.propTypes = {
   status: PropTypes.string,
   startDate: PropTypes.string,
   endDate: PropTypes.string,
+  name: PropTypes.string,
   budget: PropTypes.number,
   destinations: PropTypes.arrayOf(PropTypes.string),
   origins: PropTypes.arrayOf(PropTypes.string),
@@ -91,6 +79,16 @@ TripRow.propTypes = {
 };
 
 const styles = {
+  chipContainer: {
+    display: 'flex',
+    width: '100%',
+    flexWrap: 'wrap',
+    alignItems: 'center'
+  },
+  chip: {
+    fontWeight: 'bold',
+    margin: '4px'
+  },
   titleBar: {
     display: 'grid',
     alignItems: 'center',

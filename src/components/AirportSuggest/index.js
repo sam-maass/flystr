@@ -8,7 +8,7 @@ import Paper from 'material-ui/Paper';
 import { MenuItem } from 'material-ui/Menu';
 import { withStyles } from 'material-ui/styles';
 import { suggestions } from './suggestions';
-import Chip from 'material-ui/Chip';
+import AirportChips from '../AirportChips';
 
 
 function renderInput(inputProps) {
@@ -213,9 +213,9 @@ class IntegrationAutosuggest extends React.Component {
                     }}
                 />
                 <div className={classes.chipContainer}>
-                    {[...this.state.selectedAirports].map(item => <Chip className={classes.chip} tabIndex="-1" key={item} label={item} onDelete={() => this.onDeleteItem(item)} />)}
+                    <AirportChips airports={[...this.state.selectedAirports]} styleClass={classes.chip} onDelete={this.onDeleteItem}></AirportChips>
                 </div>
-            </div>
+            </div >
         );
     }
 }
