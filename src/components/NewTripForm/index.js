@@ -23,7 +23,8 @@ const formikSettings = {
       endDate: moment()
         .add(4, 'weeks')
         .format('YYYY-MM-DD'),
-      budget: ''
+      budget: '',
+      name: ''
     };
   },
   validationSchema: Yup.object().shape({
@@ -33,9 +34,8 @@ const formikSettings = {
     origins: Yup.string()
       .min(3)
       .required(),
-    startDate: Yup.string().required(),
-    endDate: Yup.string().required(),
-    budget: Yup.number()
+    budget: Yup.number().required(),
+    name: Yup.string().required()
   }),
   handleSubmit: async (values, { setStatus }) => {
     await axios.post(`${apiUrl}/trip`, {
