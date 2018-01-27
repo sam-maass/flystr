@@ -156,11 +156,12 @@ class IntegrationAutosuggest extends React.Component {
 
     onSelect = () => {
         this.setState((prevState) => {
-            if (!prevState.suggestions[0]) return;
+            const value = '';
+            if (!prevState.suggestions[0]) return { value };
             const suggestion = getSuggestions(prevState.value);
+            if (!suggestion[0]) return { value };
             const nextAirport = suggestion[0].value;
             const selectedAirports = prevState.selectedAirports.add(nextAirport);
-            const value = '';
             this.props.setFieldValue(this.props.elemKey, [...selectedAirports].join(','));
             return { value, selectedAirports };
         });
@@ -175,8 +176,13 @@ class IntegrationAutosuggest extends React.Component {
         });
     }
 
+    onBlur = () => {
+        this.props.setFieldTouched(this.props.elemKey, true);
+        this.onSelect();
+    }
+
     render() {
-        const { classes, touched, elemKey, errors, label, placeholder, setFieldTouched } = this.props;
+        const { classes, touched, elemKey, errors, label, placeholder } = this.props;
 
         return (
             <div>
@@ -200,14 +206,14 @@ class IntegrationAutosuggest extends React.Component {
                         label,
                         placeholder,
                         classes,
-                        onBlur: () => setFieldTouched(elemKey, true),
+                        onBlur: this.onBlur,
                         value: this.state.value,
                         onChange: this.handleChange,
-                        onKeyUp: this.selectByEnter
+                        onKeyUp: this.selectByEnter,
                     }}
                 />
                 <div className={classes.chipContainer}>
-                    {[...this.state.selectedAirports].map(item => <Chip className={classes.chip} key={item} label={item} onDelete={() => this.onDeleteItem(item)} />)}
+                    {[...this.state.selectedAirports].map(item => <Chip className={classes.chip} tabIndex="-1" key={item} label={item} onDelete={() => this.onDeleteItem(item)} />)}
                 </div>
             </div>
         );
