@@ -7,8 +7,10 @@ import TextField from 'material-ui/TextField';
 import Paper from 'material-ui/Paper';
 import { MenuItem } from 'material-ui/Menu';
 import { withStyles } from 'material-ui/styles';
-import { suggestions } from './suggestions';
 import AirportChips from '../AirportChips';
+import axios from 'axios';
+import { apiUrl } from '../../settings';
+
 
 
 function renderInput(inputProps) {
@@ -71,23 +73,14 @@ function getSuggestionValue(suggestion) {
     return suggestion.value;
 }
 
-function getSuggestions(value) {
-    const inputValue = value.split(',').pop().trim().toLowerCase();
+async function getSuggestions(value) {
+    const inputValue = value.trim().toLowerCase();
     const inputLength = inputValue.length;
-    let count = 0;
 
-    return inputLength === 0
+    const array = inputLength <= 1
         ? []
-        : suggestions.filter(suggestion => {
-            const keep =
-                count < 5 && suggestion.label.toLowerCase().indexOf(inputValue) >= 0;
-
-            if (keep) {
-                count += 1;
-            }
-
-            return keep;
-        });
+        : (await axios.get(`${apiUrl}/airports`, { params: { term: inputValue } })).data;
+    return array;
 }
 
 const styles = theme => ({
@@ -130,9 +123,9 @@ class IntegrationAutosuggest extends React.Component {
         selectedAirports: new Set([])
     };
 
-    handleSuggestionsFetchRequested = ({ value }) => {
+    handleSuggestionsFetchRequested = async ({ value }) => {
         this.setState({
-            suggestions: getSuggestions(value),
+            suggestions: await getSuggestions(value),
         });
     };
 
@@ -158,9 +151,9 @@ class IntegrationAutosuggest extends React.Component {
         this.setState((prevState) => {
             const value = '';
             if (!prevState.suggestions[0]) return { value };
-            const suggestion = getSuggestions(prevState.value);
-            if (!suggestion[0]) return { value };
-            const nextAirport = suggestion[0].value;
+            const suggestion = prevState.suggestions[0].value;
+            if (!suggestion) return { value };
+            const nextAirport = suggestion;
             const selectedAirports = prevState.selectedAirports.add(nextAirport);
             this.props.setFieldValue(this.props.elemKey, [...selectedAirports].join(','));
             return { value, selectedAirports };
