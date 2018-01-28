@@ -1,6 +1,6 @@
 {
   "short_name": "Flystr",
-  "name": "Flystr: Flight recommendations",
+  "name": "Tailored flight recommendations",
   "icons": [
     {
       "src": "logo192.png",
@@ -11,5 +11,5 @@
   "start_url": "./index.html",
   "display": "standalone",
   "theme_color": "#3f51b5",
-  "background_color": "#3f51b5"
+  "background_color": "#ffffff"
 }
