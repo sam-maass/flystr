@@ -8,8 +8,7 @@ import Paper from 'material-ui/Paper';
 import { MenuItem } from 'material-ui/Menu';
 import { withStyles } from 'material-ui/styles';
 import AirportChips from '../AirportChips';
-import axios from 'axios';
-import { apiUrl } from '../../settings';
+import { api } from '../../settings';
 
 
 
@@ -79,7 +78,7 @@ async function getSuggestions(value) {
 
     const array = inputLength <= 1
         ? []
-        : (await axios.get(`${apiUrl}/airports`, { params: { term: inputValue } })).data;
+        : (await api.get(`/airports`, { params: { term: inputValue } })).data;
     return array;
 }
 

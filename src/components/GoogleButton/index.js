@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { loginUser, logoutUser, signupUser } from '../../actions/userActions';
 import React, { Component } from 'react';
 import { addError } from '../../actions/errorActions';
+import { api } from '../../settings';
 
 class GoogleButtonContainer extends Component {
   constructor(props) {
@@ -13,9 +14,9 @@ class GoogleButtonContainer extends Component {
 
   onLoginSuccess = args => {
     const { loginUser, signupUser, action } = this.props;
-    window.localStorage.setItem('currentJWT', args.tokenObj.id_token);
-    if (action === 'login') loginUser(args.tokenObj.id_token);
-    if (action === 'signup') signupUser(args.tokenObj.id_token);
+    api.defaults.headers.common['Authorization'] = args.tokenObj.id_token;
+    if (action === 'login') loginUser();
+    if (action === 'signup') signupUser();
   };
 
   onLoginFailure = () => {

@@ -1,22 +1,16 @@
-import axios from 'axios';
-import { apiUrl } from '../settings';
+import { api } from '../settings';
 
 export function getDeals(dealParams) {
-  axios.defaults.headers.common['Authorization'] = window.localStorage.getItem(
-    'currentJWT'
-  );
+
   return {
     type: 'GET_DEALS',
-    payload: axios.get(`${apiUrl}/deal`, { params: dealParams })
+    payload: api.get(`/deal`, { params: dealParams })
   };
 }
 
 export function getAllDeals() {
-  axios.defaults.headers.common['Authorization'] = window.localStorage.getItem(
-    'currentJWT'
-  );
   return {
     type: 'GET_DEALS',
-    payload: axios.get(`${apiUrl}/deal/all`)
+    payload: api.get(`/deal/all`)
   };
 }

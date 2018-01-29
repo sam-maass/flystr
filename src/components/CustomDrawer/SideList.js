@@ -13,10 +13,6 @@ import { logoutUser } from '../../actions/userActions';
 import { connect } from 'react-redux';
 
 const SideListComponent = ({ classes, logoutUser }) => {
-  const logoutWithJWT = () => {
-    const jwt = window.localStorage.getItem('currentJWT');
-    logoutUser(jwt);
-  };
   return (
     <div className={classes.list}>
       <List>
@@ -59,7 +55,7 @@ const SideListComponent = ({ classes, logoutUser }) => {
           </ListItem>
         </Link>
         <Divider />
-        <ListItem button onClick={logoutWithJWT}>
+        <ListItem button onClick={logoutUser}>
           <ListItemIcon>
             <SignOutIcon />
           </ListItemIcon>

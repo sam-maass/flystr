@@ -3,9 +3,8 @@ import { withFormik } from 'formik';
 import { connect } from 'react-redux';
 import NewTripForm from './component';
 import Yup from 'yup';
-import axios from 'axios';
 import { Redirect } from 'react-router-dom';
-import { apiUrl } from '../../settings';
+import { api } from '../../settings';
 import moment from 'moment';
 
 const mapStateToProps = store => {
@@ -39,7 +38,7 @@ const formikSettings = {
     price: Yup.number().required()
   }),
   handleSubmit: async (values, { setStatus }) => {
-    await axios.post(`${apiUrl}/deal`, {
+    await api.post(`/deal`, {
       ...values
     });
     setStatus('done');
