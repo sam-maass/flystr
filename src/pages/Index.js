@@ -25,7 +25,7 @@ const logoStyle = {
   justifySelf: 'center',
   gridColumn: 2,
   gridRow: 1,
-  backgroundImage: 'url("/logo2.png")',
+  backgroundImage: 'url("/logo3.png")',
   backgroundSize: 'contain',
   backgroundRepeat: 'no-repeat',
   backgroundPosition: '50%'
