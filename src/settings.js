@@ -6,7 +6,9 @@ const apiUrl = isProd
   : 'http://localhost:3000';
 
 
+const token = window.localStorage.getItem('currentJWT');
 export const api = axios.create({
   baseURL: apiUrl,
   timeout: 1000,
+  headers: { common: { "Authorization": token } }
 });
