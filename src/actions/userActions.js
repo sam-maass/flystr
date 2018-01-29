@@ -1,31 +1,26 @@
-import axios from 'axios';
-import { apiUrl } from '../settings';
+import { api } from '../settings';
 
-export function fetchUser(token) {
-  axios.defaults.headers.common['Authorization'] = token;
+export function fetchUser() {
   return {
     type: 'FETCH_USER',
-    payload: axios.get(`${apiUrl}/user/profile`)
+    payload: api.get(`/user/profile`)
   };
 }
-export function signupUser(token) {
-  axios.defaults.headers.common['Authorization'] = token;
+export function signupUser() {
   return {
     type: 'SIGNUP_USER',
-    payload: axios.post(`${apiUrl}/user/signup`)
+    payload: api.post(`/user/signup`)
   };
 }
-export function loginUser(token) {
-  axios.defaults.headers.common['Authorization'] = token;
+export function loginUser() {
   return {
     type: 'LOGIN_USER',
-    payload: axios.post(`${apiUrl}/user/login`)
+    payload: api.post(`/user/login`)
   };
 }
-export function logoutUser(token) {
-  axios.defaults.headers.common['Authorization'] = token;
+export function logoutUser() {
   return {
     type: 'LOGOUT_USER',
-    payload: axios.post(`${apiUrl}/user/logout`)
+    payload: api.post(`/user/logout`)
   };
 }

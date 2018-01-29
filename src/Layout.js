@@ -13,8 +13,7 @@ import { deleteError } from './actions/errorActions';
 
 
 const Layout = ({ loggedIn, ready, fetchUser, classes, error, deleteError }) => {
-  const jwt = window.localStorage.getItem('currentJWT');
-  fetchUser(jwt);
+  fetchUser();
   const routes = loggedIn ? loggedInRoutes : loggedOutRoutes;
   if (!ready) {
     return null;

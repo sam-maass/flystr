@@ -1,12 +1,8 @@
-import axios from 'axios';
-import { apiUrl } from '../settings';
+import { api } from '../settings';
 
 export function getUserTrips() {
-  axios.defaults.headers.common['Authorization'] = window.localStorage.getItem(
-    'currentJWT'
-  );
   return {
     type: 'GET_USER_TRIPS',
-    payload: axios.get(`${apiUrl}/trip`)
+    payload: api.get(`/trip`)
   };
 }
