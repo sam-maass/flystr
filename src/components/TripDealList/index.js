@@ -5,23 +5,16 @@ import { getDeals, getAllDeals } from '../../actions/dealActions';
 import { connect } from 'react-redux';
 import EmptyState from '../EmptyState';
 import PindropIcon from 'material-ui-icons/PinDrop';
-import qs from 'qs';
 
 class TripDealListContainer extends Component {
   componentDidMount() {
-    if (this.props.allUserDeals) {
-      this.props.getAllDeals();
-    } else {
-      this.props.getDeals(
-        qs.parse(window.location.search, { ignoreQueryPrefix: true })
-      );
-    }
+    this.props.getAllDeals();
   }
   render() {
-    if (this.props.deals.length === 0) {
+    if (this.props.trips.length === 0) {
       return <EmptyState title="No Deals found" icon={<PindropIcon />} />;
     } else {
-      return <TripDealList trips={this.props.deals} />;
+      return <TripDealList trips={this.props.trips} />;
     }
   }
 }
@@ -29,7 +22,7 @@ class TripDealListContainer extends Component {
 TripDealListContainer.propTypes = {
   getDeals: PropTypes.func,
   getAllDeals: PropTypes.func,
-  deals: PropTypes.array,
+  trips: PropTypes.array,
   allUserDeals: PropTypes.bool
 };
 
@@ -37,7 +30,7 @@ const mapStateToProps = (store, props) => {
   return {
     ...props,
     user: store.user,
-    deals: store.deals
+    trips: store.trips
   };
 };
 

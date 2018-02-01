@@ -4,6 +4,8 @@ export default function reducer(state = [], action) {
       return [...state];
     case 'GET_USER_TRIPS_FULFILLED':
       return [...action.payload.data];
+    case 'GET_DEALS_FULFILLED':
+      return [...action.payload.data];
     default:
       return state;
   }

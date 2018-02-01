@@ -6,7 +6,7 @@ import withStyles from 'material-ui/styles/withStyles';
 const TripList = ({ trips = [], classes }) => {
   return (
     <div className={classes.listWrapper}>
-      {trips.map((item, key) => <DealRow key={key} {...item} />)}
+      {trips.map((item, key) => <DealRow elevation={0} key={key} {...item} />)}
     </div>
   );
 };
@@ -17,7 +17,6 @@ const styles = {
   listWrapper: {
     marginTop: 8,
     display: 'grid',
-    gridRowGap: '8px'
   }
 };
 
