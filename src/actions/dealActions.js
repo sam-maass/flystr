@@ -11,6 +11,6 @@ export function getDeals(dealParams) {
 export function getAllDeals() {
   return {
     type: 'GET_DEALS',
-    payload: api.get(`/deal/all`)
+    payload: api.get(`/trip/deals`)
   };
 }
