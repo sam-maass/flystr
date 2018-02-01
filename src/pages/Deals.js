@@ -25,8 +25,6 @@ DestinationsPage.propTypes = {
 
 const styles = {
   pageContainer: {
-    marginRight: 8,
-    marginLeft: 8
   },
   fab: {
     position: 'fixed',

@@ -1,10 +1,9 @@
 import { api } from '../settings';
 
 export function getDeals(dealParams) {
-
   return {
     type: 'GET_DEALS',
-    payload: api.get(`/deal`, { params: dealParams })
+    payload: api.get(`/trip/${dealParams.trip}/deals`, { params: dealParams })
   };
 }
 

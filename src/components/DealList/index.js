@@ -9,13 +9,9 @@ import qs from 'qs';
 
 class TripListContainer extends Component {
   componentDidMount() {
-    if (this.props.allUserDeals) {
-      this.props.getAllDeals();
-    } else {
-      this.props.getDeals(
-        qs.parse(window.location.search, { ignoreQueryPrefix: true })
-      );
-    }
+    this.props.getDeals(
+      qs.parse(window.location.search, { ignoreQueryPrefix: true })
+    );
   }
   render() {
     if (this.props.deals.length === 0) {

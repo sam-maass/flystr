@@ -11,11 +11,12 @@ import qs from 'qs';
 
 
 const DealRow = ({
+  _id,
   name,
   classes,
   matchingDeals = [],
 }) => {
-  const searchString = qs.stringify({ ids: matchingDeals.map(deal => deal._id) });
+  const searchString = qs.stringify({ trip: _id });
   return (
     <Card>
       <CardContent>
@@ -45,6 +46,7 @@ const DealRow = ({
 };
 
 DealRow.propTypes = {
+  _id: PropTypes.string,
   classes: PropTypes.object,
   name: PropTypes.string,
   matchingDeals: PropTypes.array

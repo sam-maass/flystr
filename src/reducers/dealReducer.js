@@ -3,7 +3,7 @@ export default function reducer(state = [], action) {
     case 'GET_DEALS':
       return state;
     case 'GET_DEALS_FULFILLED':
-      return [...action.payload.data];
+      return [...action.payload.data[0].matchingDeals];
     default:
       return state;
   }
