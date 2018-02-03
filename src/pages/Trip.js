@@ -6,10 +6,10 @@ import Button from 'material-ui/Button/Button';
 import withStyles from 'material-ui/styles/withStyles';
 import PropTypes from 'prop-types';
 
-const TripPage = ({ classes }) => {
+const TripPage = ({ classes, tripId }) => {
   return (
     <div className={classes.pageContainer}>
-      <DealList />
+      <DealList tripId={tripId} />
       <Link to="/new-deal">
         <Button fab color="primary" aria-label="add" className={classes.fab}>
           <AddIcon />

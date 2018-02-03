@@ -1,28 +1,24 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import DealList from './component';
-import { getDeals, getAllDeals } from '../../actions/dealActions';
 import { connect } from 'react-redux';
 import EmptyState from '../EmptyState';
 import PindropIcon from 'material-ui-icons/PinDrop';
-import qs from 'qs';
 
-class TripListContainer extends Component {
-  componentDidMount() {
-    this.props.getDeals(
-      qs.parse(window.location.search, { ignoreQueryPrefix: true })
-    );
-  }
+class DealListContainer extends Component {
   render() {
-    if (this.props.deals.length === 0) {
+    const { trips = [], tripId } = this.props;
+    const trip = trips.find(trip => trip._id === tripId);
+    console.log(trip);
+    if (trip && trip.matchingDeals && trip.matchingDeals.length === 0) {
       return <EmptyState title="No Deals found" icon={<PindropIcon />} />;
     } else {
-      return <DealList trips={this.props.deals} />;
+      return <DealList trips={trip.matchingDeals} />;
     }
   }
 }
 
-TripListContainer.propTypes = {
+DealListContainer.propTypes = {
   getDeals: PropTypes.func,
   getAllDeals: PropTypes.func,
   deals: PropTypes.array,
@@ -30,13 +26,14 @@ TripListContainer.propTypes = {
 };
 
 const mapStateToProps = (store, props) => {
+  console.log(store.trips);
   return {
     ...props,
     user: store.user,
-    deals: store.deals
+    trips: store.trips
   };
 };
 
-export default connect(mapStateToProps, { getDeals, getAllDeals })(
-  TripListContainer
+export default connect(mapStateToProps)(
+  DealListContainer
 );

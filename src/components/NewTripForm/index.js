@@ -6,6 +6,8 @@ import Yup from 'yup';
 import { Redirect } from 'react-router-dom';
 import { api } from '../../settings';
 import moment from 'moment';
+import { fetchUser } from '../../actions/userActions';
+
 
 const mapStateToProps = store => {
   return {
@@ -37,7 +39,7 @@ const formikSettings = {
     name: Yup.string().required()
   }),
   handleSubmit: async (values, { setStatus }) => {
-    await api.post(`s/trip`, {
+    await api.post(`/trips`, {
       ...values
     });
     setStatus('done');
@@ -47,10 +49,11 @@ const formikSettings = {
 const RoutingWrapper = props => {
   const isSubmitted = props.status === 'done';
   if (isSubmitted) {
+    props.fetchUser();
     return (
       <Redirect
         to={{
-          pathname: '/destinations'
+          pathname: '/trips'
         }}
       />
     );
@@ -60,5 +63,5 @@ const RoutingWrapper = props => {
 };
 
 const FormikForm = withFormik(formikSettings)(RoutingWrapper);
-const TripFormContainer = connect(mapStateToProps)(FormikForm);
+const TripFormContainer = connect(mapStateToProps, { fetchUser })(FormikForm);
 export default TripFormContainer;
