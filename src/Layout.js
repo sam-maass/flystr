@@ -95,7 +95,8 @@ const styles = {
   main: {
     display: 'grid',
     height: '100vh',
-    gridTemplateRows: 'min-content auto'
+    gridTemplateRows: 'min-content auto',
+    overflow: 'hidden'
   }
 };
 

@@ -25,6 +25,7 @@ DestinationsPage.propTypes = {
 
 const styles = {
   pageContainer: {
+    overflow: 'auto'
   },
   fab: {
     position: 'fixed',
