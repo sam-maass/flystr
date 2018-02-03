@@ -21,6 +21,7 @@ const TripRow = ({
   endDate,
   matchingDeals,
   budget,
+  _id,
   destinations = []
 }) => {
   const formattedStartDate = moment(startDate).format('DD.MM.YYYY');
@@ -37,7 +38,7 @@ const TripRow = ({
           <div>
             <Link
               className={classes.noLink}
-              to={{ pathname: '/deals', search: searchString }}
+              to={`/trip/${_id}`}
             >
               <IconButton aria-label="See deals">
                 {matchingDeals.length}
