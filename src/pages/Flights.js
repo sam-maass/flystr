@@ -17,6 +17,7 @@ FlightsPage.propTypes = {
 
 const styles = {
   pageContainer: {
+    overflow: 'auto',
     marginRight: 8,
     marginLeft: 8
   }
