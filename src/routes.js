@@ -73,7 +73,7 @@ export const loggedInRoutes = [
   },
   {
     path: '/deals',
-    header: () => <CustomAppBar title="Deals" />,
+    header: () => <CustomAppBar withReturn title="Deals" />,
     main: () => <Deals />
   }
 ];
