@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import TripList from './component';
-import { getUserTrips } from '../../actions/tripActions';
 import { connect } from 'react-redux';
 import EmptyState from '../EmptyState';
 import PindropIcon from 'material-ui-icons/PinDrop';
 
 class TripListContainer extends Component {
-  componentDidMount() {
-    this.props.getUserTrips();
-  }
   render() {
     if (this.props.trips.length === 0) {
       return (
@@ -33,4 +29,4 @@ const mapStateToProps = store => {
   };
 };
 
-export default connect(mapStateToProps, { getUserTrips })(TripListContainer);
+export default connect(mapStateToProps)(TripListContainer);

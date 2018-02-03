@@ -15,7 +15,7 @@ export default function reducer(state = { ready: false }, action) {
         ready: true,
         fetching: false,
         fetched: true,
-        ...action.payload.data
+        ...action.payload.data.user
       };
     case 'LOGIN_USER_FULFILLED':
       return { ...state, ...action.payload.data, ready: true };

@@ -10,7 +10,7 @@ export const loggedInRoutes = [
     main: () => (
       <Redirect
         to={{
-          pathname: '/flights'
+          pathname: '/trips'
         }}
       />
     )
@@ -21,7 +21,7 @@ export const loggedInRoutes = [
     main: () => (
       <Redirect
         to={{
-          pathname: '/flights'
+          pathname: '/trips'
         }}
       />
     )
@@ -32,7 +32,7 @@ export const loggedInRoutes = [
     main: () => (
       <Redirect
         to={{
-          pathname: '/flights'
+          pathname: '/trips'
         }}
       />
     )
