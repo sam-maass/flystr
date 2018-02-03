@@ -7,11 +7,11 @@ import withStyles from 'material-ui/styles/withStyles';
 import Typography from 'material-ui/Typography/Typography';
 import IconButton from 'material-ui/IconButton/IconButton';
 import FavoriteIcon from 'material-ui-icons/FlightTakeoff';
-import qs from 'qs';
 import SettingsIcon from 'material-ui-icons/Settings';
 import ArrowRight from "material-ui-icons/ArrowForward";
 import AirportChips from '../AirportChips';
-
+import CardActions from 'material-ui/Card/CardActions';
+import Button from 'material-ui/Button/Button';
 
 const TripRow = ({
   classes,
@@ -27,29 +27,12 @@ const TripRow = ({
   const formattedStartDate = moment(startDate).format('DD.MM.YYYY');
   const formattedEndDate = moment(endDate).format('DD.MM.YYYY');
   const days = moment(endDate).diff(moment(startDate), 'days');
-  const searchString = qs.stringify({ ids: matchingDeals });
   return (
     <Card>
       <CardContent>
-        <div className={classes.titleBar}>
-          <Typography type="headline">
-            <span>{name}</span>
-          </Typography>
-          <div>
-            <Link
-              className={classes.noLink}
-              to={`/trip/${_id}`}
-            >
-              <IconButton aria-label="See deals">
-                {matchingDeals.length}
-                <FavoriteIcon />
-              </IconButton>
-            </Link>
-            <IconButton aria-label="See deals">
-              <SettingsIcon />
-            </IconButton>
-          </div>
-        </div>
+        <Typography type="headline">
+          <span>{name}</span>
+        </Typography>
         <Typography type="subheading" className={classes.chipContainer}>
           <AirportChips airports={origins} styleClass={classes.chip}></AirportChips>
           <ArrowRight />
@@ -63,6 +46,20 @@ const TripRow = ({
           <Typography color="secondary">max {budget} €</Typography>
         </div>
       </CardContent>
+      <CardActions>
+        <Link
+          className={classes.noLink}
+          to={`/trip/${_id}`}
+        >
+          <Button size="small" color="primary">
+            {matchingDeals.length} Deals
+          </Button>
+        </Link>
+        <Button size="small">
+          Settings
+        </Button>
+
+      </CardActions>
     </Card>
   );
 };
