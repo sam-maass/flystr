@@ -1,7 +1,7 @@
 import React from 'react';
 import NewTripForm from '../components/NewTripForm';
 
-const NewTrip = () => {
+const NewTripPage = () => {
   return (
     <div>
       <NewTripForm />
@@ -9,4 +9,4 @@ const NewTrip = () => {
   );
 };
 
-export default NewTrip;
+export default NewTripPage;

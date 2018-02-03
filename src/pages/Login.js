@@ -11,7 +11,7 @@ import Typography from 'material-ui/Typography/Typography';
 import { colors } from 'material-ui';
 import { Link } from 'react-router-dom';
 
-const Login = ({ classes }) => {
+const LoginPage = ({ classes }) => {
   return (
     <div className={classes.page}>
       <Card className={classes.card}>
@@ -36,7 +36,7 @@ const Login = ({ classes }) => {
   );
 };
 
-Login.propTypes = {
+LoginPage.propTypes = {
   classes: PropTypes.object
 };
 
@@ -65,4 +65,4 @@ const styles = {
   }
 };
 
-export default withStyles(styles)(Login);
+export default withStyles(styles)(LoginPage);

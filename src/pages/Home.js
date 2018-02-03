@@ -36,7 +36,7 @@ const listStyle = {
   paddingLeft: 10
 };
 
-const Index = () => {
+const HomePage = () => {
   return (
     <div className="grid" style={gridStyle}>
       <div className="logo" style={logoStyle} />
@@ -99,4 +99,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default HomePage;
