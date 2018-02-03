@@ -1,15 +1,7 @@
 import { Redirect } from 'react-router-dom';
-import Destinations from './pages/Destinations';
-import Flights from './pages/Flights';
-import Profile from './pages/Profile';
-import NewDeal from './pages/NewDeal';
-import Deals from './pages/Deals';
-import Index from './pages/Index';
-import Login from './pages/Login';
-import Signup from './pages/Signup';
-import NewTrip from './pages/NewTrip';
 import React from 'react';
 import { CustomAppBar } from './components/CustomAppBar';
+import * as Pages from './pages/index';
 
 export const loggedInRoutes = [
   {
@@ -49,32 +41,27 @@ export const loggedInRoutes = [
     path: '/new-trip',
     exact: true,
     header: () => <CustomAppBar withReturn title="Create a new trip" />,
-    main: () => <NewTrip />
+    main: () => <Pages.NewTrip />
   },
   {
-    path: '/flights',
-    header: () => <CustomAppBar title="Matching Flights" />,
-    main: () => <Flights />
-  },
-  {
-    path: '/destinations',
+    path: '/trips',
     header: () => <CustomAppBar title="Destinations" />,
-    main: () => <Destinations />
+    main: () => <Pages.Trips />
   },
   {
-    path: '/profile',
+    path: '/settings',
     header: () => <CustomAppBar title="Profile" />,
-    main: () => <Profile />
+    main: () => <Pages.Profile />
   },
   {
     path: '/new-deal',
     header: () => <CustomAppBar withReturn title="Add a deal" />,
-    main: () => <NewDeal />
+    main: () => <Pages.NewDeal />
   },
   {
-    path: '/deals',
+    path: '/trip/:tripId',
     header: () => <CustomAppBar withReturn title="Deals" />,
-    main: () => <Deals />
+    main: (props) => <Pages.Trip {...props.match.params} />
   }
 ];
 
@@ -82,19 +69,19 @@ export const loggedOutRoutes = [
   {
     path: '/',
     exact: true,
-    main: () => <Index />
+    main: () => <Pages.Home />
   },
   {
     path: '/login',
     exact: true,
     header: () => <CustomAppBar withDrawer={false} title="Login" />,
-    main: () => <Login />
+    main: () => <Pages.Login />
   },
   {
     path: '/signup',
     exact: true,
     header: () => <CustomAppBar withDrawer={false} title="Sign up" />,
-    main: () => <Signup />
+    main: () => <Pages.Signup />
   },
   {
     path: '/',

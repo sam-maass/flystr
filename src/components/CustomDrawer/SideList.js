@@ -22,28 +22,20 @@ const SideListComponent = ({ classes, logoutUser }) => {
           </ListItem>
         </Link>
         <Divider />
-        <Link to={'/flights'}>
-          <ListItem button>
-            <ListItemIcon>
-              <FlightIcon />
-            </ListItemIcon>
-            <ListItemText primary="Price Alarms" />
-          </ListItem>
-        </Link>
-        <Link to={'/destinations'}>
+        <Link to={'/trips'}>
           <ListItem button>
             <ListItemIcon>
               <PinDropIcon />
             </ListItemIcon>
-            <ListItemText primary="Watchlist" />
+            <ListItemText primary="My Trips" />
           </ListItem>
         </Link>
-        <Link to={'/profile'}>
+        <Link to={'/settings'}>
           <ListItem button>
             <ListItemIcon>
               <UserIcon />
             </ListItemIcon>
-            <ListItemText primary="Profile" />
+            <ListItemText primary="Settings" />
           </ListItem>
         </Link>
         <Link to={'/new-deal'}>
