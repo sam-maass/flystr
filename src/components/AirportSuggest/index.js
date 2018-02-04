@@ -127,7 +127,7 @@ class IntegrationAutosuggest extends React.Component {
   state = {
     value: '',
     suggestions: [],
-    selectedAirports: new Set([])
+    selectedAirports: new Set([...this.props.values[this.props.elemKey]])
   };
 
   handleSuggestionsFetchRequested = async ({ value }) => {
@@ -162,10 +162,7 @@ class IntegrationAutosuggest extends React.Component {
       if (!suggestion) return { value };
       const nextAirport = suggestion;
       const selectedAirports = prevState.selectedAirports.add(nextAirport);
-      this.props.setFieldValue(
-        this.props.elemKey,
-        [...selectedAirports].join(',')
-      );
+      this.props.setFieldValue(this.props.elemKey, [...selectedAirports]);
       return { value, selectedAirports };
     });
   };
@@ -174,10 +171,7 @@ class IntegrationAutosuggest extends React.Component {
     this.setState(prevState => {
       const selectedAirports = prevState.selectedAirports;
       selectedAirports.delete(value);
-      this.props.setFieldValue(
-        this.props.elemKey,
-        [...selectedAirports].join(',')
-      );
+      this.props.setFieldValue(this.props.elemKey, [...selectedAirports]);
       return { selectedAirports };
     });
   };
@@ -239,6 +233,7 @@ class IntegrationAutosuggest extends React.Component {
 
 IntegrationAutosuggest.propTypes = {
   touched: PropTypes.object,
+  values: PropTypes.object,
   errors: PropTypes.object,
   elemKey: PropTypes.string,
   label: PropTypes.string.isRequired,

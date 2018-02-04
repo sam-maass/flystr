@@ -53,7 +53,7 @@ FormikTextField.propTypes = {
   InputProps: PropTypes.object
 };
 
-const NewTripForm = ({ classes, ...props }) => {
+const NewTripForm = ({ classes, buttonText, ...props }) => {
   return (
     <Form className={classes.form}>
       <ExpansionPanel defaultExpanded>
@@ -131,7 +131,7 @@ const NewTripForm = ({ classes, ...props }) => {
         color="primary"
         onClick={props.handleSubmit}
       >
-        Send
+        {buttonText}
       </Button>
     </Form>
   );
@@ -142,7 +142,8 @@ NewTripForm.propTypes = {
   values: PropTypes.object,
   errors: PropTypes.object,
   touched: PropTypes.object,
-  handleSubmit: PropTypes.func
+  handleSubmit: PropTypes.func,
+  buttonText: PropTypes.string
 };
 
 const styles = {

@@ -1,10 +1,10 @@
 import React from 'react';
 import NewTripForm from '../components/NewTripForm';
 
-const NewTripPage = () => {
+const NewTripPage = props => {
   return (
     <div>
-      <NewTripForm />
+      <NewTripForm {...props} />
     </div>
   );
 };

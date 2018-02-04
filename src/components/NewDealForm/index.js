@@ -29,12 +29,8 @@ const formikSettings = {
     };
   },
   validationSchema: Yup.object().shape({
-    destinations: Yup.string()
-      .min(3)
-      .required(),
-    origins: Yup.string()
-      .min(3)
-      .required(),
+    destinations: Yup.array().min(1),
+    origins: Yup.array().min(1),
     startDate: Yup.string().required(),
     endDate: Yup.string().required(),
     price: Yup.number().required()
