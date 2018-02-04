@@ -7,6 +7,8 @@ import { Redirect } from 'react-router-dom';
 import { api } from '../../settings';
 import moment from 'moment';
 import { fetchUser } from '../../actions/userActions';
+import PropTypes from 'prop-types';
+
 
 const mapStateToProps = store => {
   return {
@@ -60,6 +62,11 @@ const RoutingWrapper = props => {
   } else {
     return <NewTripForm {...props} />;
   }
+};
+
+RoutingWrapper.propTypes = {
+  status: PropTypes.string,
+  fetchUser: PropTypes.func
 };
 
 const FormikForm = withFormik(formikSettings)(RoutingWrapper);

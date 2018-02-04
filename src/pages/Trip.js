@@ -20,7 +20,8 @@ const TripPage = ({ classes, tripId }) => {
 };
 
 TripPage.propTypes = {
-  classes: PropTypes.object
+  classes: PropTypes.object,
+  tripId: PropTypes.string
 };
 
 const styles = {

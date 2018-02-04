@@ -5,9 +5,6 @@ import moment from 'moment';
 import Card, { CardContent } from 'material-ui/Card';
 import withStyles from 'material-ui/styles/withStyles';
 import Typography from 'material-ui/Typography/Typography';
-import IconButton from 'material-ui/IconButton/IconButton';
-import FavoriteIcon from 'material-ui-icons/FlightTakeoff';
-import SettingsIcon from 'material-ui-icons/Settings';
 import ArrowRight from "material-ui-icons/ArrowForward";
 import AirportChips from '../AirportChips';
 import CardActions from 'material-ui/Card/CardActions';
@@ -65,8 +62,8 @@ const TripRow = ({
 };
 
 TripRow.propTypes = {
+  _id: PropTypes.string,
   classes: PropTypes.object,
-  status: PropTypes.string,
   startDate: PropTypes.string,
   endDate: PropTypes.string,
   name: PropTypes.string,
@@ -95,7 +92,7 @@ const styles = {
   details: {
     marginTop: 16,
     display: 'grid',
-    gridTemplateColumns: 'repeat(1,1fr)',
+    gridTemplateColumns: 'repeat(2,1fr)',
   },
   noLink: {
     textDecoration: 'none'
