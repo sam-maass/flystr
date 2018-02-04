@@ -11,7 +11,7 @@ const DealListContainer = ({ trips = [], tripId }) => {
   } else {
     return (
       <TripView trip={trip}>
-        <DealList trips={trip.matchingDeals} />;
+        <DealList trips={trip.matchingDeals} />
       </TripView>
     );
   }

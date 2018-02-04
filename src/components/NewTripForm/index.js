@@ -9,33 +9,32 @@ import moment from 'moment';
 import { fetchUser } from '../../actions/userActions';
 import PropTypes from 'prop-types';
 
-const mapStateToProps = store => {
+const mapStateToProps = (store, props) => {
   return {
-    user: store.user
+    ...props,
+    user: store.user,
+    trips: store.trips
   };
 };
 
 const formikSettings = {
-  mapPropsToValues: () => {
+  mapPropsToValues: ({ trips, tripId }) => {
+    const trip = trips.find(trip => trip._id === tripId);
     return {
-      destinations: '',
-      origins: '',
+      destinations: (trip && trip.destinations) || '',
+      origins: (trip && trip.origins) || '',
       startDate: moment().format('YYYY-MM-DD'),
       endDate: moment()
         .add(4, 'weeks')
         .format('YYYY-MM-DD'),
-      budget: '',
-      name: '',
-      duration: ''
+      budget: (trip && trip.budget) || '',
+      name: (trip && trip.name) || '',
+      duration: (trip && trip.duration) || ''
     };
   },
   validationSchema: Yup.object().shape({
-    destinations: Yup.string()
-      .min(3)
-      .required(),
-    origins: Yup.string()
-      .min(3)
-      .required(),
+    destinations: Yup.array().min(1),
+    origins: Yup.array().min(1),
     budget: Yup.number().required(),
     name: Yup.string().required(),
     startDate: Yup.date(),
@@ -44,19 +43,28 @@ const formikSettings = {
       message: 'must be in format "7" or "7-10"'
     })
   }),
-  handleSubmit: async (values, { setStatus }) => {
+  handleSubmit: async (values, { props, setStatus }) => {
     const [fromDuration, toDuration] = values.duration.split('-');
-    await api.post(`/trips`, {
-      fromDuration,
-      toDuration,
-      ...values
-    });
+    if (!props.tripId) {
+      await api.post(`/trips`, {
+        fromDuration,
+        toDuration,
+        ...values
+      });
+    } else {
+      await api.post(`/trips/${props.tripId}`, {
+        fromDuration,
+        toDuration,
+        ...values
+      });
+    }
     setStatus('done');
   }
 };
 
 const RoutingWrapper = props => {
   const isSubmitted = props.status === 'done';
+  const buttonText = props.tripId ? 'Edit Trip' : 'Add Trip';
   if (isSubmitted) {
     props.fetchUser();
     return (
@@ -67,13 +75,14 @@ const RoutingWrapper = props => {
       />
     );
   } else {
-    return <NewTripForm {...props} />;
+    return <NewTripForm buttonText={buttonText} {...props} />;
   }
 };
 
 RoutingWrapper.propTypes = {
   status: PropTypes.string,
-  fetchUser: PropTypes.func
+  fetchUser: PropTypes.func,
+  tripId: PropTypes.string
 };
 
 const FormikForm = withFormik(formikSettings)(RoutingWrapper);

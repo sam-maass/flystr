@@ -49,7 +49,9 @@ const TripRow = ({
             {matchingDeals.length} Deals
           </Button>
         </Link>
-        <Button size="small">Settings</Button>
+        <Link className={classes.noLink} to={`/trip/${_id}/edit`}>
+          <Button size="small">Change Trip</Button>
+        </Link>
       </CardActions>
     </Card>
   );
