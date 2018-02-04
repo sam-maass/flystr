@@ -1,4 +1,4 @@
-import React, { Children } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Card from 'material-ui/Card/Card';
 import CardContent from 'material-ui/Card/CardContent';
