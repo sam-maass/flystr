@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchUser } from './actions/userActions';
@@ -53,7 +53,7 @@ const Layout = ({
               vertical: 'bottom',
               horizontal: 'left'
             }}
-            open={!!error}
+            open={Boolean(error)}
             autoHideDuration={4000}
             onClose={deleteError}
             SnackbarContentProps={{
@@ -90,7 +90,7 @@ Layout.propTypes = {
 const mapStateToProps = (store, props) => {
   return {
     ...props,
-    loggedIn: !!store.user._id,
+    loggedIn: Boolean(store.user._id),
     ready: store.user.ready,
     error: store.errors[0] && store.errors[0].error
   };

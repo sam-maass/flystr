@@ -1,14 +1,14 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Autosuggest from 'react-autosuggest';
-import match from 'autosuggest-highlight/match';
-import parse from 'autosuggest-highlight/parse';
-import TextField from 'material-ui/TextField';
-import Paper from 'material-ui/Paper';
+import { api } from '../../settings';
 import { MenuItem } from 'material-ui/Menu';
 import { withStyles } from 'material-ui/styles';
 import AirportChips from '../AirportChips';
-import { api } from '../../settings';
+import Autosuggest from 'react-autosuggest';
+import match from 'autosuggest-highlight/match';
+import Paper from 'material-ui/Paper';
+import parse from 'autosuggest-highlight/parse';
+import PropTypes from 'prop-types';
+import React from 'react';
+import TextField from 'material-ui/TextField';
 
 function renderInput(inputProps) {
   const {
@@ -25,7 +25,7 @@ function renderInput(inputProps) {
   return (
     <TextField
       helperText={helperText}
-      error={!!helperText}
+      error={Boolean(helperText)}
       label={label}
       placeholder={placeholder}
       autoFocus={autoFocus}

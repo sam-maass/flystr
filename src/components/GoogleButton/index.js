@@ -9,7 +9,7 @@ import { api } from '../../settings';
 class GoogleButtonContainer extends Component {
   constructor(props) {
     super(props);
-    this.loggedIn = !!props.user._id;
+    this.loggedIn = Boolean(props.user._id);
   }
 
   onLoginSuccess = args => {
