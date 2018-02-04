@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import DealRow from '../DealRow';
+import DealPanel from '../DealPanel';
 import withStyles from 'material-ui/styles/withStyles';
 
 const TripList = ({ trips = [], classes }) => {
   return (
     <div className={classes.listWrapper}>
-      {trips.map((item, key) => <DealRow elevation={0} key={key} {...item} />)}
+      {trips.map((item, key) => <DealPanel elevation={0} key={key} {...item} />)}
     </div>
   );
 };
