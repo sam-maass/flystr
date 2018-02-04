@@ -60,7 +60,7 @@ const HomePage = () => {
                     🌍
                   </span>{' '}
                   Add all your destinations
-            </Typography>
+                </Typography>
               </li>
               <li>
                 <Typography>
@@ -68,7 +68,7 @@ const HomePage = () => {
                     🤖
                   </span>{' '}
                   Let our bot do the searching
-            </Typography>
+                </Typography>
               </li>
               <li>
                 <Typography>
@@ -76,7 +76,7 @@ const HomePage = () => {
                     📨
                   </span>{' '}
                   Get notified when a good deal comes up
-            </Typography>
+                </Typography>
               </li>
               <li>
                 <Typography>
@@ -84,7 +84,7 @@ const HomePage = () => {
                     🛫
                   </span>{' '}
                   Save money, go everywhere
-            </Typography>
+                </Typography>
               </li>
             </ul>
             <Typography component="p">

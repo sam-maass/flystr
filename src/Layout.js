@@ -11,8 +11,14 @@ import IconButton from 'material-ui/IconButton/IconButton';
 import CloseIcon from 'material-ui-icons/Close';
 import { deleteError } from './actions/errorActions';
 
-
-const Layout = ({ loggedIn, ready, fetchUser, classes, error, deleteError }) => {
+const Layout = ({
+  loggedIn,
+  ready,
+  fetchUser,
+  classes,
+  error,
+  deleteError
+}) => {
   fetchUser();
   const routes = loggedIn ? loggedInRoutes : loggedOutRoutes;
   if (!ready) {
@@ -45,13 +51,13 @@ const Layout = ({ loggedIn, ready, fetchUser, classes, error, deleteError }) => 
           <Snackbar
             anchorOrigin={{
               vertical: 'bottom',
-              horizontal: 'left',
+              horizontal: 'left'
             }}
             open={!!error}
             autoHideDuration={4000}
             onClose={deleteError}
             SnackbarContentProps={{
-              'aria-describedby': 'message-id',
+              'aria-describedby': 'message-id'
             }}
             message={<span id="message-id">{error}</span>}
             action={[
@@ -63,7 +69,7 @@ const Layout = ({ loggedIn, ready, fetchUser, classes, error, deleteError }) => 
                 onClick={deleteError}
               >
                 <CloseIcon />
-              </IconButton>,
+              </IconButton>
             ]}
           />
         </div>
@@ -78,7 +84,7 @@ Layout.propTypes = {
   ready: PropTypes.bool,
   fetchUser: PropTypes.func,
   deleteError: PropTypes.func,
-  error: PropTypes.string,
+  error: PropTypes.string
 };
 
 const mapStateToProps = (store, props) => {
@@ -89,7 +95,9 @@ const mapStateToProps = (store, props) => {
     error: store.errors[0] && store.errors[0].error
   };
 };
-const LayoutContainer = connect(mapStateToProps, { fetchUser, deleteError })(Layout);
+const LayoutContainer = connect(mapStateToProps, { fetchUser, deleteError })(
+  Layout
+);
 
 const styles = {
   main: {

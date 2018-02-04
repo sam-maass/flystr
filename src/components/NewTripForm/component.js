@@ -11,7 +11,6 @@ import ExpandMoreIcon from 'material-ui-icons/ExpandMore';
 import Typography from 'material-ui/Typography/Typography';
 import ExpansionPanelDetails from 'material-ui/ExpansionPanel/ExpansionPanelDetails';
 
-
 const FormikTextField = ({
   elemKey,
   type = 'text',
@@ -69,8 +68,18 @@ const NewTripForm = ({ classes, ...props }) => {
               placeholder="Eurotrip / Weekend Getaway / Discover Africa"
               {...props}
             />
-            <AirportSuggest elemKey="origins" label="From" placeholder="From where do yow wanna fly?" {...props}></AirportSuggest>
-            <AirportSuggest elemKey="destinations" label="To" placeholder="Where do yow wanna fly?" {...props}></AirportSuggest>
+            <AirportSuggest
+              elemKey="origins"
+              label="From"
+              placeholder="From where do yow wanna fly?"
+              {...props}
+            />
+            <AirportSuggest
+              elemKey="destinations"
+              label="To"
+              placeholder="Where do yow wanna fly?"
+              {...props}
+            />
             <FormikTextField
               elemKey="budget"
               type="number"
@@ -87,7 +96,9 @@ const NewTripForm = ({ classes, ...props }) => {
 
       <ExpansionPanel>
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography>Dates</Typography>{'\u00A0'}<Typography color="secondary">(optional)</Typography>
+          <Typography>Dates</Typography>
+          {'\u00A0'}
+          <Typography color="secondary">(optional)</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <div className={classes.dateContainer}>
@@ -111,11 +122,15 @@ const NewTripForm = ({ classes, ...props }) => {
               {...props}
             />
           </div>
-
         </ExpansionPanelDetails>
       </ExpansionPanel>
 
-      <Button className={classes.button} raised color="primary" onClick={props.handleSubmit}>
+      <Button
+        className={classes.button}
+        raised
+        color="primary"
+        onClick={props.handleSubmit}
+      >
         Send
       </Button>
     </Form>
@@ -133,7 +148,7 @@ NewTripForm.propTypes = {
 const styles = {
   form: {
     margin: 8,
-    display: 'grid',
+    display: 'grid'
   },
   button: {
     marginTop: 16

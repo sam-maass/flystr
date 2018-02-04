@@ -4,21 +4,22 @@ import DealList from './component';
 import { connect } from 'react-redux';
 import TripView from './TripView';
 
-
 const DealListContainer = ({ trips = [], tripId }) => {
   const trip = trips.find(trip => trip._id === tripId);
   if (trip && trip.matchingDeals && trip.matchingDeals.length === 0) {
-    return <TripView trip={trip}></TripView>;
+    return <TripView trip={trip} />;
   } else {
-    return (<TripView trip={trip}>
-      <DealList trips={trip.matchingDeals} />;
-    </TripView>);
+    return (
+      <TripView trip={trip}>
+        <DealList trips={trip.matchingDeals} />;
+      </TripView>
+    );
   }
 };
 
 DealListContainer.propTypes = {
   trips: PropTypes.array,
-  tripId: PropTypes.string,
+  tripId: PropTypes.string
 };
 
 const mapStateToProps = (store, props) => {
@@ -29,6 +30,4 @@ const mapStateToProps = (store, props) => {
   };
 };
 
-export default connect(mapStateToProps)(
-  DealListContainer
-);
+export default connect(mapStateToProps)(DealListContainer);

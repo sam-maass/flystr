@@ -33,17 +33,24 @@
     "yup": "^0.24.0"
   },
   "scripts": {
+    "format": "prettier --write 'src/**/*.js'",
+    "precommit": "lint-staged",
     "start": "PORT=3001 react-scripts start",
     "build": "react-scripts build",
     "lint": "eslint src/*.js",
     "test": "npm run lint && npm run build && bundlesize",
     "eject": "react-scripts eject"
   },
+  "lint-staged": {
+    "*.{js,json,css,md}": ["prettier --write", "git add"]
+  },
   "devDependencies": {
     "bundlesize": "^0.16.0",
     "eslint": "^4.9.0",
     "eslint-plugin-react": "^7.4.0",
+    "husky": "^0.14.3",
     "jest-cli": "^22.0.4",
+    "lint-staged": "^6.1.0",
     "prettier": "^1.7.4",
     "redux-devtools-extension": "^2.13.2",
     "webpack-bundle-analyzer": "^2.9.2"
