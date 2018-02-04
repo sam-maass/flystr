@@ -45,7 +45,7 @@ export const loggedInRoutes = [
   },
   {
     path: '/trips',
-    header: () => <CustomAppBar title="Destinations" />,
+    header: () => <CustomAppBar title="My trips" />,
     main: () => <Pages.Trips />
   },
   {
@@ -60,7 +60,7 @@ export const loggedInRoutes = [
   },
   {
     path: '/trip/:tripId',
-    header: () => <CustomAppBar withReturn title="Deals" />,
+    header: () => <CustomAppBar withReturn title="Trip" />,
     //eslint-disable-next-line
     main: (props) => <Pages.Trip {...props.match.params} />
   }

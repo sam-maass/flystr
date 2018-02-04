@@ -2,15 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import DealList from './component';
 import { connect } from 'react-redux';
-import EmptyState from '../EmptyState';
-import PindropIcon from 'material-ui-icons/PinDrop';
+import TripView from './TripView';
+
 
 const DealListContainer = ({ trips = [], tripId }) => {
   const trip = trips.find(trip => trip._id === tripId);
   if (trip && trip.matchingDeals && trip.matchingDeals.length === 0) {
-    return <EmptyState title="No Deals found" icon={<PindropIcon />} />;
+    return <TripView trip={trip}></TripView>;
   } else {
-    return <DealList trips={trip.matchingDeals} />;
+    return (<TripView trip={trip}>
+      <DealList trips={trip.matchingDeals} />;
+    </TripView>);
   }
 };
 
