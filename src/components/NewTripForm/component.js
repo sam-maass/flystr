@@ -5,6 +5,12 @@ import TextField from 'material-ui/TextField';
 import Button from 'material-ui/Button';
 import withStyles from 'material-ui/styles/withStyles';
 import AirportSuggest from '../AirportSuggest';
+import ExpansionPanelSummary from 'material-ui/ExpansionPanel/ExpansionPanelSummary';
+import ExpansionPanel from 'material-ui/ExpansionPanel/ExpansionPanel';
+import ExpandMoreIcon from 'material-ui-icons/ExpandMore';
+import Typography from 'material-ui/Typography/Typography';
+import ExpansionPanelDetails from 'material-ui/ExpansionPanel/ExpansionPanelDetails';
+
 
 const FormikTextField = ({
   elemKey,
@@ -51,25 +57,65 @@ FormikTextField.propTypes = {
 const NewTripForm = ({ classes, ...props }) => {
   return (
     <Form className={classes.form}>
-      <FormikTextField
-        elemKey="name"
-        label="Name of the Trip"
-        placeholder="Eurotrip / Weekend Getaway / Discover Africa"
-        {...props}
-      />
-      <AirportSuggest elemKey="origins" label="From" placeholder="From where do yow wanna fly?" {...props}></AirportSuggest>
-      <AirportSuggest elemKey="destinations" label="To" placeholder="Where do yow wanna fly?" {...props}></AirportSuggest>
-      <FormikTextField
-        elemKey="budget"
-        type="number"
-        label="Max buget"
-        placeholder="What is the max price you're willing to pay?"
-        {...props}
-        InputProps={{
-          endAdornment: '€ '
-        }}
-      />
-      <Button raised color="primary" onClick={props.handleSubmit}>
+      <ExpansionPanel defaultExpanded>
+        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography>Trip</Typography>
+        </ExpansionPanelSummary>
+        <ExpansionPanelDetails>
+          <div className={classes.dateContainer}>
+            <FormikTextField
+              elemKey="name"
+              label="Name of the Trip"
+              placeholder="Eurotrip / Weekend Getaway / Discover Africa"
+              {...props}
+            />
+            <AirportSuggest elemKey="origins" label="From" placeholder="From where do yow wanna fly?" {...props}></AirportSuggest>
+            <AirportSuggest elemKey="destinations" label="To" placeholder="Where do yow wanna fly?" {...props}></AirportSuggest>
+            <FormikTextField
+              elemKey="budget"
+              type="number"
+              label="Max buget"
+              placeholder="What is the max price you're willing to pay?"
+              {...props}
+              InputProps={{
+                endAdornment: '€ '
+              }}
+            />
+          </div>
+        </ExpansionPanelDetails>
+      </ExpansionPanel>
+
+      <ExpansionPanel>
+        <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+          <Typography>Dates</Typography>{'\u00A0'}<Typography color="secondary">(optional)</Typography>
+        </ExpansionPanelSummary>
+        <ExpansionPanelDetails>
+          <div className={classes.dateContainer}>
+            <FormikTextField
+              elemKey="startDate"
+              label="Earliest Depature Date"
+              type="date"
+              {...props}
+            />
+            <FormikTextField
+              elemKey="endDate"
+              label="Latest Return Date"
+              type="date"
+              {...props}
+            />
+            <FormikTextField
+              elemKey="duration"
+              label="Duration (in days)"
+              placeholder="eg. 14 or 14-21"
+              type="text"
+              {...props}
+            />
+          </div>
+
+        </ExpansionPanelDetails>
+      </ExpansionPanel>
+
+      <Button className={classes.button} raised color="primary" onClick={props.handleSubmit}>
         Send
       </Button>
     </Form>
@@ -88,6 +134,13 @@ const styles = {
   form: {
     margin: 8,
     display: 'grid',
+  },
+  button: {
+    marginTop: 16
+  },
+  dateContainer: {
+    display: 'grid',
+    width: '100%',
     gridRowGap: '16px'
   }
 };

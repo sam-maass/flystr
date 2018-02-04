@@ -27,7 +27,8 @@ const formikSettings = {
         .add(4, 'weeks')
         .format('YYYY-MM-DD'),
       budget: '',
-      name: ''
+      name: '',
+      duration: ''
     };
   },
   validationSchema: Yup.object().shape({
@@ -38,10 +39,17 @@ const formikSettings = {
       .min(3)
       .required(),
     budget: Yup.number().required(),
-    name: Yup.string().required()
+    name: Yup.string().required(),
+    startDate: Yup.date(),
+    duration: Yup.string().matches(/(^\d+$|^\d+-\d+$)/, { excludeEmptyString: true, message: 'must be in format "7" or "7-10"' })
+
   }),
   handleSubmit: async (values, { setStatus }) => {
+
+    const [fromDuration, toDuration] = values.duration.split('-');
     await api.post(`/trips`, {
+      fromDuration,
+      toDuration,
       ...values
     });
     setStatus('done');
