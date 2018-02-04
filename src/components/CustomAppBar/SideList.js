@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
-import FlightIcon from 'material-ui-icons/Flight';
 import PinDropIcon from 'material-ui-icons/PinDrop';
 import SignOutIcon from 'material-ui-icons/PowerSettingsNew';
 import UserIcon from 'material-ui-icons/PermIdentity';
