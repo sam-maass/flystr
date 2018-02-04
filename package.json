@@ -42,8 +42,18 @@
     "eject": "react-scripts eject"
   },
   "lint-staged": {
-    "src/**/*.{js,json,css,md}": ["prettier --write", "git add"],
-    "src/**/*.{js,json}": ["eslint --fix", "git add"]
+    "src/**/*.{js,json,css,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "src/**/*.{js,json}": [
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{png,jpeg,jpg,gif,svg}": [
+      "imagemin-lint-staged",
+      "git add"
+    ]
   },
   "devDependencies": {
     "bundlesize": "^0.16.0",
