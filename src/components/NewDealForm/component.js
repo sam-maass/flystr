@@ -45,8 +45,18 @@ FormikTextField.propTypes = {
 const NewDealForm = ({ classes, ...props }) => {
   return (
     <Form className={classes.form}>
-      <AirportSuggest elemKey="origins" label="From" placeholder="From where does the flight leave?" {...props}></AirportSuggest>
-      <AirportSuggest elemKey="destinations" label="To" placeholder="Where does the flight go?" {...props}></AirportSuggest>
+      <AirportSuggest
+        elemKey="origins"
+        label="From"
+        placeholder="From where does the flight leave?"
+        {...props}
+      />
+      <AirportSuggest
+        elemKey="destinations"
+        label="To"
+        placeholder="Where does the flight go?"
+        {...props}
+      />
       <FormikTextField
         elemKey="startDate"
         type="date"

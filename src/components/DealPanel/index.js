@@ -25,16 +25,14 @@ const DealRow = ({
     <ExpansionPanel>
       <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
         <div className={classes.summary}>
-          <AirportChips airports={origins}></AirportChips>
-          <ArrowIcon></ArrowIcon>
-          <AirportChips airports={destinations}></AirportChips>
+          <AirportChips airports={origins} />
+          <ArrowIcon />
+          <AirportChips airports={destinations} />
           <Typography>
             {formattedStartDate} - <br />
             {formattedEndDate}
           </Typography>
-          <Typography>
-            {price} €
-          </Typography>
+          <Typography>{price} €</Typography>
         </div>
       </ExpansionPanelSummary>
       <ExpansionPanelActions>

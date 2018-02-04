@@ -21,7 +21,7 @@ class GoogleButtonContainer extends Component {
   };
 
   onLoginFailure = () => {
-    this.props.addError("Network issues. Please try again");
+    this.props.addError('Network issues. Please try again');
   };
 
   render() {

@@ -24,11 +24,11 @@ function ButtonAppBar(props) {
     <AppBar className={classes.appBar}>
       <Toolbar>
         {withDrawer && !withReturn && <CustomDrawer />}
-        {withReturn &&
+        {withReturn && (
           <IconButton onClick={() => history.goBack()}>
-            <BackIcon color="contrast"></BackIcon>
+            <BackIcon color="contrast" />
           </IconButton>
-        }
+        )}
         <Typography type="title" color="inherit" className={classes.flex}>
           {title}
         </Typography>
@@ -42,7 +42,7 @@ ButtonAppBar.propTypes = {
   classes: PropTypes.object.isRequired,
   title: PropTypes.string,
   withDrawer: PropTypes.bool,
-  withReturn: PropTypes.bool,
+  withReturn: PropTypes.bool
 };
 
 const RouterWrapper = withRouter(ButtonAppBar);

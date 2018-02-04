@@ -9,7 +9,6 @@ import moment from 'moment';
 import { fetchUser } from '../../actions/userActions';
 import PropTypes from 'prop-types';
 
-
 const mapStateToProps = store => {
   return {
     user: store.user

@@ -9,8 +9,6 @@ import moment from 'moment';
 import { fetchUser } from '../../actions/userActions';
 import PropTypes from 'prop-types';
 
-
-
 const mapStateToProps = store => {
   return {
     user: store.user
@@ -41,11 +39,12 @@ const formikSettings = {
     budget: Yup.number().required(),
     name: Yup.string().required(),
     startDate: Yup.date(),
-    duration: Yup.string().matches(/(^\d+$|^\d+-\d+$)/, { excludeEmptyString: true, message: 'must be in format "7" or "7-10"' })
-
+    duration: Yup.string().matches(/(^\d+$|^\d+-\d+$)/, {
+      excludeEmptyString: true,
+      message: 'must be in format "7" or "7-10"'
+    })
   }),
   handleSubmit: async (values, { setStatus }) => {
-
     const [fromDuration, toDuration] = values.duration.split('-');
     await api.post(`/trips`, {
       fromDuration,
