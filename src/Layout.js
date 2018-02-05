@@ -39,14 +39,16 @@ const Layout = ({
             ))}
           </Switch>
           <Switch>
-            {routes.map((route, index) => (
-              <Route
-                key={index}
-                path={route.path}
-                exact={route.exact}
-                component={route.main}
-              />
-            ))}
+            <div className={classes.scrollContainer}>
+              {routes.map((route, index) => (
+                <Route
+                  key={index}
+                  path={route.path}
+                  exact={route.exact}
+                  component={route.main}
+                />
+              ))}
+            </div>
           </Switch>
           <Snackbar
             anchorOrigin={{
@@ -103,8 +105,11 @@ const styles = {
   main: {
     display: 'grid',
     height: '100vh',
-    gridTemplateRows: 'min-content auto',
-    overflow: 'hidden'
+    gridTemplateRows: 'min-content auto'
+  },
+  scrollContainer: {
+    overflowX: 'none',
+    overflowY: 'auto'
   }
 };
 
