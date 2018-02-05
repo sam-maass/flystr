@@ -23,7 +23,10 @@ const DealRow = ({
   const formattedEndDate = moment(endDate).format('DD MMM YYYY');
   return (
     <ExpansionPanel>
-      <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+      <ExpansionPanelSummary
+        className={classes.summaryPanel}
+        expandIcon={<ExpandMoreIcon />}
+      >
         <div className={classes.summary}>
           <AirportChips airports={origins} />
           <ArrowIcon />
@@ -57,9 +60,12 @@ DealRow.propTypes = {
 };
 
 const styles = {
+  summaryPanel: {
+    overflow: 'hidden'
+  },
   summary: {
     display: 'grid',
-    width: '100%',
+    width: '90%',
     gridTemplateColumns: '60px 30px 60px 1fr max-content ',
     alignItems: 'center'
   }

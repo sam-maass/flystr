@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 
 const TripPage = ({ classes, tripId }) => {
   return (
-    <div className={classes.pageContainer}>
+    <div>
       <DealList tripId={tripId} />
       <Link to="/new-deal">
         <Button fab color="primary" aria-label="add" className={classes.fab}>
@@ -25,9 +25,6 @@ TripPage.propTypes = {
 };
 
 const styles = {
-  pageContainer: {
-    overflow: 'auto'
-  },
   fab: {
     position: 'fixed',
     bottom: 16,
