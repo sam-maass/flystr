@@ -48,7 +48,7 @@ const HomePage = () => {
             </Typography>
             <br />
             <Typography component="p">
-              Travelagencies will always make you overpay, because they need to
+              Travel agencies will always make you overpay, because they need to
               make a living of your money. And Flight Search Engines only give
               you a snapshot of whats happening, but prices change all the time.
               Flystr is here to make frugal travel easy again.
