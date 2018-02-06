@@ -83,7 +83,7 @@ const NewTripForm = ({ classes, buttonText, ...props }) => {
             <FormikTextField
               elemKey="budget"
               type="number"
-              label="Max buget"
+              label="Max budget"
               placeholder="What is the max price you're willing to pay?"
               {...props}
               InputProps={{
@@ -104,7 +104,7 @@ const NewTripForm = ({ classes, buttonText, ...props }) => {
           <div className={classes.dateContainer}>
             <FormikTextField
               elemKey="startDate"
-              label="Earliest Depature Date"
+              label="Earliest Departure Date"
               type="date"
               {...props}
             />
