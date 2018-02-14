@@ -11,7 +11,12 @@ const TripPage = ({ classes, tripId }) => {
     <div>
       <DealList tripId={tripId} />
       <Link to="/new-deal">
-        <Button fab color="primary" aria-label="add" className={classes.fab}>
+        <Button
+          variant="fab"
+          color="primary"
+          aria-label="add"
+          className={classes.fab}
+        >
           <AddIcon />
         </Button>
       </Link>

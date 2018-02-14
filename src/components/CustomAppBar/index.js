@@ -26,10 +26,10 @@ function ButtonAppBar(props) {
         {withDrawer && !withReturn && <CustomDrawer />}
         {withReturn && (
           <IconButton onClick={() => history.goBack()}>
-            <BackIcon color="contrast" />
+            <BackIcon color="inherit" />
           </IconButton>
         )}
-        <Typography type="title" color="inherit" className={classes.flex}>
+        <Typography variant="title" color="inherit" className={classes.flex}>
           {title}
         </Typography>
       </Toolbar>

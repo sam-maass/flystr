@@ -25,7 +25,7 @@ const SignupPage = ({ classes }) => {
               already a member?
             </Typography>
             <Link className={classes.noLink} to="/login">
-              <Button dense color="primary">
+              <Button size="small" color="primary">
                 Login
               </Button>
             </Link>

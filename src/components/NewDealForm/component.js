@@ -71,7 +71,7 @@ const NewDealForm = ({ classes, ...props }) => {
       />
       <FormikTextField elemKey="price" type="number" label="Price" {...props} />
       <FormikTextField elemKey="link" label="Link" {...props} />
-      <Button raised color="primary" onClick={props.handleSubmit}>
+      <Button variant="raised" color="primary" onClick={props.handleSubmit}>
         Add deal
       </Button>
     </Form>

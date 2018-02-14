@@ -18,7 +18,7 @@ export const GoogleButtonComponent = ({
         onSuccess={onLoginSuccess}
         onFailure={onLoginFailure}
       >
-        <Button raised color="primary">
+        <Button variant="raised" color="primary">
           {text}
         </Button>
       </GoogleLogin>
