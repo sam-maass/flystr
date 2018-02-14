@@ -27,20 +27,20 @@ const TripRow = ({
   return (
     <Card>
       <CardContent>
-        <Typography type="headline">
+        <Typography variant="headline">
           <span>{name}</span>
         </Typography>
-        <Typography type="subheading" className={classes.chipContainer}>
+        <Typography variant="subheading" className={classes.chipContainer}>
           <AirportChips airports={origins} styleClass={classes.chip} />
           <ArrowRight />
           <AirportChips airports={destinations} styleClass={classes.chip} />
         </Typography>
         <div className={classes.details}>
-          <Typography color="secondary">
+          <Typography color="textSecondary">
             {formattedStartDate} - {formattedEndDate}
           </Typography>
-          <Typography color="secondary">max {days} days</Typography>
-          <Typography color="secondary">max {budget} €</Typography>
+          <Typography color="textSecondary">max {days} days</Typography>
+          <Typography color="textSecondary">max {budget} €</Typography>
         </div>
       </CardContent>
       <CardActions>

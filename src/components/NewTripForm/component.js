@@ -98,7 +98,7 @@ const NewTripForm = ({ classes, buttonText, ...props }) => {
         <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
           <Typography>Dates</Typography>
           {'\u00A0'}
-          <Typography color="secondary">(optional)</Typography>
+          <Typography color="textSecondary">(optional)</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <div className={classes.dateContainer}>
@@ -127,7 +127,7 @@ const NewTripForm = ({ classes, buttonText, ...props }) => {
 
       <Button
         className={classes.button}
-        raised
+        variant="raised"
         color="primary"
         onClick={props.handleSubmit}
       >

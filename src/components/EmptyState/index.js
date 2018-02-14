@@ -32,7 +32,7 @@ const EmptyStateComponent = ({ classes, icon, title }) => {
     <div className={classes.pageContainer}>
       <div className={classes.iconContainer}>
         {React.cloneElement(icon, { className: classes.icon })}
-        <Typography className={classes.text} type="headline" gutterBottom>
+        <Typography className={classes.text} variant="headline" gutterBottom>
           {title}
         </Typography>
       </div>

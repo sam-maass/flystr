@@ -29,7 +29,7 @@ class TemporaryDrawer extends React.Component {
       <div>
         <IconButton
           className={classes.menuButton}
-          color="contrast"
+          color="inherit"
           aria-label="Menu"
           onClick={this.toggleDrawer('left', true)}
         >

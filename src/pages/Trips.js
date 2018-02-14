@@ -11,7 +11,12 @@ const TripsPage = ({ classes }) => {
     <div className={classes.pageContainer}>
       <TripList />
       <Link to="/new-trip">
-        <Button fab color="primary" aria-label="add" className={classes.fab}>
+        <Button
+          variant="fab"
+          color="primary"
+          aria-label="add"
+          className={classes.fab}
+        >
           <AddIcon />
         </Button>
       </Link>

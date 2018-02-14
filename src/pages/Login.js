@@ -25,7 +25,7 @@ const LoginPage = ({ classes }) => {
               new to flystr?
             </Typography>
             <Link className={classes.noLink} to="/signup">
-              <Button dense color="primary">
+              <Button size="small" color="primary">
                 Sign up
               </Button>
             </Link>

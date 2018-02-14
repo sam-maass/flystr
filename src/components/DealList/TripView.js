@@ -10,8 +10,10 @@ const TripView = ({ children, trip }) => {
     <div>
       <Card>
         <CardContent>
-          <Typography type="headline">{trip.name}</Typography>
-          <Typography type="subheading">for max. {trip.budget} EUR</Typography>
+          <Typography variant="headline">{trip.name}</Typography>
+          <Typography variant="subheading">
+            for max. {trip.budget} EUR
+          </Typography>
           <Typography>From: {trip.origins.join(' ,')}</Typography>
           <Typography>To: {trip.destinations.join(' ,')}</Typography>
           <Divider />

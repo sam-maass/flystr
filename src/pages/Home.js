@@ -43,7 +43,7 @@ const HomePage = () => {
       <div className="container" style={containerStyle}>
         <Card>
           <CardContent>
-            <Typography type="headline" component="h2">
+            <Typography variant="headline" component="h2">
               Easy & cheap flights
             </Typography>
             <br />
