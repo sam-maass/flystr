@@ -20,7 +20,7 @@
     "react": "16.1.1",
     "react-autosuggest": "^9.3.2",
     "react-dom": "16.1.0",
-    "react-google-login": "3.0.4",
+    "react-google-login": "3.0.5",
     "react-redux": "^5.0.6",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
