@@ -10,7 +10,7 @@
   ],
   "dependencies": {
     "autosuggest-highlight": "^3.1.1",
-    "axios": "0.17.1",
+    "axios": "0.18.0",
     "formik": "^0.11.0",
     "material-ui": "^1.0.0-beta.33",
     "material-ui-icons": "^1.0.0-beta.17",
