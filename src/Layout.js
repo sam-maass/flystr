@@ -4,12 +4,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchUser } from './actions/userActions';
 import { loggedInRoutes, loggedOutRoutes } from './routes';
-import Reboot from 'material-ui/Reboot';
 import withStyles from 'material-ui/styles/withStyles';
-import Snackbar from 'material-ui/Snackbar/Snackbar';
 import IconButton from 'material-ui/IconButton/IconButton';
 import CloseIcon from 'material-ui-icons/Close';
 import { deleteError } from './actions/errorActions';
+import { CssBaseline, Snackbar } from 'material-ui';
 
 const Layout = ({
   loggedIn,
@@ -27,7 +26,7 @@ const Layout = ({
     return (
       <Router>
         <div className={classes.main}>
-          <Reboot />
+          <CssBaseline />
           <Switch>
             {routes.map((route, index) => (
               <Route
