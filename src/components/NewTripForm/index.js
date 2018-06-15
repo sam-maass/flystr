@@ -2,7 +2,7 @@ import React from 'react';
 import { withFormik } from 'formik';
 import { connect } from 'react-redux';
 import NewTripForm from './component';
-import Yup from 'yup';
+import * as yup from 'yup';
 import { Redirect } from 'react-router-dom';
 import { api } from '../../settings';
 import moment from 'moment';
@@ -32,13 +32,13 @@ const formikSettings = {
       duration: (trip && trip.duration) || ''
     };
   },
-  validationSchema: Yup.object().shape({
-    destinations: Yup.array().min(1),
-    origins: Yup.array().min(1),
-    budget: Yup.number().required(),
-    name: Yup.string().required(),
-    startDate: Yup.date(),
-    duration: Yup.string().matches(/(^\d+$|^\d+-\d+$)/, {
+  validationSchema: yup.object().shape({
+    destinations: yup.array().min(1),
+    origins: yup.array().min(1),
+    budget: yup.number().required(),
+    name: yup.string().required(),
+    startDate: yup.date(),
+    duration: yup.string().matches(/(^\d+$|^\d+-\d+$)/, {
       excludeEmptyString: true,
       message: 'must be in format "7" or "7-10"'
     })
@@ -86,5 +86,8 @@ RoutingWrapper.propTypes = {
 };
 
 const FormikForm = withFormik(formikSettings)(RoutingWrapper);
-const TripFormContainer = connect(mapStateToProps, { fetchUser })(FormikForm);
+const TripFormContainer = connect(
+  mapStateToProps,
+  { fetchUser }
+)(FormikForm);
 export default TripFormContainer;

@@ -1,14 +1,14 @@
 import React from 'react';
-import withStyles from 'material-ui/styles/withStyles';
+import { withStyles } from '@material-ui/core/styles';
 import { PropTypes } from 'prop-types';
-import Card from 'material-ui/Card/Card';
-import CardContent from 'material-ui/Card/CardContent';
-import CardHeader from 'material-ui/Card/CardHeader';
+import Card from '@material-ui/core/Card/Card';
+import CardContent from '@material-ui/core/CardContent';
+import CardHeader from '@material-ui/core/CardHeader';
 import { GoogleButton } from '../components/GoogleButton';
-import CardActions from 'material-ui/Card/CardActions';
-import Button from 'material-ui/Button/Button';
-import Typography from 'material-ui/Typography/Typography';
-import { colors } from 'material-ui';
+import CardActions from '@material-ui/core/CardActions';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+import { colors } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
 const LoginPage = ({ classes }) => {

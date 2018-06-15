@@ -2,7 +2,7 @@ import React from 'react';
 import { withFormik } from 'formik';
 import { connect } from 'react-redux';
 import NewTripForm from './component';
-import Yup from 'yup';
+import * as yup from 'yup';
 import { Redirect } from 'react-router-dom';
 import { api } from '../../settings';
 import moment from 'moment';
@@ -28,12 +28,12 @@ const formikSettings = {
       link: ''
     };
   },
-  validationSchema: Yup.object().shape({
-    destinations: Yup.array().min(1),
-    origins: Yup.array().min(1),
-    startDate: Yup.string().required(),
-    endDate: Yup.string().required(),
-    price: Yup.number().required()
+  validationSchema: yup.object().shape({
+    destinations: yup.array().min(1),
+    origins: yup.array().min(1),
+    startDate: yup.string().required(),
+    endDate: yup.string().required(),
+    price: yup.number().required()
   }),
   handleSubmit: async (values, { setStatus }) => {
     await api.post(`/deal`, {
@@ -65,5 +65,8 @@ RoutingWrapper.propTypes = {
 };
 
 const FormikForm = withFormik(formikSettings)(RoutingWrapper);
-const DealFormContainer = connect(mapStateToProps, { fetchUser })(FormikForm);
+const DealFormContainer = connect(
+  mapStateToProps,
+  { fetchUser }
+)(FormikForm);
 export default DealFormContainer;

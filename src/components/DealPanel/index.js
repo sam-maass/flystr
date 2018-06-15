@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import withStyles from 'material-ui/styles/withStyles';
-import Typography from 'material-ui/Typography/Typography';
-import ExpansionPanel from 'material-ui/ExpansionPanel/ExpansionPanel';
-import ExpansionPanelSummary from 'material-ui/ExpansionPanel/ExpansionPanelSummary';
+import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import AirportChips from '../AirportChips';
-import ExpandMoreIcon from 'material-ui-icons/ExpandMore';
-import ArrowIcon from 'material-ui-icons/ArrowForward';
-import ExpansionPanelActions from 'material-ui/ExpansionPanel/ExpansionPanelActions';
-import Button from 'material-ui/Button/Button';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ArrowIcon from '@material-ui/icons/ArrowForward';
+import ExpansionPanelActions from '@material-ui/core/ExpansionPanelActions';
+import Button from '@material-ui/core/Button';
 const DealRow = ({
   classes,
   origins = [],

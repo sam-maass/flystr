@@ -4,11 +4,12 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchUser } from './actions/userActions';
 import { loggedInRoutes, loggedOutRoutes } from './routes';
-import withStyles from 'material-ui/styles/withStyles';
-import IconButton from 'material-ui/IconButton/IconButton';
-import CloseIcon from 'material-ui-icons/Close';
+import { withStyles } from '@material-ui/core/styles';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 import { deleteError } from './actions/errorActions';
-import { CssBaseline, Snackbar } from 'material-ui';
+import Snackbar from '@material-ui/core/Snackbar';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 const Layout = ({
   loggedIn,
@@ -96,9 +97,10 @@ const mapStateToProps = (store, props) => {
     error: store.errors[0] && store.errors[0].error
   };
 };
-const LayoutContainer = connect(mapStateToProps, { fetchUser, deleteError })(
-  Layout
-);
+const LayoutContainer = connect(
+  mapStateToProps,
+  { fetchUser, deleteError }
+)(Layout);
 
 const styles = {
   main: {

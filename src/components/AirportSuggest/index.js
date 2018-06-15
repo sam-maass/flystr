@@ -1,14 +1,16 @@
 import { api } from '../../settings';
-import { MenuItem } from 'material-ui/Menu';
-import { withStyles } from 'material-ui/styles';
 import AirportChips from '../AirportChips';
 import Autosuggest from 'react-autosuggest';
 import match from 'autosuggest-highlight/match';
-import Paper from 'material-ui/Paper';
 import parse from 'autosuggest-highlight/parse';
 import PropTypes from 'prop-types';
 import React from 'react';
-import TextField from 'material-ui/TextField';
+import { withStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import TextField from '@material-ui/core/TextField';
+import MenuItem from '@material-ui/core/MenuItem';
+
+Paper;
 
 function renderInput(inputProps) {
   const {
