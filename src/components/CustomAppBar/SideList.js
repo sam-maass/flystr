@@ -1,12 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
-import PinDropIcon from 'material-ui-icons/PinDrop';
-import SignOutIcon from 'material-ui-icons/PowerSettingsNew';
-import UserIcon from 'material-ui-icons/PermIdentity';
-import DealIcon from 'material-ui-icons/MonetizationOn';
-import Divider from 'material-ui/Divider';
-import withStyles from 'material-ui/styles/withStyles';
+import List, {
+  ListItem,
+  ListItemIcon,
+  ListItemText
+} from '@material-ui/core/List';
+import PinDropIcon from '@material-ui/icons/PinDrop';
+import SignOutIcon from '@material-ui/icons/PowerSettingsNew';
+import UserIcon from '@material-ui/icons/PermIdentity';
+import DealIcon from '@material-ui/icons/MonetizationOn';
+import Divider from '@material-ui/core/Divider';
+import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import { logoutUser } from '../../actions/userActions';
 import { connect } from 'react-redux';
@@ -81,6 +85,7 @@ const styles = {
   }
 };
 
-export const SideList = connect(null, { logoutUser })(
-  withStyles(styles)(SideListComponent)
-);
+export const SideList = connect(
+  null,
+  { logoutUser }
+)(withStyles(styles)(SideListComponent));

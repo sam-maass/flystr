@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Form } from 'formik';
-import TextField from 'material-ui/TextField';
-import Button from 'material-ui/Button';
-import withStyles from 'material-ui/styles/withStyles';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core/styles';
 import AirportSuggest from '../AirportSuggest';
-import ExpansionPanelSummary from 'material-ui/ExpansionPanel/ExpansionPanelSummary';
-import ExpansionPanel from 'material-ui/ExpansionPanel/ExpansionPanel';
-import ExpandMoreIcon from 'material-ui-icons/ExpandMore';
-import Typography from 'material-ui/Typography/Typography';
-import ExpansionPanelDetails from 'material-ui/ExpansionPanel/ExpansionPanelDetails';
+import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import ExpansionPanel from '@material-ui/core/ExpansionPanel';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Typography from '@material-ui/core/Typography';
+import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 
 const FormikTextField = ({
   elemKey,

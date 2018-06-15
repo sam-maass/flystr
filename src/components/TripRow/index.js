@@ -2,13 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import Card, { CardContent } from 'material-ui/Card';
-import withStyles from 'material-ui/styles/withStyles';
-import Typography from 'material-ui/Typography/Typography';
-import ArrowRight from 'material-ui-icons/ArrowForward';
+import Card, { CardContent } from '@material-ui/core/Card';
+import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import ArrowRight from '@material-ui/icons/ArrowForward';
 import AirportChips from '../AirportChips';
-import CardActions from 'material-ui/Card/CardActions';
-import Button from 'material-ui/Button/Button';
+import CardActions from '@material-ui/core/CardActions';
+import Button from '@material-ui/core/Button';
 
 const TripRow = ({
   classes,

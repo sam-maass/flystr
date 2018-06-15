@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Chip from 'material-ui/Chip/Chip';
 import hash from 'string-hash';
-import { colors } from 'material-ui';
+import Chip from '@material-ui/core/Chip';
+import colors from '@material-ui/core/colors';
 
 const getColor = term => {
   const bgColors = [

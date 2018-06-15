@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import TripList from './component';
 import { connect } from 'react-redux';
 import EmptyState from '../EmptyState';
-import PindropIcon from 'material-ui-icons/PinDrop';
+import PindropIcon from '@material-ui/icons/PinDrop';
 
 const TripListContainer = ({ trips }) => {
   if (trips.length === 0) {

@@ -1,9 +1,9 @@
 import React from 'react';
 import DealList from '../components/DealList';
 import { Link } from 'react-router-dom';
-import AddIcon from 'material-ui-icons/Add';
-import Button from 'material-ui/Button/Button';
-import withStyles from 'material-ui/styles/withStyles';
+import AddIcon from '@material-ui/icons/Add';
+import Button from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 
 const TripPage = ({ classes, tripId }) => {

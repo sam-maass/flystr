@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import AppBar from 'material-ui/AppBar';
-import Toolbar from 'material-ui/Toolbar';
-import Typography from 'material-ui/Typography';
+import { withStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
 import { CustomDrawer } from './CustomDrawer';
-import BackIcon from 'material-ui-icons/ArrowBack';
+import BackIcon from '@material-ui/icons/ArrowBack';
 import { withRouter } from 'react-router';
-import IconButton from 'material-ui/IconButton/IconButton';
+import IconButton from '@material-ui/core/IconButton';
 
 const styles = {
   flex: {
