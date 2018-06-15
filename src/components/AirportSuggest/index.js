@@ -10,8 +10,6 @@ import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 
-Paper;
-
 function renderInput(inputProps) {
   const {
     classes,
