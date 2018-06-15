@@ -90,15 +90,5 @@ export const loggedOutRoutes = [
     exact: true,
     header: () => <CustomAppBar withDrawer={false} title="Sign up" />,
     main: () => <Pages.Signup />
-  },
-  {
-    path: '/',
-    main: () => (
-      <Redirect
-        to={{
-          pathname: '/login'
-        }}
-      />
-    )
   }
 ];
