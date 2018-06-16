@@ -78,8 +78,10 @@ export default class LaunchSignup extends Component {
             variant="button"
             style={{ textAlign: 'center' }}
           >
-            ✔️ Thanks for your interest. You&#39;ll receive your invitation
-            shortly
+            <span role="img" label="check">
+              ✔️
+            </span>{' '}
+            Thanks for your interest. You&#39;ll receive your invitation shortly
           </Typography>
         </div>
       );
