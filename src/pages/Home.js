@@ -86,8 +86,8 @@ class HomePage extends React.Component {
               <div style={underline} />
               <br />
               <Typography component="p">
-                Travel agencies will always make you overpay, because they need
-                to make a living of your money. And Flight Search Engines only
+                Travel agencies will always make you overpay because they need
+                to make a living off your money. And Flight Search Engines only
                 give you a snapshot of whats happening, but prices change all
                 the time. Flystr is here to make frugal travel easy again.
               </Typography>
@@ -131,9 +131,9 @@ class HomePage extends React.Component {
                     </Typography>
                     <Typography>
                       Our bot is constantly online and on the lookout for the
-                      best deals. We source blogs, forums, twitter and
+                      best deals. We source blogs, forums, Twitter and
                       newsletters in addition to our own research. With years of
-                      experience we know how to find cheap flights.
+                      experience, we know how to find cheap flights.
                     </Typography>
                   </div>
                 </div>
@@ -177,7 +177,7 @@ class HomePage extends React.Component {
                     </Typography>
                     <Typography>
                       Enjoy your flight and keep discovering new places. We
-                      belive that this is the best way to make you happy. And
+                      believe that this is the best way to make you happy. And
                       best of all, you can now spend your money on experiences
                       instead of paying overpriced airline tickets.
                     </Typography>
@@ -193,7 +193,7 @@ class HomePage extends React.Component {
                 <i>
                   We&#39;re still in development, but you can be one of the
                   first to get cheap flight notifications. Leave us an email and
-                  we will provide you with an beta login soon.
+                  we will provide you with a beta login soon.
                 </i>
               </Typography>
               <LaunchSignup />
