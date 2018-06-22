@@ -37,6 +37,7 @@ const logoStyle = {
 
 const headline = {
   textAlign: 'center',
+  fontSize: '36px',
   textTransform: 'capitalize'
 };
 
@@ -81,7 +82,7 @@ class HomePage extends React.Component {
           <Card>
             <CardContent>
               <Typography variant="display2" component="h1" style={headline}>
-                Let your next flight find you
+                Get notified when flights are on sale
               </Typography>
               <div style={underline} />
               <br />
