@@ -5,7 +5,7 @@ const containerStyle = {
   textAlign: 'center',
   display: 'grid',
   gridTemplateRows: '50px 1fr',
-  gridTemplateColumns: '1fr 800px 1fr',
+  gridTemplateColumns: '1fr minmax(auto, 800px) 1fr',
   gridTemplateAreas: `
   '. . .'
   '. content .'

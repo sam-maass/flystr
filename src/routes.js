@@ -95,7 +95,7 @@ export const loggedOutRoutes = [
   {
     path: '/impressum',
     exact: true,
-    header: () => <LoggedOutAppBar withDrawer={false} title="Impressum" />,
+    header: () => <LoggedOutAppBar />,
     main: () => <Pages.Impressum />
   }
 ];
