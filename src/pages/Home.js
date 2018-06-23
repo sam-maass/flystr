@@ -15,7 +15,7 @@ const gridStyle = {
   backgroundImage: 'url("/landing.jpg")',
   backgroundSize: 'cover',
   display: 'grid',
-  gridGap: 32,
+  gridGap: 10,
   gridTemplateAreas: '". . ." ". . ." ". footer ."',
   minHeight: '100vh',
   height: '100%',
