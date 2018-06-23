@@ -4,6 +4,7 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import { colors } from '@material-ui/core';
 import LaunchSignup from '../components/LaunchSignup';
+import Footer from '../components/Footer';
 
 const containerStyle = {
   gridColumn: 2,
@@ -15,6 +16,7 @@ const gridStyle = {
   backgroundSize: 'cover',
   display: 'grid',
   gridGap: 32,
+  gridTemplateAreas: '". . ." ". . ." ". footer ."',
   minHeight: '100vh',
   height: '100%',
   gridTemplateColumns: '1fr minmax(auto,800px) 1fr',
@@ -200,6 +202,9 @@ class HomePage extends React.Component {
               <LaunchSignup />
             </CardContent>
           </Card>
+        </div>
+        <div style={{ gridArea: 'footer' }}>
+          <Footer />
         </div>
       </div>
     );
