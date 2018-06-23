@@ -1,3 +1,4 @@
+import '../components/LogoContainer/LogoContainer.story';
 import '../components/LoggedOutAppBar/LoggedOutAppBar.story';
 import '../components/Footer/footer.story';
 import React from 'react';

@@ -1,8 +1,8 @@
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import { Link } from 'react-router-dom';
+import LogoContainer from '../LogoContainer';
 
 const linkStyle = {
   color: 'white',
@@ -13,11 +13,9 @@ const LoggedOutAppBar = () => {
   return (
     <AppBar>
       <Toolbar>
-        <Typography variant="title">
-          <Link style={linkStyle} to="/">
-            Flystr
-          </Link>
-        </Typography>
+        <Link style={linkStyle} to="/">
+          <LogoContainer />
+        </Link>
       </Toolbar>
     </AppBar>
   );
