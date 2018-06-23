@@ -1,4 +1,4 @@
-import '../components/footer/footer.story';
+import '../components/Footer/footer.story';
 import React from 'react';
 
 import { storiesOf } from '@storybook/react';
