@@ -1,6 +1,7 @@
 import { Redirect } from 'react-router-dom';
 import React from 'react';
 import { CustomAppBar } from './components/CustomAppBar';
+import LoggedOutAppBar from './components/LoggedOutAppBar';
 import * as Pages from './pages/index';
 
 export const loggedInRoutes = [
@@ -94,6 +95,7 @@ export const loggedOutRoutes = [
   {
     path: '/impressum',
     exact: true,
+    header: () => <LoggedOutAppBar withDrawer={false} title="Impressum" />,
     main: () => <Pages.Impressum />
   }
 ];
