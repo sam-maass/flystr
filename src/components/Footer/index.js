@@ -1,5 +1,6 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
+import { Link } from 'react-router-dom';
 
 const style = {
   display: 'grid',
@@ -28,9 +29,9 @@ const Footer = () => (
       </a>
     </Typography>
     <Typography>
-      <a style={footerLinkStyle} href="/impressum">
+      <Link style={footerLinkStyle} to="/impressum">
         Impressum
-      </a>
+      </Link>
     </Typography>
   </div>
 );

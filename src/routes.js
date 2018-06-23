@@ -90,5 +90,10 @@ export const loggedOutRoutes = [
     exact: true,
     header: () => <CustomAppBar withDrawer={false} title="Sign up" />,
     main: () => <Pages.Signup />
+  },
+  {
+    path: '/impressum',
+    exact: true,
+    main: () => <Pages.Impressum />
   }
 ];
