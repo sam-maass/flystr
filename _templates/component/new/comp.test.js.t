@@ -2,6 +2,7 @@
 to: src/components/<%= name %>/<%= name %>.test.js
 ---
 import renderer from 'react-test-renderer'
+import React from 'react'
 import <%= name %> from '.'
 
 it('<%= name %>: default', () => {
