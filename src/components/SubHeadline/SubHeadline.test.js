@@ -3,7 +3,7 @@ import React from 'react';
 import SubHeadline from '.';
 
 it('SubHeadline: default', () => {
-  const component = renderer.create(<SubHeadline />);
+  const component = renderer.create(<SubHeadline>Test</SubHeadline>);
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });

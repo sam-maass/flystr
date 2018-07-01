@@ -3,8 +3,8 @@ import { storiesOf } from '@storybook/react';
 import SubHeadline from '.';
 
 storiesOf('SubHeadline', module).add('default', () => (
-  <SubHeadline title="Subheadline" />
+  <SubHeadline>Subheadline</SubHeadline>
 ));
 storiesOf('SubHeadline', module).add('with bar', () => (
-  <SubHeadline title="Subheadline" withBar />
+  <SubHeadline withBar>Subheadline</SubHeadline>
 ));

@@ -18,17 +18,17 @@ const bar = css`
   background-color: #ff6d00;
 `;
 
-const SubHeadline = ({ title, withBar }) => {
+const SubHeadline = ({ children, withBar }) => {
   return (
     <div className={container}>
-      <div className={typography}>{title}</div>
+      <div className={typography}>{children}</div>
       {withBar && <div className={bar} />}
     </div>
   );
 };
 
 SubHeadline.propTypes = {
-  title: PropTypes.string,
+  children: PropTypes.node.isRequired,
   withBar: PropTypes.bool
 };
 
