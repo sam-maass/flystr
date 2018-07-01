@@ -3,8 +3,8 @@ import { storiesOf } from '@storybook/react';
 import HugeHeadline from '.';
 
 storiesOf('HugeHeadline', module).add('default', () => (
-  <HugeHeadline title="I'm a huge headline" />
+  <HugeHeadline>I am a huge headline</HugeHeadline>
 ));
 storiesOf('HugeHeadline', module).add('with bar', () => (
-  <HugeHeadline title="I'm a huge headline" withBar />
+  <HugeHeadline withBar>I am a huge headline</HugeHeadline>
 ));
