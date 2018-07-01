@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FlowText: default 1`] = `
+.emotion-0 {
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 33px;
+  font-size: 16px;
+  text-align: center;
+  -webkit-letter-spacing: 0.05em;
+  -moz-letter-spacing: 0.05em;
+  -ms-letter-spacing: 0.05em;
+  letter-spacing: 0.05em;
+}
+
+<div
+  className="emotion-0"
+>
+  Some random text
+</div>
+`;

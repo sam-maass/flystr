@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StepContainer: default 1`] = `
+.emotion-1 {
+  width: 100%;
+}
+
+.emotion-0 {
+  text-align: center;
+  font-family: 'Comfortaa';
+  font-size: 36px;
+}
+
+.emotion-3 {
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 33px;
+  font-size: 16px;
+  text-align: center;
+  -webkit-letter-spacing: 0.05em;
+  -moz-letter-spacing: 0.05em;
+  -ms-letter-spacing: 0.05em;
+  letter-spacing: 0.05em;
+}
+
+.emotion-2 {
+  font-weight: bold;
+}
+
+.emotion-4 {
+  display: grid;
+  width: 400px;
+  text-align: center;
+  grid-gap: 16px;
+  justify-items: center;
+}
+
+<div
+  className="emotion-4"
+>
+  <img
+    src="/images/world.svg"
+  />
+  <div
+    className="emotion-2"
+  >
+    <div
+      className="emotion-1"
+    >
+      <div
+        className="emotion-0"
+      >
+        <span>
+          select
+          <br />
+           destinations & dates
+        </span>
+      </div>
+    </div>
+  </div>
+  <div
+    className="emotion-3"
+  >
+    Select your favorite destinations, add travel periods and budget. Looking for a flight to New York in October and to Japan in April or May? We've got you covered!
+  </div>
+</div>
+`;
