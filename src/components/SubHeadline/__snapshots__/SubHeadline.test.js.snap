@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SubHeadline: default 1`] = `
+<div>
+  <div
+    className="css-mj8p7b"
+  />
+</div>
+`;
