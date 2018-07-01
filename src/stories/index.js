@@ -1,9 +1,9 @@
-import '../components/test/test.story';
-import '../components/unnamed/unnamed.story';
+import '../components/SubHeadline/SubHeadline.story';
 import '../components/LogoContainer/LogoContainer.story';
 import '../components/LoggedOutAppBar/LoggedOutAppBar.story';
 import '../components/Footer/footer.story';
 import React from 'react';
+import '../injectGlobalStyles';
 
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';

@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import store from './store';
 import LayoutContainer from './Layout';
 import registerServiceWorker from './registerServiceWorker';
+import './injectGlobalStyles';
 
 ReactDOM.render(
   <Provider store={store}>
