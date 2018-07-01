@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer: default 1`] = `
+<div
+  style={
+    Object {
+      "display": "grid",
+      "gridTemplateColumns": "repeat(3,1fr)",
+      "justifyItems": "center",
+    }
+  }
+>
+  <p
+    className="MuiTypography-root-1 MuiTypography-body1-10"
+  >
+    <a
+      href="https://twitter.com/flystr_com"
+      style={
+        Object {
+          "color": "white",
+          "textDecoration": "none",
+        }
+      }
+    >
+      Twitter
+    </a>
+  </p>
+  <p
+    className="MuiTypography-root-1 MuiTypography-body1-10"
+  >
+    <a
+      href="https://www.instagram.com/flystr_dot_com/"
+      style={
+        Object {
+          "color": "white",
+          "textDecoration": "none",
+        }
+      }
+    >
+      Instagram
+    </a>
+  </p>
+  <p
+    className="MuiTypography-root-1 MuiTypography-body1-10"
+  >
+    <a
+      href="/impressum"
+      onClick={[Function]}
+      style={
+        Object {
+          "color": "white",
+          "textDecoration": "none",
+        }
+      }
+    >
+      Impressum
+    </a>
+  </p>
+</div>
+`;

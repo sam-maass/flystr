@@ -38,6 +38,7 @@
     "start": "PORT=3001 react-scripts start",
     "build": "react-scripts build",
     "lint": "eslint --fix 'src/**/*.js'",
+    "test-watch": "jest --watch",
     "test": "npm run lint && npm run build && bundlesize",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",

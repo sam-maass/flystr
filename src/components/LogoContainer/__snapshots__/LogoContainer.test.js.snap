@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LogoContainer: default 1`] = `
+<div
+  style={
+    Object {
+      "backgoundSize": "cover",
+      "backgroundImage": "url(\\"/logo3.png\\")",
+      "backgroundRepeat": "no-repeat",
+      "backgroundSize": "contain",
+      "color": "red",
+      "height": 40,
+      "width": 160,
+    }
+  }
+/>
+`;

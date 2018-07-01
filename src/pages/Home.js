@@ -54,14 +54,14 @@ const advantageDiv = {
   display: 'flex'
 };
 
-const subheadline = {};
-
 const bigIcon = {
   fontSize: 42,
   marginRight: 50,
   marginLeft: 20,
   height: 50
 };
+
+const subheadline = {};
 
 const underline = {
   width: 200,
@@ -195,8 +195,8 @@ class HomePage extends React.Component {
               <Typography component="p">
                 <i>
                   We&#39;re still in development, but you can be one of the
-                  first to get cheap flight notifications. Leave us an email and
-                  we will provide you with a beta login soon.
+                  first to get cheap flight notifications. Leave us your email
+                  and we will provide you with a beta login soon.
                 </i>
               </Typography>
               <LaunchSignup />
