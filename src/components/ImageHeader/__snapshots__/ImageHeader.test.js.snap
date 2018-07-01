@@ -1,11 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ImageHeader: default 1`] = `
+.emotion-1 {
+  height: 300px;
+  background-image: url(/images/landing.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position-y: 50%;
+  padding: 10px;
+}
+
+.emotion-0 {
+  height: 60px;
+  background-image: url(/images/logo3.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
 <div
-  className="css-7jkc2w"
+  className="emotion-1"
 >
   <div
-    className="css-a0paar"
+    className="emotion-0"
   />
 </div>
 `;
