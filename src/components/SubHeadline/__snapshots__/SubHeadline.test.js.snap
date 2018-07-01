@@ -1,11 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SubHeadline: default 1`] = `
+.emotion-1 {
+  width: 100%;
+}
+
+.emotion-0 {
+  text-align: center;
+  font-family: 'Comfortaa';
+  font-size: 36px;
+}
+
 <div
-  className="css-1ago99h"
+  className="emotion-1"
 >
   <div
-    className="css-110mpuw"
+    className="emotion-0"
   />
 </div>
 `;

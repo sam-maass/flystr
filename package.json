@@ -2,6 +2,9 @@
   "name": "web",
   "version": "0.1.0",
   "private": true,
+  "jest":{
+    "setupTestFrameworkScriptFile": "./jestSetup.js"
+  },
   "bundlesize": [
     {
       "path": "./build/static/js/main*.js",
