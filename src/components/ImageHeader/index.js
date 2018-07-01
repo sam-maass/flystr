@@ -3,6 +3,7 @@ import bgImage from '../../images/landing.jpg';
 import logo from '../../images/logo3.png';
 import { css } from 'emotion';
 import PropTypes from 'prop-types';
+import HugeHeadline from '../HugeHeadline';
 
 const header = css`
   height: 300px;
@@ -18,13 +19,17 @@ const logoStyle = css`
   background-image: url(${logo});
   background-size: contain;
   background-repeat: no-repeat;
+  margin-bottom:20px;
 `;
 
-const ImageHeader = props => {
+const ImageHeader = () => {
   return (
     <div className={header}>
       <div className={logoStyle} />
-      {props.children}
+      <HugeHeadline withBar>
+        select your destination<br/>
+        we find the best flights
+      </HugeHeadline>
     </div>
   );
 };

@@ -26,17 +26,17 @@ const bar = css`
   background-color: #ff6d00;
 `;
 
-const HugeHeadline = ({ title, withBar }) => {
+const HugeHeadline = ({ children, withBar }) => {
   return (
     <div className={container}>
-      <div className={typography}>{title}</div>
+      <div className={typography}>{children}</div>
       {withBar && <div className={bar} />}
     </div>
   );
 };
 
 HugeHeadline.propTypes = {
-  title: PropTypes.string,
+  children: PropTypes.node,
   withBar: PropTypes.bool
 };
 
