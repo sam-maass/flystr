@@ -1,3 +1,4 @@
+import '../components/ImageHeader/ImageHeader.story';
 import '../components/SubHeadline/SubHeadline.story';
 import '../components/LogoContainer/LogoContainer.story';
 import '../components/LoggedOutAppBar/LoggedOutAppBar.story';

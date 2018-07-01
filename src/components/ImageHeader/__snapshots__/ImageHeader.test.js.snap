@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ImageHeader: default 1`] = `
+<div
+  className="css-7jkc2w"
+>
+  <div
+    className="css-a0paar"
+  />
+</div>
+`;
