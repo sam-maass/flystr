@@ -19,7 +19,7 @@ const containerStyle = css`
 const StepContainer = ({ title, text, icon }) => {
   return (
     <div className={containerStyle}>
-      <img src={icon} />
+      <img src={icon} alt="icon" />
       <div className={headlineStyle}>
         <SubHeadline>{title}</SubHeadline>
       </div>

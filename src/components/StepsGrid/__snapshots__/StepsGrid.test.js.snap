@@ -51,6 +51,7 @@ exports[`StepsGrid: default 1`] = `
     className="emotion-4"
   >
     <img
+      alt="icon"
       src="IMAGE_MOCK"
     />
     <div
@@ -80,6 +81,7 @@ exports[`StepsGrid: default 1`] = `
     className="emotion-4"
   >
     <img
+      alt="icon"
       src="IMAGE_MOCK"
     />
     <div
@@ -109,6 +111,7 @@ exports[`StepsGrid: default 1`] = `
     className="emotion-4"
   >
     <img
+      alt="icon"
       src="IMAGE_MOCK"
     />
     <div
