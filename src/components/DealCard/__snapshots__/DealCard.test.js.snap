@@ -15,7 +15,7 @@ exports[`DealCard: default 1`] = `
 }
 
 .emotion-7 {
-  max-width: 400px;
+  width: 400px;
 }
 
 .emotion-6 {

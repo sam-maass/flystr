@@ -17,6 +17,7 @@ exports[`Matches snapshot 1`] = `
     >
       deals we found last week
     </SubHeadline>
+    <DealCardGrid />
   </div>
 </div>
 `;

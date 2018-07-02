@@ -1,3 +1,4 @@
+import '../components/DealCardGrid/DealCardGrid.story';
 import '../components/DealCard/DealCard.story';
 import '../components/StepsGrid/StepsGrid.story';
 import '../components/FlowText/FlowText.story';

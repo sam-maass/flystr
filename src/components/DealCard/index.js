@@ -5,7 +5,7 @@ import { classes, styles } from '../../styles';
 import PropTypes from 'prop-types';
 
 const wrapperStyle = css`
-  max-width: 400px;
+  width: 400px;
 `;
 
 const imgStyle = img => css`
