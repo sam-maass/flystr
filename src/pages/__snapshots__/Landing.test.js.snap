@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Matches snapshot 1`] = `
+<div>
+  <ImageHeader />
+  <div
+    className="css-rhzkfc"
+  >
+    <SubHeadline
+      withBar={true}
+    >
+      how it works
+    </SubHeadline>
+    <StepsGrid />
+    <SubHeadline
+      withBar={true}
+    >
+      deals we found last week
+    </SubHeadline>
+  </div>
+</div>
+`;

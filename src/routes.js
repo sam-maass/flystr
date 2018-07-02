@@ -81,6 +81,11 @@ export const loggedOutRoutes = [
     main: () => <Pages.Home />
   },
   {
+    path: '/new',
+    exact: true,
+    main: () => <Pages.Landing />
+  },
+  {
     path: '/login',
     exact: true,
     header: () => <CustomAppBar withDrawer={false} title="Login" />,

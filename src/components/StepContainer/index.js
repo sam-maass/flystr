@@ -9,6 +9,7 @@ const headlineStyle = css`
 `;
 const containerStyle = css`
   display: grid;
+  grid-template-rows: 100px;
   width: 400px;
   text-align: center;
   grid-gap: 16px;
