@@ -7,10 +7,14 @@ import StepContainer from '../StepContainer';
 
 const threeItemGrid = css`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
   grid-template-rows: min-content min-content 1fr;
   justify-items: center;
+  grid-gap: 16px;
   align-items: flex-start;
+  @media only screen and (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 `;
 const StepsGrid = () => {
   return (

@@ -9,8 +9,12 @@ const gridStyle = css`
   margin-top: 32px;
   margin-bottom: 64px;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 16px;
+  grid-template-columns: 1fr;
   justify-items: center;
+  @media only screen and (min-width: 1024px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 `;
 
 const DealCardGrid = () => {

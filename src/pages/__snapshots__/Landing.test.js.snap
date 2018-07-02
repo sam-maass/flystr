@@ -4,7 +4,7 @@ exports[`Matches snapshot 1`] = `
 <div>
   <ImageHeader />
   <div
-    className="css-rhzkfc"
+    className="css-myhsyz"
   >
     <SubHeadline
       withBar={true}

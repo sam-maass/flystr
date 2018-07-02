@@ -15,7 +15,9 @@ exports[`DealCardGrid: default 1`] = `
 }
 
 .emotion-7 {
-  width: 400px;
+  width: 100%;
+  max-width: 400px;
+  padding-bottom: 16px;
 }
 
 .emotion-6 {
@@ -77,8 +79,15 @@ exports[`DealCardGrid: default 1`] = `
   margin-top: 32px;
   margin-bottom: 64px;
   display: grid;
-  grid-template-columns: repeat(3,1fr);
+  grid-gap: 16px;
+  grid-template-columns: 1fr;
   justify-items: center;
+}
+
+@media only screen and (min-width:1024px) {
+  .emotion-24 {
+    grid-template-columns: repeat(3,1fr);
+  }
 }
 
 .emotion-0 {

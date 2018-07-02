@@ -11,14 +11,20 @@ exports[`SubHeadline: default 1`] = `
   color: #263238;
   font-family: 'Comfortaa';
   font-style: normal;
-  line-height: 33px;
-  font-size: 36px;
+  line-height: 1.7em;
+  font-size: 24px;
   margin-bottom: 8px;
   -webkit-letter-spacing: 0.1em;
   -moz-letter-spacing: 0.1em;
   -ms-letter-spacing: 0.1em;
   letter-spacing: 0.1em;
   text-align: center;
+}
+
+@media only screen and (min-width:1024px) {
+  .emotion-0 {
+    font-size: 36px;
+  }
 }
 
 <div

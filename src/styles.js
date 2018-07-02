@@ -22,23 +22,29 @@ export const classes = {
     h1: css`
       color: ${styles.colors.darkGray};
       font-family: 'Comfortaa';
-      font-size: 36px;
+      font-size: 24px;
       font-style: normal;
       font-weight: bold;
       letter-spacing: 0.1em;
-      line-height: 50px;
+      line-height: 1.7em;
       margin-bottom: 8px;
       text-transform: uppercase;
+      @media only screen and (min-width: 1024px) {
+        font-size: 36px;
+      }
     `,
 
     h2: css`
       color: ${styles.colors.darkGray};
       font-family: 'Comfortaa';
       font-style: normal;
-      line-height: 33px;
-      font-size: 36px;
+      line-height: 1.7em;
+      font-size: 24px;
       margin-bottom: 8px;
       letter-spacing: 0.1em;
+      @media only screen and (min-width: 1024px) {
+        font-size: 36px;
+      }
     `,
 
     title: css`

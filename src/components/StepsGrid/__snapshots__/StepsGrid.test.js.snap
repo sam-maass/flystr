@@ -18,8 +18,8 @@ exports[`StepsGrid: default 1`] = `
   color: #263238;
   font-family: 'Comfortaa';
   font-style: normal;
-  line-height: 33px;
-  font-size: 36px;
+  line-height: 1.7em;
+  font-size: 24px;
   margin-bottom: 8px;
   -webkit-letter-spacing: 0.1em;
   -moz-letter-spacing: 0.1em;
@@ -28,24 +28,38 @@ exports[`StepsGrid: default 1`] = `
   font-weight: bold;
 }
 
+@media only screen and (min-width:1024px) {
+  .emotion-0 {
+    font-size: 36px;
+  }
+}
+
 .emotion-2 {
   display: grid;
   grid-template-rows: 100px;
-  width: 400px;
+  max-width: 400px;
   text-align: center;
   grid-gap: 16px;
   justify-items: center;
+  margin-bottom: 16px;
 }
 
 .emotion-9 {
   display: grid;
-  grid-template-columns: repeat(3,1fr);
+  grid-template-columns: 1fr;
   grid-template-rows: min-content min-content 1fr;
   justify-items: center;
+  grid-gap: 16px;
   -webkit-align-items: flex-start;
   -webkit-box-align: flex-start;
   -ms-flex-align: flex-start;
   align-items: flex-start;
+}
+
+@media only screen and (min-width:1024px) {
+  .emotion-9 {
+    grid-template-columns: repeat(3,1fr);
+  }
 }
 
 <div
