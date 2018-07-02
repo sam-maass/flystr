@@ -1,7 +1,6 @@
 import renderer from 'react-test-renderer';
 import React from 'react';
 import StepContainer from '.';
-jest.mock('../../images/world.svg', () => '/images/world.svg');
 const worldIcon = '/images/world.svg';
 
 it('StepContainer: default', () => {
