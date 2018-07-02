@@ -30,6 +30,7 @@ exports[`StepContainer: default 1`] = `
 
 .emotion-4 {
   display: grid;
+  grid-template-rows: 100px;
   width: 400px;
   text-align: center;
   grid-gap: 16px;

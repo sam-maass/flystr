@@ -1,3 +1,4 @@
+import '../components/StepsGrid/StepsGrid.story';
 import '../components/FlowText/FlowText.story';
 import '../components/StepContainer/StepContainer.story';
 import '../components/HugeHeadline/HugeHeadline.story';
