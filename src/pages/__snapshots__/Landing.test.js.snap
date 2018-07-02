@@ -18,6 +18,12 @@ exports[`Matches snapshot 1`] = `
       deals we found last week
     </SubHeadline>
     <DealCardGrid />
+    <SubHeadline
+      withBar={true}
+    >
+      try flystr
+    </SubHeadline>
+    <<BetaSignupForm/> />
   </div>
 </div>
 `;

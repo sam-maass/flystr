@@ -1,0 +1,105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BetaSignupForm: default 1`] = `
+.emotion-0 {
+  color: #263238;
+  font-family: 'Open Sans',sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0.05em;
+  -moz-letter-spacing: 0.05em;
+  -ms-letter-spacing: 0.05em;
+  letter-spacing: 0.05em;
+  line-height: 1.6em;
+}
+
+.emotion-2 {
+  margin: auto;
+  max-width: 400px;
+  text-align: center;
+}
+
+.emotion-1 {
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  font-size: 14px;
+  text-align: center;
+  -webkit-letter-spacing: 0.0357143em;
+  -moz-letter-spacing: 0.0357143em;
+  -ms-letter-spacing: 0.0357143em;
+  letter-spacing: 0.0357143em;
+  color: #FFF;
+  background: #FF6D00;
+}
+
+.emotion-1:hover {
+  background: #ee6002;
+}
+
+<div
+  className="emotion-2"
+>
+  <div>
+    <div
+      className="emotion-0"
+    >
+      We're still in development, but you can be one of the first to get cheap flight notifications. Leave us an email and we will provide you with a beta login soon.
+    </div>
+    <div
+      className="MuiFormControl-root-1 MuiFormControl-marginNormal-2 MuiFormControl-fullWidth-4"
+    >
+      <label
+        className="MuiFormLabel-root-10 MuiInputLabel-root-5 MuiInputLabel-formControl-6 MuiInputLabel-animated-9"
+        data-shrink={false}
+        htmlFor="email"
+      >
+        Email
+      </label>
+      <div
+        className="MuiInput-root-15 MuiInput-fullWidth-22 MuiInput-formControl-16 MuiInput-underline-19"
+      >
+        <input
+          aria-invalid={false}
+          aria-required={false}
+          className="MuiInput-input-23"
+          disabled={false}
+          id="email"
+          onBlur={[Function]}
+          onChange={[Function]}
+          onFocus={[Function]}
+          type="text"
+          value=""
+        />
+      </div>
+    </div>
+    <button
+      className="MuiButtonBase-root-52 MuiButton-root-28 MuiButton-contained-37 MuiButton-raised-40 MuiButton-fullWidth-51 emotion-1"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      <span
+        className="MuiButton-label-29"
+      >
+        Try Flystr
+      </span>
+      <span
+        className="MuiTouchRipple-root-55"
+      />
+    </button>
+  </div>
+</div>
+`;
