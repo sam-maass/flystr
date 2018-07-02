@@ -13,20 +13,6 @@ const containerStyle = css`
   text-align: center;
 `;
 
-const StyledButton = styled(Button)`
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  font-size: 14px;
-  text-align: center;
-  letter-spacing: 0.0357143em;
-  color: #fff;
-  background: ${styles.colors.orange};
-  &:hover {
-    background: #ee6002;
-  }
-`;
-
 const Icon = styled(CheckIcon)`
   color: ${styles.colors.green3};
   font-size: 5em;
@@ -74,13 +60,14 @@ class BetaSignupForm extends React.Component {
               onChange={this.handleChange}
               margin="normal"
             />
-            <StyledButton
+            <Button
+              color="secondary"
               fullWidth
               variant="contained"
               onClick={this.handleSubmit}
             >
               Try Flystr
-            </StyledButton>
+            </Button>
           </div>
         )}
         {this.state.submitted && (
