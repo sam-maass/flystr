@@ -41,6 +41,7 @@ exports[`StepContainer: default 1`] = `
   className="emotion-4"
 >
   <img
+    alt="icon"
     src="/images/world.svg"
   />
   <div
