@@ -9,6 +9,7 @@ exports[`SubHeadline: default 1`] = `
   text-align: center;
   font-family: 'Comfortaa';
   font-size: 36px;
+  color: #263238;
 }
 
 <div

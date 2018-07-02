@@ -1,6 +1,7 @@
 import React from 'react';
 import { css } from 'emotion';
 import PropTypes from 'prop-types';
+import { styles } from '../../styles';
 
 const container = css`
   width: 100%;
@@ -16,14 +17,13 @@ const typography = css`
   letter-spacing: 0.1em;
   text-transform: uppercase;
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-
-  color: #fafafa;
+  color: ${styles.colors.white};
 `;
 const bar = css`
   height: 5px;
   width: 200px;
   margin: auto;
-  background-color: #ff6d00;
+  background-color: ${styles.colors.orange};
 `;
 
 const HugeHeadline = ({ children, withBar }) => {

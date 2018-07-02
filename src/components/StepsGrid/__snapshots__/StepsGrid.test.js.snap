@@ -9,19 +9,21 @@ exports[`StepsGrid: default 1`] = `
   text-align: center;
   font-family: 'Comfortaa';
   font-size: 36px;
+  color: #263238;
 }
 
 .emotion-3 {
-  font-family: Open Sans;
+  font-family: 'Open Sans',sans-serif;
   font-style: normal;
   font-weight: normal;
-  line-height: 33px;
+  line-height: 1.6em;
   font-size: 16px;
   text-align: center;
   -webkit-letter-spacing: 0.05em;
   -moz-letter-spacing: 0.05em;
   -ms-letter-spacing: 0.05em;
   letter-spacing: 0.05em;
+  color: #263238;
 }
 
 .emotion-2 {
