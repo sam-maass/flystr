@@ -14,32 +14,14 @@ exports[`BetaSignupForm: default 1`] = `
   line-height: 1.6em;
 }
 
-.emotion-2 {
+.emotion-1 {
   margin: auto;
   max-width: 400px;
   text-align: center;
 }
 
-.emotion-1 {
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  font-size: 14px;
-  text-align: center;
-  -webkit-letter-spacing: 0.0357143em;
-  -moz-letter-spacing: 0.0357143em;
-  -ms-letter-spacing: 0.0357143em;
-  letter-spacing: 0.0357143em;
-  color: #fff;
-  background: #FF6D00;
-}
-
-.emotion-1:hover {
-  background: #ee6002;
-}
-
 <div
-  className="emotion-2"
+  className="emotion-1"
 >
   <div>
     <div
@@ -75,7 +57,7 @@ exports[`BetaSignupForm: default 1`] = `
       </div>
     </div>
     <button
-      className="MuiButtonBase-root-52 MuiButton-root-28 MuiButton-contained-37 MuiButton-raised-40 MuiButton-fullWidth-51 emotion-1"
+      className="MuiButtonBase-root-52 MuiButton-root-28 MuiButton-contained-37 MuiButton-containedSecondary-39 MuiButton-raised-40 MuiButton-raisedSecondary-42 MuiButton-fullWidth-51"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
