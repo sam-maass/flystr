@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "jest": {
-    "setupTestFrameworkScriptFile": "./jestSetup.js"
+    "setupTestFrameworkScriptFile": "./jestSetup.js",
+    "moduleNameMapper": {
+      ".*\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/mocks/image.js"
+    }
   },
   "bundlesize": [
     {
@@ -79,6 +82,8 @@
     "prettier": "^1.13.7",
     "react-test-renderer": "^16.4.1",
     "redux-devtools-extension": "^2.13.5",
-    "webpack-bundle-analyzer": "^2.13.1"
+    "webpack-bundle-analyzer": "^2.13.1",
+    "enzyme":"3.3.0",
+    "enzyme-adapter-react-16":"1.1.1"
   }
 }
