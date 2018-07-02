@@ -1,3 +1,6 @@
+import '../components/BetaSignupForm/BetaSignupForm.story';
+import '../components/DealCardGrid/DealCardGrid.story';
+import '../components/DealCard/DealCard.story';
 import '../components/StepsGrid/StepsGrid.story';
 import '../components/FlowText/FlowText.story';
 import '../components/StepContainer/StepContainer.story';

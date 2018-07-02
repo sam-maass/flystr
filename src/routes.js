@@ -78,11 +78,6 @@ export const loggedOutRoutes = [
   {
     path: '/',
     exact: true,
-    main: () => <Pages.Home />
-  },
-  {
-    path: '/new',
-    exact: true,
     main: () => <Pages.Landing />
   },
   {

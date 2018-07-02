@@ -1,6 +1,5 @@
 import Landing from './Landing.js';
 import Impressum from './Impressum.js';
-import Home from './Home';
 import Login from './Login';
 import Signup from './Signup';
 import NewDeal from './NewDeal';
@@ -12,7 +11,6 @@ import Trips from './Trips';
 export {
   Landing,
   Impressum,
-  Home,
   Login,
   Signup,
   NewTrip,

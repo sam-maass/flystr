@@ -2,16 +2,16 @@
 
 exports[`FlowText: default 1`] = `
 .emotion-0 {
-  font-family: Open Sans;
+  color: #263238;
+  font-family: 'Open Sans',sans-serif;
+  font-size: 16px;
   font-style: normal;
   font-weight: normal;
-  line-height: 33px;
-  font-size: 16px;
-  text-align: center;
   -webkit-letter-spacing: 0.05em;
   -moz-letter-spacing: 0.05em;
   -ms-letter-spacing: 0.05em;
   letter-spacing: 0.05em;
+  line-height: 1.6em;
 }
 
 <div

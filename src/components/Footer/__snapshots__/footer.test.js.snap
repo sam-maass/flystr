@@ -1,60 +1,75 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Footer: default 1`] = `
-<div
-  style={
-    Object {
-      "display": "grid",
-      "gridTemplateColumns": "repeat(3,1fr)",
-      "justifyItems": "center",
-    }
+.emotion-0 {
+  color: #263238;
+  font-family: 'Open Sans',sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0.05em;
+  -moz-letter-spacing: 0.05em;
+  -ms-letter-spacing: 0.05em;
+  letter-spacing: 0.05em;
+  line-height: 1.6em;
+  display: grid;
+  grid-gap: 8px;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  margin-top: 96px;
+  margin-bottom: 16px;
+}
+
+@media only screen and (min-width:1024px) {
+  .emotion-0 {
+    grid-template-columns: repeat(4,1fr);
   }
+}
+
+.emotion-0 a {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: #607D8B;
+}
+
+.emotion-0 a:hover {
+  color: #263238;
+}
+
+.emotion-0 .copyright {
+  grid-column: 1 / -1;
+  color: #90A4AE;
+}
+
+<div
+  className="emotion-0"
 >
-  <p
-    className="MuiTypography-root-1 MuiTypography-body1-10"
+  <a
+    href="https://twitter.com/flystr_com"
   >
-    <a
-      href="https://twitter.com/flystr_com"
-      style={
-        Object {
-          "color": "white",
-          "textDecoration": "none",
-        }
-      }
-    >
-      Twitter
-    </a>
-  </p>
-  <p
-    className="MuiTypography-root-1 MuiTypography-body1-10"
+    Twitter
+  </a>
+  <a
+    href="https://www.instagram.com/flystr_dot_com/"
   >
-    <a
-      href="https://www.instagram.com/flystr_dot_com/"
-      style={
-        Object {
-          "color": "white",
-          "textDecoration": "none",
-        }
-      }
-    >
-      Instagram
-    </a>
-  </p>
-  <p
-    className="MuiTypography-root-1 MuiTypography-body1-10"
+    Instagram
+  </a>
+  <a
+    href="/impressum"
+    onClick={[Function]}
   >
-    <a
-      href="/impressum"
-      onClick={[Function]}
-      style={
-        Object {
-          "color": "white",
-          "textDecoration": "none",
-        }
-      }
-    >
-      Impressum
-    </a>
-  </p>
+    Imprint
+  </a>
+  <a
+    href="/impressum"
+    onClick={[Function]}
+  >
+    Privacy Policy
+  </a>
+  <div
+    className="copyright"
+  >
+     © Flyster, 2018
+  </div>
 </div>
 `;

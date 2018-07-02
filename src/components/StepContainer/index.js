@@ -1,28 +1,27 @@
 import React from 'react';
 import { css } from 'emotion';
-import SubHeadline from '../SubHeadline';
 import FlowText from '../FlowText';
 import PropTypes from 'prop-types';
+import { classes } from '../../styles';
 
 const headlineStyle = css`
-  font-weight: bold;
+  ${classes.typography.h2} font-weight: bold;
 `;
 const containerStyle = css`
   display: grid;
   grid-template-rows: 100px;
-  width: 400px;
+  max-width: 400px;
   text-align: center;
   grid-gap: 16px;
   justify-items: center;
+  margin-bottom: 16px;
 `;
 
 const StepContainer = ({ title, text, icon }) => {
   return (
     <div className={containerStyle}>
       <img src={icon} alt="icon" />
-      <div className={headlineStyle}>
-        <SubHeadline>{title}</SubHeadline>
-      </div>
+      <div className={headlineStyle}>{title}</div>
       <FlowText>{text}</FlowText>
     </div>
   );

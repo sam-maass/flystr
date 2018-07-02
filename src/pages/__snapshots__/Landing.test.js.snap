@@ -4,7 +4,7 @@ exports[`Matches snapshot 1`] = `
 <div>
   <ImageHeader />
   <div
-    className="css-rhzkfc"
+    className="css-myhsyz"
   >
     <SubHeadline
       withBar={true}
@@ -17,6 +17,14 @@ exports[`Matches snapshot 1`] = `
     >
       deals we found last week
     </SubHeadline>
+    <DealCardGrid />
+    <SubHeadline
+      withBar={true}
+    >
+      try flystr
+    </SubHeadline>
+    <<BetaSignupForm/> />
+    <Footer />
   </div>
 </div>
 `;
