@@ -30,7 +30,7 @@ exports[`BetaSignupForm: default 1`] = `
   -moz-letter-spacing: 0.0357143em;
   -ms-letter-spacing: 0.0357143em;
   letter-spacing: 0.0357143em;
-  color: #FFF;
+  color: #fff;
   background: #FF6D00;
 }
 

@@ -5,6 +5,7 @@ import StepsGrid from '../components/StepsGrid';
 import { css } from 'emotion';
 import DealCardGrid from '../components/DealCardGrid';
 import BetaSignupForm from '../components/BetaSignupForm';
+import Footer from '../components/Footer';
 
 const maxWidth = css`
   max-width: 1280px;
@@ -22,6 +23,7 @@ const Landing = () => {
         <DealCardGrid />
         <SubHeadline withBar>try flystr</SubHeadline>
         <BetaSignupForm />
+        <Footer />
       </div>
     </div>
   );

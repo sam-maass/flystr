@@ -24,6 +24,7 @@ exports[`Matches snapshot 1`] = `
       try flystr
     </SubHeadline>
     <<BetaSignupForm/> />
+    <Footer />
   </div>
 </div>
 `;
