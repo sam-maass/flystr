@@ -15,11 +15,17 @@ const header = css`
 `;
 
 const logoStyle = css`
-  height: 60px;
+  width: 150px;
+  height: 50px;
+  margin: auto;
   background-image: url(${logo});
   background-size: contain;
   background-repeat: no-repeat;
-  margin-bottom:20px;
+  margin-bottom: 20px;
+  @media only screen and (min-width: 1024px) {
+    width: 300px;
+    margin-left: 0;
+  }
 `;
 
 const ImageHeader = () => {
@@ -27,7 +33,7 @@ const ImageHeader = () => {
     <div className={header}>
       <div className={logoStyle} />
       <HugeHeadline withBar>
-        select your destination<br/>
+        select your destination<br />
         we find the best flights
       </HugeHeadline>
     </div>

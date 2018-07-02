@@ -2,67 +2,66 @@
 
 exports[`StepContainer: default 1`] = `
 .emotion-1 {
-  width: 100%;
-}
-
-.emotion-0 {
-  text-align: center;
-  font-family: 'Comfortaa';
-  font-size: 36px;
-}
-
-.emotion-3 {
-  font-family: Open Sans;
+  color: #263238;
+  font-family: 'Open Sans',sans-serif;
+  font-size: 16px;
   font-style: normal;
   font-weight: normal;
-  line-height: 33px;
-  font-size: 16px;
-  text-align: center;
   -webkit-letter-spacing: 0.05em;
   -moz-letter-spacing: 0.05em;
   -ms-letter-spacing: 0.05em;
   letter-spacing: 0.05em;
+  line-height: 1.6em;
 }
 
-.emotion-2 {
+.emotion-0 {
+  color: #263238;
+  font-family: 'Comfortaa';
+  font-style: normal;
+  line-height: 1.7em;
+  font-size: 24px;
+  margin-bottom: 8px;
+  -webkit-letter-spacing: 0.1em;
+  -moz-letter-spacing: 0.1em;
+  -ms-letter-spacing: 0.1em;
+  letter-spacing: 0.1em;
   font-weight: bold;
 }
 
-.emotion-4 {
+@media only screen and (min-width:1024px) {
+  .emotion-0 {
+    font-size: 36px;
+  }
+}
+
+.emotion-2 {
   display: grid;
   grid-template-rows: 100px;
-  width: 400px;
+  max-width: 400px;
   text-align: center;
   grid-gap: 16px;
   justify-items: center;
+  margin-bottom: 16px;
 }
 
 <div
-  className="emotion-4"
+  className="emotion-2"
 >
   <img
     alt="icon"
     src="/images/world.svg"
   />
   <div
-    className="emotion-2"
+    className="emotion-0"
   >
-    <div
-      className="emotion-1"
-    >
-      <div
-        className="emotion-0"
-      >
-        <span>
-          select
-          <br />
-           destinations & dates
-        </span>
-      </div>
-    </div>
+    <span>
+      select
+      <br />
+       destinations & dates
+    </span>
   </div>
   <div
-    className="emotion-3"
+    className="emotion-1"
   >
     Select your favorite destinations, add travel periods and budget. Looking for a flight to New York in October and to Japan in April or May? We've got you covered!
   </div>
