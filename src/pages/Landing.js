@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import ImageHeader from '../components/ImageHeader';
 import SubHeadline from '../components/SubHeadline';
 import StepsGrid from '../components/StepsGrid';
@@ -9,8 +9,7 @@ const maxWidth = css`
   margin: auto;
 `;
 
-class Landing extends PureComponent {
-  render() {
+const Landing = () => {
     return (
       <div>
         <ImageHeader />
@@ -21,7 +20,6 @@ class Landing extends PureComponent {
         </div>
       </div>
     );
-  }
-}
+  };
 
 export default Landing;
