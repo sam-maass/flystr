@@ -6,21 +6,18 @@ import notificationIcon from '../../images/notifications_active.svg';
 import StepContainer from '../StepContainer';
 
 const threeItemGrid = css`
-  margin-top: 32px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: min-content min-content 1fr;
   justify-items: center;
+  align-items: flex-start;
 `;
 const StepsGrid = () => {
   return (
     <div className={threeItemGrid}>
       <StepContainer
         icon={worldIcon}
-        title={
-          <span>
-            select<br /> destinations & dates
-          </span>
-        }
+        title={<span>choose your destinations</span>}
         text="Select your favorite destinations, add travel periods and budget. Looking for a flight to New York in October and to Japan in April or May? We've got you covered!"
       />
       <StepContainer

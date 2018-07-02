@@ -1,17 +1,16 @@
 import React from 'react';
 import { css } from 'emotion';
 import PropTypes from 'prop-types';
-import { styles } from '../../styles';
+import { styles, classes } from '../../styles';
 
 const container = css`
   width: 100%;
+  margin-top: 96px;
+  margin-bottom: 32px;
 `;
 
 const typography = css`
-  text-align: center;
-  font-family: 'Comfortaa';
-  font-size: 36px;
-  color: ${styles.colors.darkGray};
+  ${classes.typography.h2} text-align: center;
 `;
 const bar = css`
   height: 5px;

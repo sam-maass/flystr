@@ -19,24 +19,47 @@ export const styles = {
 
 export const classes = {
   typography: {
-    title: css`
-      font-family: Comfortaa;
+    h1: css`
+      color: ${styles.colors.darkGray};
+      font-family: 'Comfortaa';
+      font-size: 36px;
       font-style: normal;
       font-weight: bold;
-      line-height: normal;
-      font-size: 18px;
       letter-spacing: 0.1em;
+      line-height: 50px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    `,
+
+    h2: css`
       color: ${styles.colors.darkGray};
+      font-family: 'Comfortaa';
+      font-style: normal;
+      line-height: 33px;
+      font-size: 36px;
+      margin-bottom: 8px;
+      letter-spacing: 0.1em;
+    `,
+
+    title: css`
+      color: ${styles.colors.darkGray};
+      font-family: 'Comfortaa';
+      font-size: 18px;
+      font-style: normal;
+      font-weight: bold;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+      line-height: normal;
     `,
 
     base: css`
+      color: ${styles.colors.darkGray};
       font-family: 'Open Sans', sans-serif;
+      font-size: 16px;
       font-style: normal;
       font-weight: normal;
-      line-height: 1.6em;
-      font-size: 16px;
       letter-spacing: 0.05em;
-      color: ${styles.colors.darkGray};
+      line-height: 1.6em;
     `
   }
 };

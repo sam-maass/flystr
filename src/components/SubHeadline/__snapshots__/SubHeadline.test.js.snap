@@ -3,13 +3,22 @@
 exports[`SubHeadline: default 1`] = `
 .emotion-1 {
   width: 100%;
+  margin-top: 96px;
+  margin-bottom: 32px;
 }
 
 .emotion-0 {
-  text-align: center;
-  font-family: 'Comfortaa';
-  font-size: 36px;
   color: #263238;
+  font-family: 'Comfortaa';
+  font-style: normal;
+  line-height: 33px;
+  font-size: 36px;
+  margin-bottom: 8px;
+  -webkit-letter-spacing: 0.1em;
+  -moz-letter-spacing: 0.1em;
+  -ms-letter-spacing: 0.1em;
+  letter-spacing: 0.1em;
+  text-align: center;
 }
 
 <div

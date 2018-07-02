@@ -1,35 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`StepsGrid: default 1`] = `
-.emotion-3 {
+.emotion-1 {
+  color: #263238;
   font-family: 'Open Sans',sans-serif;
+  font-size: 16px;
   font-style: normal;
   font-weight: normal;
-  line-height: 1.6em;
-  font-size: 16px;
   -webkit-letter-spacing: 0.05em;
   -moz-letter-spacing: 0.05em;
   -ms-letter-spacing: 0.05em;
   letter-spacing: 0.05em;
-  color: #263238;
-}
-
-.emotion-1 {
-  width: 100%;
+  line-height: 1.6em;
 }
 
 .emotion-0 {
-  text-align: center;
-  font-family: 'Comfortaa';
-  font-size: 36px;
   color: #263238;
-}
-
-.emotion-2 {
+  font-family: 'Comfortaa';
+  font-style: normal;
+  line-height: 33px;
+  font-size: 36px;
+  margin-bottom: 8px;
+  -webkit-letter-spacing: 0.1em;
+  -moz-letter-spacing: 0.1em;
+  -ms-letter-spacing: 0.1em;
+  letter-spacing: 0.1em;
   font-weight: bold;
 }
 
-.emotion-4 {
+.emotion-2 {
   display: grid;
   grid-template-rows: 100px;
   width: 400px;
@@ -38,102 +37,80 @@ exports[`StepsGrid: default 1`] = `
   justify-items: center;
 }
 
-.emotion-15 {
-  margin-top: 32px;
+.emotion-9 {
   display: grid;
   grid-template-columns: repeat(3,1fr);
+  grid-template-rows: min-content min-content 1fr;
   justify-items: center;
+  -webkit-align-items: flex-start;
+  -webkit-box-align: flex-start;
+  -ms-flex-align: flex-start;
+  align-items: flex-start;
 }
 
 <div
-  className="emotion-15"
+  className="emotion-9"
 >
   <div
-    className="emotion-4"
+    className="emotion-2"
   >
     <img
       alt="icon"
       src="IMAGE_MOCK"
     />
     <div
-      className="emotion-2"
+      className="emotion-0"
     >
-      <div
-        className="emotion-1"
-      >
-        <div
-          className="emotion-0"
-        >
-          <span>
-            select
-            <br />
-             destinations & dates
-          </span>
-        </div>
-      </div>
+      <span>
+        choose your destinations
+      </span>
     </div>
     <div
-      className="emotion-3"
+      className="emotion-1"
     >
       Select your favorite destinations, add travel periods and budget. Looking for a flight to New York in October and to Japan in April or May? We've got you covered!
     </div>
   </div>
   <div
-    className="emotion-4"
+    className="emotion-2"
   >
     <img
       alt="icon"
       src="IMAGE_MOCK"
     />
     <div
-      className="emotion-2"
+      className="emotion-0"
     >
-      <div
-        className="emotion-1"
-      >
-        <div
-          className="emotion-0"
-        >
-          <span>
-            we find the
-            <br />
-             best deals
-          </span>
-        </div>
-      </div>
+      <span>
+        we find the
+        <br />
+         best deals
+      </span>
     </div>
     <div
-      className="emotion-3"
+      className="emotion-1"
     >
       Our bot is constantly online and on the lookout for the best deals. We source blogs, forums, Twitter and newsletters in addition to our own research. With years of experience, we know how to find cheap flights.
     </div>
   </div>
   <div
-    className="emotion-4"
+    className="emotion-2"
   >
     <img
       alt="icon"
       src="IMAGE_MOCK"
     />
     <div
-      className="emotion-2"
+      className="emotion-0"
     >
-      <div
-        className="emotion-1"
-      >
-        <div
-          className="emotion-0"
-        >
-          <span>
-            get alarms &
-            <br />
-             book your trip
-          </span>
-        </div>
-      </div>
+      <span>
+        get alarms &
+        <br />
+         book your trip
+      </span>
     </div>
     <div
-      className="emotion-3"
+      className="emotion-1"
     >
       We will notify you once we have found a deal that fits for you. Get all the information you need and a link to the cheapest booking option within minutes of us discovering a deal. Never again miss out on a deal.
     </div>
