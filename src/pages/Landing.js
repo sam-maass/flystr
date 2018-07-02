@@ -8,7 +8,8 @@ import BetaSignupForm from '../components/BetaSignupForm';
 import Footer from '../components/Footer';
 
 const maxWidth = css`
-  max-width: min(100vw, 1280px);
+  max-width: 100vw;
+  width: 1280px;
   overflow: hidden;
   margin: auto;
   padding: 0 8px 0 8px;
