@@ -22,7 +22,7 @@ exports[`Footer: default 1`] = `
 
 @media only screen and (min-width:1024px) {
   .emotion-0 {
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(3,1fr);
   }
 }
 
@@ -55,13 +55,7 @@ exports[`Footer: default 1`] = `
     Instagram
   </a>
   <a
-    href="/impressum"
-    onClick={[Function]}
-  >
-    Imprint
-  </a>
-  <a
-    href="/impressum"
+    href="/legal"
     onClick={[Function]}
   >
     Privacy Policy
