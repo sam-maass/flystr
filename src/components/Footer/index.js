@@ -11,7 +11,7 @@ const containerStyle = css`
   margin-top: 96px;
   margin-bottom: 16px;
   @media only screen and (min-width: 1024px) {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
   a {
     text-decoration: none;
@@ -30,8 +30,7 @@ const Footer = () => (
   <div className={containerStyle}>
     <a href="https://twitter.com/flystr_com">Twitter</a>
     <a href="https://www.instagram.com/flystr_dot_com/">Instagram</a>
-    <Link to="/impressum">Imprint</Link>
-    <Link to="/impressum">Privacy Policy</Link>
+    <Link to="/legal">Privacy Policy</Link>
     <div className="copyright"> &copy; Flyster, 2018</div>
   </div>
 );
