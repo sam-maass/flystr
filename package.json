@@ -70,9 +70,12 @@
     "@storybook/react": "^3.4.8",
     "babel-core": "^6.26.3",
     "babel-plugin-transform-class-properties": "6.24.1",
-    "babel-runtime": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
+    "babel-runtime": "^6.26.0",
     "bundlesize": "^0.17.0",
+    "enzyme": "3.3.0",
+    "enzyme-adapter-react-16": "1.1.1",
     "eslint": "^5.0.1",
     "eslint-config-airbnb": "^17.0.0",
     "eslint-plugin-jest": "^21.17.0",
@@ -84,8 +87,6 @@
     "prettier": "^1.13.7",
     "react-test-renderer": "^16.4.1",
     "redux-devtools-extension": "^2.13.5",
-    "webpack-bundle-analyzer": "^2.13.1",
-    "enzyme": "3.3.0",
-    "enzyme-adapter-react-16": "1.1.1"
+    "webpack-bundle-analyzer": "^2.13.1"
   }
 }

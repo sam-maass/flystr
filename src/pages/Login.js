@@ -3,21 +3,27 @@ import { withStyles } from '@material-ui/core/styles';
 import { PropTypes } from 'prop-types';
 import Card from '@material-ui/core/Card/Card';
 import CardContent from '@material-ui/core/CardContent';
-import CardHeader from '@material-ui/core/CardHeader';
 import { GoogleButton } from '../components/GoogleButton';
 import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import { colors } from '@material-ui/core';
 import { Link } from 'react-router-dom';
+import EmailForm from '../components/EmailForm';
 
 const LoginPage = ({ classes }) => {
   return (
     <div className={classes.page}>
       <Card className={classes.card}>
-        <CardHeader title="Login" subheader="Login with Google" />
         <CardContent>
-          <GoogleButton action="login" text="Login" />
+          <Typography variant="title"> Login with Email</Typography>
+          <EmailForm action="login" />
+          <br />
+          <Typography color="textSecondary" variant="body1">
+            or
+          </Typography>
+          <br />
+          <GoogleButton action="login" text="Login with Google" />
         </CardContent>
         <CardActions className={classes.actions}>
           <div>

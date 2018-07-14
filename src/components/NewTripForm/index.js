@@ -46,13 +46,13 @@ const formikSettings = {
   handleSubmit: async (values, { props, setStatus }) => {
     const [fromDuration, toDuration] = values.duration.split('-');
     if (!props.tripId) {
-      await api.post(`/trips`, {
+      await api().post(`/trips`, {
         fromDuration,
         toDuration,
         ...values
       });
     } else {
-      await api.post(`/trips/${props.tripId}`, {
+      await api().post(`/trips/${props.tripId}`, {
         fromDuration,
         toDuration,
         ...values
