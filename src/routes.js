@@ -97,5 +97,15 @@ export const loggedOutRoutes = [
     exact: true,
     header: () => <LoggedOutAppBar />,
     main: () => <Pages.Impressum />
+  },
+  {
+    path: '/',
+    main: () => (
+      <Redirect
+        to={{
+          pathname: '/login'
+        }}
+      />
+    )
   }
 ];
