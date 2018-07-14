@@ -15,7 +15,7 @@ class GoogleButtonContainer extends Component {
   onLoginSuccess = args => {
     const { loginUser, signupUser, action } = this.props;
     window.localStorage.setItem('currentJWT', args.tokenObj.id_token);
-    api.defaults.headers.common['Authorization'] = args.tokenObj.id_token;
+    api().defaults.headers.common['Authorization'] = args.tokenObj.id_token;
     if (action === 'login') loginUser();
     if (action === 'signup') signupUser();
   };
@@ -52,9 +52,12 @@ const mapStateToProps = (store, props) => {
   };
 };
 
-export const GoogleButton = connect(mapStateToProps, {
-  loginUser,
-  logoutUser,
-  signupUser,
-  addError
-})(GoogleButtonContainer);
+export const GoogleButton = connect(
+  mapStateToProps,
+  {
+    loginUser,
+    logoutUser,
+    signupUser,
+    addError
+  }
+)(GoogleButtonContainer);

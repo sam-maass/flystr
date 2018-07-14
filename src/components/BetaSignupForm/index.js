@@ -36,7 +36,7 @@ class BetaSignupForm extends React.Component {
   };
 
   handleSubmit = () => {
-    api.post('/launchSignup', this.state);
+    api().post('/launchSignup', this.state);
     this.setState({
       submitted: true
     });

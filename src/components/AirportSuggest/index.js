@@ -86,7 +86,7 @@ async function getSuggestions(value) {
   const array =
     inputLength <= 1
       ? []
-      : (await api.get(`/airports`, { params: { term: inputValue } })).data;
+      : (await api().get(`/airports`, { params: { term: inputValue } })).data;
   return array;
 }
 

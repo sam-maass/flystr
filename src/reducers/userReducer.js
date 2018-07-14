@@ -4,6 +4,7 @@ export default function reducer(state = { ready: false }, action) {
       return { ...state, fetching: true };
     case 'FETCH_USER_REJECTED':
       return {
+        loggedIn: false,
         fetchFailed: true,
         ready: true,
         fetching: false,
@@ -20,6 +21,12 @@ export default function reducer(state = { ready: false }, action) {
     case 'LOGIN_USER_FULFILLED':
       return { ...state, ...action.payload.data, ready: true };
     case 'SIGNUP_USER_FULFILLED':
+      return { ...state, ...action.payload.data, ready: true };
+    case 'SIGNUP_WITH_EMAIL_FULFILLED':
+      window.localStorage.setItem('currentJWT', action.payload.data.activeJWT);
+      return { ...state, ...action.payload.data, ready: true };
+    case 'LOGIN_WITH_EMAIL_FULFILLED':
+      window.localStorage.setItem('currentJWT', action.payload.data.activeJWT);
       return { ...state, ...action.payload.data, ready: true };
     case 'LOGOUT_USER_FULFILLED':
       return { ready: true };

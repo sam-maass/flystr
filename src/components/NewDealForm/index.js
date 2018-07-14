@@ -36,7 +36,7 @@ const formikSettings = {
     price: yup.number().required()
   }),
   handleSubmit: async (values, { setStatus }) => {
-    await api.post(`/deal`, {
+    await api().post(`/deal`, {
       ...values
     });
     setStatus('done');
