@@ -1,0 +1,212 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Triprow: default 1`] = `
+<div
+  className="MuiPaper-root-7 MuiPaper-elevation1-10 MuiPaper-rounded-8 MuiCard-root-6"
+>
+  <div
+    className="MuiCardContent-root-34"
+  >
+    <h1
+      className="MuiTypography-root-35 MuiTypography-headline-40"
+    >
+      <span>
+        Test
+      </span>
+    </h1>
+    <h3
+      className="MuiTypography-root-35 MuiTypography-subheading-42 TripRow-chipContainer-1"
+    >
+      <div
+        className="MuiChip-root-59 TripRow-chip-2"
+        onKeyDown={[Function]}
+        role="button"
+        style={
+          Object {
+            "backgroundColor": "#eeff41",
+          }
+        }
+        tabIndex="-1"
+      >
+        <span
+          className="MuiChip-label-64"
+        >
+          DUS
+        </span>
+      </div>
+      <div
+        className="MuiChip-root-59 TripRow-chip-2"
+        onKeyDown={[Function]}
+        role="button"
+        style={
+          Object {
+            "backgroundColor": "#18ffff",
+          }
+        }
+        tabIndex="-1"
+      >
+        <span
+          className="MuiChip-label-64"
+        >
+          FRA
+        </span>
+      </div>
+      <div
+        className="MuiChip-root-59 TripRow-chip-2"
+        onKeyDown={[Function]}
+        role="button"
+        style={
+          Object {
+            "backgroundColor": "#18ffff",
+          }
+        }
+        tabIndex="-1"
+      >
+        <span
+          className="MuiChip-label-64"
+        >
+          BRU
+        </span>
+      </div>
+      <svg
+        aria-hidden="true"
+        className="MuiSvgIcon-root-66"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <g>
+          <path
+            d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"
+          />
+        </g>
+      </svg>
+      <div
+        className="MuiChip-root-59 TripRow-chip-2"
+        onKeyDown={[Function]}
+        role="button"
+        style={
+          Object {
+            "backgroundColor": "#18ffff",
+          }
+        }
+        tabIndex="-1"
+      >
+        <span
+          className="MuiChip-label-64"
+        >
+          BRE
+        </span>
+      </div>
+      <div
+        className="MuiChip-root-59 TripRow-chip-2"
+        onKeyDown={[Function]}
+        role="button"
+        style={
+          Object {
+            "backgroundColor": "#64ffda",
+          }
+        }
+        tabIndex="-1"
+      >
+        <span
+          className="MuiChip-label-64"
+        >
+          SEZ
+        </span>
+      </div>
+    </h3>
+    <div
+      className="TripRow-details-4"
+    >
+      <p
+        className="MuiTypography-root-35 MuiTypography-body1-44 MuiTypography-colorTextSecondary-57"
+      >
+        15.07.2018
+         - 
+        12.08.2018
+      </p>
+      <p
+        className="MuiTypography-root-35 MuiTypography-body1-44 MuiTypography-colorTextSecondary-57"
+      >
+        max 
+        28
+         days
+      </p>
+      <p
+        className="MuiTypography-root-35 MuiTypography-body1-44 MuiTypography-colorTextSecondary-57"
+      >
+        max 
+        200
+         €
+      </p>
+    </div>
+  </div>
+  <div
+    className="MuiCardActions-root-72"
+  >
+    <a
+      className="TripRow-noLink-5 MuiCardActions-action-73"
+      href="/trip/1234"
+      onClick={[Function]}
+    >
+      <button
+        className="MuiButtonBase-root-98 MuiButton-root-74 MuiButton-text-76 MuiButton-textPrimary-77 MuiButton-flat-79 MuiButton-flatPrimary-80 MuiButton-sizeSmall-95"
+        disabled={false}
+        onBlur={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <span
+          className="MuiButton-label-75"
+        >
+          0
+           Deals
+        </span>
+        <span
+          className="MuiTouchRipple-root-101"
+        />
+      </button>
+    </a>
+    <a
+      className="TripRow-noLink-5 MuiCardActions-action-73"
+      href="/trip/1234/edit"
+      onClick={[Function]}
+    >
+      <button
+        className="MuiButtonBase-root-98 MuiButton-root-74 MuiButton-text-76 MuiButton-flat-79 MuiButton-sizeSmall-95"
+        disabled={false}
+        onBlur={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="0"
+        type="button"
+      >
+        <span
+          className="MuiButton-label-75"
+        >
+          Change Trip
+        </span>
+        <span
+          className="MuiTouchRipple-root-101"
+        />
+      </button>
+    </a>
+  </div>
+</div>
+`;
