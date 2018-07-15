@@ -46,16 +46,19 @@ export const loggedInRoutes = [
   },
   {
     path: '/trips',
+    exact: true,
     header: () => <CustomAppBar title="My trips" />,
     main: () => <Pages.Trips />
   },
   {
     path: '/settings',
+    exact: true,
     header: () => <CustomAppBar title="Profile" />,
     main: () => <Pages.Profile />
   },
   {
     path: '/new-deal',
+    exact: true,
     header: () => <CustomAppBar withReturn title="Add a deal" />,
     main: () => <Pages.NewDeal />
   },
@@ -68,6 +71,7 @@ export const loggedInRoutes = [
   },
   {
     path: '/trip/:tripId/edit',
+    exact: true,
     header: () => <CustomAppBar withReturn title="Edit Trip" />,
     //eslint-disable-next-line
     main: props => <Pages.NewTrip {...props.match.params} />
