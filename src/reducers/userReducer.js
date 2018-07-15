@@ -19,8 +19,10 @@ export default function reducer(state = { ready: false }, action) {
         ...action.payload.data.user
       };
     case 'LOGIN_USER_FULFILLED':
+      window.localStorage.setItem('currentJWT', action.payload.data.activeJWT);
       return { ...state, ...action.payload.data, ready: true };
     case 'SIGNUP_USER_FULFILLED':
+      window.localStorage.setItem('currentJWT', action.payload.data.activeJWT);
       return { ...state, ...action.payload.data, ready: true };
     case 'SIGNUP_WITH_EMAIL_FULFILLED':
       window.localStorage.setItem('currentJWT', action.payload.data.activeJWT);
@@ -29,6 +31,7 @@ export default function reducer(state = { ready: false }, action) {
       window.localStorage.setItem('currentJWT', action.payload.data.activeJWT);
       return { ...state, ...action.payload.data, ready: true };
     case 'LOGOUT_USER_FULFILLED':
+      window.localStorage.removeItem('currentJWT');
       return { ready: true };
     default:
       return state;
