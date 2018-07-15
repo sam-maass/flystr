@@ -81,6 +81,7 @@ export const loggedInRoutes = [
 export const loggedOutRoutes = [
   {
     path: '/',
+    strict: true,
     exact: true,
     main: () => <Pages.Landing />
   },
@@ -103,7 +104,7 @@ export const loggedOutRoutes = [
     main: () => <Pages.Impressum />
   },
   {
-    path: '/',
+    path: '/:anythingElse',
     main: () => (
       <Redirect
         to={{
