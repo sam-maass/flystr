@@ -8,6 +8,10 @@ export default function reducer(state = [], action) {
       return [...state, { error: action.payload.response.data.error }];
     case 'SIGNUP_USER_REJECTED':
       return [...state, { error: action.payload.response.data.error }];
+    case 'SIGNUP_WITH_EMAIL_REJECTED':
+      return [...state, { error: action.payload.response.data.error }];
+    case 'LOGIN_WITH_EMAIL_REJECTED':
+      return [...state, { error: action.payload.response.data.error }];
     default:
       return state;
   }
