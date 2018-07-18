@@ -20,8 +20,8 @@ const Layout = ({
   deleteError
 }) => {
   const routes = loggedIn ? loggedInRoutes : loggedOutRoutes;
+  fetchUser();
   if (!ready) {
-    fetchUser();
     return null;
   } else {
     return (
