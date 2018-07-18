@@ -44,7 +44,6 @@ exports[`BetaSignupForm: default 1`] = `
       >
         <input
           aria-invalid={false}
-          aria-required={false}
           className="MuiInput-input-23"
           disabled={false}
           id="email"
