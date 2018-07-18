@@ -142,15 +142,15 @@ exports[`Triprow: default 1`] = `
     </div>
   </div>
   <div
-    className="MuiCardActions-root-72"
+    className="MuiCardActions-root-73"
   >
     <a
-      className="TripRow-noLink-5 MuiCardActions-action-73"
+      className="TripRow-noLink-5 MuiCardActions-action-74"
       href="/trip/1234"
       onClick={[Function]}
     >
       <button
-        className="MuiButtonBase-root-98 MuiButton-root-74 MuiButton-text-76 MuiButton-textPrimary-77 MuiButton-flat-79 MuiButton-flatPrimary-80 MuiButton-sizeSmall-95"
+        className="MuiButtonBase-root-99 MuiButton-root-75 MuiButton-text-77 MuiButton-textPrimary-78 MuiButton-flat-80 MuiButton-flatPrimary-81 MuiButton-sizeSmall-96"
         disabled={false}
         onBlur={[Function]}
         onFocus={[Function]}
@@ -166,23 +166,23 @@ exports[`Triprow: default 1`] = `
         type="button"
       >
         <span
-          className="MuiButton-label-75"
+          className="MuiButton-label-76"
         >
           0
            Deals
         </span>
         <span
-          className="MuiTouchRipple-root-101"
+          className="MuiTouchRipple-root-102"
         />
       </button>
     </a>
     <a
-      className="TripRow-noLink-5 MuiCardActions-action-73"
+      className="TripRow-noLink-5 MuiCardActions-action-74"
       href="/trip/1234/edit"
       onClick={[Function]}
     >
       <button
-        className="MuiButtonBase-root-98 MuiButton-root-74 MuiButton-text-76 MuiButton-flat-79 MuiButton-sizeSmall-95"
+        className="MuiButtonBase-root-99 MuiButton-root-75 MuiButton-text-77 MuiButton-flat-80 MuiButton-sizeSmall-96"
         disabled={false}
         onBlur={[Function]}
         onFocus={[Function]}
@@ -198,12 +198,12 @@ exports[`Triprow: default 1`] = `
         type="button"
       >
         <span
-          className="MuiButton-label-75"
+          className="MuiButton-label-76"
         >
           Change Trip
         </span>
         <span
-          className="MuiTouchRipple-root-101"
+          className="MuiTouchRipple-root-102"
         />
       </button>
     </a>
