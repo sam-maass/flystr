@@ -19,9 +19,9 @@ const Layout = ({
   error,
   deleteError
 }) => {
-  fetchUser();
   const routes = loggedIn ? loggedInRoutes : loggedOutRoutes;
   if (!ready) {
+    fetchUser();
     return null;
   } else {
     return (
