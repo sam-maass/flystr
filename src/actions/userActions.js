@@ -36,3 +36,9 @@ export function logoutUser() {
     payload: api().post(`/user/logout`)
   };
 }
+export function refreshToken() {
+  return {
+    type: 'REFRESH_USER_TOKEN',
+    payload: api().get(`/user/refreshToken`)
+  };
+}

@@ -1,3 +1,5 @@
+import { setJWT, refreshTimer } from './jwtHelper';
+
 export default function reducer(state = { ready: false }, action) {
   switch (action.type) {
     case 'FETCH_USER_PENDING':
@@ -11,6 +13,7 @@ export default function reducer(state = { ready: false }, action) {
         error: action.payload
       };
     case 'FETCH_USER_FULFILLED':
+      setJWT(action.payload.data.user.activeJWT);
       return {
         ...state,
         ready: true,
@@ -19,19 +22,23 @@ export default function reducer(state = { ready: false }, action) {
         ...action.payload.data.user
       };
     case 'LOGIN_USER_FULFILLED':
-      window.localStorage.setItem('currentJWT', action.payload.data.activeJWT);
+      setJWT(action.payload.data.activeJWT);
       return { ...state, ...action.payload.data, ready: true };
     case 'SIGNUP_USER_FULFILLED':
-      window.localStorage.setItem('currentJWT', action.payload.data.activeJWT);
+      setJWT(action.payload.data.activeJWT);
       return { ...state, ...action.payload.data, ready: true };
     case 'SIGNUP_WITH_EMAIL_FULFILLED':
-      window.localStorage.setItem('currentJWT', action.payload.data.activeJWT);
+      setJWT(action.payload.data.activeJWT);
       return { ...state, ...action.payload.data, ready: true };
     case 'LOGIN_WITH_EMAIL_FULFILLED':
-      window.localStorage.setItem('currentJWT', action.payload.data.activeJWT);
+      setJWT(action.payload.data.activeJWT);
       return { ...state, ...action.payload.data, ready: true };
+    case 'REFRESH_USER_TOKEN_FULFILLED':
+      setJWT(action.payload.data.activeJWT);
+      return { ...state, ...action.payload.data };
     case 'LOGOUT_USER_FULFILLED':
       window.localStorage.removeItem('currentJWT');
+      if (refreshTimer) clearTimeout(refreshTimer);
       return { ready: true };
     default:
       return state;
