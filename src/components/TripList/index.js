@@ -2,14 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TripList from './component';
 import { connect } from 'react-redux';
-import EmptyState from '../EmptyState';
-import PindropIcon from '@material-ui/icons/PinDrop';
+import EmptyTripList from '../EmptyTripList';
 
 const TripListContainer = ({ trips }) => {
   if (trips.length === 0) {
-    return (
-      <EmptyState title="Add your first destination" icon={<PindropIcon />} />
-    );
+    return <EmptyTripList />;
   } else {
     return <TripList trips={trips} />;
   }

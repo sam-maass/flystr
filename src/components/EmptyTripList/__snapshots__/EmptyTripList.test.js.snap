@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EmptyTripList: default 1`] = `
+.emotion-0 {
+  display: grid;
+  grid-template-columns: 1fr minmax(1vw,1024px) 1fr;
+  grid-template-rows: 1fr;
+  height: 100%;
+}
+
+.emotion-0 .content {
+  color: #263238;
+  font-family: 'Open Sans',sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0.05em;
+  -moz-letter-spacing: 0.05em;
+  -ms-letter-spacing: 0.05em;
+  letter-spacing: 0.05em;
+  line-height: 1.6em;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  justify-self: center;
+  grid-column: 2;
+  text-align: center;
+  color: #90A4AE;
+}
+
+.emotion-0 .content .button {
+  color: #2196F3;
+  font-size: 150%;
+  font-weight: bold;
+  vertical-align: bottom;
+}
+
+<div
+  className="emotion-0"
+>
+  <div
+    className="content"
+  >
+    <img
+      alt="icon"
+      src="IMAGE_MOCK"
+    />
+    <h2>
+      Hi and welcome to flystr
+    </h2>
+    <p>
+      This is the place where you can see all your planned trips.
+    </p>
+    <p>
+      Add a new trip by clicking the 
+      <span
+        className="button"
+      >
+         + 
+      </span>
+       
+      button in the bottom right corner
+    </p>
+  </div>
+</div>
+`;

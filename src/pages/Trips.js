@@ -31,6 +31,7 @@ TripsPage.propTypes = {
 const styles = {
   pageContainer: {
     marginRight: 8,
+    height: '100%',
     marginLeft: 8
   },
   fab: {
