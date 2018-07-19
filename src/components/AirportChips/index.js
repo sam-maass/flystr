@@ -2,28 +2,35 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import hash from 'string-hash';
 import Chip from '@material-ui/core/Chip';
-import { colors } from '@material-ui/core';
+import {
+  cyan,
+  teal,
+  green,
+  lightgreen,
+  indigo,
+  blue,
+  lightblue,
+  lime
+} from '../../colors.js';
 
 const getColor = term => {
-  const {
-    cyan,
-    teal,
-    green,
-    lightGreen,
-    indigo,
-    blue,
-    lightBlue,
-    lime
-  } = colors;
   const bgColors = [
-    cyan.A200,
-    teal.A200,
-    green.A200,
-    lightGreen.A200,
-    indigo.A200,
-    blue.A200,
-    lightBlue.A200,
-    lime.A200
+    cyan.a100,
+    teal.a100,
+    green.a100,
+    lightgreen.a100,
+    indigo.a100,
+    blue.a100,
+    lightblue.a100,
+    lime.a100,
+    cyan.a200,
+    teal.a200,
+    green.a200,
+    lightgreen.a200,
+    indigo.a200,
+    blue.a200,
+    lightblue.a200,
+    lime.a200
   ];
   const bghash = hash(term) % bgColors.length;
   return bgColors[bghash];
