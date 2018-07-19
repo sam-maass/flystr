@@ -2,18 +2,19 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import hash from 'string-hash';
 import Chip from '@material-ui/core/Chip';
-import {
-  cyan,
-  teal,
-  green,
-  lightgreen,
-  indigo,
-  blue,
-  lightblue,
-  lime
-} from '../../colors.js';
+import colors from '../../colors.js';
 
 const getColor = term => {
+  const {
+    cyan,
+    teal,
+    green,
+    lightgreen,
+    indigo,
+    blue,
+    lightblue,
+    lime
+  } = colors;
   const bgColors = [
     cyan.a100,
     teal.a100,
