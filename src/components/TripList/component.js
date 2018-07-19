@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import TripRow from '../TripRow';
-import { withStyles } from '@material-ui/core/styles';
+import { css } from 'emotion';
 
-const TripList = ({ trips = [], classes }) => {
+const TripList = ({ trips = [] }) => {
   return (
-    <div className={classes.listWrapper}>
+    <div className={style}>
       {trips.map((item, key) => <TripRow key={key} {...item} />)}
     </div>
   );
@@ -13,12 +13,10 @@ const TripList = ({ trips = [], classes }) => {
 
 TripList.propTypes = { trips: PropTypes.array, classes: PropTypes.object };
 
-const styles = {
-  listWrapper: {
-    marginTop: 8,
-    display: 'grid',
-    gridRowGap: '8px'
-  }
-};
+const style = css`
+  margin-top: 8px;
+  display: grid;
+  grid-row-gap: 8px;
+`;
 
-export default withStyles(styles)(TripList);
+export default TripList;
