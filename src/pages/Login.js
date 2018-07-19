@@ -7,7 +7,7 @@ import { GoogleButton } from '../components/GoogleButton';
 import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { colors } from '@material-ui/core';
+import colors from '../colors.js';
 import { Link } from 'react-router-dom';
 import EmailForm from '../components/EmailForm';
 
@@ -68,7 +68,7 @@ const styles = {
   },
   buttonText: {
     display: 'inline',
-    color: colors.grey.A200
+    color: colors.grey.a200
   }
 };
 

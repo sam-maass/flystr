@@ -23,7 +23,7 @@ exports[`Triprow: default 1`] = `
         role="button"
         style={
           Object {
-            "backgroundColor": "#eeff41",
+            "backgroundColor": "#f4ff81",
           }
         }
         tabIndex="-1"
@@ -40,7 +40,7 @@ exports[`Triprow: default 1`] = `
         role="button"
         style={
           Object {
-            "backgroundColor": "#18ffff",
+            "backgroundColor": "#84ffff",
           }
         }
         tabIndex="-1"
@@ -57,7 +57,7 @@ exports[`Triprow: default 1`] = `
         role="button"
         style={
           Object {
-            "backgroundColor": "#18ffff",
+            "backgroundColor": "#84ffff",
           }
         }
         tabIndex="-1"
@@ -86,7 +86,7 @@ exports[`Triprow: default 1`] = `
         role="button"
         style={
           Object {
-            "backgroundColor": "#18ffff",
+            "backgroundColor": "#84ffff",
           }
         }
         tabIndex="-1"
