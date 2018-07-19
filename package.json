@@ -11,7 +11,7 @@
   "bundlesize": [
     {
       "path": "./build/static/js/main*.js",
-      "maxSize": "250 kB"
+      "maxSize": "500 kB"
     }
   ],
   "dependencies": {
