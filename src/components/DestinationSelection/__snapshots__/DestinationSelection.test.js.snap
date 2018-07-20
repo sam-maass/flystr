@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DestinationSelection: default 1`] = `
+<div
+  className="css-15juoi5"
+>
+  <div>
+    <h2>
+      Where do you want to go?
+    </h2>
+    <WithStyles(IntegrationAutosuggest)
+      elemKey="destinations"
+      label="Select a destination"
+      setFieldValue={[Function]}
+      values={
+        Object {
+          "destinations": Array [],
+        }
+      }
+    />
+    <p
+      className="secondary"
+    >
+      Need some inpiration? How about:
+      <ul>
+        <li>
+          Bali
+        </li>
+        <li>
+          New York
+        </li>
+        <li>
+          Capetown
+        </li>
+        <li>
+          or Barcelona
+        </li>
+      </ul>
+    </p>
+  </div>
+  <div
+    className="button"
+  >
+    <WithStyles(Button)
+      color="secondary"
+      fullWidth={true}
+      onClick={[Function]}
+      variant="outlined"
+    >
+       
+      Select Dates
+       
+    </WithStyles(Button)>
+  </div>
+</div>
+`;
