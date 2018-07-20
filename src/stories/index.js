@@ -1,3 +1,4 @@
+import '../components/DestinationSelection/DestinationSelection.story';
 import '../components/EmptyTripList/EmptyTripList.story';
 import '../components/TripRow/TripRow.story';
 import '../components/EmailForm/EmailForm.story';

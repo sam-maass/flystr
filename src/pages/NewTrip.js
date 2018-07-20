@@ -1,12 +1,16 @@
 import React from 'react';
-import NewTripForm from '../components/NewTripForm';
+import DestinationSelection from '../components/DestinationSelection';
+import { withFormik } from 'formik';
 
 const NewTripPage = props => {
-  return (
-    <div>
-      <NewTripForm {...props} />
-    </div>
-  );
+  switch (props.values.page) {
+    case 1:
+      return <DestinationSelection {...props} />;
+    case 2:
+      return <div>Test</div>;
+  }
 };
 
-export default NewTripPage;
+export default withFormik({
+  mapPropsToValues: () => ({ page: 1, destinations: [] })
+})(NewTripPage);
