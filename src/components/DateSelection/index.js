@@ -58,7 +58,7 @@ const DateSelection = props => {
           fullWidth
           variant="contained"
           color="secondary"
-          onClick={() => props.setFieldValue('page', 2)}
+          onClick={() => props.setFieldValue('page', 3)}
         >
           Set Preferences
         </Button>
