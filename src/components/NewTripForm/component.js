@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Form } from 'formik';
-import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 import AirportSuggest from '../AirportSuggest';
@@ -10,48 +9,7 @@ import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Typography from '@material-ui/core/Typography';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
-
-const FormikTextField = ({
-  elemKey,
-  type = 'text',
-  label,
-  values,
-  errors,
-  touched,
-  handleChange,
-  handleBlur,
-  placeholder,
-  InputProps
-}) => {
-  return (
-    <TextField
-      name={elemKey}
-      label={label}
-      type={type}
-      value={values[elemKey]}
-      placeholder={placeholder}
-      error={touched[elemKey] && Boolean(errors[elemKey])}
-      helperText={touched[elemKey] && errors[elemKey]}
-      onChange={handleChange}
-      onBlur={handleBlur}
-      InputProps={InputProps}
-    />
-  );
-};
-
-FormikTextField.propTypes = {
-  elemKey: PropTypes.string,
-  type: PropTypes.string,
-  label: PropTypes.string,
-  placeholder: PropTypes.string,
-  values: PropTypes.object,
-  defaultValue: PropTypes.any,
-  errors: PropTypes.object,
-  touched: PropTypes.object,
-  handleChange: PropTypes.func,
-  handleBlur: PropTypes.func,
-  InputProps: PropTypes.object
-};
+import FormikTextField from '../FormikTextField';
 
 const NewTripForm = ({ classes, buttonText, ...props }) => {
   return (
