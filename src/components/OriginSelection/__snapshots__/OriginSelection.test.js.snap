@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OriginSelection: default 1`] = `
+.emotion-0 {
+  max-width: 1024px;
+  display: grid;
+  grid-template-rows: min-content 1fr;
+  padding: 8px;
+  margin: auto;
+  height: 100%;
+  color: #263238;
+  font-family: 'Open Sans',sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0.05em;
+  -moz-letter-spacing: 0.05em;
+  -ms-letter-spacing: 0.05em;
+  letter-spacing: 0.05em;
+  line-height: 1.6em;
+}
+
+.emotion-0 h2 {
+  color: #263238;
+  font-family: 'Open Sans',sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0.05em;
+  -moz-letter-spacing: 0.05em;
+  -ms-letter-spacing: 0.05em;
+  letter-spacing: 0.05em;
+  line-height: 1.6em;
+}
+
+.emotion-0 .secondary {
+  color: #90A4AE;
+  font-size: 0.9em;
+}
+
+.emotion-0 .button {
+  -webkit-align-self: flex-end;
+  -ms-flex-item-align: end;
+  align-self: flex-end;
+  bottom: 8px;
+}
+
+<div
+  className="emotion-0"
+>
+  <div>
+    <h2>
+      From where can you start your trip?
+    </h2>
+    <div>
+      <div
+        className="IntegrationAutosuggest-container-1"
+      >
+        <div
+          className="MuiFormControl-root-8 IntegrationAutosuggest-textField-5"
+        >
+          <label
+            className="MuiFormLabel-root-17 MuiInputLabel-root-12 MuiInputLabel-formControl-13 MuiInputLabel-animated-16"
+            data-shrink={false}
+          >
+            Select a departure airport
+          </label>
+          <div
+            aria-activedescendant={null}
+            aria-autocomplete="list"
+            aria-expanded={false}
+            aria-owns="react-autowhatever-1"
+            className="MuiInput-root-22 MuiInput-formControl-23 MuiInput-underline-26"
+            role="combobox"
+            style={Object {}}
+          >
+            <input
+              aria-invalid={false}
+              autoComplete="off"
+              className="MuiInput-input-30"
+              disabled={false}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onFocus={[Function]}
+              onKeyDown={[Function]}
+              onKeyUp={[Function]}
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+        <div
+          className="MuiPaper-root-35 MuiPaper-elevation2-39"
+          id="react-autowhatever-1"
+          style={Object {}}
+        />
+      </div>
+      <div
+        className="IntegrationAutosuggest-chipContainer-6"
+      />
+    </div>
+    <p
+      className="secondary"
+    >
+      If you select multiple depature airports you'll have a higher chance of getting a good deal
+    </p>
+  </div>
+  <div
+    className="button"
+  >
+    <button
+      className="MuiButtonBase-root-86 MuiButton-root-62 MuiButton-text-64 MuiButton-textSecondary-66 MuiButton-outlined-70 MuiButton-fullWidth-85"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex="0"
+      type="button"
+    >
+      <span
+        className="MuiButton-label-63"
+      >
+        Select your destinations
+      </span>
+      <span
+        className="MuiTouchRipple-root-89"
+      />
+    </button>
+  </div>
+</div>
+`;
