@@ -1,9 +1,12 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import * as yup from 'yup';
 import DestinationSelection from '../components/DestinationSelection';
 import OriginSelection from '../components/OriginSelection';
 import PreferenceSelection from '../components/PreferenceSelection';
 import { withFormik } from 'formik';
+import { connect } from 'react-redux';
+import { fetchUser } from '../actions/userActions';
 import { api } from '../settings';
 
 const NewTripPage = props => {
@@ -19,8 +22,24 @@ const NewTripPage = props => {
   }
 };
 
-export default withFormik({
-  handleSubmit: async (values, { props }) => {
+const RoutingWrapper = props => {
+  const isSubmitted = props.status === 'done';
+  if (isSubmitted) {
+    props.fetchUser();
+    return (
+      <Redirect
+        to={{
+          pathname: '/trips'
+        }}
+      />
+    );
+  } else {
+    return <NewTripPage {...props} />;
+  }
+};
+
+const FormikForm = withFormik({
+  handleSubmit: async (values, { props, setStatus }) => {
     const [fromDuration, toDuration] = values.duration.split('-');
     if (!props.tripId) {
       await api().post(`/trips`, {
@@ -28,6 +47,7 @@ export default withFormik({
         toDuration,
         ...values
       });
+      setStatus('done');
     }
   },
   validationSchema: yup.object().shape({
@@ -50,4 +70,18 @@ export default withFormik({
     startDate: '2018-07-22', //TODO: use dynamic dates
     endDate: '2018-12-22'
   })
-})(NewTripPage);
+})(RoutingWrapper);
+
+const mapStateToProps = (store, props) => {
+  return {
+    ...props,
+    user: store.user,
+    trips: store.trips
+  };
+};
+
+const TripFormContainer = connect(
+  mapStateToProps,
+  { fetchUser }
+)(FormikForm);
+export default TripFormContainer;
