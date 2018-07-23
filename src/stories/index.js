@@ -1,3 +1,4 @@
+import '../components/PreferenceSelection/PreferenceSelection.story';
 import '../components/OriginSelection/OriginSelection.story';
 import '../components/DateSelection/DateSelection.story';
 import '../components/DestinationSelection/DestinationSelection.story';

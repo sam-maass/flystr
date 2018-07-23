@@ -27,12 +27,12 @@ const style = css`
     bottom: 8px;
   }
 `;
-const DateSelection = props => {
+
+const PreferenceSelection = props => {
   return (
     <div className={style}>
       <div className="form">
-        <h2>What dates would work for you?</h2>
-
+        <h2>Almost done. What kind of flight are you looking for?</h2>
         <FormikTextField
           elemKey="startDate"
           label="Earliest Possible Departure"
@@ -52,24 +52,41 @@ const DateSelection = props => {
           type="text"
           {...props}
         />
+        <FormikTextField
+          elemKey="name"
+          label="Name of the Trip"
+          placeholder="Eurotrip / Weekend Getaway / Discover Africa"
+          {...props}
+        />
+        <FormikTextField
+          elemKey="budget"
+          type="number"
+          label="Max budget"
+          placeholder="What is the max price you're willing to pay?"
+          {...props}
+          InputProps={{
+            endAdornment: '€ '
+          }}
+        />
       </div>
       <div className="button">
         <Button
           fullWidth
-          variant="outlined"
+          variant="contained"
           color="secondary"
-          onClick={() => props.setFieldValue('page', 3)}
+          onClick={() => props.handleSubmit()}
         >
-          Set Preferences
+          Create new trip
         </Button>
       </div>
     </div>
   );
 };
 
-DateSelection.propTypes = {
+PreferenceSelection.propTypes = {
   values: PropTypes.object.isRequired,
-  setFieldValue: PropTypes.func.isRequired
+  setFieldValue: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired
 };
 
-export default DateSelection;
+export default PreferenceSelection;

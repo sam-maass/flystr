@@ -28,7 +28,15 @@ const style = css`
 const DestinationSelection = props => {
   const hasSelection = props.values.destinations.length > 0;
   const label = hasSelection ? 'Add more destinations' : 'Select a destination';
-  const isPageValid = props.touched.destinations && !props.errors.destinations;
+  const goToNextPage = () => {
+    props.setTouched({ destinations: true });
+    props.validateForm();
+    const isSelectionValid =
+      props.touched.destinations && !props.errors.destinations;
+    if (isSelectionValid) {
+      props.setFieldValue('page', 3);
+    }
+  };
   return (
     <div className={style}>
       <div>
@@ -46,11 +54,10 @@ const DestinationSelection = props => {
       </div>
       <div className="button">
         <Button
-          disabled={!isPageValid}
           fullWidth
           variant="contained"
           color="primary"
-          onClick={() => props.setFieldValue('page', 2)}
+          onClick={goToNextPage}
         >
           {' '}
           Select Dates{' '}
@@ -64,6 +71,8 @@ DestinationSelection.propTypes = {
   values: PropTypes.object.isRequired,
   touched: PropTypes.object.isRequired,
   errors: PropTypes.object.isRequired,
-  setFieldValue: PropTypes.func.isRequired
+  setFieldValue: PropTypes.func.isRequired,
+  setTouched: PropTypes.func.isRequired,
+  validateForm: PropTypes.func.isRequired
 };
 export default DestinationSelection;
