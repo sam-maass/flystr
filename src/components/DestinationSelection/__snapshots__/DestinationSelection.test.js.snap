@@ -2,7 +2,7 @@
 
 exports[`DestinationSelection: default 1`] = `
 <div
-  className="css-15juoi5"
+  className="css-kfest3"
 >
   <div>
     <h2>
@@ -10,8 +10,12 @@ exports[`DestinationSelection: default 1`] = `
     </h2>
     <WithStyles(IntegrationAutosuggest)
       elemKey="destinations"
+      errors={Object {}}
       label="Select a destination"
       setFieldValue={[Function]}
+      setTouched={[Function]}
+      touched={Object {}}
+      validateForm={[Function]}
       values={
         Object {
           "destinations": Array [],
@@ -47,9 +51,7 @@ exports[`DestinationSelection: default 1`] = `
       onClick={[Function]}
       variant="outlined"
     >
-       
-      Select Dates
-       
+      Set Preferences
     </WithStyles(Button)>
   </div>
 </div>

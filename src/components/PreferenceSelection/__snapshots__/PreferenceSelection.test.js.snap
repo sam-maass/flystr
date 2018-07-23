@@ -1,0 +1,74 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PreferenceSelection: default 1`] = `
+<div
+  className="css-1url9f2"
+>
+  <div
+    className="form"
+  >
+    <h2>
+      Almost done. What kind of flight are you looking for?
+    </h2>
+    <FormikTextField
+      elemKey="name"
+      handleSubmit={[Function]}
+      label="Name of the Trip"
+      placeholder="Eurotrip / Weekend Getaway / Discover Africa"
+      setFieldValue={[Function]}
+      values={Object {}}
+    />
+    <FormikTextField
+      elemKey="startDate"
+      handleSubmit={[Function]}
+      label="Earliest Possible Departure"
+      setFieldValue={[Function]}
+      type="date"
+      values={Object {}}
+    />
+    <FormikTextField
+      elemKey="endDate"
+      handleSubmit={[Function]}
+      label="Latest Possible Return"
+      setFieldValue={[Function]}
+      type="date"
+      values={Object {}}
+    />
+    <FormikTextField
+      elemKey="duration"
+      handleSubmit={[Function]}
+      label="Duration (in days)"
+      placeholder="eg. 14 or 14-21"
+      setFieldValue={[Function]}
+      type="text"
+      values={Object {}}
+    />
+    <FormikTextField
+      InputProps={
+        Object {
+          "endAdornment": "€ ",
+        }
+      }
+      elemKey="budget"
+      handleSubmit={[Function]}
+      label="Max budget"
+      placeholder="What is the max price you're willing to pay?"
+      setFieldValue={[Function]}
+      type="number"
+      values={Object {}}
+    />
+  </div>
+  <div
+    className="button"
+  >
+    <WithStyles(Button)
+      color="secondary"
+      fullWidth={true}
+      onClick={[Function]}
+      variant="outlined"
+    >
+      Find flights
+    </WithStyles(Button)>
+  </div>
+</div>
+`;

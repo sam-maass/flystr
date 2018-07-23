@@ -6,7 +6,11 @@ const props = {
   values: {
     destinations: []
   },
-  setFieldValue: () => {}
+  touched: {},
+  errors: {},
+  setFieldValue: () => {},
+  setTouched: () => {},
+  validateForm: () => {}
 };
 
 it('DestinationSelection: default', () => {
