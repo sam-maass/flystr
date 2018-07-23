@@ -28,6 +28,7 @@ const style = css`
 const DestinationSelection = props => {
   const hasSelection = props.values.destinations.length > 0;
   const label = hasSelection ? 'Add more destinations' : 'Select a destination';
+  const isPageValid = props.touched.destinations && !props.errors.destinations;
   return (
     <div className={style}>
       <div>
@@ -45,9 +46,10 @@ const DestinationSelection = props => {
       </div>
       <div className="button">
         <Button
+          disabled={!isPageValid}
           fullWidth
-          variant="outlined"
-          color="secondary"
+          variant="contained"
+          color="primary"
           onClick={() => props.setFieldValue('page', 2)}
         >
           {' '}
@@ -60,6 +62,8 @@ const DestinationSelection = props => {
 
 DestinationSelection.propTypes = {
   values: PropTypes.object.isRequired,
+  touched: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired,
   setFieldValue: PropTypes.func.isRequired
 };
 export default DestinationSelection;
