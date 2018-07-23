@@ -162,6 +162,7 @@ class IntegrationAutosuggest extends React.Component {
       if (!suggestion) return { value };
       const nextAirport = suggestion;
       const selectedAirports = prevState.selectedAirports.add(nextAirport);
+      this.props.setFieldTouched(this.props.elemKey);
       this.props.setFieldValue(this.props.elemKey, [...selectedAirports]);
       return { value, selectedAirports };
     });
