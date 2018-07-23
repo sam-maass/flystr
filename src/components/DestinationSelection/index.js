@@ -18,6 +18,7 @@ const style = css`
   }
   .secondary {
     color: ${styles.colors.lightGray};
+    font-size: 0.9em;
   }
   .button {
     align-self: flex-end;
@@ -55,12 +56,11 @@ const DestinationSelection = props => {
       <div className="button">
         <Button
           fullWidth
-          variant="contained"
-          color="primary"
+          variant="outlined"
+          color="secondary"
           onClick={goToNextPage}
         >
-          {' '}
-          Select Dates{' '}
+          Set Preferences
         </Button>
       </div>
     </div>
