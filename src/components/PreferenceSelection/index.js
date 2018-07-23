@@ -34,6 +34,12 @@ const PreferenceSelection = props => {
       <div className="form">
         <h2>Almost done. What kind of flight are you looking for?</h2>
         <FormikTextField
+          elemKey="name"
+          label="Name of the Trip"
+          placeholder="Eurotrip / Weekend Getaway / Discover Africa"
+          {...props}
+        />
+        <FormikTextField
           elemKey="startDate"
           label="Earliest Possible Departure"
           type="date"
@@ -53,12 +59,6 @@ const PreferenceSelection = props => {
           {...props}
         />
         <FormikTextField
-          elemKey="name"
-          label="Name of the Trip"
-          placeholder="Eurotrip / Weekend Getaway / Discover Africa"
-          {...props}
-        />
-        <FormikTextField
           elemKey="budget"
           type="number"
           label="Max budget"
@@ -72,11 +72,11 @@ const PreferenceSelection = props => {
       <div className="button">
         <Button
           fullWidth
-          variant="contained"
+          variant="outlined"
           color="secondary"
           onClick={() => props.handleSubmit()}
         >
-          Create new trip
+          Find flights
         </Button>
       </div>
     </div>

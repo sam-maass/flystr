@@ -18,6 +18,7 @@ const style = css`
   }
   .secondary {
     color: ${styles.colors.lightGray};
+    font-size: 0.9em;
   }
   .button {
     align-self: flex-end;
@@ -26,7 +27,7 @@ const style = css`
 `;
 
 const OriginSelection = props => {
-  const hasSelection = props.values.destinations.length > 0;
+  const hasSelection = props.values.origins.length > 0;
   const goToNextPage = () => {
     props.setTouched({ origins: true });
     props.validateForm();
