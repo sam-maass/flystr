@@ -27,6 +27,14 @@ const style = css`
 
 const OriginSelection = props => {
   const hasSelection = props.values.destinations.length > 0;
+  const goToNextPage = () => {
+    props.setTouched({ origins: true });
+    props.validateForm();
+    const isSelectionValid = props.touched.origins && !props.errors.origins;
+    if (isSelectionValid) {
+      props.setFieldValue('page', 2);
+    }
+  };
   const label = hasSelection
     ? 'Add more depature airports'
     : 'Select a departure airport';
@@ -45,9 +53,9 @@ const OriginSelection = props => {
           fullWidth
           variant="outlined"
           color="secondary"
-          onClick={() => props.setFieldValue('page', 2)}
+          onClick={() => goToNextPage()}
         >
-          Set Search Preference
+          Select your destinations
         </Button>
       </div>
     </div>
@@ -56,6 +64,10 @@ const OriginSelection = props => {
 
 OriginSelection.propTypes = {
   values: PropTypes.object.isRequired,
-  setFieldValue: PropTypes.func.isRequired
+  touched: PropTypes.object.isRequired,
+  errors: PropTypes.object.isRequired,
+  setFieldValue: PropTypes.func.isRequired,
+  setTouched: PropTypes.func.isRequired,
+  validateForm: PropTypes.func.isRequired
 };
 export default OriginSelection;
