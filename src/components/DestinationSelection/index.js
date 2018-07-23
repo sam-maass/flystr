@@ -26,46 +26,63 @@ const style = css`
   }
 `;
 
-const DestinationSelection = props => {
-  const hasSelection = props.values.destinations.length > 0;
-  const label = hasSelection ? 'Add more destinations' : 'Select a destination';
-  const goToNextPage = () => {
-    props.setTouched({ destinations: true });
-    props.validateForm();
-    const isSelectionValid =
-      props.touched.destinations && !props.errors.destinations;
-    if (isSelectionValid) {
-      props.setFieldValue('page', 3);
-    }
+class DestinationSelection extends React.Component {
+  constructor(props) {
+    super(props);
+    this.addAirport = this.addAirport.bind(this);
+  }
+
+  addAirport = code => {
+    this.props.setFieldValue(
+      'destinations',
+      this.props.values.destinations.concat(code)
+    );
   };
-  return (
-    <div className={style}>
-      <div>
-        <h2>Where do you want to go?</h2>
-        <AirportSuggest elemKey="destinations" label={label} {...props} />
-        <p className="secondary">
-          Need some inpiration? How about:
-          <ul>
-            <li>Bali</li>
-            <li>New York</li>
-            <li>Capetown</li>
-            <li>or Barcelona</li>
-          </ul>
-        </p>
+
+  render() {
+    const props = this.props;
+    const hasSelection = props.values.destinations.length > 0;
+    const label = hasSelection
+      ? 'Add more destinations'
+      : 'Select a destination';
+    const goToNextPage = () => {
+      props.setTouched({ destinations: true });
+      props.validateForm();
+      const isSelectionValid =
+        props.touched.destinations && !props.errors.destinations;
+      if (isSelectionValid) {
+        props.setFieldValue('page', 3);
+      }
+    };
+    return (
+      <div className={style}>
+        <div>
+          <h2>Where do you want to go?</h2>
+          <AirportSuggest elemKey="destinations" label={label} {...props} />
+          <p className="secondary">
+            Need some inpiration? How about:
+            <ul>
+              <li onClick={() => this.addAirport('DPS')}>Bali</li>
+              <li onClick={() => this.addAirport(['JFK', 'EWR'])}>New York</li>
+              <li onClick={() => this.addAirport('CPT')}>Capetown</li>
+              <li onClick={() => this.addAirport('BCN')}>or Barcelona</li>
+            </ul>
+          </p>
+        </div>
+        <div className="button">
+          <Button
+            fullWidth
+            variant="outlined"
+            color="secondary"
+            onClick={goToNextPage}
+          >
+            Set Preferences
+          </Button>
+        </div>
       </div>
-      <div className="button">
-        <Button
-          fullWidth
-          variant="outlined"
-          color="secondary"
-          onClick={goToNextPage}
-        >
-          Set Preferences
-        </Button>
-      </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 DestinationSelection.propTypes = {
   values: PropTypes.object.isRequired,

@@ -130,6 +130,15 @@ class IntegrationAutosuggest extends React.Component {
     selectedAirports: new Set([...this.props.values[this.props.elemKey]])
   };
 
+  componentDidUpdate(prevProps) {
+    const key = this.props.elemKey;
+    if (this.props.values[key] !== prevProps.values[key]) {
+      this.setState({
+        selectedAirports: new Set([...this.props.values[key]])
+      });
+      this.props.setFieldTouched(key, true);
+    }
+  }
   handleSuggestionsFetchRequested = async ({ value }) => {
     this.setState({
       suggestions: await getSuggestions(value)
