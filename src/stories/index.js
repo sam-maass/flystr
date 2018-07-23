@@ -1,6 +1,5 @@
 import '../components/PreferenceSelection/PreferenceSelection.story';
 import '../components/OriginSelection/OriginSelection.story';
-import '../components/DateSelection/DateSelection.story';
 import '../components/DestinationSelection/DestinationSelection.story';
 import '../components/EmptyTripList/EmptyTripList.story';
 import '../components/TripRow/TripRow.story';
