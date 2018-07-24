@@ -8,19 +8,13 @@ import { withFormik } from 'formik';
 import { connect } from 'react-redux';
 import { fetchUser } from '../actions/userActions';
 import { api } from '../settings';
+import moment from 'moment';
 
-const NewTripPage = props => {
-  switch (props.values.page) {
-    case 1:
-      return <OriginSelection {...props} />;
-    case 2:
-      return <DestinationSelection {...props} />;
-    case 3:
-      return <PreferenceSelection {...props} />;
-    default:
-      return <OriginSelection {...props} />;
+class NewTripPage extends React.Component {
+  render() {
+    return getFormStep(this.props);
   }
-};
+}
 
 const RoutingWrapper = props => {
   const isSubmitted = props.status === 'done';
@@ -47,8 +41,14 @@ const FormikForm = withFormik({
         toDuration,
         ...values
       });
-      setStatus('done');
+    } else {
+      await api().post(`/trips/${props.tripId}`, {
+        fromDuration,
+        toDuration,
+        ...values
+      });
     }
+    setStatus('done');
   },
   validationSchema: yup.object().shape({
     destinations: yup.array().min(1),
@@ -61,15 +61,20 @@ const FormikForm = withFormik({
       message: 'must be in format "7" or "7-10"'
     })
   }),
-  mapPropsToValues: () => ({
-    name: '',
-    budget: '',
-    page: 1,
-    destinations: [],
-    origins: [],
-    startDate: '2018-07-22', //TODO: use dynamic dates
-    endDate: '2018-12-22'
-  })
+  mapPropsToValues: ({ trips, tripId }) => {
+    const trip = trips.find(trip => trip._id === tripId);
+    return {
+      destinations: (trip && trip.destinations) || '',
+      origins: (trip && trip.origins) || '',
+      startDate: moment().format('YYYY-MM-DD'),
+      endDate: moment()
+        .endOf('year')
+        .format('YYYY-MM-DD'),
+      budget: (trip && trip.budget) || '',
+      name: (trip && trip.name) || '',
+      duration: (trip && trip.duration) || ''
+    };
+  }
 })(RoutingWrapper);
 
 const mapStateToProps = (store, props) => {
@@ -85,3 +90,16 @@ const TripFormContainer = connect(
   { fetchUser }
 )(FormikForm);
 export default TripFormContainer;
+
+function getFormStep(props) {
+  switch (props.values.page) {
+    case 1:
+      return <OriginSelection {...props} />;
+    case 2:
+      return <DestinationSelection {...props} />;
+    case 3:
+      return <PreferenceSelection {...props} />;
+    default:
+      return <OriginSelection {...props} />;
+  }
+}
