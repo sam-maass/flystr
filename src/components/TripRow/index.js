@@ -17,21 +17,24 @@ const TripRow = ({
   fromDuration,
   name,
   startDate,
+  matchingDeals,
   endDate,
-  budget,
   _id,
+  budget,
   destinations = []
 }) => {
+  const minPrice = Math.min([...matchingDeals.map(d => d.price)]);
   return (
     <div className={style}>
       <Link to={`/trip/${_id}`}>
         <DealCard
           title={name}
+          dealCount={matchingDeals.length}
           image={getAirportImage(destinations[0])}
           dates={getTimeframeString({ startDate, endDate })}
           duration={getDurationString({ toDuration, fromDuration })}
-          oldPrice={`${budget} EUR`}
-          newPrice={`${budget - 50} EUR`}
+          newPrice={minPrice ? `${minPrice} EUR` : undefined}
+          oldPrice={minPrice ? `${budget} EUR` : undefined}
         />
       </Link>
     </div>
@@ -47,7 +50,8 @@ TripRow.propTypes = {
   fromDuration: PropTypes.string,
   name: PropTypes.string,
   budget: PropTypes.number,
-  destinations: PropTypes.arrayOf(PropTypes.string)
+  destinations: PropTypes.arrayOf(PropTypes.string),
+  matchingDeals: PropTypes.array
 };
 
 export default TripRow;

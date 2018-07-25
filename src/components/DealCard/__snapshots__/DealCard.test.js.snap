@@ -81,6 +81,14 @@ exports[`DealCard: default 1`] = `
 .emotion-0 {
   background-image: url(IMAGE_MOCK);
   background-size: cover;
+  padding: 8px;
+}
+
+.emotion-0 [class*='MuiChip'] {
+  background-color: #FF6D00;
+  color: #FAFAFA;
+  font-weight: bold;
+  border-radius: 8px;
 }
 
 <div
@@ -102,6 +110,7 @@ exports[`DealCard: default 1`] = `
           className="emotion-1"
         >
           USA
+           
         </div>
         <div
           className="emotion-2"
