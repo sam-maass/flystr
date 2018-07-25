@@ -44,7 +44,6 @@
   },
   "scripts": {
     "format": "prettier --write 'src/**/*.js'",
-    "precommit": "lint-staged",
     "start": "PORT=3001 react-scripts start",
     "build": "react-scripts build",
     "lint": "eslint --fix 'src/**/*.js'",
@@ -55,16 +54,13 @@
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public"
   },
-  "lint-staged": {
-    "src/**/*.{js,json,css,md}": [
-      "prettier --write",
-      "git add"
-    ],
-    "src/**/*.{js,json}": [
-      "eslint --fix",
-      "git add"
-    ]
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lin && npm run format && git add",
+      "pre-push": "npm test"
+    }
   },
+
   "devDependencies": {
     "@storybook/addon-actions": "^3.4.8",
     "@storybook/addon-links": "^3.4.8",
