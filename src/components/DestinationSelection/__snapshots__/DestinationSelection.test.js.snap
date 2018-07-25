@@ -27,16 +27,24 @@ exports[`DestinationSelection: default 1`] = `
     >
       Need some inpiration? How about:
       <ul>
-        <li>
+        <li
+          onClick={[Function]}
+        >
           Bali
         </li>
-        <li>
+        <li
+          onClick={[Function]}
+        >
           New York
         </li>
-        <li>
+        <li
+          onClick={[Function]}
+        >
           Capetown
         </li>
-        <li>
+        <li
+          onClick={[Function]}
+        >
           or Barcelona
         </li>
       </ul>

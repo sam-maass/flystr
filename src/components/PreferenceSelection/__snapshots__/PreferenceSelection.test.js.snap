@@ -2,8 +2,20 @@
 
 exports[`PreferenceSelection: default 1`] = `
 <div
-  className="css-1url9f2"
+  className="css-nslx1d"
 >
+  <div
+    className="header"
+  >
+    <AirportChips />
+     to
+    <AirportChips />
+    <WithStyles(IconButton)
+      onClick={[Function]}
+    >
+      <pure(Edit) />
+    </WithStyles(IconButton)>
+  </div>
   <div
     className="form"
   >
