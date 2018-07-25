@@ -8,13 +8,16 @@ import { CustomDrawer } from './CustomDrawer';
 import BackIcon from '@material-ui/icons/ArrowBack';
 import { withRouter } from 'react-router';
 import IconButton from '@material-ui/core/IconButton';
+import { styles } from '../../styles';
 
-const styles = {
+const style = {
   flex: {
     flex: 1
   },
   appBar: {
-    position: 'sticky'
+    position: 'sticky',
+    backgroundColor: styles.colors.white,
+    color: styles.colors.darkGray
   }
 };
 
@@ -47,4 +50,4 @@ ButtonAppBar.propTypes = {
 
 const RouterWrapper = withRouter(ButtonAppBar);
 
-export const CustomAppBar = withStyles(styles)(RouterWrapper);
+export const CustomAppBar = withStyles(style)(RouterWrapper);
