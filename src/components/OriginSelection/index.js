@@ -31,6 +31,7 @@ const OriginSelection = props => {
   const goToNextPage = () => {
     props.setTouched({ origins: true });
     props.validateForm();
+
     const isSelectionValid = props.touched.origins && !props.errors.origins;
     if (isSelectionValid) {
       props.setFieldValue('page', 2);
