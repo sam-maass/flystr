@@ -8,6 +8,7 @@ import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
 
 const TripView = ({ children, trip }) => {
   const subheaderData = getSubheaderString(trip);
@@ -16,9 +17,11 @@ const TripView = ({ children, trip }) => {
       <Card>
         <CardHeader
           action={
-            <IconButton>
-              <MoreVertIcon />
-            </IconButton>
+            <Link to={`/trip/${trip._id}/edit`}>
+              <IconButton>
+                <MoreVertIcon />
+              </IconButton>
+            </Link>
           }
           title={trip.name}
           subheader={subheaderData.join(' • ')}
