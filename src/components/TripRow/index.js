@@ -1,49 +1,40 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import moment from 'moment';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import { withStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import ArrowRight from '@material-ui/icons/ArrowForward';
-import AirportChips from '../AirportChips';
-import CardHeader from '@material-ui/core/CardHeader';
+import DealCard from '../DealCard';
+import { getTimeframeString, getDurationString } from '../../utils';
+import { getAirportImage } from '../../getAirportImage';
+import { css } from 'emotion';
+
+const style = css`
+  a {
+    text-decoration: none;
+  }
+`;
 
 const TripRow = ({
-  classes,
-  origins = [],
+  toDuration,
+  fromDuration,
   name,
   startDate,
   endDate,
-  matchingDeals,
   budget,
   _id,
   destinations = []
 }) => {
-  const formattedStartDate = moment(startDate).format('DD.MM.YYYY');
-  const formattedEndDate = moment(endDate).format('DD.MM.YYYY');
-  const days = moment(endDate).diff(moment(startDate), 'days');
   return (
-    <Link className={classes.noLink} to={`/trip/${_id}`}>
-      <Card>
-        <CardHeader title={name} subheader={`${matchingDeals.length} Deals`} />
-        <CardContent>
-          <Typography variant="subheading" className={classes.chipContainer}>
-            <AirportChips airports={origins} styleClass={classes.chip} />
-            <ArrowRight />
-            <AirportChips airports={destinations} styleClass={classes.chip} />
-          </Typography>
-          <div className={classes.details}>
-            <Typography color="textSecondary">
-              {formattedStartDate} - {formattedEndDate}
-            </Typography>
-            <Typography color="textSecondary">max {days} days</Typography>
-            <Typography color="textSecondary">max {budget} €</Typography>
-          </div>
-        </CardContent>
-      </Card>
-    </Link>
+    <div className={style}>
+      <Link to={`/trip/${_id}`}>
+        <DealCard
+          title={name}
+          image={getAirportImage(destinations[0])}
+          dates={getTimeframeString({ startDate, endDate })}
+          duration={getDurationString({ toDuration, fromDuration })}
+          oldPrice={`${budget} EUR`}
+          newPrice={`${budget - 50} EUR`}
+        />
+      </Link>
+    </div>
   );
 };
 
@@ -52,37 +43,11 @@ TripRow.propTypes = {
   classes: PropTypes.object,
   startDate: PropTypes.string,
   endDate: PropTypes.string,
+  toDuration: PropTypes.string,
+  fromDuration: PropTypes.string,
   name: PropTypes.string,
   budget: PropTypes.number,
-  destinations: PropTypes.arrayOf(PropTypes.string),
-  origins: PropTypes.arrayOf(PropTypes.string),
-  matchingDeals: PropTypes.array
+  destinations: PropTypes.arrayOf(PropTypes.string)
 };
 
-const styles = {
-  chipContainer: {
-    display: 'flex',
-    width: '100%',
-    flexWrap: 'wrap',
-    alignItems: 'center'
-  },
-  chip: {
-    fontWeight: 'bold',
-    margin: '4px'
-  },
-  titleBar: {
-    display: 'grid',
-    alignItems: 'center',
-    gridTemplateColumns: '1fr max-content'
-  },
-  details: {
-    marginTop: 16,
-    display: 'grid',
-    gridTemplateColumns: 'repeat(2,1fr)'
-  },
-  noLink: {
-    textDecoration: 'none'
-  }
-};
-
-export default withStyles(styles)(TripRow);
+export default TripRow;

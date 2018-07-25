@@ -1,8 +1,6 @@
 import React from 'react';
 import DealCard from '../DealCard';
-import nycImage from '../../images/NYC.jpg';
-import athImage from '../../images/ATH.jpg';
-import blqImage from '../../images/BLQ.jpg';
+import { getAirportImage } from '../../getAirportImage';
 import { css } from 'emotion';
 
 const gridStyle = css`
@@ -21,7 +19,7 @@ const DealCardGrid = () => {
   return (
     <div className={gridStyle}>
       <DealCard
-        image={nycImage}
+        image={getAirportImage('NYC')}
         title="USA"
         dates="June 2019"
         duration="16 Days"
@@ -29,7 +27,7 @@ const DealCardGrid = () => {
         newPrice="412 EUR"
       />
       <DealCard
-        image={athImage}
+        image={getAirportImage('ATH')}
         title="Greece"
         dates="April - August 2019"
         duration="21 Days"
@@ -37,7 +35,7 @@ const DealCardGrid = () => {
         newPrice="258 EUR"
       />
       <DealCard
-        image={blqImage}
+        image={getAirportImage('BLQ')}
         title="Bologna/Italy"
         dates="September 2018"
         duration="5 Days"
