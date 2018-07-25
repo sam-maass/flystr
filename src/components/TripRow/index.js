@@ -8,8 +8,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import ArrowRight from '@material-ui/icons/ArrowForward';
 import AirportChips from '../AirportChips';
-import CardHeader from '@material-ui/core/CardHeader'
-
+import CardHeader from '@material-ui/core/CardHeader';
 
 const TripRow = ({
   classes,
@@ -28,7 +27,7 @@ const TripRow = ({
   return (
     <Link className={classes.noLink} to={`/trip/${_id}`}>
       <Card>
-        <CardHeader title={name} subheader={`${matchingDeals.length} Deals`}></CardHeader>
+        <CardHeader title={name} subheader={`${matchingDeals.length} Deals`} />
         <CardContent>
           <Typography variant="subheading" className={classes.chipContainer}>
             <AirportChips airports={origins} styleClass={classes.chip} />
