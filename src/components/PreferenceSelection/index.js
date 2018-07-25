@@ -4,6 +4,9 @@ import { classes, styles } from '../../styles';
 import Button from '@material-ui/core/Button';
 import FormikTextField from '../FormikTextField';
 import PropTypes from 'prop-types';
+import AirportChips from '../AirportChips';
+import { IconButton } from '@material-ui/core';
+import EditIcon from '@material-ui/icons/Edit';
 
 const style = css`
   max-width: 1024px;
@@ -25,12 +28,28 @@ const style = css`
   .button {
     align-self: flex-end;
     bottom: 8px;
+    display: grid;
+    grid-gap: 8px;
+  }
+  .header {
+    text-align: center;
   }
 `;
 
 const PreferenceSelection = props => {
+  const deleteTrip = () => {
+    props.setFieldValue('shouldDelete', true);
+    props.handleSubmit();
+  };
   return (
     <div className={style}>
+      <div className="header">
+        <AirportChips airports={props.values.origins} /> to
+        <AirportChips airports={props.values.destinations} />
+        <IconButton onClick={() => props.setFieldValue('page', 1)}>
+          <EditIcon />
+        </IconButton>
+      </div>
       <div className="form">
         <h2>Almost done. What kind of flight are you looking for?</h2>
         <FormikTextField
@@ -69,16 +88,38 @@ const PreferenceSelection = props => {
           }}
         />
       </div>
-      <div className="button">
-        <Button
-          fullWidth
-          variant="outlined"
-          color="secondary"
-          onClick={() => props.handleSubmit()}
-        >
-          Find flights
-        </Button>
-      </div>
+      {!props.values.deleteable && (
+        <div className="button">
+          <Button
+            fullWidth
+            variant="outlined"
+            color="secondary"
+            onClick={() => props.handleSubmit()}
+          >
+            Find flights
+          </Button>
+        </div>
+      )}
+      {props.values.deleteable && (
+        <div className="button">
+          <Button
+            fullWidth
+            variant="outlined"
+            color="secondary"
+            onClick={() => props.handleSubmit()}
+          >
+            Update
+          </Button>
+          <Button
+            fullWidth
+            variant="outlined"
+            color="default"
+            onClick={() => deleteTrip()}
+          >
+            Delete
+          </Button>
+        </div>
+      )}
     </div>
   );
 };
@@ -86,7 +127,8 @@ const PreferenceSelection = props => {
 PreferenceSelection.propTypes = {
   values: PropTypes.object.isRequired,
   setFieldValue: PropTypes.func.isRequired,
-  handleSubmit: PropTypes.func.isRequired
+  handleSubmit: PropTypes.func.isRequired,
+  handleDelete: PropTypes.func.isRequired
 };
 
 export default PreferenceSelection;

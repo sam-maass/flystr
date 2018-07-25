@@ -42,11 +42,15 @@ const FormikForm = withFormik({
         ...values
       });
     } else {
-      await api().post(`/trips/${props.tripId}`, {
-        fromDuration,
-        toDuration,
-        ...values
-      });
+      if (values.shouldDelete) {
+        await api().delete(`/trips/${props.tripId}`);
+      } else {
+        await api().post(`/trips/${props.tripId}`, {
+          fromDuration,
+          toDuration,
+          ...values
+        });
+      }
     }
     setStatus('done');
   },
@@ -64,8 +68,10 @@ const FormikForm = withFormik({
   mapPropsToValues: ({ trips, tripId }) => {
     const trip = trips.find(trip => trip._id === tripId);
     return {
-      destinations: (trip && trip.destinations) || '',
-      origins: (trip && trip.origins) || '',
+      deleteable: Boolean(trip),
+      page: trip ? 3 : 1,
+      destinations: (trip && trip.destinations) || [],
+      origins: (trip && trip.origins) || [],
       startDate: moment().format('YYYY-MM-DD'),
       endDate: moment()
         .endOf('year')
