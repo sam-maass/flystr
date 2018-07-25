@@ -16,7 +16,6 @@ TripList.propTypes = { trips: PropTypes.array, classes: PropTypes.object };
 const style = css`
   margin-top: 8px;
   display: grid;
-  grid-row-gap: 8px;
 `;
 
 export default TripList;

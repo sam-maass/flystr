@@ -49,6 +49,7 @@
     "lint": "eslint --fix 'src/**/*.js'",
     "test-watch": "jest -o",
     "test-update": "jest -u",
+    "runTests": "jest",
     "test": "npm run lint && jest && npm run build && bundlesize",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
@@ -56,8 +57,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run lint && npm run format && git add",
-      "pre-push": "npm test"
+      "pre-push": "npm run lint && npm run format && git add .",
+      "pre-commit": "npm run lint && npm run format && jest && git add ."
     }
   },
   "devDependencies": {

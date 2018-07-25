@@ -17,7 +17,7 @@ const imgStyle = img => css`
 
 const containerStyle = css`
   display: grid;
-  grid-template-columns: 40% 1fr;
+  grid-template-columns: 40% 60%;
   .content {
     padding: 16px;
   }
@@ -26,6 +26,9 @@ const containerStyle = css`
 const titleStyle = css`
   ${classes.typography.title};
   margin-bottom: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 const oldPriceStyle = css`

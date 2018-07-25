@@ -22,7 +22,7 @@ exports[`DealCard: default 1`] = `
 
 .emotion-6 {
   display: grid;
-  grid-template-columns: 40% 1fr;
+  grid-template-columns: 40% 60%;
 }
 
 .emotion-6 .content {
@@ -42,6 +42,9 @@ exports[`DealCard: default 1`] = `
   margin-bottom: 8px;
   line-height: normal;
   margin-bottom: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .emotion-3 {

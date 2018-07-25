@@ -7,8 +7,8 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import moment from 'moment';
 import { Link } from 'react-router-dom';
+import { getDurationString, getTimeframeString } from '../../utils';
 
 const TripView = ({ children, trip }) => {
   const subheaderData = getSubheaderString(trip);
@@ -64,22 +64,4 @@ function getSubheaderString(trip) {
   subheaderData.push(getTimeframeString(trip));
   subheaderData.push(budget);
   return subheaderData;
-}
-
-function getDurationString(trip) {
-  return trip.toDuration
-    ? `${trip.fromDuration} - ${trip.toDuration} days`
-    : `${trip.fromDuration} days`;
-}
-
-function getTimeframeString(trip) {
-  const startMoment = moment(trip.endDate);
-  const endMoment = moment(trip.startDate);
-  const endsInSameYear = startMoment.isSame(endMoment, 'year');
-  const defaultFormat = 'MMM YYYY';
-  const startDateFormat = endsInSameYear ? 'MMM' : defaultFormat;
-  const formattedStart = startMoment.format(startDateFormat);
-  const formattedEnd = endMoment.format(defaultFormat);
-  const dates = `${formattedStart}-${formattedEnd}`;
-  return dates;
 }
