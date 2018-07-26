@@ -65,7 +65,7 @@ export const loggedInRoutes = [
   {
     path: '/trip/:tripId',
     exact: true,
-    header: () => <CustomAppBar withReturn title="Trip" />,
+    header: () => <CustomAppBar withReturn />,
     //eslint-disable-next-line
     main: props => <Pages.Trip {...props.match.params} />
   },

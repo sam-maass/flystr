@@ -9,6 +9,8 @@ import BackIcon from '@material-ui/icons/ArrowBack';
 import { withRouter } from 'react-router';
 import IconButton from '@material-ui/core/IconButton';
 import { styles } from '../../styles';
+import { connect } from 'react-redux';
+import { setAppbar } from '../../actions/appbarActions';
 
 const style = {
   flex: {
@@ -22,18 +24,35 @@ const style = {
 };
 
 function ButtonAppBar(props) {
-  const { classes, title, withDrawer = true, withReturn, history } = props;
+  const {
+    setAppbar,
+    classes,
+    title,
+    _title,
+    withDrawer = true,
+    _withDrawer,
+    _withReturn,
+    withReturn,
+    history
+  } = props;
+
+  const nextAppbar = {};
+  nextAppbar.title = title || _title;
+  nextAppbar.withDrawer = withDrawer;
+  nextAppbar.withReturn = withReturn;
+
+  setAppbar(nextAppbar);
   return (
     <AppBar className={classes.appBar}>
       <Toolbar>
-        {withDrawer && !withReturn && <CustomDrawer />}
-        {withReturn && (
+        {_withDrawer && !_withReturn && <CustomDrawer />}
+        {_withReturn && (
           <IconButton onClick={() => history.goBack()}>
             <BackIcon color="inherit" />
           </IconButton>
         )}
         <Typography variant="title" color="inherit" className={classes.flex}>
-          {title}
+          {_title}
         </Typography>
       </Toolbar>
     </AppBar>
@@ -41,13 +60,30 @@ function ButtonAppBar(props) {
 }
 
 ButtonAppBar.propTypes = {
+  setAppbar: PropTypes.func,
   history: PropTypes.object,
   classes: PropTypes.object.isRequired,
   title: PropTypes.string,
+  _title: PropTypes.string,
   withDrawer: PropTypes.bool,
-  withReturn: PropTypes.bool
+  _withDrawer: PropTypes.bool,
+  withReturn: PropTypes.bool,
+  _withReturn: PropTypes.bool
 };
 
 const RouterWrapper = withRouter(ButtonAppBar);
 
-export const CustomAppBar = withStyles(style)(RouterWrapper);
+const CustomAppBarStyled = withStyles(style)(RouterWrapper);
+const mapStateToProps = (store, props) => {
+  return {
+    ...props,
+    _title: store.appBar.title,
+    _withDrawer: store.appBar.withDrawer,
+    _withReturn: store.appBar.withReturn
+  };
+};
+
+export const CustomAppBar = connect(
+  mapStateToProps,
+  { setAppbar }
+)(CustomAppBarStyled);
