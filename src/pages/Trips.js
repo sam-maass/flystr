@@ -40,5 +40,4 @@ const styles = {
     right: 16
   }
 };
-
 export default withStyles(styles)(TripsPage);

@@ -3,9 +3,11 @@ import PropTypes from 'prop-types';
 import DealList from './component';
 import { connect } from 'react-redux';
 import TripView from './TripView';
+import { setAppbar } from '../../actions/appbarActions';
 
-const DealListContainer = ({ trips = [], tripId }) => {
+const DealListContainer = ({ trips = [], tripId, setAppbar }) => {
   const trip = trips.find(trip => trip._id === tripId);
+  setAppbar({ title: trip.name });
   if (trip && trip.matchingDeals && trip.matchingDeals.length === 0) {
     return <TripView trip={trip} />;
   } else {
@@ -30,4 +32,7 @@ const mapStateToProps = (store, props) => {
   };
 };
 
-export default connect(mapStateToProps)(DealListContainer);
+export default connect(
+  mapStateToProps,
+  { setAppbar }
+)(DealListContainer);
