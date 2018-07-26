@@ -3,7 +3,6 @@ import Card from '@material-ui/core/Card';
 import { css } from 'emotion';
 import { classes, styles } from '../../styles';
 import PropTypes from 'prop-types';
-import Chip from '@material-ui/core/Chip';
 
 const wrapperStyle = css`
   width: 100%;
@@ -15,11 +14,23 @@ const imgStyle = img => css`
   background-image: url(${img});
   background-size: cover;
   padding: 8px;
-  [class*='MuiChip'] {
-    background-color: ${styles.colors.orange};
-    color: ${styles.colors.white};
+  display: grid;
+  align-items: start;
+  justify-items: right;
+  .badge {
+    ${classes.typography.base};
+    font-size: 0.8em;
+    padding: 2px 6px;
     font-weight: bold;
     border-radius: 8px;
+    &.deal {
+      background-color: ${styles.colors.orange};
+      color: ${styles.colors.white};
+    }
+    &.active {
+      background-color: ${styles.colors.green3};
+      color: ${styles.colors.white};
+    }
   }
 `;
 
@@ -73,7 +84,8 @@ const DealCard = ({
       <Card>
         <div className={containerStyle}>
           <div className={imgStyle(image)}>
-            {dealCount > 0 && <Chip label={dealString} color="primary" />}
+            {dealCount > 0 && <span className="badge deal">{dealString}</span>}
+            {dealCount === 0 && <span className="badge active">active</span>}
           </div>
           <div className="content">
             <div className={titleStyle}>{title} </div>
@@ -84,7 +96,7 @@ const DealCard = ({
             </div>
             <div className={classes.typography.base}>
               {dealCount === 0 && (
-                <span className={noDealStyle}>Looking for deals ...</span>
+                <span className={noDealStyle}>Looking for next deal</span>
               )}
               {oldPrice && <span className={oldPriceStyle}>{oldPrice}</span>}
               {newPrice && <span className={newPriceStyle}>{newPrice}</span>}
