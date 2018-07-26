@@ -4,7 +4,6 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
 import Typography from '@material-ui/core/Typography';
-import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import { Link } from 'react-router-dom';
@@ -27,15 +26,15 @@ const TripView = ({ children, trip }) => {
           subheader={subheaderData.join(' • ')}
         />
         <CardContent>
-          <Typography>From: {trip.origins.join(' ,')}</Typography>
-          <Typography>To: {trip.destinations.join(' ,')}</Typography>
-          <Divider />
-          <Typography />
+          <Typography>Departure Airports: {trip.origins.join(' ,')}</Typography>
+          <Typography>
+            Destination Airports: {trip.destinations.join(' ,')}
+          </Typography>
           {trip.matchingDeals[0] ? (
             <div>
-              <Typography>Found {trip.matchingDeals.length} trips</Typography>
               <Typography>
-                From {Math.min(...trip.matchingDeals.map(deal => deal.price))} €
+                Found flights starting from:{' '}
+                {Math.min(...trip.matchingDeals.map(deal => deal.price))} €
               </Typography>
             </div>
           ) : (
