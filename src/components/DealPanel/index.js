@@ -61,7 +61,6 @@ const DealRow = ({
     </div>
   );
 };
-0;
 
 DealRow.propTypes = {
   status: PropTypes.string,
