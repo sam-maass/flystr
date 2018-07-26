@@ -7,8 +7,8 @@ export function getDurationString({ fromDuration, toDuration }) {
 }
 
 export function getTimeframeString({ endDate, startDate }) {
-  const startMoment = moment(endDate);
-  const endMoment = moment(startDate);
+  const startMoment = moment(startDate);
+  const endMoment = moment(endDate);
   const endsInSameYear = startMoment.isSame(endMoment, 'year');
   const defaultFormat = 'MMM YYYY';
   const startDateFormat = endsInSameYear ? 'MMM' : defaultFormat;
