@@ -97,13 +97,39 @@ exports[`DealCardGrid: default 1`] = `
   background-image: url(IMAGE_MOCK);
   background-size: cover;
   padding: 8px;
+  display: grid;
+  -webkit-align-items: start;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: start;
+  justify-items: right;
 }
 
-.emotion-0 [class*='MuiChip'] {
-  background-color: #FF6D00;
-  color: #FAFAFA;
+.emotion-0 .badge {
+  color: #263238;
+  font-family: 'Open Sans',sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0.05em;
+  -moz-letter-spacing: 0.05em;
+  -ms-letter-spacing: 0.05em;
+  letter-spacing: 0.05em;
+  line-height: 1.6em;
+  font-size: 0.8em;
+  padding: 2px 6px;
   font-weight: bold;
   border-radius: 8px;
+}
+
+.emotion-0 .badge.deal {
+  background-color: #FF6D00;
+  color: #FAFAFA;
+}
+
+.emotion-0 .badge.active {
+  background-color: #009688;
+  color: #FAFAFA;
 }
 
 <div
