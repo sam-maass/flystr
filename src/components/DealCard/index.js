@@ -109,7 +109,7 @@ const DealCard = ({
 };
 
 DealCard.propTypes = {
-  oldPrice: PropTypes.string.isRequired,
+  oldPrice: PropTypes.string,
   dealCount: PropTypes.number.isRequired,
   newPrice: PropTypes.string,
   dates: PropTypes.string,

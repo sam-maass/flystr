@@ -38,8 +38,8 @@ const Layout = ({
               />
             ))}
           </Switch>
-          <Switch>
-            <div className={classes.scrollContainer}>
+          <div className={classes.scrollContainer}>
+            <Switch>
               {routes.map((route, index) => (
                 <Route
                   key={index}
@@ -48,8 +48,8 @@ const Layout = ({
                   component={route.main}
                 />
               ))}
-            </div>
-          </Switch>
+            </Switch>
+          </div>
           <Snackbar
             anchorOrigin={{
               vertical: 'bottom',

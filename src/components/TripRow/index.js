@@ -23,7 +23,8 @@ const TripRow = ({
   budget,
   destinations = []
 }) => {
-  const minPrice = Math.min([...matchingDeals.map(d => d.price)]);
+  const minPrice = calcMinPrice(matchingDeals);
+
   return (
     <div className={style}>
       <Link to={`/trip/${_id}`}>
@@ -46,8 +47,8 @@ TripRow.propTypes = {
   classes: PropTypes.object,
   startDate: PropTypes.string,
   endDate: PropTypes.string,
-  toDuration: PropTypes.string,
-  fromDuration: PropTypes.string,
+  toDuration: PropTypes.number,
+  fromDuration: PropTypes.number,
   name: PropTypes.string,
   budget: PropTypes.number,
   destinations: PropTypes.arrayOf(PropTypes.string),
@@ -55,3 +56,12 @@ TripRow.propTypes = {
 };
 
 export default TripRow;
+
+function calcMinPrice(matchingDeals) {
+  const hasDeals = matchingDeals.length > 0;
+  let minPrice = undefined;
+  if (hasDeals) {
+    minPrice = Math.min(...matchingDeals.map(d => d.price));
+  }
+  return minPrice;
+}
