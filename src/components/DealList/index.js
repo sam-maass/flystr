@@ -7,7 +7,10 @@ import { setAppbar } from '../../actions/appbarActions';
 
 const DealListContainer = ({ trips = [], tripId, setAppbar }) => {
   const trip = trips.find(trip => trip._id === tripId);
-  setAppbar({ title: trip.name });
+  setAppbar({
+    title: trip.name,
+    button: { text: 'edit', link: `/trip/${tripId}/edit` }
+  });
   if (trip && trip.matchingDeals && trip.matchingDeals.length === 0) {
     return <TripView trip={trip} />;
   } else {

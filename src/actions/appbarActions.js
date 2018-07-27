@@ -1,6 +1,6 @@
-export function setAppbar({ title, withDrawer, withReturn }) {
+export function setAppbar(payload) {
   return {
     type: 'SET_APPBAR',
-    payload: { title, withDrawer, withReturn }
+    payload
   };
 }
