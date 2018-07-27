@@ -7,13 +7,12 @@ import { classes, styles } from '../../styles';
 
 const style = destination => css`
   ${classes.typography.base};
-  letter-spacing: 0.1em;
-  height: 175px;
+  height: 200px;
   background-image: url(${getAirportHeader(destination)});
   background-size: cover;
   background-repeat: no-repeat;
   .backdrop {
-    height: 175px;
+    height: 200px;
     display: grid;
     background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
   }
@@ -36,6 +35,7 @@ const style = destination => css`
     }
   }
   .infos {
+    letter-spacing: 0.1em;
     font-size: 14px;
     padding: 8px;
     align-self: end;

@@ -34,7 +34,7 @@ const InnerAppBar = ({
           {title}
         </Typography>
         {button && (
-          <Link to={button.link}>
+          <Link className={classes.noLink} to={button.link}>
             <Button>{button.text}</Button>
           </Link>
         )}
@@ -63,6 +63,9 @@ const style = {
     position: 'sticky',
     backgroundColor: styles.colors.white,
     color: styles.colors.darkGray
+  },
+  noLink: {
+    textDecoration: 'none'
   }
 };
 
