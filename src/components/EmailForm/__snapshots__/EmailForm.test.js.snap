@@ -27,6 +27,7 @@ exports[`EmailForm: default 1`] = `
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
+          required={false}
           type="text"
         />
       </div>
@@ -51,6 +52,7 @@ exports[`EmailForm: default 1`] = `
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
+          required={false}
           type="password"
         />
       </div>

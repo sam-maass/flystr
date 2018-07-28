@@ -3,6 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "jest": {
+    "verbose": true,
+    "testURL": "http://localhost/",
     "setupTestFrameworkScriptFile": "./jestSetup.js",
     "moduleNameMapper": {
       ".*\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/mocks/image.js"
@@ -15,12 +17,12 @@
     }
   ],
   "dependencies": {
-    "@material-ui/core": "^1.4.0",
-    "@material-ui/icons": "^1.1.0",
+    "@material-ui/core": "^1.4.1",
+    "@material-ui/icons": "^2.0.0",
     "autosuggest-highlight": "^3.1.1",
     "axios": "0.18.0",
     "emotion": "^9.2.6",
-    "formik": "^1.0.1",
+    "formik": "^1.0.2",
     "jsonwebtoken": "^8.3.0",
     "moment": "^2.22.2",
     "ms": "^2.1.1",
@@ -40,7 +42,7 @@
     "redux-promise-middleware": "^5.1.1",
     "redux-thunk": "^2.3.0",
     "string-hash": "^1.1.3",
-    "yup": "^0.25.1"
+    "yup": "^0.26.0"
   },
   "scripts": {
     "format": "prettier --write 'src/**/*.js'",
@@ -74,12 +76,12 @@
     "bundlesize": "^0.17.0",
     "enzyme": "3.3.0",
     "enzyme-adapter-react-16": "1.1.1",
-    "eslint": "^5.1.0",
+    "eslint": "^5.2.0",
     "eslint-config-airbnb": "^17.0.0",
     "eslint-plugin-jest": "^21.18.0",
     "eslint-plugin-react": "^7.10.0",
     "husky": "^1.0.0-rc.13",
-    "jest-cli": "^23.4.1",
+    "jest-cli": "^23.4.2",
     "jest-emotion": "9.2.6",
     "lint-staged": "^7.2.0",
     "prettier": "^1.13.7",

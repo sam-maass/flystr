@@ -50,6 +50,7 @@ exports[`BetaSignupForm: default 1`] = `
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
+          required={false}
           type="text"
           value=""
         />

@@ -84,6 +84,7 @@ exports[`OriginSelection: default 1`] = `
               onFocus={[Function]}
               onKeyDown={[Function]}
               onKeyUp={[Function]}
+              required={false}
               type="text"
               value=""
             />
