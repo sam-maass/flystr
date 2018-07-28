@@ -1,3 +1,4 @@
+import '../components/TripTable/TripTable.story';
 import '../components/PreferenceSelection/PreferenceSelection.story';
 import '../components/OriginSelection/OriginSelection.story';
 import '../components/DestinationSelection/DestinationSelection.story';

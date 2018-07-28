@@ -75,6 +75,12 @@ export const loggedInRoutes = [
     header: () => <CustomAppBar withReturn title="Edit Trip" />,
     //eslint-disable-next-line
     main: props => <Pages.NewTrip {...props.match.params} />
+  },
+  {
+    path: '/admin/all-trips',
+    exact: true,
+    header: () => <CustomAppBar title="All Trips" />,
+    main: () => <Pages.AdminTrips />
   }
 ];
 
