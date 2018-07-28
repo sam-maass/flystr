@@ -6,15 +6,16 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import PinDropIcon from '@material-ui/icons/PinDrop';
 import SignOutIcon from '@material-ui/icons/PowerSettingsNew';
-// import UserIcon from '@material-ui/icons/PermIdentity';
-// import DealIcon from '@material-ui/icons/MonetizationOn';
+import UserIcon from '@material-ui/icons/PermIdentity';
+import DealIcon from '@material-ui/icons/MonetizationOn';
+import AllTripsIcon from '@material-ui/icons/List';
 import Divider from '@material-ui/core/Divider';
 import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import { logoutUser } from '../../actions/userActions';
 import { connect } from 'react-redux';
 
-const SideListComponent = ({ classes, logoutUser }) => {
+const SideListComponent = ({ classes, user, logoutUser }) => {
   return (
     <div className={classes.list}>
       <List>
@@ -32,22 +33,36 @@ const SideListComponent = ({ classes, logoutUser }) => {
             <ListItemText primary="Upcoming Trips" />
           </ListItem>
         </Link>
-        {/* <Link to={'/settings'}>
-          <ListItem button>
-            <ListItemIcon>
-              <UserIcon />
-            </ListItemIcon>
-            <ListItemText primary="Settings" />
-          </ListItem>
-        </Link>
-        <Link to={'/new-deal'}>
-          <ListItem button>
-            <ListItemIcon>
-              <DealIcon />
-            </ListItemIcon>
-            <ListItemText primary="Report a Deal" />
-          </ListItem>
-        </Link> */}
+        {user.isAdmin && (
+          <Link to={'/admin/all-trips'}>
+            <ListItem button>
+              <ListItemIcon>
+                <AllTripsIcon />
+              </ListItemIcon>
+              <ListItemText primary="Triplist" />
+            </ListItem>
+          </Link>
+        )}
+        {user.isAdmin && (
+          <Link to={'/settings'}>
+            <ListItem button>
+              <ListItemIcon>
+                <UserIcon />
+              </ListItemIcon>
+              <ListItemText primary="Settings" />
+            </ListItem>
+          </Link>
+        )}
+        {user.isAdmin && (
+          <Link to={'/new-deal'}>
+            <ListItem button>
+              <ListItemIcon>
+                <DealIcon />
+              </ListItemIcon>
+              <ListItemText primary="Report a Deal" />
+            </ListItem>
+          </Link>
+        )}
         <Divider />
         <ListItem button onClick={logoutUser}>
           <ListItemIcon>
@@ -62,7 +77,8 @@ const SideListComponent = ({ classes, logoutUser }) => {
 
 SideListComponent.propTypes = {
   classes: PropTypes.object,
-  logoutUser: PropTypes.func
+  logoutUser: PropTypes.func,
+  user: PropTypes.object
 };
 
 const styles = {
@@ -84,7 +100,14 @@ const styles = {
   }
 };
 
+const mapStateToProps = (store, props) => {
+  return {
+    ...props,
+    user: store.user
+  };
+};
+
 export const SideList = connect(
-  null,
+  mapStateToProps,
   { logoutUser }
 )(withStyles(styles)(SideListComponent));

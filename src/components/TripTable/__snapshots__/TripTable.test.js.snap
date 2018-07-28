@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TripTable: default 1`] = `
+.emotion-0 {
+  color: #263238;
+  font-family: 'Open Sans',sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0.05em;
+  -moz-letter-spacing: 0.05em;
+  -ms-letter-spacing: 0.05em;
+  letter-spacing: 0.05em;
+  line-height: 1.6em;
+  display: grid;
+  grid-gap: 2px;
+}
+
+.emotion-0 .row {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  grid-gap: 2px;
+}
+
+.emotion-0 .row div {
+  padding: 8px;
+  background-color: #fafafa;
+}
+
+.emotion-0 .row.header {
+  font-weight: bold;
+}
+
+<div
+  className="emotion-0"
+>
+  <div
+    className="row header"
+  >
+    <div>
+      From
+    </div>
+    <div>
+      To
+    </div>
+    <div>
+      Active Deals
+    </div>
+    <div>
+      Created at
+    </div>
+  </div>
+</div>
+`;

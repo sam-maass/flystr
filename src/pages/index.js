@@ -1,3 +1,4 @@
+import AdminTrips from './AdminTrips.js';
 import Landing from './Landing.js';
 import Impressum from './Impressum.js';
 import Login from './Login';
@@ -10,6 +11,7 @@ import Trips from './Trips';
 
 export {
   Landing,
+  AdminTrips,
   Impressum,
   Login,
   Signup,
