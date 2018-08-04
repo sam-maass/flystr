@@ -127,8 +127,12 @@ class IntegrationAutosuggest extends React.Component {
   state = {
     value: '',
     suggestions: [],
-    selectedAirports: new Set([...this.props.values[this.props.elemKey]])
+    selectedAirports: this.getInitialSelectedAirports()
   };
+
+  getInitialSelectedAirports() {
+    return new Set([...this.props.values[this.props.elemKey]]);
+  }
 
   componentDidUpdate(prevProps) {
     const key = this.props.elemKey;
@@ -179,7 +183,7 @@ class IntegrationAutosuggest extends React.Component {
 
   onDeleteItem = value => {
     this.setState(prevState => {
-      const selectedAirports = prevState.selectedAirports;
+      const { selectedAirports } = prevState;
       selectedAirports.delete(value);
       this.props.setFieldValue(this.props.elemKey, [...selectedAirports]);
       return { selectedAirports };

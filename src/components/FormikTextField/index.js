@@ -12,7 +12,8 @@ const FormikTextField = ({
   handleChange,
   handleBlur,
   placeholder,
-  InputProps
+  InputProps,
+  ...rest
 }) => {
   return (
     <TextField
@@ -26,6 +27,7 @@ const FormikTextField = ({
       onChange={handleChange}
       onBlur={handleBlur}
       InputProps={InputProps}
+      {...rest}
     />
   );
 };

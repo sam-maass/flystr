@@ -40,7 +40,7 @@ class DestinationSelection extends React.Component {
   };
 
   render() {
-    const props = this.props;
+    const { props } = this;
     const hasSelection = props.values.destinations.length > 0;
     const label = hasSelection
       ? 'Add more destinations'
