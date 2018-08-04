@@ -62,6 +62,10 @@ const style = css`
 `;
 
 class NewDealForm extends React.Component {
+  state = {
+    editableFlight: {}
+  };
+
   constructor(props) {
     super(props);
   }
@@ -72,6 +76,21 @@ class NewDealForm extends React.Component {
       ...exampleFlights,
       flightDetails
     ]);
+  };
+
+  handleDeleteFlight = link => {
+    const { exampleFlights: prevFlights } = this.props.values;
+    const exampleFlights = prevFlights.filter(flight => flight.link !== link);
+    this.props.setFieldValue('exampleFlights', exampleFlights);
+  };
+
+  handleEditFlight = link => {
+    const { exampleFlights } = this.props.values;
+    const editableFlight = exampleFlights.filter(
+      flight => flight.link === link
+    )[0];
+    this.setState({ editableFlight });
+    this.handleDeleteFlight(link);
   };
 
   render() {
@@ -114,11 +133,25 @@ class NewDealForm extends React.Component {
                     <div className="inArr ">{flight.inArr}</div>
                     <div className="inCarriers ">{flight.inCarriers}</div>
                     <div className="price ">{flight.price}</div>
-                    <div className="actions " />
+                    <div className="actions ">
+                      <Button
+                        onClick={() => this.handleEditFlight(flight.link)}
+                      >
+                        Edit
+                      </Button>
+                      <Button
+                        onClick={() => this.handleDeleteFlight(flight.link)}
+                      >
+                        Delete
+                      </Button>
+                    </div>
                   </Fragment>
                 );
               })}
-              <NewExampleFlight onSave={this.handleNewFlight} />
+              <NewExampleFlight
+                flight={this.state.editableFlight}
+                handleSave={this.handleNewFlight}
+              />
             </div>
           </div>
           <Button
