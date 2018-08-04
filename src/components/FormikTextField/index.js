@@ -13,7 +13,7 @@ const FormikTextField = ({
   handleBlur,
   placeholder,
   InputProps,
-  ...rest
+  fullWidth
 }) => {
   return (
     <TextField
@@ -27,7 +27,7 @@ const FormikTextField = ({
       onChange={handleChange}
       onBlur={handleBlur}
       InputProps={InputProps}
-      {...rest}
+      fullWidth={fullWidth}
     />
   );
 };
@@ -43,7 +43,8 @@ FormikTextField.propTypes = {
   touched: PropTypes.object,
   handleChange: PropTypes.func,
   handleBlur: PropTypes.func,
-  InputProps: PropTypes.object
+  InputProps: PropTypes.object,
+  fullWidth: PropTypes.bool
 };
 
 export default FormikTextField;

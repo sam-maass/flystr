@@ -12,6 +12,14 @@ class NewExampleFlight extends React.Component {
     this.handleParseLink = this.handleParseLink.bind(this);
   }
 
+  componentDidUpdate(prevProps) {
+    const { flight } = this.props;
+    if (prevProps.flight.link !== flight.link && flight.link) {
+      this.props.setValues(flight);
+      this.setState({ showUrlField: false });
+    }
+  }
+
   state = {
     showUrlField: true
   };
@@ -24,7 +32,7 @@ class NewExampleFlight extends React.Component {
   };
 
   handleAddFlight = () => {
-    this.props.onSave(this.props.values);
+    this.props.handleSave(this.props.values);
     this.props.resetForm();
     this.setState({ showUrlField: true });
   };
@@ -81,8 +89,13 @@ class NewExampleFlight extends React.Component {
 NewExampleFlight.propTypes = {
   values: PropTypes.object.isRequired,
   setValues: PropTypes.func.isRequired,
-  onSave: PropTypes.func.isRequired,
-  resetForm: PropTypes.func.isRequired
+  handleSave: PropTypes.func.isRequired,
+  resetForm: PropTypes.func.isRequired,
+  flight: PropTypes.object
 };
 
-export default withFormik({})(NewExampleFlight);
+export default withFormik({
+  mapPropsToValues: () => {
+    return { link: '' };
+  }
+})(NewExampleFlight);
