@@ -1,7 +1,7 @@
 {
   "parser": "babel-eslint",
   "extends": ["eslint:recommended", "plugin:react/recommended"],
-  "plugins": ["react","jest"],
+  "plugins": ["react", "jest"],
   "parserOptions": {
     "ecmaVersion": 6,
     "sourceType": "module",
@@ -32,6 +32,11 @@
     "prefer-const": 2,
     "sort-vars": 2,
     "prefer-spread": 2,
-    "prefer-template": 2
+    "prefer-template": 2,
+    "prefer-destructuring": "warn",
+    "no-unused-vars": [
+      "error",
+      { "ignoreRestSiblings": true, "varsIgnorePattern": "[iI]gnored" }
+    ]
   }
 }
