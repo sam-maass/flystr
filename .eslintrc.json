@@ -33,7 +33,7 @@
     "sort-vars": 2,
     "prefer-spread": 2,
     "prefer-template": 2,
-    "prefer-destructuring": "warn",
+    "prefer-destructuring": ["warn", { "array": false }],
     "no-unused-vars": [
       "error",
       { "ignoreRestSiblings": true, "varsIgnorePattern": "[iI]gnored" }
