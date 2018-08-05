@@ -73,7 +73,7 @@ class NewDealForm extends React.Component {
 
   handleNewFlight = flightDetails => {
     const { exampleFlights = [] } = this.props.values;
-    const flights = [...exampleFlights, flightDetails];
+    const flights = [...exampleFlights, ...flightDetails];
     const dealData = this.calcDealData(flights);
     this.props.setValues({
       exampleFlights: flights,
@@ -106,7 +106,7 @@ class NewDealForm extends React.Component {
       .min(...flights.map(f => moment(f.outDate)))
       .format('YYYY-MM-DD');
     const lastReturn = moment
-      .min(...flights.map(f => moment(f.inDate)))
+      .max(...flights.map(f => moment(f.inDate)))
       .format('YYYY-MM-DD');
     const title = `Flights from ${origins} to ${destinations}`;
     return {
