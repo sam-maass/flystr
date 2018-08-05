@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withFormik } from 'formik';
 import FormikTextField from '../FormikTextField';
 import Button from '@material-ui/core/Button';
-import { parseLink } from './parseLink';
+import { parseLinksFromText } from './parseLink';
 
 class NewExampleFlight extends React.Component {
   constructor(props) {
@@ -26,9 +26,9 @@ class NewExampleFlight extends React.Component {
 
   handleParseLink = () => {
     const { link } = this.props.values;
-    const linkParams = parseLink(link);
-    this.setState({ showUrlField: false });
-    this.props.setValues(linkParams);
+    const linkParams = parseLinksFromText(link);
+    this.props.handleSave(linkParams);
+    this.props.resetForm();
   };
 
   handleAddFlight = () => {

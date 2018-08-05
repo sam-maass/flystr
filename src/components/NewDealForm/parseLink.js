@@ -2,6 +2,12 @@ const kayakRegex = /(?<linkSource>kayak.\w{2,3})\/.*(?<origin>[A-Z]{3})-(?<desti
 const skyscannerRegex = /(?<linkSource>skyscanner.\w{2,3})\/.*\/(?<outOrigin>[A-Z]{3,4})\/(?<departureDate>.{10})\/(?<outDestination>[A-Z]{3,4})\/(?<inOrigin>[A-Z]{3,4})\/(?<returnDate>.{10})\/(?<inDestination>[A-Z]{3,4})/;
 const googleRegex = /(?<linkSource>google.\w{2,3}.\w{0,3})\/.*#flt=(?<outOrigin>.*?)\.(?<outDestination>.*?)\.(?<departureDate>.*?)\*(?<inOrigin>.*?)\.(?<inDestination>.*?)\.(?<returnDate>.*?);/;
 
+export const parseLinksFromText = text => {
+  const linkRegex = /"https?:.*?"/g;
+  const links = text.match(linkRegex);
+  return links.map(link => parseLink(link));
+};
+
 export const parseLink = link => {
   let linkParams = {};
   switch (true) {
