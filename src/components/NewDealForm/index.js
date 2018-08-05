@@ -30,7 +30,7 @@ const RoutingWrapper = props => {
     return (
       <Redirect
         to={{
-          pathname: '/trips'
+          pathname: '/deals'
         }}
       />
     );

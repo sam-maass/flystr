@@ -98,16 +98,16 @@ class NewDealForm extends React.Component {
 
   calcDealData = flights => {
     const destinations = [
-      ...new Set([...flights.map(flight => flight.outArr)])
+      ...new Set([...flights.map(flight => flight.outDestination)])
     ];
-    const origins = [...new Set([...flights.map(flight => flight.outDep)])];
+    const origins = [...new Set([...flights.map(flight => flight.outOrigin)])];
     const minPrice = Math.min(...flights.map(f => f.price).filter(v => v >= 0));
     const firstDepature = moment
       .min(...flights.map(f => moment(f.outDate)))
-      .format('YYYY-MM-DDDD');
+      .format('YYYY-MM-DD');
     const lastReturn = moment
       .min(...flights.map(f => moment(f.inDate)))
-      .format('YYYY-MM-DDDD');
+      .format('YYYY-MM-DD');
     const title = `Flights from ${origins} to ${destinations}`;
     return {
       title,
@@ -156,12 +156,12 @@ class NewDealForm extends React.Component {
                       <a href={flight.link}>{flight.linkSource}</a>
                     </div>
                     <div className="outDate ">{flight.outDate}</div>
-                    <div className="outDep ">{flight.outDep}</div>
-                    <div className="outArr ">{flight.outArr}</div>
+                    <div className="outDep ">{flight.outOrigin}</div>
+                    <div className="outArr ">{flight.outDestination}</div>
                     <div className="outCarriers ">{flight.outCarriers}</div>
                     <div className="inDate ">{flight.inDate}</div>
-                    <div className="inDep ">{flight.inDep}</div>
-                    <div className="inArr ">{flight.inArr}</div>
+                    <div className="inDep ">{flight.inOrigin}</div>
+                    <div className="inArr ">{flight.inDestination}</div>
                     <div className="inCarriers ">{flight.inCarriers}</div>
                     <div className="price ">{flight.price}</div>
                     <div className="actions ">

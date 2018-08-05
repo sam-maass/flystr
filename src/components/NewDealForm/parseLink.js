@@ -25,12 +25,12 @@ export const parseLink = link => {
 const parseKayakLink = link => {
   const { groups } = kayakRegex.exec(link);
   return {
-    outDep: groups.origin,
+    outOrigin: groups.origin,
     outDate: groups.departureDate,
-    outArr: groups.destination,
-    inDep: groups.destination,
+    outDestination: groups.destination,
+    inOrigin: groups.destination,
     inDate: groups.returnDate,
-    inArr: groups.origin,
+    inDestination: groups.origin,
     linkSource: groups.linkSource
   };
 };
@@ -38,12 +38,12 @@ const parseKayakLink = link => {
 const parseSkyscannerLink = link => {
   const { groups } = skyscannerRegex.exec(link);
   return {
-    outDep: groups.outOrigin.substr(0, 3),
+    outOrigin: groups.outOrigin.substr(0, 3),
     outDate: groups.departureDate,
-    outArr: groups.outDestination.substr(0, 3),
-    inDep: groups.inOrigin.substr(0, 3),
+    outDestination: groups.outDestination.substr(0, 3),
+    inOrigin: groups.inOrigin.substr(0, 3),
     inDate: groups.returnDate,
-    inArr: groups.inDestination.substr(0, 3),
+    inDestination: groups.inDestination.substr(0, 3),
     linkSource: groups.linkSource
   };
 };
@@ -51,12 +51,12 @@ const parseSkyscannerLink = link => {
 const parseGoogleLink = link => {
   const { groups } = googleRegex.exec(link);
   return {
-    outDep: groups.outOrigin,
+    outOrigin: groups.outOrigin,
     outDate: groups.departureDate,
-    outArr: groups.outDestination,
-    inDep: groups.inOrigin,
+    outDestination: groups.outDestination,
+    inOrigin: groups.inOrigin,
     inDate: groups.returnDate,
-    inArr: groups.inDestination,
+    inDestination: groups.inDestination,
     linkSource: groups.linkSource
   };
 };
