@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import { css } from 'emotion';
 import { classes } from '../../styles';
 import NewExampleFlight from './newExampleFlight';
+import moment from 'moment';
 
 const style = css`
   display: grid;
@@ -72,10 +73,12 @@ class NewDealForm extends React.Component {
 
   handleNewFlight = flightDetails => {
     const { exampleFlights = [] } = this.props.values;
-    this.props.setFieldValue('exampleFlights', [
-      ...exampleFlights,
-      flightDetails
-    ]);
+    const flights = [...exampleFlights, flightDetails];
+    const dealData = this.calcDealData(flights);
+    this.props.setValues({
+      exampleFlights: flights,
+      ...dealData
+    });
   };
 
   handleDeleteFlight = link => {
@@ -93,6 +96,29 @@ class NewDealForm extends React.Component {
     this.handleDeleteFlight(link);
   };
 
+  calcDealData = flights => {
+    const destinations = [
+      ...new Set([...flights.map(flight => flight.outArr)])
+    ];
+    const origins = [...new Set([...flights.map(flight => flight.outDep)])];
+    const minPrice = Math.min(...flights.map(f => f.price).filter(v => v >= 0));
+    const firstDepature = moment
+      .min(...flights.map(f => moment(f.outDate)))
+      .format('YYYY-MM-DDDD');
+    const lastReturn = moment
+      .min(...flights.map(f => moment(f.inDate)))
+      .format('YYYY-MM-DDDD');
+    const title = `Flights from ${origins} to ${destinations}`;
+    return {
+      title,
+      origins,
+      destinations,
+      minPrice,
+      firstDepature,
+      lastReturn
+    };
+  };
+
   render() {
     const { exampleFlights = [] } = this.props.values;
     return (
@@ -104,6 +130,11 @@ class NewDealForm extends React.Component {
             label="Title"
             {...this.props}
           />
+          <div>{this.props.values.origins}</div>
+          <div>{this.props.values.destinations}</div>
+          <div>{this.props.values.minPrice}</div>
+          <div>{this.props.values.firstDepature}</div>
+          <div>{this.props.values.lastReturn}</div>
           <div className={style}>
             Flights: <br />
             <div className="flights">
@@ -173,6 +204,7 @@ NewDealForm.propTypes = {
   errors: PropTypes.object,
   touched: PropTypes.object,
   handleSubmit: PropTypes.func,
+  setValues: PropTypes.func,
   setFieldValue: PropTypes.func
 };
 
