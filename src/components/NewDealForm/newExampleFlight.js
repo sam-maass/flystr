@@ -65,14 +65,14 @@ class NewExampleFlight extends React.Component {
               <a href={props.values.link}>{props.values.linkSource}</a>
             </div>
           </div>
-          <FormikTextField elemKey="outDate" type="date" {...props} />
-          <FormikTextField elemKey="outDep" {...props} />
-          <FormikTextField elemKey="outArr" {...props} />
-          <FormikTextField elemKey="outCarriers" type="text" {...props} />
-          <FormikTextField elemKey="inDate" type="date" {...props} />
-          <FormikTextField elemKey="inDep" {...props} />
-          <FormikTextField elemKey="inArr" {...props} />
-          <FormikTextField elemKey="inCarriers" type="text" {...props} />
+          <FormikTextField elemKey="outDate" {...props} />
+          <FormikTextField elemKey="outOrigin" {...props} />
+          <FormikTextField elemKey="outDestination" {...props} />
+          <FormikTextField elemKey="outCarriers" {...props} />
+          <FormikTextField elemKey="inDate" {...props} />
+          <FormikTextField elemKey="inOrigin" {...props} />
+          <FormikTextField elemKey="inDestination" {...props} />
+          <FormikTextField elemKey="inCarriers" {...props} />
           <FormikTextField elemKey="price" type="number" {...props} />
           <Button
             variant="raised"

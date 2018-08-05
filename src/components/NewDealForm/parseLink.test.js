@@ -20,56 +20,56 @@ describe('Skyscanner links', () => {
   it(`should parse skyscanner.com link`, () => {
     const link = skyscannerLinks[0];
     expect(parseLink(link)).toEqual({
-      inArr: 'MAO',
+      inDestination: 'MAO',
       inDate: '2018-10-04',
-      inDep: 'MIA',
+      inOrigin: 'MIA',
       link,
       linkSource: 'skyscanner.com',
-      outArr: 'MIA',
+      outDestination: 'MIA',
       outDate: '2018-09-24',
-      outDep: 'MAO'
+      outOrigin: 'MAO'
     });
   });
 
   it(`should parse skyscanner.fi link`, () => {
     const link = skyscannerLinks[1];
     expect(parseLink(link)).toEqual({
-      inArr: 'CDG',
+      inDestination: 'CDG',
       inDate: '2018-09-20',
-      inDep: 'XIY',
+      inOrigin: 'XIY',
       link,
       linkSource: 'skyscanner.fi',
-      outArr: 'XIY',
+      outDestination: 'XIY',
       outDate: '2018-09-09',
-      outDep: 'CDG'
+      outOrigin: 'CDG'
     });
   });
 
   it(`should parse link with longer IATA coder as origin`, () => {
     const link = skyscannerLinks[3];
     expect(parseLink(link)).toEqual({
-      inArr: 'JNB',
+      inDestination: 'JNB',
       inDate: '2019-02-19',
-      inDep: 'GRU',
+      inOrigin: 'GRU',
       link,
       linkSource: 'skyscanner.com',
-      outArr: 'GRU',
+      outDestination: 'GRU',
       outDate: '2019-02-10',
-      outDep: 'JNB'
+      outOrigin: 'JNB'
     });
   });
 
   it(`should parse link with longer IATA coder as destination`, () => {
     const link = skyscannerLinks[2];
     expect(parseLink(link)).toEqual({
-      inArr: 'KWI',
+      inDestination: 'KWI',
       inDate: '2018-11-02',
-      inDep: 'NYC',
+      inOrigin: 'NYC',
       link,
       linkSource: 'skyscanner.com',
-      outArr: 'NYC',
+      outDestination: 'NYC',
       outDate: '2018-10-24',
-      outDep: 'KWI'
+      outOrigin: 'KWI'
     });
   });
 });
@@ -82,28 +82,28 @@ describe('Kayak Links', () => {
   it('should parse kayak link', () => {
     const link = kayakLinks[0];
     expect(parseLink(link)).toEqual({
-      inArr: 'KBP',
+      inDestination: 'KBP',
       inDate: '2018-11-29',
-      inDep: 'WRO',
+      inOrigin: 'WRO',
       link,
       linkSource: 'kayak.de',
-      outArr: 'WRO',
+      outDestination: 'WRO',
       outDate: '2018-11-20',
-      outDep: 'KBP'
+      outOrigin: 'KBP'
     });
   });
 
   it('should parse fly4free ref to kayak', () => {
     const link = kayakLinks[1];
     expect(parseLink(link)).toEqual({
-      inArr: 'BUD',
+      inDestination: 'BUD',
       inDate: '2019-02-26',
-      inDep: 'CHI',
+      inOrigin: 'CHI',
       link,
       linkSource: 'kayak.ie',
-      outArr: 'CHI',
+      outDestination: 'CHI',
       outDate: '2019-02-19',
-      outDep: 'BUD'
+      outOrigin: 'BUD'
     });
   });
 });
@@ -116,28 +116,28 @@ describe('Google Links', () => {
   it('should parse google.co.uk links', () => {
     const link = googleLinks[0];
     expect(parseLink(link)).toEqual({
-      inArr: 'BUD',
+      inDestination: 'BUD',
       inDate: '2019-04-12',
-      inDep: '/m/0hsqf',
+      inOrigin: '/m/0hsqf',
       link,
       linkSource: 'google.co.uk',
-      outArr: '/m/0hsqf',
+      outDestination: '/m/0hsqf',
       outDate: '2019-03-28',
-      outDep: 'BUD'
+      outOrigin: 'BUD'
     });
   });
 
   it('should parse google.com links', () => {
     const link = googleLinks[1];
     expect(parseLink(link)).toEqual({
-      inArr: 'SOF',
+      inDestination: 'SOF',
       inDate: '2018-12-11',
-      inDep: 'JNB',
+      inOrigin: 'JNB',
       link,
       linkSource: 'google.com',
-      outArr: 'JNB',
+      outDestination: 'JNB',
       outDate: '2018-12-04',
-      outDep: 'SOF'
+      outOrigin: 'SOF'
     });
   });
 });
