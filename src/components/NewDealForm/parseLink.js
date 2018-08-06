@@ -3,7 +3,7 @@ const skyscannerRegex = /(?<linkSource>skyscanner.\w{2,3})\/.*\/(?<outOrigin>[A-
 const googleRegex = /(?<linkSource>google.\w{2,3}.\w{0,3})\/.*#flt=(?<outOrigin>.*?)\.(?<outDestination>.*?)\.(?<departureDate>.*?)\*(?<inOrigin>.*?)\.(?<inDestination>.*?)\.(?<returnDate>.*?);/;
 
 export const parseLinksFromText = text => {
-  const linkRegex = /"https?:.*?"/g;
+  const linkRegex = /https?:.*?((?="\s)|$)/g;
   const links = text.match(linkRegex);
   return links.map(link => parseLink(link));
 };
