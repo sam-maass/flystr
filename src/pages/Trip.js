@@ -1,11 +1,11 @@
 import React from 'react';
-import DealList from '../components/DealList';
+import TripDealList from '../components/TripDealList';
 import PropTypes from 'prop-types';
 
 const TripPage = ({ tripId }) => {
   return (
     <div>
-      <DealList tripId={tripId} />
+      <TripDealList tripId={tripId} />
     </div>
   );
 };
