@@ -153,7 +153,13 @@ class NewDealForm extends React.Component {
                 return (
                   <Fragment key={flight.link}>
                     <div className="link">
-                      <a href={flight.link}>{flight.linkSource}</a>
+                      <a
+                        href={flight.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {flight.linkSource}
+                      </a>
                     </div>
                     <div className="outDate ">{flight.outDate}</div>
                     <div className="outDep ">{flight.outOrigin}</div>
