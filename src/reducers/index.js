@@ -1,4 +1,4 @@
-import { combineReducers } from '../../../../.cache/typescript/2.9/node_modules/redux';
+import { combineReducers } from 'redux';
 
 import user from './userReducer';
 import trips from './tripsReducer';
