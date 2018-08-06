@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Form } from 'formik';
 import FormikTextField from '../FormikTextField';
@@ -7,6 +7,7 @@ import { css } from 'emotion';
 import { classes } from '../../styles';
 import NewExampleFlight from './newExampleFlight';
 import moment from 'moment';
+import ExampleFlightTableRow from './exampleFlightTableRow';
 
 const style = css`
   display: grid;
@@ -84,16 +85,18 @@ class NewDealForm extends React.Component {
   handleDeleteFlight = link => {
     const { exampleFlights: prevFlights } = this.props.values;
     const exampleFlights = prevFlights.filter(flight => flight.link !== link);
-    this.props.setFieldValue('exampleFlights', exampleFlights);
+    const dealData = this.calcDealData(exampleFlights);
+    this.props.setValues({ ...dealData, exampleFlights });
   };
 
-  handleEditFlight = link => {
+  handleChangeFlight = flight => {
     const { exampleFlights } = this.props.values;
-    const editableFlight = exampleFlights.filter(
-      flight => flight.link === link
-    )[0];
-    this.setState({ editableFlight });
-    this.handleDeleteFlight(link);
+    const index = exampleFlights.findIndex(
+      eFlight => eFlight.link === flight.link
+    );
+    exampleFlights[index] = flight;
+    const dealData = this.calcDealData(exampleFlights);
+    this.props.setValues({ ...dealData, exampleFlights });
   };
 
   calcDealData = flights => {
@@ -151,38 +154,12 @@ class NewDealForm extends React.Component {
               <div className="actions header">Actions</div>
               {exampleFlights.map(flight => {
                 return (
-                  <Fragment key={flight.link}>
-                    <div className="link">
-                      <a
-                        href={flight.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {flight.linkSource}
-                      </a>
-                    </div>
-                    <div className="outDate ">{flight.outDate}</div>
-                    <div className="outDep ">{flight.outOrigin}</div>
-                    <div className="outArr ">{flight.outDestination}</div>
-                    <div className="outCarriers ">{flight.outCarriers}</div>
-                    <div className="inDate ">{flight.inDate}</div>
-                    <div className="inDep ">{flight.inOrigin}</div>
-                    <div className="inArr ">{flight.inDestination}</div>
-                    <div className="inCarriers ">{flight.inCarriers}</div>
-                    <div className="price ">{flight.price}</div>
-                    <div className="actions ">
-                      <Button
-                        onClick={() => this.handleEditFlight(flight.link)}
-                      >
-                        Edit
-                      </Button>
-                      <Button
-                        onClick={() => this.handleDeleteFlight(flight.link)}
-                      >
-                        Delete
-                      </Button>
-                    </div>
-                  </Fragment>
+                  <ExampleFlightTableRow
+                    key={flight.link}
+                    flight={flight}
+                    handleChangeFlight={this.handleChangeFlight}
+                    handleDeleteFlight={this.handleDeleteFlight}
+                  />
                 );
               })}
               <NewExampleFlight
