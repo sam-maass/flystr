@@ -7,7 +7,7 @@ import '../components/TripRow/TripRow.story';
 import '../components/EmailForm/EmailForm.story';
 import '../components/BetaSignupForm/BetaSignupForm.story';
 import '../components/DealCardGrid/DealCardGrid.story';
-import '../components/DealCard/DealCard.story';
+import '../components/TripCard/TripCard.story';
 import '../components/StepsGrid/StepsGrid.story';
 import '../components/FlowText/FlowText.story';
 import '../components/StepContainer/StepContainer.story';

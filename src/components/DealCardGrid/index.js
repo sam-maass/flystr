@@ -1,5 +1,5 @@
 import React from 'react';
-import DealCard from '../DealCard';
+import TripCard from '../TripCard';
 import { getAirportImage } from '../../getAirportImage';
 import { css } from 'emotion';
 
@@ -18,7 +18,7 @@ const gridStyle = css`
 const DealCardGrid = () => {
   return (
     <div className={gridStyle}>
-      <DealCard
+      <TripCard
         image={getAirportImage('NYC')}
         title="USA"
         dates="June 2019"
@@ -26,7 +26,7 @@ const DealCardGrid = () => {
         oldPrice="700 EUR"
         newPrice="412 EUR"
       />
-      <DealCard
+      <TripCard
         image={getAirportImage('ATH')}
         title="Greece"
         dates="April - August 2019"
@@ -34,7 +34,7 @@ const DealCardGrid = () => {
         oldPrice="600 EUR"
         newPrice="258 EUR"
       />
-      <DealCard
+      <TripCard
         image={getAirportImage('BLQ')}
         title="Bologna/Italy"
         dates="September 2018"

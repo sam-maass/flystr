@@ -1,11 +1,11 @@
 import renderer from 'react-test-renderer';
 import React from 'react';
-import DealCard from '.';
+import TripCard from '.';
 import image from '../../images/NYC.jpg';
 
-it('DealCard: default', () => {
+it('TripCard: default', () => {
   const component = renderer.create(
-    <DealCard
+    <TripCard
       image={image}
       title="USA"
       dates="June 2019"

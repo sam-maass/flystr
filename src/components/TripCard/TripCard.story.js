@@ -1,10 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import image from '../../images/NYC.jpg';
-import DealCard from '.';
+import TripCard from '.';
 
-storiesOf('DealCard', module).add('default', () => (
-  <DealCard
+storiesOf('TripCard', module).add('default', () => (
+  <TripCard
     image={image}
     title="USA"
     dates="June 2019"
