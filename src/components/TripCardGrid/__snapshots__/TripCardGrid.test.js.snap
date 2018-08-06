@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DealCardGrid: default 1`] = `
+exports[`TripCardGrid: default 1`] = `
 .emotion-2 {
   color: #263238;
   font-family: 'Open Sans',sans-serif;

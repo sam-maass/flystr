@@ -15,7 +15,7 @@ const gridStyle = css`
   }
 `;
 
-const DealCardGrid = () => {
+const TripCardGrid = () => {
   return (
     <div className={gridStyle}>
       <TripCard
@@ -46,4 +46,4 @@ const DealCardGrid = () => {
   );
 };
 
-export default DealCardGrid;
+export default TripCardGrid;
