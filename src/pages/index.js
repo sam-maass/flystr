@@ -8,8 +8,10 @@ import NewTrip from './NewTrip';
 import Profile from './Profile';
 import Trip from './Trip';
 import Trips from './Trips';
+import Deals from './Deals';
 
 export {
+  Deals,
   Landing,
   AdminTrips,
   Impressum,
