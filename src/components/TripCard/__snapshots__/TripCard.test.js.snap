@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`DealCard: default 1`] = `
+exports[`TripCard: default 1`] = `
 .emotion-2 {
   color: #263238;
   font-family: 'Open Sans',sans-serif;

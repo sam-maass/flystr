@@ -68,7 +68,7 @@ const noDealStyle = css`
   color: ${styles.colors.green3};
 `;
 
-const DealCard = ({
+const TripCard = ({
   dealCount,
   oldPrice,
   newPrice,
@@ -108,7 +108,7 @@ const DealCard = ({
   );
 };
 
-DealCard.propTypes = {
+TripCard.propTypes = {
   oldPrice: PropTypes.string,
   dealCount: PropTypes.number.isRequired,
   newPrice: PropTypes.string,
@@ -118,4 +118,4 @@ DealCard.propTypes = {
   image: PropTypes.string.isRequired
 };
 
-export default DealCard;
+export default TripCard;

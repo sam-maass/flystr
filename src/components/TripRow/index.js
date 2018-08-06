@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import DealCard from '../DealCard';
+import TripCard from '../TripCard';
 import { getTimeframeString, getDurationString } from '../../utils';
 import { getAirportImage } from '../../getAirportImage';
 import { css } from 'emotion';
@@ -28,7 +28,7 @@ const TripRow = ({
   return (
     <div className={style}>
       <Link to={`/trip/${_id}`}>
-        <DealCard
+        <TripCard
           title={name}
           dealCount={matchingDeals.length}
           image={getAirportImage(destinations[0])}
