@@ -51,6 +51,12 @@ export const loggedInRoutes = [
     main: () => <Pages.Trips />
   },
   {
+    path: '/deals',
+    exact: true,
+    header: () => <CustomAppBar title="New Flight Deals" />,
+    main: () => <Pages.Deals />
+  },
+  {
     path: '/settings',
     exact: true,
     header: () => <CustomAppBar title="Profile" />,

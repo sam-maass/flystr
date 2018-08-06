@@ -68,10 +68,6 @@ class NewDealForm extends React.Component {
     editableFlight: {}
   };
 
-  constructor(props) {
-    super(props);
-  }
-
   handleNewFlight = flightDetails => {
     const { exampleFlights = [] } = this.props.values;
     const flights = [...exampleFlights, ...flightDetails];
@@ -105,19 +101,21 @@ class NewDealForm extends React.Component {
     ];
     const origins = [...new Set([...flights.map(flight => flight.outOrigin)])];
     const minPrice = Math.min(...flights.map(f => f.price).filter(v => v >= 0));
-    const firstDepature = moment
+    const firstDeparture = moment
       .min(...flights.map(f => moment(f.outDate)))
       .format('YYYY-MM-DD');
     const lastReturn = moment
       .max(...flights.map(f => moment(f.inDate)))
       .format('YYYY-MM-DD');
-    const title = `Flights from ${origins} to ${destinations}`;
+    const title = destinations;
+    const subtitle = origins;
     return {
       title,
+      subtitle,
       origins,
       destinations,
       minPrice,
-      firstDepature,
+      firstDeparture,
       lastReturn
     };
   };
@@ -131,6 +129,12 @@ class NewDealForm extends React.Component {
             elemKey="title"
             type="text"
             label="Title"
+            {...this.props}
+          />
+          <FormikTextField
+            elemKey="subtitle"
+            type="text"
+            label="Subtitle"
             {...this.props}
           />
           <div>{this.props.values.origins}</div>
