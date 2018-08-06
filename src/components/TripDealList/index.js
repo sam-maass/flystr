@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import DealList from './component';
+import TripDealList from './component';
 import { connect } from 'react-redux';
 import TripView from './TripView';
 import { setAppbar } from '../../actions/appbarActions';
 
-const DealListContainer = ({ trips = [], tripId, setAppbar }) => {
+const TripDealListContainer = ({ trips = [], tripId, setAppbar }) => {
   const trip = trips.find(trip => trip._id === tripId);
   setAppbar({
     title: trip.name,
@@ -16,13 +16,13 @@ const DealListContainer = ({ trips = [], tripId, setAppbar }) => {
   } else {
     return (
       <TripView trip={trip}>
-        <DealList trips={trip.matchingDeals} />
+        <TripDealList trips={trip.matchingDeals} />
       </TripView>
     );
   }
 };
 
-DealListContainer.propTypes = {
+TripDealListContainer.propTypes = {
   trips: PropTypes.array,
   tripId: PropTypes.string
 };
@@ -38,4 +38,4 @@ const mapStateToProps = (store, props) => {
 export default connect(
   mapStateToProps,
   { setAppbar }
-)(DealListContainer);
+)(TripDealListContainer);
