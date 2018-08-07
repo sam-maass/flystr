@@ -10,7 +10,9 @@ const style = css`
 const DealList = ({ deals = [] }) => {
   return (
     <div className={style}>
-      {deals.map(deal => <DealCard key={deal._id} deal={deal} />)}
+      {deals.map(deal => (
+        <DealCard key={deal._id} deal={deal} />
+      ))}
     </div>
   );
 };

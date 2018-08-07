@@ -17,11 +17,11 @@ exports[`EmailForm: default 1`] = `
         Email
       </label>
       <div
-        className="MuiInput-root-15 MuiInput-formControl-16 MuiInput-underline-19"
+        className="MuiInput-root-17 MuiInput-formControl-18 MuiInput-underline-21"
       >
         <input
           aria-invalid={false}
-          className="MuiInput-input-23"
+          className="MuiInput-input-25"
           disabled={false}
           name="email"
           onBlur={[Function]}
@@ -42,11 +42,11 @@ exports[`EmailForm: default 1`] = `
         Password
       </label>
       <div
-        className="MuiInput-root-15 MuiInput-formControl-16 MuiInput-underline-19"
+        className="MuiInput-root-17 MuiInput-formControl-18 MuiInput-underline-21"
       >
         <input
           aria-invalid={false}
-          className="MuiInput-input-23 MuiInput-inputType-26"
+          className="MuiInput-input-25 MuiInput-inputType-28"
           disabled={false}
           name="password"
           onBlur={[Function]}
@@ -58,7 +58,7 @@ exports[`EmailForm: default 1`] = `
       </div>
     </div>
     <button
-      className="MuiButtonBase-root-52 MuiButton-root-28 MuiButton-contained-37 MuiButton-raised-40"
+      className="MuiButtonBase-root-54 MuiButton-root-30 MuiButton-contained-39 MuiButton-raised-42"
       disabled={false}
       onBlur={[Function]}
       onFocus={[Function]}
@@ -74,12 +74,12 @@ exports[`EmailForm: default 1`] = `
       type="submit"
     >
       <span
-        className="MuiButton-label-29"
+        className="MuiButton-label-31"
       >
         Signup with email
       </span>
       <span
-        className="MuiTouchRipple-root-55"
+        className="MuiTouchRipple-root-57"
       />
     </button>
   </div>

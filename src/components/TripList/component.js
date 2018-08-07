@@ -6,7 +6,9 @@ import { css } from 'emotion';
 const TripList = ({ trips = [] }) => {
   return (
     <div className={style}>
-      {trips.map((item, key) => <TripRow key={key} {...item} />)}
+      {trips.map((item, key) => (
+        <TripRow key={key} {...item} />
+      ))}
     </div>
   );
 };

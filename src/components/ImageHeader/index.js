@@ -31,7 +31,8 @@ const ImageHeader = () => {
     <div className={header}>
       <div className={logoStyle} />
       <HugeHeadline withBar>
-        select your destination<br />
+        select your destination
+        <br />
         we find the best flights
       </HugeHeadline>
     </div>
