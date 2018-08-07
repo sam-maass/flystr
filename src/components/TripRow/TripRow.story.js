@@ -12,7 +12,7 @@ const trip = {
   budget: 200,
   destinations: ['BRE', 'SEZ'],
   origins: ['DUS', 'FRA', 'BRU'],
-  matchingDeals: []
+  matchingFlights: []
 };
 
 storiesOf('TripRow', module).add('default', () => (

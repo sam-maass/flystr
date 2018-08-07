@@ -44,7 +44,7 @@ const style = destination => css`
 `;
 
 const TripView = ({ children, trip }) => {
-  const dealCount = trip.matchingDeals.length;
+  const dealCount = trip.matchingFlights.length;
   const dealString =
     dealCount === 1 ? `${dealCount} Deal` : `${dealCount} Deals`;
   return (

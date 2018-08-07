@@ -35,7 +35,7 @@ const TripTable = ({ trips }) => {
         <div key={trip._id} className="row">
           <div>{trip.origins.join(', ')}</div>
           <div>{trip.destinations.join(',')}</div>
-          <div>{trip.matchingDeals.length}</div>
+          <div>{trip.matchingFlights.length}</div>
           <div>{moment(trip.createdAt).format('DD.MM.YY hh:mm')}</div>
         </div>
       ))}
