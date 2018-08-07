@@ -1,9 +1,12 @@
 import { Redirect } from 'react-router-dom';
 import React from 'react';
-import { CustomAppBar } from './components/CustomAppBar';
-import LoggedOutAppBar from './components/LoggedOutAppBar';
+import asyncComponent from './asyncComponent';
 import * as Pages from './pages/index';
 
+const LoggedOutAppBar = asyncComponent(() =>
+  import('./components/LoggedOutAppBar')
+);
+const CustomAppBar = asyncComponent(() => import('./components/CustomAppBar'));
 export const loggedInRoutes = [
   {
     path: '/',
