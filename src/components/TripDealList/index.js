@@ -11,12 +11,12 @@ const TripDealListContainer = ({ trips = [], tripId, setAppbar }) => {
     title: trip.name,
     button: { text: 'edit', link: `/trip/${tripId}/edit` }
   });
-  if (trip && trip.matchingDeals && trip.matchingDeals.length === 0) {
+  if (trip && trip.matchingFlights && trip.matchingFlights.length === 0) {
     return <TripView trip={trip} />;
   } else {
     return (
       <TripView trip={trip}>
-        <TripDealList trips={trip.matchingDeals} />
+        <TripDealList trips={trip.matchingFlights} />
       </TripView>
     );
   }
