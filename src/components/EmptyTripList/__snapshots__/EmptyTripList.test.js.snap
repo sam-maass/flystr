@@ -43,7 +43,7 @@ exports[`EmptyTripList: default 1`] = `
   >
     <img
       alt="icon"
-      src="IMAGE_MOCK"
+      src="/world.svg"
     />
     <h2>
       Hi and welcome to flystr

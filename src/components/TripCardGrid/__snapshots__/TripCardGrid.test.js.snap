@@ -94,7 +94,7 @@ exports[`TripCardGrid: default 1`] = `
 }
 
 .emotion-0 {
-  background-image: url(IMAGE_MOCK);
+  background-image: url(/images/square/NYC.jpg);
   background-size: cover;
   padding: 8px;
   display: grid;
@@ -128,6 +128,84 @@ exports[`TripCardGrid: default 1`] = `
 }
 
 .emotion-0 .badge.active {
+  background-color: #009688;
+  color: #FAFAFA;
+}
+
+.emotion-8 {
+  background-image: url(/images/square/ATH.jpg);
+  background-size: cover;
+  padding: 8px;
+  display: grid;
+  -webkit-align-items: start;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: start;
+  justify-items: right;
+}
+
+.emotion-8 .badge {
+  color: #263238;
+  font-family: 'Open Sans',sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0.05em;
+  -moz-letter-spacing: 0.05em;
+  -ms-letter-spacing: 0.05em;
+  letter-spacing: 0.05em;
+  line-height: 1.6em;
+  font-size: 0.8em;
+  padding: 2px 6px;
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+.emotion-8 .badge.deal {
+  background-color: #FF6D00;
+  color: #FAFAFA;
+}
+
+.emotion-8 .badge.active {
+  background-color: #009688;
+  color: #FAFAFA;
+}
+
+.emotion-16 {
+  background-image: url(/images/square/BLQ.jpg);
+  background-size: cover;
+  padding: 8px;
+  display: grid;
+  -webkit-align-items: start;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: start;
+  justify-items: right;
+}
+
+.emotion-16 .badge {
+  color: #263238;
+  font-family: 'Open Sans',sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0.05em;
+  -moz-letter-spacing: 0.05em;
+  -ms-letter-spacing: 0.05em;
+  letter-spacing: 0.05em;
+  line-height: 1.6em;
+  font-size: 0.8em;
+  padding: 2px 6px;
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+.emotion-16 .badge.deal {
+  background-color: #FF6D00;
+  color: #FAFAFA;
+}
+
+.emotion-16 .badge.active {
   background-color: #009688;
   color: #FAFAFA;
 }
@@ -191,7 +269,7 @@ exports[`TripCardGrid: default 1`] = `
         className="emotion-6"
       >
         <div
-          className="emotion-0"
+          className="emotion-8"
         />
         <div
           className="content"
@@ -237,7 +315,7 @@ exports[`TripCardGrid: default 1`] = `
         className="emotion-6"
       >
         <div
-          className="emotion-0"
+          className="emotion-16"
         />
         <div
           className="content"
