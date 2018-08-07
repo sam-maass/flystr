@@ -90,7 +90,7 @@ const styles = {
     justifySelf: 'center',
     gridColumn: 2,
     gridRow: 1,
-    backgroundImage: 'url("/logo-dark.png")',
+    backgroundImage: 'url("/logo-dark.svg")',
     backgroundSize: 'contain',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: '50%'

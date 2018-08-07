@@ -16,7 +16,7 @@ const logoStyle = css`
   width: 150px;
   height: 50px;
   margin: auto;
-  background-image: url('/logo3.png');
+  background-image: url('/logo.svg');
   background-size: contain;
   background-repeat: no-repeat;
   margin-bottom: 20px;
