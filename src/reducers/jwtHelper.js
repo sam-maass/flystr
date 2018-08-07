@@ -10,7 +10,7 @@ export const setJWT = token => {
 export let refreshTimer = undefined;
 
 export const setJwtRefreshTimer = token => {
-  const jwt = import('jsonwebtoken').then(() => {
+  import('jsonwebtoken').then(jwt => {
     const _token = token || window.localStorage.getItem('currentJWT');
     const { exp } = jwt.decode(_token);
     const timeToExpiration = exp * 1000 - Date.now();
