@@ -2,6 +2,7 @@
   "presets": ["react", "babel-preset-env"],
   "plugins": [
     "transform-class-properties",
+    "syntax-dynamic-import",
     "babel-plugin-transform-object-rest-spread"
   ]
 }
