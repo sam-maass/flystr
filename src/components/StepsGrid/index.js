@@ -25,7 +25,8 @@ const StepsGrid = () => {
         icon={'/search.svg'}
         title={
           <span>
-            we find the<br /> best deals
+            we find the
+            <br /> best deals
           </span>
         }
         text="Our bot is constantly online and on the lookout for the best deals. We source blogs, forums, Twitter and newsletters in addition to our own research. With years of experience, we know how to find cheap flights."

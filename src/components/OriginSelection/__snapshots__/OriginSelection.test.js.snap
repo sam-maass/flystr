@@ -70,14 +70,14 @@ exports[`OriginSelection: default 1`] = `
             aria-autocomplete="list"
             aria-expanded={false}
             aria-owns="react-autowhatever-1"
-            className="MuiInput-root-22 MuiInput-formControl-23 MuiInput-underline-26"
+            className="MuiInput-root-24 MuiInput-formControl-25 MuiInput-underline-28"
             role="combobox"
             style={Object {}}
           >
             <input
               aria-invalid={false}
               autoComplete="off"
-              className="MuiInput-input-30"
+              className="MuiInput-input-32"
               disabled={false}
               onBlur={[Function]}
               onChange={[Function]}
@@ -91,7 +91,7 @@ exports[`OriginSelection: default 1`] = `
           </div>
         </div>
         <div
-          className="MuiPaper-root-35 MuiPaper-elevation2-39"
+          className="MuiPaper-root-37 MuiPaper-elevation2-41"
           id="react-autowhatever-1"
           style={Object {}}
         />
@@ -110,7 +110,7 @@ exports[`OriginSelection: default 1`] = `
     className="button"
   >
     <button
-      className="MuiButtonBase-root-86 MuiButton-root-62 MuiButton-text-64 MuiButton-textSecondary-66 MuiButton-outlined-70 MuiButton-fullWidth-85"
+      className="MuiButtonBase-root-88 MuiButton-root-64 MuiButton-text-66 MuiButton-textSecondary-68 MuiButton-outlined-72 MuiButton-fullWidth-87"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -127,12 +127,12 @@ exports[`OriginSelection: default 1`] = `
       type="button"
     >
       <span
-        className="MuiButton-label-63"
+        className="MuiButton-label-65"
       >
         Select your destinations
       </span>
       <span
-        className="MuiTouchRipple-root-89"
+        className="MuiTouchRipple-root-91"
       />
     </button>
   </div>
