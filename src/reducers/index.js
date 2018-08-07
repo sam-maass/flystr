@@ -6,8 +6,10 @@ import errors from './errorReducer';
 import appBar from './appBar';
 import allTrips from './allTrips';
 import deals from './dealReducer';
+import currentDeal from './currentDealReducer';
 
 export default combineReducers({
+  currentDeal,
   deals,
   user,
   trips,

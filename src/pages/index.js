@@ -10,8 +10,10 @@ const Profile = asyncComponent(() => import('./Profile'));
 const Trip = asyncComponent(() => import('./Trip'));
 const Trips = asyncComponent(() => import('./Trips'));
 const Deals = asyncComponent(() => import('./Deals'));
+const Deal = asyncComponent(() => import('./Deal'));
 const Signup = asyncComponent(() => import('./Signup'));
 export {
+  Deal,
   Deals,
   Landing,
   AdminTrips,

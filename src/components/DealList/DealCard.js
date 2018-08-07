@@ -5,13 +5,18 @@ import { css } from 'emotion';
 import { classes, styles } from '../../styles';
 import moment from 'moment';
 import { getTimeframeString } from '../../utils';
+import { Link } from 'react-router-dom';
+import { getAirportHeader } from '../../getAirportHeader';
 
-const wrapperStyle = css`
+const wrapperStyle = destination => css`
   width: 100%;
   max-width: 400px;
   padding-bottom: 16px;
+  a {
+    text-decoration: none;
+  }
   .container {
-    background-image: url('/static/media/DPS.af7d3b17.jpg');
+    background-image: url(${getAirportHeader(destination)});
     background-size: cover;
     display: grid;
     min-height: 200px;
@@ -71,10 +76,12 @@ const wrapperStyle = css`
 
 const DealCard = props => {
   const {
+    _id,
     title,
     subtitle,
     minPrice,
     lastReturn,
+    destinations,
     firstDeparture,
     createdAt
   } = props.deal;
@@ -84,29 +91,31 @@ const DealCard = props => {
     endDate: lastReturn
   });
   return (
-    <div className={wrapperStyle}>
-      <Card>
-        <div className="container">
-          <div className="backdrop">
-            <span className="badge">from {minPrice} EUR </span>
-            <div className="main">
-              <span className="title">{title}</span>
-              <br />
-              <span className="subtitle">from {subtitle}</span>
-            </div>
-            <div className="bottomLayover">
-              <span className="availability">
-                Availability <br />
-                <strong>{timeFrame}</strong>
-              </span>
-              <span className="age">
-                posted <br />
-                <strong>{daysAgo}</strong>
-              </span>
+    <div className={wrapperStyle(destinations[0])}>
+      <Link to={`/deal/${_id}`}>
+        <Card>
+          <div className="container">
+            <div className="backdrop">
+              <span className="badge">from {minPrice} EUR </span>
+              <div className="main">
+                <span className="title">{title}</span>
+                <br />
+                <span className="subtitle">from {subtitle}</span>
+              </div>
+              <div className="bottomLayover">
+                <span className="availability">
+                  Availability <br />
+                  <strong>{timeFrame}</strong>
+                </span>
+                <span className="age">
+                  posted <br />
+                  <strong>{daysAgo}</strong>
+                </span>
+              </div>
             </div>
           </div>
-        </div>
-      </Card>
+        </Card>
+      </Link>
     </div>
   );
 };
