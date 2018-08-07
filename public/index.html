@@ -16,10 +16,380 @@
     gtag('config', 'UA-93772101-1');
   </script>
   <title>Flight recommendations for you - flystr.com</title>
+  <style>
+    html {
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    *,
+    ::before,
+    ::after {
+      box-sizing: inherit;
+    }
+
+    body {
+      margin: 0px;
+      background-color: rgb(250, 250, 250);
+    }
+
+    .Connect-Layout--main-1 {
+      height: 100vh;
+      display: grid;
+      grid-template-rows: min-content auto;
+    }
+
+    .Connect-Layout--scrollContainer-2 {
+      overflow-y: auto;
+    }
+
+    .css-55eheu {
+      height: 300px;
+      background-image: url("/landing.jpg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position-y: 50%;
+      padding: 10px;
+    }
+
+    .css-56t329 {
+      width: 300px;
+      height: 50px;
+      margin: auto auto 20px;
+      background-image: url("/logo3.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+      margin-left: 0px;
+    }
+
+    .css-1ago99h {
+      width: 100%;
+    }
+
+    .css-1p0a9hv {
+      font-family: Comfortaa;
+      font-size: 36px;
+      font-style: normal;
+      font-weight: bold;
+      letter-spacing: 0.1em;
+      line-height: 1.7em;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      text-align: center;
+      text-shadow: rgba(0, 0, 0, 0.25) 0px 4px 4px;
+      color: rgb(250, 250, 250);
+    }
+
+    .css-16ubi8a {
+      height: 5px;
+      width: 200px;
+      margin: auto;
+      background-color: rgb(255, 109, 0);
+    }
+
+    .css-1ny1cnm {
+      max-width: 100vw;
+      width: 1280px;
+      overflow: hidden;
+      margin: auto;
+      padding: 0px 8px;
+    }
+
+    .css-atjh57 {
+      width: 100%;
+      margin-top: 96px;
+      margin-bottom: 32px;
+    }
+
+    .css-gxt6ch {
+      color: rgb(38, 50, 56);
+      font-family: Comfortaa;
+      font-style: normal;
+      line-height: 1.7em;
+      font-size: 36px;
+      margin-bottom: 8px;
+      letter-spacing: 0.1em;
+      text-align: center;
+    }
+
+    .css-24jydu {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: min-content min-content 1fr;
+      place-items: flex-start center;
+      gap: 16px 16px;
+    }
+
+    .css-tx6ykr {
+      display: grid;
+      grid-template-rows: 100px;
+      max-width: 400px;
+      text-align: center;
+      gap: 16px 16px;
+      justify-items: center;
+      margin-bottom: 16px;
+    }
+
+    .css-1medrs1 {
+      color: rgb(38, 50, 56);
+      font-family: Comfortaa;
+      font-style: normal;
+      line-height: 1.7em;
+      font-size: 36px;
+      margin-bottom: 8px;
+      letter-spacing: 0.1em;
+      font-weight: bold;
+    }
+
+    .css-19vcbo6 {
+      color: rgb(38, 50, 56);
+      font-family: "Open Sans", sans-serif;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: normal;
+      letter-spacing: 0.05em;
+      line-height: 1.6em;
+    }
+
+    .css-b8mjbu {
+      margin-top: 32px;
+      margin-bottom: 64px;
+      display: grid;
+      gap: 16px 16px;
+      grid-template-columns: 1fr 1fr 1fr;
+      justify-items: center;
+    }
+
+    .css-7dk3li {
+      width: 100%;
+      max-width: 400px;
+      padding-bottom: 16px;
+    }
+
+    .MuiPaper-root-4 {
+      background-color: rgb(255, 255, 255);
+    }
+
+    .MuiPaper-rounded-5 {
+      border-radius: 4px;
+    }
+
+    .MuiPaper-elevation1-7 {
+      box-shadow: rgba(0, 0, 0, 0.2) 0px 1px 3px 0px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 2px 1px -1px;
+    }
+
+    .MuiCard-root-3 {
+      overflow: hidden;
+    }
+
+    .css-1b0iak1 {
+      display: grid;
+      grid-template-columns: 40% 60%;
+    }
+
+    .css-1y6yq0s {
+      background-image: url("/images/square/NYC.jpg");
+      background-size: cover;
+      padding: 8px;
+      display: grid;
+      -webkit-box-align: start;
+      place-items: start right;
+    }
+
+    .css-1b0iak1 .content {
+      padding: 16px;
+    }
+
+    .css-wr26kw {
+      color: rgb(38, 50, 56);
+      font-family: Comfortaa;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: bold;
+      letter-spacing: 0.1em;
+      line-height: normal;
+      margin-bottom: 8px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .css-1bh4vey {
+      color: rgb(38, 50, 56);
+      font-family: "Open Sans", sans-serif;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: normal;
+      letter-spacing: 0.05em;
+      line-height: 1.6em;
+      text-decoration: line-through;
+      margin-right: 8px;
+    }
+
+    .css-1s6vs0d {
+      font-family: "Open Sans", sans-serif;
+      font-size: 16px;
+      font-style: normal;
+      letter-spacing: 0.05em;
+      line-height: 1.6em;
+      font-weight: bold;
+      color: rgb(255, 109, 0);
+    }
+
+    .css-ur6140 {
+      background-image: url("/images/square/ATH.jpg");
+      background-size: cover;
+      padding: 8px;
+      display: grid;
+      -webkit-box-align: start;
+      place-items: start right;
+    }
+
+    .css-17ua7xo {
+      background-image: url("/images/square/BLQ.jpg");
+      background-size: cover;
+      padding: 8px;
+      display: grid;
+      -webkit-box-align: start;
+      place-items: start right;
+    }
+  </style>
 </head>
 
 <body>
-  <div id="root"></div>
+  <div id="root">
+    <div class="Connect-Layout--main-1">
+      <div class="Connect-Layout--scrollContainer-2">
+        <div>
+          <div class="css-55eheu">
+            <div class="css-56t329"></div>
+            <div class="css-1ago99h">
+              <div class="css-1p0a9hv">select your destination
+                <br>we find the best flights</div>
+              <div class="css-16ubi8a"></div>
+            </div>
+          </div>
+          <div class="css-1ny1cnm">
+            <div class="css-atjh57">
+              <div class="css-gxt6ch">how it works</div>
+              <div class="css-16ubi8a"></div>
+            </div>
+            <div class="css-24jydu">
+              <div class="css-tx6ykr">
+                <img src="/world.svg" alt="icon">
+                <div class="css-1medrs1">
+                  <span>choose your destinations</span>
+                </div>
+                <div class="css-19vcbo6">Select your favorite destinations, add travel periods and budget. Looking for a flight to New York in October
+                  and to Japan in April or May? We've got you covered!</div>
+              </div>
+              <div class="css-tx6ykr">
+                <img src="/search.svg" alt="icon">
+                <div class="css-1medrs1">
+                  <span>we find the
+                    <br> best deals</span>
+                </div>
+                <div class="css-19vcbo6">Our bot is constantly online and on the lookout for the best deals. We source blogs, forums, Twitter and
+                  newsletters in addition to our own research. With years of experience, we know how to find cheap flights.</div>
+              </div>
+              <div class="css-tx6ykr">
+                <img src="/notifications_active.svg" alt="icon">
+                <div class="css-1medrs1">
+                  <span>get alarms &amp;
+                    <br> book your trip</span>
+                </div>
+                <div class="css-19vcbo6">We will notify you once we have found a deal that fits for you. Get all the information you need and a link
+                  to the cheapest booking option within minutes of us discovering a deal. Never again miss out on a deal.</div>
+              </div>
+            </div>
+            <div class="css-atjh57">
+              <div class="css-gxt6ch">deals we found last week</div>
+              <div class="css-16ubi8a"></div>
+            </div>
+            <div class="css-b8mjbu">
+              <div class="css-7dk3li">
+                <div class="MuiPaper-root-4 MuiPaper-elevation1-7 MuiPaper-rounded-5 MuiCard-root-3">
+                  <div class="css-1b0iak1">
+                    <div class="css-1y6yq0s"></div>
+                    <div class="content">
+                      <div class="css-wr26kw">USA </div>
+                      <div class="css-19vcbo6">June 2019
+                        <br>16 Days</div>
+                      <div class="css-19vcbo6">
+                        <span class="css-1bh4vey">700 EUR</span>
+                        <span class="css-1s6vs0d">412 EUR</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="css-7dk3li">
+                <div class="MuiPaper-root-4 MuiPaper-elevation1-7 MuiPaper-rounded-5 MuiCard-root-3">
+                  <div class="css-1b0iak1">
+                    <div class="css-ur6140"></div>
+                    <div class="content">
+                      <div class="css-wr26kw">Greece </div>
+                      <div class="css-19vcbo6">April - August 2019
+                        <br>21 Days</div>
+                      <div class="css-19vcbo6">
+                        <span class="css-1bh4vey">600 EUR</span>
+                        <span class="css-1s6vs0d">258 EUR</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="css-7dk3li">
+                <div class="MuiPaper-root-4 MuiPaper-elevation1-7 MuiPaper-rounded-5 MuiCard-root-3">
+                  <div class="css-1b0iak1">
+                    <div class="css-17ua7xo"></div>
+                    <div class="content">
+                      <div class="css-wr26kw">Bologna/Italy </div>
+                      <div class="css-19vcbo6">September 2018
+                        <br>5 Days</div>
+                      <div class="css-19vcbo6">
+                        <span class="css-1bh4vey">200 EUR</span>
+                        <span class="css-1s6vs0d">46 EUR</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="css-atjh57">
+              <div class="css-gxt6ch">try flystr</div>
+              <div class="css-16ubi8a"></div>
+            </div>
+            <div class="css-1ensajz">
+              <div>
+                <div class="css-19vcbo6">We're still in development, but you can be one of the first to get cheap flight notifications. Leave us an
+                  email and we will provide you with a beta login soon.</div>
+                <div class="MuiFormControl-root-31 MuiFormControl-marginNormal-32 MuiFormControl-fullWidth-34">
+                  <label class="MuiFormLabel-root-40 MuiInputLabel-root-35 MuiInputLabel-formControl-36 MuiInputLabel-animated-39" data-shrink="false"
+                    for="email">Email</label>
+                  <div class="MuiInput-root-45 MuiInput-fullWidth-52 MuiInput-formControl-46 MuiInput-underline-49">
+                    <input aria-invalid="false" class="MuiInput-input-53" id="email" type="text" value="">
+                  </div>
+                </div>
+                <button tabindex="0" class="MuiButtonBase-root-82 MuiButton-root-58 MuiButton-contained-67 MuiButton-containedSecondary-69 MuiButton-raised-70 MuiButton-raisedSecondary-72 MuiButton-fullWidth-81"
+                  type="button">
+                  <span class="MuiButton-label-59">Try Flystr</span>
+                  <span class="MuiTouchRipple-root-85"></span>
+                </button>
+              </div>
+            </div>
+            <div class="css-5b2qjl">
+              <a href="https://twitter.com/flystr_com">Twitter</a>
+              <a href="https://www.instagram.com/flystr_dot_com/">Instagram</a>
+              <a href="/legal">Privacy Policy</a>
+              <div class="copyright"> © Flyster, 2018</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </body>
 
 </html>
