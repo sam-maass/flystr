@@ -6,3 +6,17 @@ export function fetchDeals() {
     payload: api().get(`/deals`)
   };
 }
+
+export function copyDeal(deal) {
+  return {
+    type: 'COPY_DEAL',
+    payload: deal
+  };
+}
+
+export function fetchDeal(dealId) {
+  return {
+    type: 'FETCH_DEAL',
+    payload: api().get(`/deal/${dealId}`)
+  };
+}
