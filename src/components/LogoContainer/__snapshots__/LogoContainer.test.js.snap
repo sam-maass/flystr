@@ -5,7 +5,7 @@ exports[`LogoContainer: default 1`] = `
   style={
     Object {
       "backgoundSize": "cover",
-      "backgroundImage": "url(\\"/logo3.png\\")",
+      "backgroundImage": "url(\\"/logo.svg\\")",
       "backgroundRepeat": "no-repeat",
       "backgroundSize": "contain",
       "color": "red",

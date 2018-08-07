@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const style = ({ height }) => {
   return {
-    backgroundImage: 'url("/logo3.png")',
+    backgroundImage: 'url("/logo.svg")',
     backgoundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'contain',
