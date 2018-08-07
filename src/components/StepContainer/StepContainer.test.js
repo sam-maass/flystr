@@ -1,12 +1,11 @@
 import renderer from 'react-test-renderer';
 import React from 'react';
 import StepContainer from '.';
-const worldIcon = '/images/world.svg';
 
 it('StepContainer: default', () => {
   const component = renderer.create(
     <StepContainer
-      icon={worldIcon}
+      icon={'/world.svg'}
       title={
         <span>
           select<br /> destinations & dates

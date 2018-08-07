@@ -49,7 +49,7 @@ exports[`StepContainer: default 1`] = `
 >
   <img
     alt="icon"
-    src="/images/world.svg"
+    src="/world.svg"
   />
   <div
     className="emotion-0"

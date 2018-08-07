@@ -1,5 +1,4 @@
 import React from 'react';
-import worldIcon from '../../images/world.svg';
 import { css } from 'emotion';
 import { styles, classes } from '../../styles';
 
@@ -28,7 +27,7 @@ const EmptyTripList = () => {
   return (
     <div className={style}>
       <div className="content">
-        <img src={worldIcon} alt="icon" />
+        <img src="/world.svg" alt="icon" />
         <h2>Hi and welcome to flystr</h2>
         <p>This is the place where you can see all your planned trips.</p>
         <p>

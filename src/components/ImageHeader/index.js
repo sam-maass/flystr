@@ -1,13 +1,11 @@
 import React from 'react';
-import bgImage from '../../images/landing.jpg';
-import logo from '../../images/logo3.png';
 import { css } from 'emotion';
 import PropTypes from 'prop-types';
 import HugeHeadline from '../HugeHeadline';
 
 const header = css`
   height: 300px;
-  background-image: url(${bgImage});
+  background-image: url('/landing.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position-y: 50%;
@@ -18,7 +16,7 @@ const logoStyle = css`
   width: 150px;
   height: 50px;
   margin: auto;
-  background-image: url(${logo});
+  background-image: url('/logo3.png');
   background-size: contain;
   background-repeat: no-repeat;
   margin-bottom: 20px;

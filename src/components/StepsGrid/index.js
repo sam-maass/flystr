@@ -1,8 +1,5 @@
 import React from 'react';
 import { css } from 'emotion';
-import worldIcon from '../../images/world.svg';
-import searchIcon from '../../images/search.svg';
-import notificationIcon from '../../images/notifications_active.svg';
 import StepContainer from '../StepContainer';
 
 const threeItemGrid = css`
@@ -20,12 +17,12 @@ const StepsGrid = () => {
   return (
     <div className={threeItemGrid}>
       <StepContainer
-        icon={worldIcon}
+        icon={'/world.svg'}
         title={<span>choose your destinations</span>}
         text="Select your favorite destinations, add travel periods and budget. Looking for a flight to New York in October and to Japan in April or May? We've got you covered!"
       />
       <StepContainer
-        icon={searchIcon}
+        icon={'/search.svg'}
         title={
           <span>
             we find the<br /> best deals
@@ -34,7 +31,7 @@ const StepsGrid = () => {
         text="Our bot is constantly online and on the lookout for the best deals. We source blogs, forums, Twitter and newsletters in addition to our own research. With years of experience, we know how to find cheap flights."
       />
       <StepContainer
-        icon={notificationIcon}
+        icon={'/notifications_active.svg'}
         title={
           <span>
             get alarms &<br /> book your trip

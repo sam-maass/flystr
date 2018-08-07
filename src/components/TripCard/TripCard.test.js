@@ -1,12 +1,12 @@
 import renderer from 'react-test-renderer';
 import React from 'react';
 import TripCard from '.';
-import image from '../../images/NYC.jpg';
+import { getAirportImage } from '../../getAirportImage';
 
 it('TripCard: default', () => {
   const component = renderer.create(
     <TripCard
-      image={image}
+      image={getAirportImage('NYC')}
       title="USA"
       dates="June 2019"
       duration="16 Days"

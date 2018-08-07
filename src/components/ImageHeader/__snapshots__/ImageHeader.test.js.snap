@@ -38,7 +38,7 @@ exports[`ImageHeader: default 1`] = `
 
 .emotion-4 {
   height: 300px;
-  background-image: url(IMAGE_MOCK);
+  background-image: url('/landing.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position-y: 50%;
@@ -49,7 +49,7 @@ exports[`ImageHeader: default 1`] = `
   width: 150px;
   height: 50px;
   margin: auto;
-  background-image: url(IMAGE_MOCK);
+  background-image: url('/logo3.png');
   background-size: contain;
   background-repeat: no-repeat;
   margin-bottom: 20px;
