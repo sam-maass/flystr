@@ -26,7 +26,9 @@ const mapStateToProps = (store, props) => {
   };
 };
 
-export const CustomAppBar = connect(
+const CustomAppBar = connect(
   mapStateToProps,
   { setAppbar }
 )(ButtonAppBar);
+
+export default CustomAppBar;

@@ -1,15 +1,16 @@
-import AdminTrips from './AdminTrips.js';
-import Landing from './Landing.js';
-import Impressum from './Impressum.js';
-import Login from './Login';
-import Signup from './Signup';
-import NewDeal from './NewDeal';
-import NewTrip from './NewTrip';
-import Profile from './Profile';
-import Trip from './Trip';
-import Trips from './Trips';
-import Deals from './Deals';
+import asyncComponent from '../asyncComponent';
 
+const Landing = asyncComponent(() => import('./Landing'));
+const AdminTrips = asyncComponent(() => import('./AdminTrips'));
+const Impressum = asyncComponent(() => import('./Impressum'));
+const Login = asyncComponent(() => import('./Login'));
+const NewDeal = asyncComponent(() => import('./NewDeal'));
+const NewTrip = asyncComponent(() => import('./NewTrip'));
+const Profile = asyncComponent(() => import('./Profile'));
+const Trip = asyncComponent(() => import('./Trip'));
+const Trips = asyncComponent(() => import('./Trips'));
+const Deals = asyncComponent(() => import('./Deals'));
+const Signup = asyncComponent(() => import('./Signup'));
 export {
   Deals,
   Landing,
