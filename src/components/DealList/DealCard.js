@@ -16,7 +16,8 @@ const wrapperStyle = destination => css`
     text-decoration: none;
   }
   .container {
-    background-image: url(${getAirportHeader(destination)});
+    background-image: url(${getAirportHeader(destination)}),
+      url('/images/header/airplane.jpg');
     background-size: cover;
     display: grid;
     min-height: 200px;

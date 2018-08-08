@@ -8,7 +8,8 @@ import { classes, styles } from '../../styles';
 const style = destination => css`
   ${classes.typography.base};
   height: 200px;
-  background-image: url(${getAirportHeader(destination)});
+  background-image: url(${getAirportHeader(destination)}),
+    url('/images/header/airplane.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   .backdrop {

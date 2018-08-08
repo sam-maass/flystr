@@ -79,7 +79,7 @@ exports[`TripCard: default 1`] = `
 }
 
 .emotion-0 {
-  background-image: url(/images/square/NYC.jpg);
+  background-image: url(/images/square/NYC.jpg),url('/images/square/airplane.jpg');
   background-size: cover;
   padding: 8px;
   display: grid;

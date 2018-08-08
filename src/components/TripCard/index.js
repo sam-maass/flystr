@@ -11,7 +11,7 @@ const wrapperStyle = css`
 `;
 
 const imgStyle = img => css`
-  background-image: url(${img});
+  background-image: url(${img}), url('/images/square/airplane.jpg');
   background-size: cover;
   padding: 8px;
   display: grid;
