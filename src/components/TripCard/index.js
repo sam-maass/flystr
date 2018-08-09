@@ -8,7 +8,6 @@ import { getDestinationImage } from '../../getDestinationImage';
 const wrapperStyle = css`
   width: 100%;
   max-width: 400px;
-  padding-bottom: 16px;
 `;
 
 const imgStyle = code => css`
