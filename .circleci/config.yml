@@ -72,12 +72,8 @@ jobs:
             curl -X DELETE https://api.cloudflare.com/client/v4/zones/0c24d4d9078059f3168eae12ecf6e0e3/purge_cache -H X-Auth-Email:dev@maass.co -H X-Auth-Key:***REDACTED*** -H Content-Type:application/json  --data '{"purge_everything":true}'
 
       - run:
-          name: Install prep
-          command: sudo npm install -g prep
-
-      - run:
           name: Create Snapshots
-          command: prep snaps
+          command: npm run prep
 
       - run:
           name: Rename Index
