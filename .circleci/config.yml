@@ -70,19 +70,6 @@ jobs:
           name: Purge CloudFlare Cache
           command:
             curl -X DELETE https://api.cloudflare.com/client/v4/zones/0c24d4d9078059f3168eae12ecf6e0e3/purge_cache -H X-Auth-Email:dev@maass.co -H X-Auth-Key:325c9f694eece58fd4ccde6301524dd2e0990 -H Content-Type:application/json  --data '{"purge_everything":true}'
-
-      - run:
-          name: Create Snapshots
-          command: npm run prep
-
-      - run:
-          name: Rename Index
-          command: mv snaps/index.html snaps/_index.html
-
-      - run:
-          name: deploy snapshots to AWS
-          command:
-            aws configure set default.s3.signature_version s3v4 && aws configure set default.region eu-central-1 && aws s3 sync snaps s3://flystr.com/
 workflows:
   version: 2
   build-deploy:
