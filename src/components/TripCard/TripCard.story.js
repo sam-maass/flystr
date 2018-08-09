@@ -1,11 +1,10 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
 import TripCard from '.';
-import { getAirportImage } from '../../getAirportImage';
 
 storiesOf('TripCard', module).add('default', () => (
   <TripCard
-    image={getAirportImage('NYC')}
+    destinations={['NYC']}
     title="USA"
     dates="June 2019"
     duration="16 Days"

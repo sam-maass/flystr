@@ -6,7 +6,7 @@ import { classes, styles } from '../../styles';
 import moment from 'moment';
 import { getTimeframeString } from '../../utils';
 import { Link } from 'react-router-dom';
-import { getAirportHeader } from '../../getAirportHeader';
+import { getDestinationImage } from '../../getDestinationImage';
 
 const wrapperStyle = destination => css`
   width: 100%;
@@ -16,8 +16,8 @@ const wrapperStyle = destination => css`
     text-decoration: none;
   }
   .container {
-    background-image: url(${getAirportHeader(destination)}),
-      url('/images/header/airplane.jpg');
+    background-image: url(${getDestinationImage('header', destination)}),
+      url(${getDestinationImage('header', destination, { fallback: true })});
     background-size: cover;
     display: grid;
     min-height: 200px;

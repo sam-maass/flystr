@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { getDurationString, getTimeframeString } from '../../utils';
 import { css } from 'emotion';
-import { getAirportHeader } from '../../getAirportHeader';
+import { getDestinationImage } from '../../getDestinationImage';
 import { classes, styles } from '../../styles';
 
 const style = destination => css`
   ${classes.typography.base};
   height: 200px;
-  background-image: url(${getAirportHeader(destination)}),
-    url('/images/header/airplane.jpg');
+  background-image: url(${getDestinationImage('header', destination)}),
+    url(${getDestinationImage('header', destination, { fallback: true })});
   background-size: cover;
   background-repeat: no-repeat;
   .backdrop {
