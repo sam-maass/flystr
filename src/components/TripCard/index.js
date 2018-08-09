@@ -97,9 +97,9 @@ const TripCard = ({
             </div>
             <div className={classes.typography.base}>
               {dealCount === 0 && (
-                <span className={noDealStyle}>Looking for next deal</span>
+                <span className={noDealStyle}>for under {oldPrice}</span>
               )}
-              {oldPrice && <span className={oldPriceStyle}>{oldPrice}</span>}
+              {newPrice && <span className={oldPriceStyle}>{oldPrice}</span>}
               {newPrice && <span className={newPriceStyle}>{newPrice}</span>}
             </div>
           </div>
