@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import PinDropIcon from '@material-ui/icons/PinDrop';
+import PinDropIcon from '@material-ui/icons/PersonPinCircleOutlined';
 import SignOutIcon from '@material-ui/icons/PowerSettingsNew';
 import UserIcon from '@material-ui/icons/PermIdentity';
-import DealIcon from '@material-ui/icons/MonetizationOn';
+import DealIcon from '@material-ui/icons/MonetizationOnOutlined';
+import TakeOffIcon from '@material-ui/icons/FlightTakeoffOutlined';
 import AllTripsIcon from '@material-ui/icons/List';
 import Divider from '@material-ui/core/Divider';
 import { withStyles } from '@material-ui/core/styles';
@@ -25,43 +26,49 @@ const SideListComponent = ({ classes, user, logoutUser }) => {
           </ListItem>
         </Link>
         <Divider />
+        <Link to={'/deals'}>
+          <ListItem button>
+            <ListItemIcon>
+              <TakeOffIcon />
+            </ListItemIcon>
+            <ListItemText primary="All Deals" />
+          </ListItem>
+        </Link>
         <Link to={'/trips'}>
           <ListItem button>
             <ListItemIcon>
               <PinDropIcon />
             </ListItemIcon>
-            <ListItemText primary="Upcoming Trips" />
+            <ListItemText primary="My Trips" />
           </ListItem>
         </Link>
         {user.isAdmin && (
-          <Link to={'/admin/all-trips'}>
-            <ListItem button>
-              <ListItemIcon>
-                <AllTripsIcon />
-              </ListItemIcon>
-              <ListItemText primary="Triplist" />
-            </ListItem>
-          </Link>
-        )}
-        {user.isAdmin && (
-          <Link to={'/settings'}>
-            <ListItem button>
-              <ListItemIcon>
-                <UserIcon />
-              </ListItemIcon>
-              <ListItemText primary="Settings" />
-            </ListItem>
-          </Link>
-        )}
-        {user.isAdmin && (
-          <Link to={'/new-deal'}>
-            <ListItem button>
-              <ListItemIcon>
-                <DealIcon />
-              </ListItemIcon>
-              <ListItemText primary="Report a Deal" />
-            </ListItem>
-          </Link>
+          <Fragment>
+            <Link to={'/admin/all-trips'}>
+              <ListItem button>
+                <ListItemIcon>
+                  <AllTripsIcon />
+                </ListItemIcon>
+                <ListItemText primary="Triplist" />
+              </ListItem>
+            </Link>{' '}
+            <Link to={'/settings'}>
+              <ListItem button>
+                <ListItemIcon>
+                  <UserIcon />
+                </ListItemIcon>
+                <ListItemText primary="Settings" />
+              </ListItem>
+            </Link>
+            <Link to={'/new-deal'}>
+              <ListItem button>
+                <ListItemIcon>
+                  <DealIcon />
+                </ListItemIcon>
+                <ListItemText primary="Report a Deal" />
+              </ListItem>
+            </Link>
+          </Fragment>
         )}
         <Divider />
         <ListItem button onClick={logoutUser}>
