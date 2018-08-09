@@ -3,6 +3,7 @@ import Card from '@material-ui/core/Card';
 import { css } from 'emotion';
 import { classes, styles } from '../../styles';
 import PropTypes from 'prop-types';
+import { getDestinationImage } from '../../getDestinationImage';
 
 const wrapperStyle = css`
   width: 100%;
@@ -10,8 +11,9 @@ const wrapperStyle = css`
   padding-bottom: 16px;
 `;
 
-const imgStyle = img => css`
-  background-image: url(${img}), url('/images/square/airplane.jpg');
+const imgStyle = code => css`
+  background-image: url(${getDestinationImage('square', code)}),
+    url(${getDestinationImage('square', code, { fallback: true })});
   background-size: cover;
   padding: 8px;
   display: grid;
@@ -75,7 +77,7 @@ const TripCard = ({
   dates,
   duration,
   title,
-  image
+  destinations
 }) => {
   const dealString =
     dealCount === 1 ? `${dealCount} Deal` : `${dealCount} Deals`;
@@ -83,7 +85,7 @@ const TripCard = ({
     <div className={wrapperStyle}>
       <Card>
         <div className={containerStyle}>
-          <div className={imgStyle(image)}>
+          <div className={imgStyle(destinations[0])}>
             {dealCount > 0 && <span className="badge deal">{dealString}</span>}
             {dealCount === 0 && <span className="badge active">active</span>}
           </div>
@@ -115,7 +117,7 @@ TripCard.propTypes = {
   dates: PropTypes.string,
   duration: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired
+  destinations: PropTypes.array.isRequired
 };
 
 export default TripCard;

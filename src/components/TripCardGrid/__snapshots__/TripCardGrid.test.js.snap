@@ -94,7 +94,7 @@ exports[`TripCardGrid: default 1`] = `
 }
 
 .emotion-0 {
-  background-image: url(/images/square/NYC.jpg),url('/images/square/airplane.jpg');
+  background-image: url(/images/square/NYC.jpg), url(/images/square/airplane2.jpg);
   background-size: cover;
   padding: 8px;
   display: grid;
@@ -133,7 +133,7 @@ exports[`TripCardGrid: default 1`] = `
 }
 
 .emotion-8 {
-  background-image: url(/images/square/ATH.jpg),url('/images/square/airplane.jpg');
+  background-image: url(/images/square/ATH.jpg), url(/images/square/airplane.jpg);
   background-size: cover;
   padding: 8px;
   display: grid;
@@ -172,7 +172,7 @@ exports[`TripCardGrid: default 1`] = `
 }
 
 .emotion-16 {
-  background-image: url(/images/square/BLQ.jpg),url('/images/square/airplane.jpg');
+  background-image: url(/images/square/BLQ.jpg), url(/images/square/airplane3.jpg);
   background-size: cover;
   padding: 8px;
   display: grid;
