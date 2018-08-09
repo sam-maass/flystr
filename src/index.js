@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render, hydrate } from 'react-dom';
 import { Provider } from 'react-redux';
 import store from './store';
 import LayoutContainer from './Layout';
@@ -17,13 +17,22 @@ const theme = createMuiTheme({
     }
   }
 });
+const App = () => {
+  return (
+    <Provider store={store}>
+      <MuiThemeProvider theme={theme}>
+        <LayoutContainer />
+      </MuiThemeProvider>
+    </Provider>
+  );
+};
 
-ReactDOM.render(
-  <Provider store={store}>
-    <MuiThemeProvider theme={theme}>
-      <LayoutContainer />
-    </MuiThemeProvider>
-  </Provider>,
-  document.getElementById('root')
-);
+const rootElement = document.getElementById('root');
+
+if (rootElement.hasChildNodes()) {
+  hydrate(<App />, rootElement);
+} else {
+  render(<App />, rootElement);
+}
+
 registerServiceWorker();
