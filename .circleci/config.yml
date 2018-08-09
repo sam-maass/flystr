@@ -84,8 +84,6 @@ jobs:
       - run :
           name: deploy snapshots to AWS
           command: aws configure set default.s3.signature_version s3v4 && aws configure set default.region eu-central-1 && aws s3 sync snaps s3://flystr.com/ 
-
-
 workflows:
   version: 2
   build-deploy:
