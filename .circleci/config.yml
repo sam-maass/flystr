@@ -8,11 +8,11 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/node:10
-      
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
+
+    # Specify service dependencies here if necessary
+    # CircleCI maintains a library of pre-built images
+    # documented at https://circleci.com/docs/2.0/circleci-images/
+    # - image: circleci/mongo:3.4.4
 
     working_directory: ~/repo
 
@@ -22,9 +22,9 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v2-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v2-dependencies-
+            - v2-dependencies-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v2-dependencies-
 
       - run:
           name: Update npm dependencies
@@ -34,7 +34,7 @@ jobs:
           paths:
             - node_modules
           key: v2-dependencies-{{ checksum "package.json" }}
-        
+
       # run tests!
       - run: npm run test
 
@@ -45,15 +45,15 @@ jobs:
     steps:
       - run:
           name: Install AWS CLI
-          command: sudo apt-get -y -qq install awscli 
+          command: sudo apt-get -y -qq install awscli
 
       - checkout
 
       - restore_cache:
           keys:
-          - v2-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v2-dependencies-
+            - v2-dependencies-{{ checksum "package.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v2-dependencies-
 
       - run:
           name: Update npm dependencies
@@ -61,18 +61,32 @@ jobs:
 
       - run: npm run build
 
-      - run :
+      - run:
           name: deploy to AWS
-          command: aws configure set default.s3.signature_version s3v4 && aws configure set default.region eu-central-1 && aws s3 sync build s3://flystr.com/ --delete
+          command:
+            aws configure set default.s3.signature_version s3v4 && aws configure set default.region eu-central-1 && aws s3 sync build s3://flystr.com/ --delete
 
-      - run :
+      - run:
           name: Purge CloudFlare Cache
-          command: curl -X DELETE https://api.cloudflare.com/client/v4/zones/0c24d4d9078059f3168eae12ecf6e0e3/purge_cache -H X-Auth-Email:dev@maass.co -H X-Auth-Key:325c9f694eece58fd4ccde6301524dd2e0990 -H Content-Type:application/json  --data '{"purge_everything":true}'
+          command:
+            curl -X DELETE https://api.cloudflare.com/client/v4/zones/0c24d4d9078059f3168eae12ecf6e0e3/purge_cache -H X-Auth-Email:dev@maass.co -H X-Auth-Key:325c9f694eece58fd4ccde6301524dd2e0990 -H Content-Type:application/json  --data '{"purge_everything":true}'
 
-     - run:
+      - run:
           name: Install prep
           command: sudo npm install -g prep
 
+      - run:
+          name: Create Snapshots
+          command: prep snaps
+
+      - run:
+          name: Rename Index
+          command: mv snaps/index.html snaps/_index.html
+
+      - run:
+          name: deploy snapshots to AWS
+          command:
+            aws configure set default.s3.signature_version s3v4 && aws configure set default.region eu-central-1 && aws s3 sync snaps s3://flystr.com/
 workflows:
   version: 2
   build-deploy:
