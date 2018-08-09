@@ -3,6 +3,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchDeals } from '../actions/dealActions';
 import DealList from '../components/DealList';
+import { css } from 'emotion';
+
+const style = css`
+  margin: 8px;
+`;
 
 class DealsPage extends React.Component {
   componentDidMount() {
@@ -10,7 +15,11 @@ class DealsPage extends React.Component {
   }
 
   render() {
-    return <DealList deals={this.props.deals} />;
+    return (
+      <div className={style}>
+        <DealList deals={this.props.deals} />
+      </div>
+    );
   }
 }
 

@@ -11,7 +11,6 @@ import { getDestinationImage } from '../../getDestinationImage';
 const wrapperStyle = destination => css`
   width: 100%;
   max-width: 400px;
-  padding-bottom: 16px;
   a {
     text-decoration: none;
   }
@@ -24,7 +23,7 @@ const wrapperStyle = destination => css`
     .backdrop {
       height: 200px;
       display: grid;
-      background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
+      background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5));
     }
     .badge {
       ${classes.typography.base};
@@ -44,10 +43,10 @@ const wrapperStyle = destination => css`
       align-self: center;
       text-align: center;
       .title {
-        ${classes.typography.title};
+        ${classes.typography.h2};
         color: ${styles.colors.white};
+        line-height: 1px;
         width: 100%;
-        font-weight: bold;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;

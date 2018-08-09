@@ -4,7 +4,17 @@ import DealCard from './DealCard';
 import { css } from 'emotion';
 
 const style = css`
-  margin: 8px;
+  max-width: 1400px;
+  margin: auto;
+  margin-top: 8px;
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(auto-fit, 400px);
+  justify-content: center;
+  @media only screen and (min-width: 1024px) {
+    margin-top: 16px;
+    gap: 32px 64px;
+  }
 `;
 
 const DealList = ({ deals = [] }) => {

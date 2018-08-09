@@ -17,7 +17,6 @@ exports[`Triprow: default 1`] = `
 .emotion-6 {
   width: 100%;
   max-width: 400px;
-  padding-bottom: 16px;
 }
 
 .emotion-5 {
