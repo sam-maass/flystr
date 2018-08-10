@@ -67,6 +67,13 @@ export const loggedInRoutes = [
     main: props => <Pages.Deal {...props.match.params} />
   },
   {
+    path: '/deal/:dealId/edit',
+    exact: true,
+    header: () => <CustomAppBar title="Edit trip" withReturn />,
+    //eslint-disable-next-line
+    main: props => <Pages.NewDeal {...props.match.params} />
+  },
+  {
     path: '/settings',
     exact: true,
     header: () => <CustomAppBar title="Profile" />,
