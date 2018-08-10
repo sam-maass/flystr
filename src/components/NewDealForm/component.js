@@ -68,6 +68,12 @@ class NewDealForm extends React.Component {
     editableFlight: {}
   };
 
+  componentDidUpdate(prevProps) {
+    if (this.props.currentDeal !== prevProps.currentDeal) {
+      this.props.setValues(this.props.currentDeal);
+    }
+  }
+
   handleNewFlight = flightDetails => {
     const { exampleFlights = [] } = this.props.values;
     const flights = [...exampleFlights, ...flightDetails];
@@ -186,6 +192,7 @@ class NewDealForm extends React.Component {
 }
 
 NewDealForm.propTypes = {
+  currentDeal: PropTypes.object,
   classes: PropTypes.object,
   values: PropTypes.object,
   errors: PropTypes.object,
