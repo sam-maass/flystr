@@ -27,12 +27,17 @@ const style = css`
     }
     .price {
       color: ${styles.colors.orange};
+      text-align: center;
       background: rgba(255, 109, 0, 0.1);
       height: 100%;
       width: 100%;
       display: grid;
       align-items: center;
       justify-items: center;
+      .link {
+        color: ${styles.colors.lightGray};
+        font-size: 0.8em;
+      }
     }
   }
 `;
@@ -42,7 +47,8 @@ const DealRow = ({
   outDate,
   inDate,
   price,
-  link
+  link,
+  linkSource
 }) => {
   const format = 'DD.MM.YYYY';
   const formattedStartDate = moment(outDate).format(format);
@@ -62,7 +68,10 @@ const DealRow = ({
           </div>
           <div> {formattedEndDate}</div>
         </div>
-        <div className="row price">{price} EUR</div>
+        <div className="row price">
+          {price} EUR <br />
+          {linkSource && <span className="link">on {linkSource}</span>}
+        </div>
       </div>
     </a>
   );
@@ -74,7 +83,8 @@ DealRow.propTypes = {
   outDate: PropTypes.string,
   inDate: PropTypes.string,
   price: PropTypes.string,
-  link: PropTypes.string
+  link: PropTypes.string,
+  linkSource: PropTypes.string
 };
 
 export default DealRow;
