@@ -5,6 +5,9 @@ const googleRegex = /(?<linkSource>google.\w{2,3}.\w{0,3})\/.*#flt=(?<outOrigin>
 export const parseLinksFromText = text => {
   const linkRegex = /https?:.*?((?="\s)|$)/g;
   const links = text.match(linkRegex);
+  if (links === null) {
+    return [];
+  }
   return links.map(link => parseLink(link));
 };
 
