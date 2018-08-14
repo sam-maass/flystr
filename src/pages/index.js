@@ -3,6 +3,7 @@ import asyncComponent from '../asyncComponent';
 const Landing = asyncComponent(() => import('./Landing'));
 const AdminTrips = asyncComponent(() => import('./AdminTrips'));
 const Legal = asyncComponent(() => import('./Legal'));
+const Terms = asyncComponent(() => import('./Terms'));
 const Login = asyncComponent(() => import('./Login'));
 const NewDeal = asyncComponent(() => import('./NewDeal'));
 const NewTrip = asyncComponent(() => import('./NewTrip'));
@@ -13,6 +14,7 @@ const Deals = asyncComponent(() => import('./Deals'));
 const Deal = asyncComponent(() => import('./Deal'));
 const Signup = asyncComponent(() => import('./Signup'));
 export {
+  Terms,
   Deal,
   Deals,
   Landing,

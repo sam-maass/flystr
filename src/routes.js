@@ -130,6 +130,12 @@ export const loggedOutRoutes = [
     main: () => <Pages.Legal />
   },
   {
+    path: '/terms',
+    exact: true,
+    header: () => <CustomAppBar withReturn title="Legal Information" />,
+    main: () => <Pages.Terms />
+  },
+  {
     path: '/:anythingElse',
     main: () => (
       <Redirect
