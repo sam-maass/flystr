@@ -13,11 +13,13 @@ class GoogleButtonContainer extends Component {
   }
 
   onLoginSuccess = args => {
-    const { loginUser, signupUser, action } = this.props;
+    const { loginUser, signupUser, action, tocAccepted } = this.props;
     window.localStorage.setItem('currentJWT', args.tokenObj.id_token);
     api().defaults.headers.common['Authorization'] = args.tokenObj.id_token;
     if (action === 'login') loginUser();
-    if (action === 'signup') signupUser();
+    if (action === 'signup' && tocAccepted) signupUser();
+    if (action === 'signup' && !tocAccepted)
+      alert('You need to accept our Terms and Conditions to proceed');
   };
 
   onLoginFailure = () => {
@@ -42,7 +44,8 @@ GoogleButtonContainer.propTypes = {
   signupUser: PropTypes.func.isRequired,
   user: PropTypes.object.isRequired,
   text: PropTypes.string,
-  action: PropTypes.string
+  action: PropTypes.string,
+  tocAccepted: PropTypes.bool
 };
 
 const mapStateToProps = (store, props) => {
