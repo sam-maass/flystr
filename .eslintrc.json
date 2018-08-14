@@ -20,6 +20,7 @@
     "semi": 2,
     "react/display-name": "off",
     "react/prefer-stateless-function": 1,
+    "react/no-unescaped-entities": 0,
     "eqeqeq": 2,
     "no-implicit-coercion": 2,
     "no-multi-spaces": 2,

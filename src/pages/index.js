@@ -2,7 +2,7 @@ import asyncComponent from '../asyncComponent';
 
 const Landing = asyncComponent(() => import('./Landing'));
 const AdminTrips = asyncComponent(() => import('./AdminTrips'));
-const Impressum = asyncComponent(() => import('./Impressum'));
+const Legal = asyncComponent(() => import('./Legal'));
 const Login = asyncComponent(() => import('./Login'));
 const NewDeal = asyncComponent(() => import('./NewDeal'));
 const NewTrip = asyncComponent(() => import('./NewTrip'));
@@ -17,7 +17,7 @@ export {
   Deals,
   Landing,
   AdminTrips,
-  Impressum,
+  Legal,
   Login,
   Signup,
   NewTrip,
