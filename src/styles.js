@@ -46,6 +46,30 @@ export const classes = {
         font-size: 36px;
       }
     `,
+    h3: css`
+      color: ${styles.colors.darkGray};
+      font-family: 'Comfortaa';
+      font-style: normal;
+      line-height: 1.7em;
+      font-size: 20px;
+      margin-bottom: 8px;
+      letter-spacing: 0.1em;
+      @media only screen and (min-width: 1024px) {
+        font-size: 24px;
+      }
+    `,
+    h4: css`
+      color: ${styles.colors.darkGray};
+      font-family: 'Comfortaa';
+      font-style: normal;
+      line-height: 1.7em;
+      font-size: 18px;
+      margin-bottom: 8px;
+      letter-spacing: 0.1em;
+      @media only screen and (min-width: 1024px) {
+        font-size: 18px;
+      }
+    `,
 
     title: css`
       color: ${styles.colors.darkGray};

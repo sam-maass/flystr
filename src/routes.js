@@ -3,9 +3,6 @@ import React from 'react';
 import asyncComponent from './asyncComponent';
 import * as Pages from './pages/index';
 
-const LoggedOutAppBar = asyncComponent(() =>
-  import('./components/LoggedOutAppBar')
-);
 const CustomAppBar = asyncComponent(() => import('./components/CustomAppBar'));
 export const loggedInRoutes = [
   {
@@ -127,10 +124,10 @@ export const loggedOutRoutes = [
     main: () => <Pages.Signup />
   },
   {
-    path: '/impressum',
+    path: '/legal',
     exact: true,
-    header: () => <LoggedOutAppBar />,
-    main: () => <Pages.Impressum />
+    header: () => <CustomAppBar withReturn title="Legal Information" />,
+    main: () => <Pages.Legal />
   },
   {
     path: '/:anythingElse',
