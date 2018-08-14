@@ -74,7 +74,10 @@ const FormikEmailForm = withFormik({
       .required()
   }),
   handleSubmit: async (values, { props, setSubmitting }) => {
-    if (props.action === 'signup') props.signupWithEmail(values);
+    if (props.action === 'signup' && !props.tocAccepted)
+      alert('You need to accept our Terms and Conditions to proceed');
+    if (props.action === 'signup' && props.tocAccepted)
+      props.signupWithEmail(values);
     if (props.action === 'login') props.loginWithEmail(values);
     setSubmitting(false);
   }
