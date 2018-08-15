@@ -1,7 +1,13 @@
+import Route from 'route-parser';
+
+const momondoRoute = new Route(
+  '/flight-search/:origin-:destination/:departureDate(/:inOrigin-:inDestination)/:returnDate(/:adultCount)(/)'
+);
+
 const kayakRegex = /(?<linkSource>kayak.\w{2,3})\/.*(?<origin>[A-Z]{3})-(?<destination>[A-Z]{3})\/(?<departureDate>.{10})\/(?<returnDate>.{10})/;
 const skyscannerRegex = /(?<linkSource>skyscanner.\w{2,3})\/.*\/(?<outOrigin>[A-Z]{3,4})\/(?<departureDate>.{10})\/(?<outDestination>[A-Z]{3,4})\/(?<inOrigin>[A-Z]{3,4})\/(?<returnDate>.{10})\/(?<inDestination>[A-Z]{3,4})/;
 const googleRegex = /(?<linkSource>google.\w{2,3}.\w{0,3})\/.*#flt=(?<outOrigin>.*?)\.(?<outDestination>.*?)\.(?<departureDate>.*?)\*(?<inOrigin>.*?)\.(?<inDestination>.*?)\.(?<returnDate>.*?);/;
-
+const domainRegex = /^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:/\n?]+)/;
 export const parseLinksFromText = text => {
   const linkRegex = /https?:.*?((?="\s)|$)/g;
   const links = text.match(linkRegex);
@@ -12,6 +18,9 @@ export const parseLinksFromText = text => {
 };
 
 export const parseLink = link => {
+  const domain = link.match(domainRegex)[1];
+  const path = link.split(domain)[1];
+  const linkSource = link.match(domainRegex)[1];
   let linkParams = {};
   switch (true) {
     case kayakRegex.test(link):
@@ -23,12 +32,25 @@ export const parseLink = link => {
     case googleRegex.test(link):
       linkParams = parseGoogleLink(link);
       break;
-
+    case linkSource.includes('momondo'):
+      linkParams = parseMomondoLink(path);
+      break;
     default:
-      linkParams = { linkSource: 'Unknown' };
       break;
   }
-  return { link, ...linkParams };
+  return { link, linkSource, ...linkParams };
+};
+
+const parseMomondoLink = path => {
+  const params = momondoRoute.match(path);
+  return {
+    outOrigin: params.origin,
+    outDate: params.departureDate,
+    outDestination: params.destination,
+    inOrigin: params.destination,
+    inDate: params.returnDate,
+    inDestination: params.origin
+  };
 };
 
 const parseKayakLink = link => {
