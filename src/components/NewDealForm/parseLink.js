@@ -3,9 +3,12 @@ import Route from 'route-parser';
 const momondoRoute = new Route(
   '/flight-search/:origin-:destination/:departureDate(/:inOrigin-:inDestination)/:returnDate(/:adultCount)(/)'
 );
-
-const kayakRegex = /(?<linkSource>kayak.\w{2,3})\/.*(?<origin>[A-Z]{3})-(?<destination>[A-Z]{3})\/(?<departureDate>.{10})\/(?<returnDate>.{10})/;
-const skyscannerRegex = /(?<linkSource>skyscanner.\w{2,3})\/.*\/(?<outOrigin>[A-Z]{3,4})\/(?<departureDate>.{10})\/(?<outDestination>[A-Z]{3,4})\/(?<inOrigin>[A-Z]{3,4})\/(?<returnDate>.{10})\/(?<inDestination>[A-Z]{3,4})/;
+const kayakRoute = new Route(
+  '/flights/:origin-:destination/:departureDate(/:inOrigin-:inDestination)/:returnDate(/*rest/)'
+);
+const skyscannerRoute = new Route(
+  '/transport/d/:origin/:departureDate/:destination/:inOrigin/:returnDate/:inDestination(/)'
+);
 const googleRegex = /(?<linkSource>google.\w{2,3}.\w{0,3})\/.*#flt=(?<outOrigin>.*?)\.(?<outDestination>.*?)\.(?<departureDate>.*?)\*(?<inOrigin>.*?)\.(?<inDestination>.*?)\.(?<returnDate>.*?);/;
 const domainRegex = /^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:/\n?]+)/;
 export const parseLinksFromText = text => {
@@ -18,22 +21,22 @@ export const parseLinksFromText = text => {
 };
 
 export const parseLink = link => {
-  const domain = link.match(domainRegex)[1];
+  const domain = link.match(domainRegex)[0];
   const path = link.split(domain)[1];
   const linkSource = link.match(domainRegex)[1];
   let linkParams = {};
   switch (true) {
-    case kayakRegex.test(link):
-      linkParams = parseKayakLink(link);
+    case linkSource.includes('kayak'):
+      linkParams = parseKayakLink(domain, path);
       break;
-    case skyscannerRegex.test(link):
-      linkParams = parseSkyscannerLink(link);
+    case linkSource.includes('skyscanner'):
+      linkParams = parseSkyscannerLink(domain, path);
       break;
-    case googleRegex.test(link):
+    case linkSource.includes('google'):
       linkParams = parseGoogleLink(link);
       break;
     case linkSource.includes('momondo'):
-      linkParams = parseMomondoLink(path);
+      linkParams = parseMomondoLink(domain, path);
       break;
     default:
       break;
@@ -41,7 +44,7 @@ export const parseLink = link => {
   return { link, linkSource, ...linkParams };
 };
 
-const parseMomondoLink = path => {
+const parseMomondoLink = (domain, path) => {
   const params = momondoRoute.match(path);
   return {
     outOrigin: params.origin,
@@ -49,33 +52,34 @@ const parseMomondoLink = path => {
     outDestination: params.destination,
     inOrigin: params.destination,
     inDate: params.returnDate,
-    inDestination: params.origin
+    inDestination: params.origin,
+    link: domain + momondoRoute.reverse(params)
   };
 };
 
-const parseKayakLink = link => {
-  const { groups } = kayakRegex.exec(link);
+const parseKayakLink = (domain, path) => {
+  const params = kayakRoute.match(path);
   return {
-    outOrigin: groups.origin,
-    outDate: groups.departureDate,
-    outDestination: groups.destination,
-    inOrigin: groups.destination,
-    inDate: groups.returnDate,
-    inDestination: groups.origin,
-    linkSource: groups.linkSource
+    outOrigin: params.origin,
+    outDate: params.departureDate,
+    outDestination: params.destination,
+    inOrigin: params.destination,
+    inDate: params.returnDate,
+    inDestination: params.origin,
+    link: domain + kayakRoute.reverse(params)
   };
 };
 
-const parseSkyscannerLink = link => {
-  const { groups } = skyscannerRegex.exec(link);
+const parseSkyscannerLink = (domain, path) => {
+  const params = skyscannerRoute.match(path);
   return {
-    outOrigin: groups.outOrigin.substr(0, 3),
-    outDate: groups.departureDate,
-    outDestination: groups.outDestination.substr(0, 3),
-    inOrigin: groups.inOrigin.substr(0, 3),
-    inDate: groups.returnDate,
-    inDestination: groups.inDestination.substr(0, 3),
-    linkSource: groups.linkSource
+    outOrigin: params.origin.substr(0, 3),
+    outDate: params.departureDate,
+    outDestination: params.destination.substr(0, 3),
+    inOrigin: params.inOrigin.substr(0, 3),
+    inDate: params.returnDate,
+    inDestination: params.inDestination.substr(0, 3),
+    link: domain + kayakRoute.reverse(params)
   };
 };
 
