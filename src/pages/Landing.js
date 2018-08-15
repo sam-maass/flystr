@@ -4,8 +4,9 @@ import SubHeadline from '../components/SubHeadline';
 import StepsGrid from '../components/StepsGrid';
 import { css } from 'emotion';
 import TripCardGrid from '../components/TripCardGrid';
-import BetaSignupForm from '../components/BetaSignupForm';
+import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
+import { classes, styles } from '../styles';
 
 const maxWidth = css`
   max-width: 100vw;
@@ -13,6 +14,25 @@ const maxWidth = css`
   overflow: hidden;
   margin: auto;
   padding: 0 8px 0 8px;
+  .signup {
+    ${classes.typography.base};
+    max-width: 600px;
+    margin: auto;
+    text-align:center;
+    a{
+      text-decoration:none
+    }
+    .button {
+    border-radius: 4px;
+    background-color: ${styles.colors.orange};
+    color: ${styles.colors.white};
+    padding: 8px 16px;
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
+      0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+    ${classes.typography.title};
+    font-weight: bold;
+
+  }
 `;
 
 const Landing = () => {
@@ -25,7 +45,15 @@ const Landing = () => {
         <SubHeadline withBar>deals we found last week</SubHeadline>
         <TripCardGrid />
         <SubHeadline withBar>try flystr</SubHeadline>
-        <BetaSignupForm />
+        <div className="signup">
+          <p>
+            We're still in beta but you can already use flystr to find the
+            cheapest flight deals.
+          </p>
+          <Link to="/signup">
+            <span className="button">Signup today</span>
+          </Link>
+        </div>
         <Footer />
       </div>
     </div>

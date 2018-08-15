@@ -2,9 +2,10 @@ import React from 'react';
 import { css } from 'emotion';
 import PropTypes from 'prop-types';
 import HugeHeadline from '../HugeHeadline';
+import { classes, styles } from '../../styles';
+import { Link } from 'react-router-dom';
 
 const header = css`
-  height: 300px;
   background-image: url('/landing.jpg');
   background-size: cover;
   background-repeat: no-repeat;
@@ -13,11 +14,11 @@ const header = css`
   display: grid;
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
     0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
-  grid-template-rows: 50px 1fr 50px;
+  grid-template-rows: 100px 1fr 100px;
   grid-template-areas:
     'logo'
     'headline'
-    '.';
+    'button';
   @media only screen and (min-width: 1024px) {
     grid-template-columns: 150px 1fr 150px;
     height: 30vw;
@@ -25,7 +26,7 @@ const header = css`
     grid-template-areas:
       'logo . .'
       '. headline .'
-      '. . .';
+      '. button .';
   }
   .headline {
     grid-area: headline;
@@ -42,8 +43,31 @@ const header = css`
     background-repeat: no-repeat;
     margin-bottom: 20px;
     @media only screen and (min-width: 1024px) {
+      margin: 0;
       width: 300px;
-      margin-left: 0;
+    }
+  }
+  .buttonbox {
+    grid-area: button;
+    align-self: center;
+    justify-self: center;
+    padding: 32px;
+    a {
+      text-decoration: none;
+    }
+  }
+  .button {
+    border: 2px solid ${styles.colors.orange};
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 8px 16px;
+    box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
+      0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+    ${classes.typography.title};
+    color: ${styles.colors.white};
+    font-weight: bold;
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.2);
     }
   }
 `;
@@ -53,11 +77,16 @@ const ImageHeader = () => {
     <div className={header}>
       <div className="logo" />
       <div className="headline">
-        <HugeHeadline withBar>
+        <HugeHeadline>
           select your destination
           <br />
           we find the best flights
         </HugeHeadline>
+      </div>
+      <div className="buttonbox">
+        <Link to="/signup">
+          <span className="button">Find cheap flights</span>
+        </Link>
       </div>
     </div>
   );
