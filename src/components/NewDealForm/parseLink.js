@@ -9,6 +9,7 @@ const kayakRoute = new Route(
 const skyscannerRoute = new Route(
   '/transport/d/:origin/:departureDate/:destination/:inOrigin/:returnDate/:inDestination(/)'
 );
+
 const googleRegex = /(?<linkSource>google.\w{2,3}.\w{0,3})\/.*#flt=(?<outOrigin>.*?)\.(?<outDestination>.*?)\.(?<departureDate>.*?)\*(?<inOrigin>.*?)\.(?<inDestination>.*?)\.(?<returnDate>.*?);/;
 const domainRegex = /^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:/\n?]+)/;
 export const parseLinksFromText = text => {
@@ -25,22 +26,28 @@ export const parseLink = link => {
   const path = link.split(domain)[1];
   const linkSource = link.match(domainRegex)[1];
   let linkParams = {};
-  switch (true) {
-    case linkSource.includes('kayak'):
-      linkParams = parseKayakLink(domain, path);
-      break;
-    case linkSource.includes('skyscanner'):
-      linkParams = parseSkyscannerLink(domain, path);
-      break;
-    case linkSource.includes('google'):
-      linkParams = parseGoogleLink(link);
-      break;
-    case linkSource.includes('momondo'):
-      linkParams = parseMomondoLink(domain, path);
-      break;
-    default:
-      break;
+  try {
+    switch (true) {
+      case linkSource.includes('kayak'):
+        linkParams = parseKayakLink(domain, path);
+        break;
+      case linkSource.includes('skyscanner'):
+        linkParams = parseSkyscannerLink(domain, path);
+        break;
+      case linkSource.includes('google'):
+        linkParams = parseGoogleLink(link);
+        break;
+      case linkSource.includes('momondo'):
+        linkParams = parseMomondoLink(domain, path);
+        break;
+      default:
+        break;
+    }
+  } catch (error) {
+    //eslint-disable-next-line
+    console.error('could not parse URL');
   }
+
   return { link, linkSource, ...linkParams };
 };
 
