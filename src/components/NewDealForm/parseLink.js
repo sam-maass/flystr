@@ -4,7 +4,7 @@ const momondoRoute = new Route(
   '/flight-search/:origin-:destination/:departureDate(/:inOrigin-:inDestination)/:returnDate(/:adultCount)(/)'
 );
 const kayakRoute = new Route(
-  '/flights/:origin-:destination/:departureDate(/:inOrigin-:inDestination)/:returnDate(/*rest/)'
+  '/flights/:origin-:destination/:departureDate(/:inOrigin-:inDestination)/:returnDate(/:adultCount)(/)'
 );
 const skyscannerRoute = new Route(
   '/transport/d/:origin/:departureDate/:destination/:inOrigin/:returnDate/:inDestination(/)'
