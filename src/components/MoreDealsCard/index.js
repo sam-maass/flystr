@@ -32,7 +32,6 @@ const style = css`
     align-items: center;
     justify-items: center;
     text-align: center;
-    width: 100%;
     ${classes.typography.title};
     color: ${styles.colors.white};
   }

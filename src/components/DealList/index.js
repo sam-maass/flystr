@@ -10,8 +10,8 @@ const style = css`
   margin: auto;
   margin-top: 8px;
   display: grid;
-  gap: 8px;
-  grid-template-columns: repeat(auto-fit, 400px);
+  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax(auto, 400px));
   justify-content: center;
   @media only screen and (min-width: 1024px) {
     margin-top: 16px;

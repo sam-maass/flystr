@@ -7,7 +7,7 @@ import { css } from 'emotion';
 import { setAppbar } from '../actions/appbarActions';
 
 const style = css`
-  margin: 8px;
+  margin: 16px;
 `;
 
 class DealsPage extends React.Component {
