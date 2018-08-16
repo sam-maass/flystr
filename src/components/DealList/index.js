@@ -26,6 +26,7 @@ const minFirstDeals = 4;
 const minRestDeals = 1;
 
 const DealList = ({ deals = [] }) => {
+  if (deals[0] === undefined) return null;
   const filterDealsCardPosition = getRandomInt(
     minFirstDeals,
     deals.length - minRestDeals
