@@ -11,14 +11,7 @@ const style = css`
     text-decoration: none;
   }
   .card-content {
-    background-image: linear-gradient(
-      to right top,
-      #ff6d00,
-      #ff8735,
-      #ff9f5a,
-      #ffb57e,
-      #ffcaa3
-    );
+    background-image: linear-gradient(to right top, #48c6ef, #6f86d6);
   }
   .backdrop {
     height: 200px;
@@ -47,7 +40,7 @@ const style = css`
   }
 `;
 
-const MoreDealsCard = () => {
+const FilterDealsCard = () => {
   return (
     <div className={style}>
       <Link to="/trips">
@@ -55,10 +48,11 @@ const MoreDealsCard = () => {
           <div className="card-content">
             <div className="backdrop">
               <div className="text">
-                <span>Nothing found?</span>
+                <span>Looking for other destinations?</span>
                 <h3>
                   <span className="dashed">
-                    Stay up to date with <br /> deal alerts
+                    1. Set up your dream trip <br />
+                    2. We find the best deal
                   </span>
                 </h3>
               </div>
@@ -70,4 +64,4 @@ const MoreDealsCard = () => {
   );
 };
 
-export default MoreDealsCard;
+export default FilterDealsCard;
