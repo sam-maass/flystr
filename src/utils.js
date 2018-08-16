@@ -10,10 +10,14 @@ export function getTimeframeString({ endDate, startDate }) {
   const startMoment = moment(startDate);
   const endMoment = moment(endDate);
   const endsInSameYear = startMoment.isSame(endMoment, 'year');
+  const endsInSameMonth = startMoment.isSame(endMoment, 'month');
   const defaultFormat = 'MMM YYYY';
   const startDateFormat = endsInSameYear ? 'MMM' : defaultFormat;
   const formattedStart = startMoment.format(startDateFormat);
   const formattedEnd = endMoment.format(defaultFormat);
-  const dates = `${formattedStart}-${formattedEnd}`;
-  return dates;
+  if (endsInSameMonth && endsInSameYear) {
+    return `${formattedEnd}`;
+  } else {
+    return `${formattedStart}-${formattedEnd}`;
+  }
 }
