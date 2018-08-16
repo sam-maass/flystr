@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import DealCard from './DealCard';
 import { css } from 'emotion';
 import MoreDealsCard from '../MoreDealsCard';
+import FilterDealsCard from '../FilterDealsCard';
 
 const style = css`
   max-width: 1400px;
@@ -18,9 +19,24 @@ const style = css`
   }
 `;
 
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+const minFirstDeals = 4;
+const minRestDeals = 1;
+
 const DealList = ({ deals = [] }) => {
+  const filterDealsCardPosition = getRandomInt(
+    minFirstDeals,
+    deals.length - minRestDeals
+  );
+  const firstDeals = deals.splice(0, filterDealsCardPosition);
   return (
     <div className={style}>
+      {firstDeals.map(deal => (
+        <DealCard key={deal._id} deal={deal} />
+      ))}
+      <FilterDealsCard />
       {deals.map(deal => (
         <DealCard key={deal._id} deal={deal} />
       ))}
