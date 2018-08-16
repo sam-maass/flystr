@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import DealCard from './DealCard';
 import { css } from 'emotion';
+import MoreDealsCard from '../MoreDealsCard';
 
 const style = css`
   max-width: 1400px;
@@ -23,6 +24,7 @@ const DealList = ({ deals = [] }) => {
       {deals.map(deal => (
         <DealCard key={deal._id} deal={deal} />
       ))}
+      <MoreDealsCard />
     </div>
   );
 };
