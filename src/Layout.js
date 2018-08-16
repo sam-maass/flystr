@@ -19,7 +19,9 @@ const Layout = ({
   error,
   deleteError
 }) => {
-  const routes = loggedIn ? loggedInRoutes : loggedOutRoutes;
+  const routes = loggedIn
+    ? [...loggedInRoutes, ...loggedOutRoutes]
+    : loggedOutRoutes;
   fetchUser();
   if (!ready) {
     return null;

@@ -50,19 +50,7 @@ export const loggedInRoutes = [
     header: () => <CustomAppBar title="Upcoming trips" />,
     main: () => <Pages.Trips />
   },
-  {
-    path: '/deals',
-    exact: true,
-    header: () => <CustomAppBar title="New Flight Deals" />,
-    main: () => <Pages.Deals />
-  },
-  {
-    path: '/deal/:dealId',
-    exact: true,
-    header: () => <CustomAppBar withReturn />,
-    //eslint-disable-next-line
-    main: props => <Pages.Deal {...props.match.params} />
-  },
+
   {
     path: '/deal/:dealId/edit',
     exact: true,
@@ -105,6 +93,19 @@ export const loggedInRoutes = [
 ];
 
 export const loggedOutRoutes = [
+  {
+    path: '/deals',
+    exact: true,
+    header: () => <CustomAppBar title="New Flight Deals" />,
+    main: () => <Pages.Deals />
+  },
+  {
+    path: '/deal/:dealId',
+    exact: true,
+    header: () => <CustomAppBar withReturn />,
+    //eslint-disable-next-line
+    main: props => <Pages.Deal {...props.match.params} />
+  },
   {
     path: '/',
     strict: true,

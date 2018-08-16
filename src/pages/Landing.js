@@ -50,8 +50,8 @@ const Landing = () => {
             We're still in beta but you can already use flystr to find the
             cheapest flight deals.
           </p>
-          <Link to="/signup">
-            <span className="button">Signup today</span>
+          <Link to="/deals">
+            <span className="button">Discover all deals</span>
           </Link>
         </div>
         <Footer />

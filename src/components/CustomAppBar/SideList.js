@@ -6,6 +6,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import PinDropIcon from '@material-ui/icons/PersonPinCircleOutlined';
 import SignOutIcon from '@material-ui/icons/PowerSettingsNew';
+import LoginIcon from '@material-ui/icons/Input';
 import UserIcon from '@material-ui/icons/PermIdentity';
 import DealIcon from '@material-ui/icons/MonetizationOnOutlined';
 import TakeOffIcon from '@material-ui/icons/FlightTakeoffOutlined';
@@ -17,15 +18,16 @@ import { logoutUser } from '../../actions/userActions';
 import { connect } from 'react-redux';
 
 const SideListComponent = ({ classes, user, logoutUser }) => {
-  return (
-    <div className={classes.list}>
-      <List>
-        <Link to={'/'}>
-          <ListItem button>
-            <div className={classes.logo} />
-          </ListItem>
-        </Link>
-        <Divider />
+  if (!user._id) {
+    return (
+      <div className={classes.list}>
+        <List>
+          <Link to={'/'}>
+            <ListItem button>
+              <div className={classes.logo} />
+            </ListItem>
+          </Link>
+        </List>
         <Link to={'/deals'}>
           <ListItem button>
             <ListItemIcon>
@@ -34,52 +36,82 @@ const SideListComponent = ({ classes, user, logoutUser }) => {
             <ListItemText primary="All Deals" />
           </ListItem>
         </Link>
-        <Link to={'/trips'}>
+        <Divider />
+        <Link to={'/login'}>
           <ListItem button>
             <ListItemIcon>
-              <PinDropIcon />
+              <LoginIcon />
             </ListItemIcon>
-            <ListItemText primary="My Trips" />
+            <ListItemText primary="Login" />
           </ListItem>
         </Link>
-        {user.isAdmin && (
-          <Fragment>
-            <Link to={'/admin/all-trips'}>
-              <ListItem button>
-                <ListItemIcon>
-                  <AllTripsIcon />
-                </ListItemIcon>
-                <ListItemText primary="Triplist" />
-              </ListItem>
-            </Link>{' '}
-            <Link to={'/settings'}>
-              <ListItem button>
-                <ListItemIcon>
-                  <UserIcon />
-                </ListItemIcon>
-                <ListItemText primary="Settings" />
-              </ListItem>
-            </Link>
-            <Link to={'/new-deal'}>
-              <ListItem button>
-                <ListItemIcon>
-                  <DealIcon />
-                </ListItemIcon>
-                <ListItemText primary="Report a Deal" />
-              </ListItem>
-            </Link>
-          </Fragment>
-        )}
-        <Divider />
-        <ListItem button onClick={logoutUser}>
-          <ListItemIcon>
-            <SignOutIcon />
-          </ListItemIcon>
-          <ListItemText primary="Logout" />
-        </ListItem>
-      </List>
-    </div>
-  );
+      </div>
+    );
+  } else {
+    return (
+      <div className={classes.list}>
+        <List>
+          <Link to={'/'}>
+            <ListItem button>
+              <div className={classes.logo} />
+            </ListItem>
+          </Link>
+          <Divider />
+          <Link to={'/deals'}>
+            <ListItem button>
+              <ListItemIcon>
+                <TakeOffIcon />
+              </ListItemIcon>
+              <ListItemText primary="All Deals" />
+            </ListItem>
+          </Link>
+          <Link to={'/trips'}>
+            <ListItem button>
+              <ListItemIcon>
+                <PinDropIcon />
+              </ListItemIcon>
+              <ListItemText primary="My Trips" />
+            </ListItem>
+          </Link>
+          {user.isAdmin && (
+            <Fragment>
+              <Link to={'/admin/all-trips'}>
+                <ListItem button>
+                  <ListItemIcon>
+                    <AllTripsIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Triplist" />
+                </ListItem>
+              </Link>{' '}
+              <Link to={'/settings'}>
+                <ListItem button>
+                  <ListItemIcon>
+                    <UserIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Settings" />
+                </ListItem>
+              </Link>
+              <Link to={'/new-deal'}>
+                <ListItem button>
+                  <ListItemIcon>
+                    <DealIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Report a Deal" />
+                </ListItem>
+              </Link>
+            </Fragment>
+          )}
+          <Divider />
+          <ListItem button onClick={logoutUser}>
+            <ListItemIcon>
+              <SignOutIcon />
+            </ListItemIcon>
+            <ListItemText primary="Logout" />
+          </ListItem>
+        </List>
+      </div>
+    );
+  }
 };
 
 SideListComponent.propTypes = {
