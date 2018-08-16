@@ -54,10 +54,10 @@ const MoreDealsCard = () => {
           <div className="card-content">
             <div className="backdrop">
               <div className="text">
-                <span>Nothing found?</span>
+                <span>New deals will arrive soon</span>
                 <h3>
                   <span className="dashed">
-                    Stay up to date with <br /> deal alerts
+                    Set your preferences to stay updated
                   </span>
                 </h3>
               </div>
