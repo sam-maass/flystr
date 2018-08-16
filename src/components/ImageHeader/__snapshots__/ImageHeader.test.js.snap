@@ -140,7 +140,7 @@ exports[`ImageHeader: default 1`] = `
     className="buttonbox"
   >
     <a
-      href="/signup"
+      href="/deals"
       onClick={[Function]}
     >
       <span

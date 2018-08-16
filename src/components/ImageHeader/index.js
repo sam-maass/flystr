@@ -84,7 +84,7 @@ const ImageHeader = () => {
         </HugeHeadline>
       </div>
       <div className="buttonbox">
-        <Link to="/signup">
+        <Link to="/deals">
           <span className="button">Find cheap flights</span>
         </Link>
       </div>
