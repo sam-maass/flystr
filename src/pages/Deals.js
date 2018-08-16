@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { fetchDeals } from '../actions/dealActions';
 import DealList from '../components/DealList';
 import { css } from 'emotion';
+import { setAppbar } from '../actions/appbarActions';
 
 const style = css`
   margin: 8px;
@@ -11,6 +12,12 @@ const style = css`
 
 class DealsPage extends React.Component {
   componentDidMount() {
+    if (!this.props.loggedIn) {
+      this.props.setAppbar({
+        withDrawer: false,
+        button: { text: 'Login / Signup', link: `/login` }
+      });
+    }
     this.props.fetchDeals();
   }
 
@@ -25,17 +32,20 @@ class DealsPage extends React.Component {
 
 DealsPage.propTypes = {
   fetchDeals: PropTypes.func,
-  deals: PropTypes.array
+  deals: PropTypes.array,
+  loggedIn: PropTypes.bool,
+  setAppbar: PropTypes.func
 };
 
 const mapStateToProps = (store, props) => {
   return {
     ...props,
+    loggedIn: Boolean(store.user._id),
     deals: store.deals
   };
 };
 
 export default connect(
   mapStateToProps,
-  { fetchDeals }
+  { fetchDeals, setAppbar }
 )(DealsPage);
