@@ -86,7 +86,7 @@ const parseSkyscannerLink = (domain, path) => {
     inOrigin: params.inOrigin.substr(0, 3),
     inDate: params.returnDate,
     inDestination: params.inDestination.substr(0, 3),
-    link: domain + kayakRoute.reverse(params)
+    link: domain + skyscannerRoute.reverse(params)
   };
 };
 
