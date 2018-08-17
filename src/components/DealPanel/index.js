@@ -4,8 +4,7 @@ import moment from 'moment';
 import { css } from 'emotion';
 import { classes, styles } from '../../styles';
 import TakeoffIcon from '@material-ui/icons/FlightTakeoffOutlined';
-import LandingIcon from '@material-ui/icons/FlightLandOutlined';
-
+import LandingIcon from '@material-ui/icons/Undo';
 const style = css`
   text-decoration: none;
   .container {
@@ -50,7 +49,7 @@ const style = css`
 `;
 const DealRow = ({
   outOrigin,
-  outDestination,
+  inOrigin,
   outDate,
   inDate,
   price,
@@ -67,12 +66,12 @@ const DealRow = ({
           <div className="dates">
             <TakeoffIcon />
             <b>{formattedStartDate}</b>
-            {outOrigin}
+            <span>{outOrigin}</span>
           </div>
           <div className="dates">
             <LandingIcon />
             <b>{formattedEndDate}</b>
-            {outDestination}
+            <span>{inOrigin}</span>
           </div>
         </div>
         <div className="row price">
@@ -86,7 +85,9 @@ const DealRow = ({
 
 DealRow.propTypes = {
   outOrigin: PropTypes.string,
+  inOrigin: PropTypes.string,
   outDestination: PropTypes.string,
+  inDestination: PropTypes.string,
   outDate: PropTypes.string,
   inDate: PropTypes.string,
   price: PropTypes.string,
