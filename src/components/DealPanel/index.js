@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import AirportChips from '../AirportChips';
 import { css } from 'emotion';
 import { classes, styles } from '../../styles';
+import TakeoffIcon from '@material-ui/icons/FlightTakeoffOutlined';
+import LandingIcon from '@material-ui/icons/FlightLandOutlined';
 
 const style = css`
   text-decoration: none;
@@ -11,19 +12,25 @@ const style = css`
     background-color: #fff;
     ${classes.typography.base};
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 2fr 1fr;
     align-items: center;
     justify-items: center;
     margin-bottom: 8px;
     .row {
       padding: 8px;
       display: grid;
-      align-items: center;
-      justify-items: center;
+      justify-self:baseline;
     }
     .dates {
       color: ${styles.colors.midGray};
       font-size: 14px;
+      display: grid;
+      grid-template-columns: repeat(3,auto);
+      align-items: center;
+      gap: 16px;
+      margin: 2px;
+      justify-self: baseline;
+}
     }
     .price {
       color: ${styles.colors.orange};
@@ -56,21 +63,21 @@ const DealRow = ({
   return (
     <a className={style} href={link} target="_blank" rel="noopener noreferrer">
       <div className="container">
-        <div className="row dates">
-          <div>
-            <AirportChips airports={[outOrigin]} />
+        <div className="row">
+          <div className="dates">
+            <TakeoffIcon />
+            <b>{formattedStartDate}</b>
+            {outOrigin}
           </div>
-          <div> {formattedStartDate}</div>
-        </div>
-        <div className="row dates">
-          <div>
-            <AirportChips airports={[outDestination]} />
+          <div className="dates">
+            <LandingIcon />
+            <b>{formattedEndDate}</b>
+            {outDestination}
           </div>
-          <div> {formattedEndDate}</div>
         </div>
         <div className="row price">
           {price} EUR <br />
-          {linkSource && <span className="link">on {linkSource}</span>}
+          {linkSource && <span className="link">{linkSource}</span>}
         </div>
       </div>
     </a>
