@@ -21,6 +21,9 @@ const InnerAppBar = ({
   button,
   history
 }) => {
+  const trackClick = () => {
+    window.gtag('event', `${button.text} in AppBar clicked`);
+  };
   return (
     <AppBar className={classes.appBar}>
       <Toolbar>
@@ -34,7 +37,11 @@ const InnerAppBar = ({
           {title}
         </Typography>
         {button && (
-          <Link className={classes.noLink} to={button.link}>
+          <Link
+            className={classes.noLink}
+            to={button.link}
+            onClick={trackClick}
+          >
             <Button>{button.text}</Button>
           </Link>
         )}

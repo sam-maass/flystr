@@ -46,10 +46,14 @@ const style = css`
   }
 `;
 
+const trackClick = () => {
+  window.gtag('event', 'MoreDealsCard clicked');
+};
+
 const MoreDealsCard = () => {
   return (
     <div className={style}>
-      <Link to="/trips">
+      <Link to="/trips" onClick={trackClick}>
         <Card>
           <div className="card-content">
             <div className="backdrop">
