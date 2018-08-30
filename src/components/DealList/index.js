@@ -35,11 +35,11 @@ const DealList = ({ deals = [] }) => {
   return (
     <div className={style}>
       {firstDeals.map(deal => (
-        <DealCard key={deal._id} deal={deal} />
+        <DealCard key={Math.random()} deal={deal} /> // deal._id was not working as key. It was complaining about duplicate keys
       ))}
       <FilterDealsCard />
       {deals.map(deal => (
-        <DealCard key={deal._id} deal={deal} />
+        <DealCard key={Math.random()} deal={deal} />
       ))}
       <MoreDealsCard />
     </div>
