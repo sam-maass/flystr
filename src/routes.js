@@ -113,7 +113,7 @@ export const loggedOutRoutes = [
     main: () => <Pages.Landing />
   },
   {
-    path: '/3053639',
+    path: '/3053639.html',
     strict: true,
     exact: true,
     main: () => <div />

@@ -77,6 +77,7 @@ const wrapperStyle = destination => css`
 const DealCard = props => {
   const {
     _id,
+    slug,
     title,
     subtitle,
     minPrice,
@@ -92,7 +93,7 @@ const DealCard = props => {
   });
   return (
     <div className={wrapperStyle(destinations[0])}>
-      <Link to={`/deal/${_id}`}>
+      <Link to={`/deal/${slug || _id}`}>
         <Card>
           <div className="container">
             <div className="backdrop">
