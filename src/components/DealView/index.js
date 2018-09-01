@@ -4,6 +4,7 @@ import { css } from 'emotion';
 import { getDestinationImage } from '../../getDestinationImage';
 import { classes, styles } from '../../styles';
 import TripDealList from '../TripDealList/component';
+import { Link } from 'react-router-dom';
 
 const style = destination => css`
   ${classes.typography.base};
@@ -44,6 +45,15 @@ const style = destination => css`
   }
 `;
 
+const signupCardStyle = css`
+  margin: 8px;
+  padding: 16px;
+  ${classes.typography.base};
+  font-size: 14px;
+  color: ${styles.colors.midGray};
+  text-align: center;
+`;
+
 const DealView = ({ deal }) => {
   if (deal.destinations === undefined) {
     return null;
@@ -67,6 +77,11 @@ const DealView = ({ deal }) => {
           </div>
         </div>
         <TripDealList trips={deal.exampleFlights} />
+        <div className={signupCardStyle}>
+          <strong>Not the dates you are looking for?</strong> <br /> <br />
+          <Link to="/new-trip">Create a trip</Link> <br />
+          and get alerts when your dates becomes available
+        </div>
       </Fragment>
     );
   }
