@@ -113,11 +113,7 @@ class NewDealForm extends React.Component {
     const lastReturn = moment
       .max(...flights.map(f => moment(f.inDate)))
       .format('YYYY-MM-DD');
-    const title = destinations;
-    const subtitle = origins;
     return {
-      title,
-      subtitle,
       origins,
       destinations,
       minPrice,
