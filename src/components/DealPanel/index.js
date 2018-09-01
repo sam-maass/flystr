@@ -24,7 +24,7 @@ const style = css`
       color: ${styles.colors.midGray};
       font-size: 14px;
       display: grid;
-      grid-template-columns: repeat(3,auto);
+      grid-template-columns: repeat(4,auto);
       align-items: center;
       gap: 16px;
       margin: 2px;
@@ -49,7 +49,9 @@ const style = css`
 `;
 const DealRow = ({
   outOrigin,
+  outOriginDetails,
   inOrigin,
+  inOriginDetails,
   outDate,
   inDate,
   price,
@@ -66,12 +68,14 @@ const DealRow = ({
           <div className="dates">
             <TakeoffIcon />
             <b>{formattedStartDate}</b>
-            <span>{outOrigin}</span>
+            {!outOriginDetails && <span>{outOrigin}</span>}
+            {outOriginDetails && <span>{outOriginDetails.city}</span>}
           </div>
           <div className="dates">
             <LandingIcon />
             <b>{formattedEndDate}</b>
-            <span>{inOrigin}</span>
+            {!inOriginDetails && <span>{inOrigin}</span>}
+            {inOriginDetails && <span>{inOriginDetails.city}</span>}
           </div>
         </div>
         <div className="row price">
@@ -85,6 +89,8 @@ const DealRow = ({
 
 DealRow.propTypes = {
   outOrigin: PropTypes.string,
+  outOriginDetails: PropTypes.object,
+  inOriginDetails: PropTypes.object,
   inOrigin: PropTypes.string,
   outDestination: PropTypes.string,
   inDestination: PropTypes.string,
