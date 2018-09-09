@@ -1,5 +1,4 @@
 import express from 'express';
-import compression from 'compression';
 import helmet from 'helmet';
 
 // we'll talk about this in a minute:
@@ -10,7 +9,6 @@ const path = require('path');
 
 // initialize the application and create the routes
 const app = express();
-app.use(compression()); //Compress all routes
 app.use(helmet());
 
 app.get('/health-check', (req, res) => res.sendStatus(200));
