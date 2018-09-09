@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchUser } from './actions/userActions';
@@ -10,76 +10,65 @@ import CloseIcon from '@material-ui/icons/Close';
 import { deleteError } from './actions/errorActions';
 import Snackbar from '@material-ui/core/Snackbar';
 import CssBaseline from '@material-ui/core/CssBaseline';
+import { withRouter } from 'react-router';
 
-const Layout = ({
-  loggedIn,
-  ready,
-  fetchUser,
-  classes,
-  error,
-  deleteError
-}) => {
+const Layout = ({ loggedIn, fetchUser, classes, error, deleteError }) => {
   const routes = loggedIn
     ? [...loggedInRoutes, ...loggedOutRoutes]
     : loggedOutRoutes;
   fetchUser();
-  if (!ready) {
-    return null;
-  } else {
-    return (
-      <Router>
-        <div className={classes.main}>
-          <CssBaseline />
-          <Switch>
-            {routes.map((route, index) => (
-              <Route
-                key={index}
-                path={route.path}
-                exact={route.exact}
-                component={route.header || null}
-              />
-            ))}
-          </Switch>
-          <div className={classes.scrollContainer}>
-            <Switch>
-              {routes.map((route, index) => (
-                <Route
-                  key={index}
-                  path={route.path}
-                  exact={route.exact}
-                  component={route.main}
-                />
-              ))}
-            </Switch>
-          </div>
-          <Snackbar
-            anchorOrigin={{
-              vertical: 'bottom',
-              horizontal: 'left'
-            }}
-            open={Boolean(error)}
-            autoHideDuration={4000}
-            onClose={deleteError}
-            SnackbarContentProps={{
-              'aria-describedby': 'message-id'
-            }}
-            message={<span id="message-id">{error}</span>}
-            action={[
-              <IconButton
-                key="close"
-                aria-label="Close"
-                color="inherit"
-                className={classes.close}
-                onClick={deleteError}
-              >
-                <CloseIcon />
-              </IconButton>
-            ]}
+  return (
+    <div className={classes.main}>
+      <CssBaseline />
+      <Switch>
+        {routes.map((route, index) => (
+          <Route
+            key={index}
+            path={route.path}
+            exact={route.exact}
+            component={route.header || null}
           />
-        </div>
-      </Router>
-    );
-  }
+        ))}
+      </Switch>
+      <div className={classes.scrollContainer}>
+        <Switch>
+          {/* <Route path="/" exact component={() => <Landing />} /> */}
+          {routes.map((route, index) => (
+            <Route
+              key={index}
+              path={route.path}
+              exact={route.exact}
+              component={route.main}
+            />
+          ))}
+        </Switch>
+      </div>
+      <Snackbar
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'left'
+        }}
+        open={Boolean(error)}
+        autoHideDuration={4000}
+        onClose={deleteError}
+        SnackbarContentProps={{
+          'aria-describedby': 'message-id'
+        }}
+        message={<span id="message-id">{error}</span>}
+        action={[
+          <IconButton
+            key="close"
+            aria-label="Close"
+            color="inherit"
+            className={classes.close}
+            onClick={deleteError}
+          >
+            <CloseIcon />
+          </IconButton>
+        ]}
+      />
+    </div>
+  );
 };
 
 Layout.propTypes = {
@@ -99,10 +88,12 @@ const mapStateToProps = (store, props) => {
     error: store.errors[0] && store.errors[0].error
   };
 };
-const LayoutContainer = connect(
-  mapStateToProps,
-  { fetchUser, deleteError }
-)(Layout);
+const LayoutContainer = withRouter(
+  connect(
+    mapStateToProps,
+    { fetchUser, deleteError }
+  )(Layout)
+);
 
 const styles = {
   main: {
