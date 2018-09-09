@@ -1,9 +1,8 @@
 import { Redirect } from 'react-router-dom';
 import React from 'react';
-import asyncComponent from './asyncComponent';
 import * as Pages from './pages/index';
+import CustomAppBar from './components/CustomAppBar';
 
-const CustomAppBar = asyncComponent(() => import('./components/CustomAppBar'));
 export const loggedInRoutes = [
   {
     path: '/',
@@ -111,12 +110,6 @@ export const loggedOutRoutes = [
     strict: true,
     exact: true,
     main: () => <Pages.Landing />
-  },
-  {
-    path: '/3053639.html',
-    strict: true,
-    exact: true,
-    main: () => <div />
   },
   {
     path: '/login',
