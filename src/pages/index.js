@@ -1,18 +1,63 @@
-import asyncComponent from '../asyncComponent';
+import Loadable from 'react-loadable';
 
-const Landing = asyncComponent(() => import('./Landing'));
-const AdminTrips = asyncComponent(() => import('./AdminTrips'));
-const Legal = asyncComponent(() => import('./Legal'));
-const Terms = asyncComponent(() => import('./Terms'));
-const Login = asyncComponent(() => import('./Login'));
-const NewDeal = asyncComponent(() => import('./NewDeal'));
-const NewTrip = asyncComponent(() => import('./NewTrip'));
-const Profile = asyncComponent(() => import('./Profile'));
-const Trip = asyncComponent(() => import('./Trip'));
-const Trips = asyncComponent(() => import('./Trips'));
-const Deals = asyncComponent(() => import('./Deals'));
-const Deal = asyncComponent(() => import('./Deal'));
-const Signup = asyncComponent(() => import('./Signup'));
+const Landing = Loadable({
+  loader: () => import('./Landing'),
+  loading: 'Loading...'
+});
+
+const Deals = Loadable({
+  loader: () => import('./Deals'),
+  loading: 'Loading...'
+});
+
+const AdminTrips = Loadable({
+  loader: () => import('./AdminTrips'),
+  loading: 'Loading...'
+});
+
+const Legal = Loadable({
+  loader: () => import('./Legal'),
+  loading: 'Loading...'
+});
+
+const Terms = Loadable({
+  loader: () => import('./Terms'),
+  loading: 'Loading...'
+});
+
+const Login = Loadable({
+  loader: () => import('./Login'),
+  loading: 'Loading...'
+});
+
+const NewDeal = Loadable({
+  loader: () => import('./NewDeal'),
+  loading: 'Loading...'
+});
+const NewTrip = Loadable({
+  loader: () => import('./NewTrip'),
+  loading: 'Loading...'
+});
+const Profile = Loadable({
+  loader: () => import('./Profile'),
+  loading: 'Loading...'
+});
+const Trip = Loadable({
+  loader: () => import('./Trip'),
+  loading: 'Loading...'
+});
+const Trips = Loadable({
+  loader: () => import('./Trips'),
+  loading: 'Loading...'
+});
+const Deal = Loadable({
+  loader: () => import('./Deal'),
+  loading: 'Loading...'
+});
+const Signup = Loadable({
+  loader: () => import('./Signup'),
+  loading: 'Loading...'
+});
 export {
   Terms,
   Deal,
