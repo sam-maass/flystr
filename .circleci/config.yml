@@ -38,29 +38,29 @@ jobs:
       # run tests!
       - run: npm run test
 
-  deploy-job:
+  deploy:
     docker:
       # specify the version you desire here
       - image: circleci/node:10
+
+    # Specify service dependencies here if necessary
+    # CircleCI maintains a library of pre-built images
+    # documented at https://circleci.com/docs/2.0/circleci-images/
+    # - image: circleci/mongo:3.4.4
+
+    working_directory: ~/repo
     steps:
       - checkout
-
-      - restore_cache:
-          keys:
-            - v2-dependencies-{{ checksum "package.json" }}
-            # fallback to using the latest cache if no exact match is found
-            - v2-dependencies-
-
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - run: docker build -t flystr-api .
+      - run: docker save -o flystr_image flystr-api
       - run:
-          name: Update npm dependencies
-          command: npm install
-
-      - run: npm run build
-
+          scp -o StrictHostKeyChecking=no flystr_image root@159.69.150.31:~/flystr_image
       - run:
-          name: Deploy bundle to server
-          
-
+          ssh -o StrictHostKeyChecking=no  root@159.69.150.31 -- docker load -i flystr_image
+      - run:
+          ssh -o StrictHostKeyChecking=no  root@159.69.150.31 -- docker-compose up -d
 
 workflows:
   version: 2
