@@ -1,4 +1,6 @@
 import express from 'express';
+import compression from 'compression';
+import helmet from 'helmet';
 
 // we'll talk about this in a minute:
 import serverRenderer from './middleware/renderer';
@@ -8,6 +10,10 @@ const path = require('path');
 
 // initialize the application and create the routes
 const app = express();
+app.use(compression()); //Compress all routes
+app.use(helmet());
+
+app.get('/health-check', (req, res) => res.sendStatus(200));
 
 // root (/) should always serve our server rendered page
 app.get(/^\/$/, serverRenderer);
