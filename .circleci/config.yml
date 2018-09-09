@@ -43,10 +43,6 @@ jobs:
       # specify the version you desire here
       - image: circleci/node:10
     steps:
-      - run:
-          name: Install AWS CLI
-          command: sudo apt-get -y -qq install awscli
-
       - checkout
 
       - restore_cache:
@@ -62,14 +58,10 @@ jobs:
       - run: npm run build
 
       - run:
-          name: deploy to AWS
-          command:
-            aws configure set default.s3.signature_version s3v4 && aws configure set default.region eu-central-1 && aws s3 sync build s3://flystr.com/ --delete
+          name: Deploy bundle to server
+          
 
-      - run:
-          name: Purge CloudFlare Cache
-          command:
-            curl -X DELETE https://api.cloudflare.com/client/v4/zones/0c24d4d9078059f3168eae12ecf6e0e3/purge_cache -H X-Auth-Email:dev@maass.co -H X-Auth-Key:325c9f694eece58fd4ccde6301524dd2e0990 -H Content-Type:application/json  --data '{"purge_everything":true}'
+
 workflows:
   version: 2
   build-deploy:
