@@ -1,9 +1,9 @@
 import express from 'express';
 import helmet from 'helmet';
-import axios from 'axios';
 
 // we'll talk about this in a minute:
 import serverRenderer from './middleware/renderer';
+import { loadDeals } from './loadDeals';
 
 const PORT = 3100;
 const path = require('path');
@@ -11,16 +11,6 @@ const path = require('path');
 // initialize the application and create the routes
 const app = express();
 app.use(helmet());
-const loadDeals = (req, res, next) => {
-  axios
-    .get('https://api.flystr.com/deals')
-    .then(deals => {
-      req.fetchedDeals = deals;
-      next();
-    })
-    .catch(() => next());
-};
-
 app.get('/health-check', (req, res) => res.sendStatus(200));
 
 // other static resources should just be served as they are
