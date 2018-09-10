@@ -14,7 +14,7 @@ class DealsPage extends React.Component {
   componentDidUpdate(prevProps) {
     if (this.props.currentDeal.title !== prevProps.currentDeal.title) {
       this.props.setAppbar({
-        title: `Flights to: ${this.props.currentDeal.title}`
+        title: `Flights to ${this.props.currentDeal.title}`
       });
     }
   }

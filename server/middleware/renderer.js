@@ -50,6 +50,13 @@ export default (req, res) => {
       });
     }
 
+    if (req.currentDeal) {
+      store.dispatch({
+        type: 'FETCH_DEAL_FULFILLED',
+        payload: { data: req.currentDeal.data }
+      });
+    }
+
     // Create a sheetsRegistry instance.
     const sheetsRegistry = new SheetsRegistry();
     // Create a new class name generator.
