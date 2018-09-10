@@ -23,14 +23,17 @@ const loadDeals = (req, res, next) => {
 
 app.get('/health-check', (req, res) => res.sendStatus(200));
 
-// root (/) should always serve our server rendered page
-app.get(/^\/$/, serverRenderer);
-app.get(/^\/deals$/, loadDeals, serverRenderer);
-
 // other static resources should just be served as they are
 app.use(
-  express.static(path.resolve(__dirname, '..', 'build'), { maxAge: '30d' })
+  express.static(path.resolve(__dirname, '..', 'build'), {
+    maxAge: '30d',
+    index: false
+  })
 );
+
+// root (/) should always serve our server rendered page
+app.get(/^\/deals$/, loadDeals, serverRenderer);
+app.get(/.*/, serverRenderer);
 
 // start the app
 app.listen(PORT, error => {
