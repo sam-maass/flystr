@@ -15,6 +15,12 @@ const ClientApp = (
   </Provider>
 );
 
+//remove server renderered jssStyles
+const jssStyles = document.getElementById('jss-server-side');
+if (jssStyles && jssStyles.parentNode) {
+  jssStyles.parentNode.removeChild(jssStyles);
+}
+
 hydrate(ClientApp, rootElement);
 
 // registerServiceWorker();
