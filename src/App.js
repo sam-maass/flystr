@@ -1,18 +1,9 @@
 import React from 'react';
 import LayoutContainer from './Layout';
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import { styles } from './styles';
+import { MuiThemeProvider } from '@material-ui/core/styles';
 import './injectGlobalStyles';
-
-const theme = createMuiTheme({
-  palette: {
-    primary: { main: styles.colors.blue3 },
-    secondary: { main: styles.colors.orange },
-    typography: {
-      fontFamily: ['Open Sans', 'Roboto', 'sans-serif'].join(',')
-    }
-  }
-});
+import { createTheme } from './theme';
+const theme = createTheme();
 
 export default () => {
   return (
