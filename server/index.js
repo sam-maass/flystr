@@ -32,12 +32,6 @@ app.use(
   express.static(path.resolve(__dirname, '..', 'build'), { maxAge: '30d' })
 );
 
-// all other routes should return index.html
-// TODO: check if route exists
-app.get('*', (req, res) => {
-  res.sendFile(path.join(`${__dirname}/../build/index.html`));
-});
-
 // start the app
 app.listen(PORT, error => {
   if (error) {
