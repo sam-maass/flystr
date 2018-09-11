@@ -5,6 +5,7 @@ import { fetchDeals } from '../actions/dealActions';
 import DealList from '../components/DealList';
 import { css } from 'emotion';
 import { setAppbar } from '../actions/appbarActions';
+import { Helmet } from 'react-helmet';
 
 const style = css`
   margin: 16px;
@@ -30,6 +31,13 @@ class DealsPage extends React.Component {
   render() {
     return (
       <div className={style}>
+        <Helmet>
+          <title>Flystr | Deals</title>
+          <meta
+            name="description"
+            content="All cheap flight deals in one place. We crawl all major booking sites daily to provide you with the cheapest airline tickets"
+          />
+        </Helmet>
         <DealList deals={this.props.deals} />
       </div>
     );

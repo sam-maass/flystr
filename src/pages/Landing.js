@@ -7,6 +7,7 @@ import TripCardGrid from '../components/TripCardGrid';
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import { classes, styles } from '../styles';
+import { Helmet } from 'react-helmet';
 
 const maxWidth = css`
   max-width: 100vw;
@@ -38,6 +39,13 @@ const maxWidth = css`
 const Landing = () => {
   return (
     <div>
+      <Helmet>
+        <title>Flystr | All Cheap flights in one place</title>
+        <meta
+          name="description"
+          content="Find all the cheap flight deals in one place. We aggregate the cheapest fares daily so that you don't need too search"
+        />
+      </Helmet>
       <ImageHeader />
       <div className={maxWidth}>
         <SubHeadline withBar>how it works</SubHeadline>
