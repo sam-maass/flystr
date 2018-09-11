@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchDeal, copyDeal } from '../actions/dealActions';
 import DealView from '../components/DealView';
 import { setAppbar } from '../actions/appbarActions';
+import { Helmet } from 'react-helmet';
 
 class DealsPage extends React.Component {
   componentDidMount() {
@@ -20,7 +21,21 @@ class DealsPage extends React.Component {
   }
 
   render() {
-    return <DealView deal={this.props.currentDeal} />;
+    const title = `Flystr | Flights to ${this.props.currentDeal.title} from ${
+      this.props.currentDeal.subtitle
+    }`;
+    const description = `Fly to amazing ${this.props.currentDeal.title} from ${
+      this.props.currentDeal.subtitle
+    } for only ${this.props.currentDeal.minPrice} EUR`;
+    return (
+      <Fragment>
+        <Helmet>
+          <title>{title}</title>
+          <meta name="description" content={description} />
+        </Helmet>
+        <DealView deal={this.props.currentDeal} />;
+      </Fragment>
+    );
   }
 }
 

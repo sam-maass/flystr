@@ -10,6 +10,7 @@ import {
   createGenerateClassName,
   MuiThemeProvider
 } from '@material-ui/core/styles';
+import { Helmet } from 'react-helmet';
 
 // import our main App component
 import App from '../../src/App';
@@ -84,6 +85,7 @@ export default (req, res) => {
         </Loadable.Capture>
       )
     );
+    const helmet = Helmet.renderStatic();
 
     // Grab the CSS from our sheetsRegistry.
     const css = sheetsRegistry.toString();
@@ -100,6 +102,14 @@ export default (req, res) => {
     // now inject the rendered app into our html and send it to the client
     return res.send(
       htmlData
+        .replace(
+          '</head>',
+          `
+        ${helmet.title.toString()}
+        ${helmet.meta.toString()}
+        ${helmet.link.toString()}
+        </head>`
+        )
         // write the React app
         .replace(
           '<div id="root"></div>',
