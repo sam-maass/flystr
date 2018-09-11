@@ -24,7 +24,13 @@ app.use(
 // root (/) should always serve our server rendered page
 app.get('/deal/:slug', loadDeal, serverRenderer);
 app.get('/deals', loadDeals, serverRenderer);
-app.get(/.*/, serverRenderer);
+app.get(/^\/$/, serverRenderer);
+
+// all other routes should return index.html
+// TODO: check if route exists
+app.get('*', (req, res) => {
+  res.sendFile(path.join(`${__dirname}/../build/index.html`));
+});
 
 // start the app
 app.listen(PORT, error => {
