@@ -1,62 +1,63 @@
 import Loadable from 'react-loadable';
+import Loading from '../components/Loading';
 
 const Landing = Loadable({
   loader: () => import('./Landing'),
-  loading: 'Loading...'
+  loading: Loading
 });
 
 const Deals = Loadable({
   loader: () => import('./Deals'),
-  loading: 'Loading...'
+  loading: Loading
 });
 
 const AdminTrips = Loadable({
   loader: () => import('./AdminTrips'),
-  loading: 'Loading...'
+  loading: Loading
 });
 
 const Legal = Loadable({
   loader: () => import('./Legal'),
-  loading: 'Loading...'
+  loading: Loading
 });
 
 const Terms = Loadable({
   loader: () => import('./Terms'),
-  loading: 'Loading...'
+  loading: Loading
 });
 
 const Login = Loadable({
   loader: () => import('./Login'),
-  loading: 'Loading...'
+  loading: Loading
 });
 
 const NewDeal = Loadable({
   loader: () => import('./NewDeal'),
-  loading: 'Loading...'
+  loading: Loading
 });
 const NewTrip = Loadable({
   loader: () => import('./NewTrip'),
-  loading: 'Loading...'
+  loading: Loading
 });
 const Profile = Loadable({
   loader: () => import('./Profile'),
-  loading: 'Loading...'
+  loading: Loading
 });
 const Trip = Loadable({
   loader: () => import('./Trip'),
-  loading: 'Loading...'
+  loading: Loading
 });
 const Trips = Loadable({
   loader: () => import('./Trips'),
-  loading: 'Loading...'
+  loading: Loading
 });
 const Deal = Loadable({
   loader: () => import('./Deal'),
-  loading: 'Loading...'
+  loading: Loading
 });
 const Signup = Loadable({
   loader: () => import('./Signup'),
-  loading: 'Loading...'
+  loading: Loading
 });
 export {
   Terms,
