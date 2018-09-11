@@ -61,7 +61,8 @@ jobs:
           ssh -o StrictHostKeyChecking=no  root@159.69.150.31 -- docker load -i flystr_image
       - run:
           ssh -o StrictHostKeyChecking=no  root@159.69.150.31 -- docker-compose up -d
-
+      - run:
+          ssh -o StrictHostKeyChecking=no  root@159.69.150.31 -- docker image prune -af
 workflows:
   version: 2
   build-deploy:
