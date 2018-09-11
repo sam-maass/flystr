@@ -34,28 +34,34 @@ const formikSettings = {
   }
 };
 
-const RoutingWrapper = props => {
-  if (props.dealId && !props.currentDeal.title) {
-    props.fetchDeal(props.dealId);
+class RoutingWrapper extends React.Component {
+  componentDidMount() {
+    if (this.props.dealId) {
+      this.props.fetchDeal(this.props.dealId);
+    }
   }
-  const isSubmitted = props.status === 'done';
-  if (isSubmitted) {
-    props.fetchUser();
-    return (
-      <Redirect
-        to={{
-          pathname: '/deals'
-        }}
-      />
-    );
-  } else {
-    return <NewTripForm {...props} />;
+  render() {
+    const isSubmitted = this.props.status === 'done';
+    if (isSubmitted) {
+      this.props.fetchUser();
+      return (
+        <Redirect
+          to={{
+            pathname: '/deals'
+          }}
+        />
+      );
+    } else {
+      return <NewTripForm {...this.props} />;
+    }
   }
-};
+}
 
 RoutingWrapper.propTypes = {
   status: PropTypes.string,
-  fetchUser: PropTypes.func
+  dealId: PropTypes.string,
+  fetchUser: PropTypes.func,
+  fetchDeal: PropTypes.func
 };
 
 const FormikForm = withFormik(formikSettings)(RoutingWrapper);
