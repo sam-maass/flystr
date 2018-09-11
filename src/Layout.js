@@ -12,11 +12,19 @@ import Snackbar from '@material-ui/core/Snackbar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { withRouter } from 'react-router';
 
-const Layout = ({ loggedIn, fetchUser, classes, error, deleteError }) => {
+const Layout = ({
+  loggedIn,
+  fetchUser,
+  classes,
+  error,
+  deleteError,
+  ready
+}) => {
   const routes = loggedIn
     ? [...loggedInRoutes, ...loggedOutRoutes]
     : loggedOutRoutes;
   fetchUser();
+  if (!ready) return null;
   return (
     <div className={classes.main}>
       <CssBaseline />
