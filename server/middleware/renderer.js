@@ -28,6 +28,8 @@ const extractAssets = (assets, chunks) =>
 const path = require('path');
 const fs = require('fs');
 
+Loadable.preloadAll();
+
 export default (req, res) => {
   // get the html file created with the create-react-app build
   const filePath = path.resolve(__dirname, '..', '..', 'build', 'index.html');
@@ -85,6 +87,7 @@ export default (req, res) => {
         </Loadable.Capture>
       )
     );
+
     const helmet = Helmet.renderStatic();
 
     // Grab the CSS from our sheetsRegistry.
