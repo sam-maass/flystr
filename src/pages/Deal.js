@@ -21,17 +21,27 @@ class DealsPage extends React.Component {
   }
 
   render() {
+    if (this.props.currentDeal.destinations === undefined) return null;
     const title = `Flystr | Flights to ${this.props.currentDeal.title} from ${
       this.props.currentDeal.subtitle
     }`;
     const description = `Fly to amazing ${this.props.currentDeal.title} from ${
       this.props.currentDeal.subtitle
     } for only ${this.props.currentDeal.minPrice} EUR`;
+    const twitterImage = `https://flystr.com/images/header/${
+      this.props.currentDeal.destinations
+    }.jpg`;
+
     return (
       <Fragment>
         <Helmet>
           <title>{title}</title>
           <meta name="description" content={description} />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:site" content="@flystr_com" />
+          <meta name="twitter:title" content={title} />
+          <meta name="twitter:description" content={description} />
+          <meta name="twitter:image" content={twitterImage} />
         </Helmet>
         <DealView deal={this.props.currentDeal} />;
       </Fragment>
