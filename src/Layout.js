@@ -12,6 +12,7 @@ import Snackbar from '@material-ui/core/Snackbar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { withRouter } from 'react-router';
 import { updateRoute } from './actions/routingActions';
+import { isBrowser } from './settings';
 
 class Layout extends React.Component {
   componentDidMount() {
@@ -29,7 +30,8 @@ class Layout extends React.Component {
   }
 
   render() {
-    const { loggedIn, classes, error, deleteError } = this.props;
+    const { loggedIn, classes, error, deleteError, ready } = this.props;
+    if (isBrowser() && !ready) return null;
     const routes = loggedIn
       ? [...loggedInRoutes, ...loggedOutRoutes]
       : loggedOutRoutes;
