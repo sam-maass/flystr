@@ -29,11 +29,10 @@ class Layout extends React.Component {
   }
 
   render() {
-    const { loggedIn, classes, error, deleteError, ready } = this.props;
+    const { loggedIn, classes, error, deleteError } = this.props;
     const routes = loggedIn
       ? [...loggedInRoutes, ...loggedOutRoutes]
       : loggedOutRoutes;
-    if (!ready) return null;
     return (
       <div className={classes.main}>
         <CssBaseline />
