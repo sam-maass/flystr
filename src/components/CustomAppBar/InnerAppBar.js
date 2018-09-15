@@ -58,7 +58,9 @@ const InnerAppBar = ({
             to={button.link}
             onClick={trackClick}
           >
-            <Button>{button.text}</Button>
+            <Button variant={button.variant} color={button.color}>
+              {button.text}
+            </Button>
           </Link>
         )}
       </Toolbar>

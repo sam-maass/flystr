@@ -40,7 +40,7 @@ export const loggedInRoutes = [
   {
     path: '/new-trip',
     exact: true,
-    header: () => <CustomAppBar withReturn title="Create a new trip" />,
+    // header: () => <CustomAppBar withReturn title="Create a new trip" />,
     main: () => <Pages.NewTrip />
   },
   {
@@ -53,7 +53,7 @@ export const loggedInRoutes = [
   {
     path: '/deal/:dealId/edit',
     exact: true,
-    header: () => <CustomAppBar title="Edit trip" withReturn />,
+    // header: () => <CustomAppBar title="Edit trip" withReturn />,
     //eslint-disable-next-line
     main: props => <Pages.NewDeal {...props.match.params} />
   },
@@ -66,20 +66,20 @@ export const loggedInRoutes = [
   {
     path: '/new-deal',
     exact: true,
-    header: () => <CustomAppBar withReturn title="Add a deal" />,
+    // header: () => <CustomAppBar withReturn title="Add a deal" />,
     main: () => <Pages.NewDeal />
   },
   {
     path: '/trip/:tripId',
     exact: true,
-    header: () => <CustomAppBar withReturn />,
+    // header: () => <CustomAppBar withReturn />,
     //eslint-disable-next-line
     main: props => <Pages.Trip {...props.match.params} />
   },
   {
     path: '/trip/:tripId/edit',
     exact: true,
-    header: () => <CustomAppBar withReturn title="Edit Trip" />,
+    // header: () => <CustomAppBar withReturn title="Edit Trip" />,
     //eslint-disable-next-line
     main: props => <Pages.NewTrip {...props.match.params} />
   },
