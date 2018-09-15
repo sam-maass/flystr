@@ -6,7 +6,6 @@ import InnerAppBar from './InnerAppBar';
 
 function ButtonAppBar(props) {
   const { setAppbar, title, withDrawer = true, withReturn, button } = props;
-
   setAppbar({ title, withDrawer, withReturn, button });
 
   return <InnerAppBar />;

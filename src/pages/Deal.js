@@ -10,6 +10,18 @@ class DealsPage extends React.Component {
   componentDidMount() {
     this.props.copyDeal(this.props.tempDeal);
     this.props.fetchDeal(this.props.dealId);
+    if (!this.props.previousRoute) {
+      this.props.setAppbar({
+        withDrawer: false,
+        withReturn: false,
+        button: {
+          link: '/deals',
+          text: 'All Deals',
+          variant: 'raised',
+          color: 'primary'
+        }
+      });
+    }
   }
 
   componentDidUpdate(prevProps) {
@@ -55,14 +67,16 @@ DealsPage.propTypes = {
   currentDeal: PropTypes.object,
   setAppbar: PropTypes.func,
   tempDeal: PropTypes.object,
-  dealId: PropTypes.string
+  dealId: PropTypes.string,
+  previousRoute: PropTypes.string
 };
 
 const mapStateToProps = (store, props) => {
   return {
     ...props,
     tempDeal: store.deals.find(deal => (deal._id = props.dealId)) || {},
-    currentDeal: store.currentDeal
+    currentDeal: store.currentDeal,
+    previousRoute: store.routing.previousRoute
   };
 };
 
