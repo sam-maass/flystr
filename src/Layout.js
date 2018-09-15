@@ -11,80 +11,92 @@ import { deleteError } from './actions/errorActions';
 import Snackbar from '@material-ui/core/Snackbar';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import { withRouter } from 'react-router';
+import { updateRoute } from './actions/routingActions';
 
-const Layout = ({
-  loggedIn,
-  fetchUser,
-  classes,
-  error,
-  deleteError,
-  ready
-}) => {
-  const routes = loggedIn
-    ? [...loggedInRoutes, ...loggedOutRoutes]
-    : loggedOutRoutes;
-  fetchUser();
-  if (!ready) return null;
-  return (
-    <div className={classes.main}>
-      <CssBaseline />
-      <Switch>
-        {routes.map((route, index) => (
-          <Route
-            key={index}
-            path={route.path}
-            exact={route.exact}
-            component={route.header || null}
-          />
-        ))}
-      </Switch>
-      <div className={classes.scrollContainer}>
+class Layout extends React.Component {
+  componentDidMount() {
+    this.props.updateRoute({ route: this.props.location.pathname });
+    this.props.fetchUser();
+  }
+
+  componentDidUpdate(prevProps) {
+    const {
+      location: { pathname }
+    } = this.props;
+    if (pathname !== prevProps.location.pathname) {
+      this.props.updateRoute({ route: pathname });
+    }
+  }
+
+  render() {
+    const { loggedIn, classes, error, deleteError, ready } = this.props;
+    const routes = loggedIn
+      ? [...loggedInRoutes, ...loggedOutRoutes]
+      : loggedOutRoutes;
+    if (!ready) return null;
+    return (
+      <div className={classes.main}>
+        <CssBaseline />
         <Switch>
-          {/* <Route path="/" exact component={() => <Landing />} /> */}
           {routes.map((route, index) => (
             <Route
               key={index}
               path={route.path}
               exact={route.exact}
-              component={route.main}
+              component={route.header || null}
             />
           ))}
         </Switch>
+        <div className={classes.scrollContainer}>
+          <Switch>
+            {/* <Route path="/" exact component={() => <Landing />} /> */}
+            {routes.map((route, index) => (
+              <Route
+                key={index}
+                path={route.path}
+                exact={route.exact}
+                component={route.main}
+              />
+            ))}
+          </Switch>
+        </div>
+        <Snackbar
+          anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left'
+          }}
+          open={Boolean(error)}
+          autoHideDuration={4000}
+          onClose={deleteError}
+          SnackbarContentProps={{
+            'aria-describedby': 'message-id'
+          }}
+          message={<span id="message-id">{error}</span>}
+          action={[
+            <IconButton
+              key="close"
+              aria-label="Close"
+              color="inherit"
+              className={classes.close}
+              onClick={deleteError}
+            >
+              <CloseIcon />
+            </IconButton>
+          ]}
+        />
       </div>
-      <Snackbar
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'left'
-        }}
-        open={Boolean(error)}
-        autoHideDuration={4000}
-        onClose={deleteError}
-        SnackbarContentProps={{
-          'aria-describedby': 'message-id'
-        }}
-        message={<span id="message-id">{error}</span>}
-        action={[
-          <IconButton
-            key="close"
-            aria-label="Close"
-            color="inherit"
-            className={classes.close}
-            onClick={deleteError}
-          >
-            <CloseIcon />
-          </IconButton>
-        ]}
-      />
-    </div>
-  );
-};
+    );
+  }
+}
 
 Layout.propTypes = {
   classes: PropTypes.object,
+  location: PropTypes.object,
   loggedIn: PropTypes.bool,
   ready: PropTypes.bool,
   fetchUser: PropTypes.func,
   deleteError: PropTypes.func,
+  updateRoute: PropTypes.func,
   error: PropTypes.string
 };
 
@@ -99,7 +111,7 @@ const mapStateToProps = (store, props) => {
 const LayoutContainer = withRouter(
   connect(
     mapStateToProps,
-    { fetchUser, deleteError }
+    { fetchUser, deleteError, updateRoute }
   )(Layout)
 );
 

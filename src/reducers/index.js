@@ -7,6 +7,7 @@ import appBar from './appBar';
 import allTrips from './allTrips';
 import deals from './dealReducer';
 import currentDeal from './currentDealReducer';
+import routing from './routingReducer';
 
 export default combineReducers({
   currentDeal,
@@ -15,5 +16,6 @@ export default combineReducers({
   trips,
   allTrips,
   errors,
-  appBar
+  appBar,
+  routing
 });
