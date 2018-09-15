@@ -3,8 +3,6 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import { css } from 'emotion';
 import { classes, styles } from '../../styles';
-import TakeoffIcon from '@material-ui/icons/FlightTakeoffOutlined';
-import LandingIcon from '@material-ui/icons/Undo';
 import { getLinkSource } from '../NewDealForm/parseLink';
 const style = css`
   text-decoration: none;
@@ -25,9 +23,7 @@ const style = css`
       color: ${styles.colors.midGray};
       font-size: 14px;
       display: grid;
-      grid-template-columns: repeat(4,auto);
       align-items: center;
-      gap: 16px;
       margin: 2px;
       justify-self: baseline;
 }
@@ -48,35 +44,30 @@ const style = css`
     }
   }
 `;
-const DealRow = ({
-  outOrigin,
-  outOriginDetails,
-  inOrigin,
-  inOriginDetails,
-  outDate,
-  inDate,
-  price,
-  link
-}) => {
+const DealRow = ({ outDate, inDate, price, link }) => {
   const linkSource = getLinkSource(link);
-  const format = 'DD.MM.YYYY';
-  const formattedStartDate = moment(outDate).format(format);
+  const format = 'DD MMM YYYY';
+  const formatWithoutYear = 'DD MMM';
+  const formatOnlyDay = 'DD';
+  const isSameMonth = moment(outDate).isSame(inDate, 'month');
+  const isSameYear = moment(outDate).isSame(inDate, 'year');
+  let startFormat = format;
+  if (isSameYear) startFormat = formatWithoutYear;
+  if (isSameYear && isSameMonth) startFormat = formatOnlyDay;
+  const formattedStartDate = moment(outDate).format(startFormat);
   const formattedEndDate = moment(inDate).format(format);
+  const startDay = moment(outDate).format('ddd');
+  const endDay = moment(inDate).format('ddd');
+  const duration = moment(inDate).diff(outDate, 'days');
   return (
     <a className={style} href={link} target="_blank" rel="noopener noreferrer">
       <div className="container">
         <div className="row">
           <div className="dates">
-            <TakeoffIcon />
-            <b>{formattedStartDate}</b>
-            {!outOriginDetails && <span>{outOrigin}</span>}
-            {outOriginDetails && <span>{outOriginDetails.city}</span>}
-          </div>
-          <div className="dates">
-            <LandingIcon />
-            <b>{formattedEndDate}</b>
-            {!inOriginDetails && <span>{inOrigin}</span>}
-            {inOriginDetails && <span>{inOriginDetails.city}</span>}
+            <b>
+              {formattedStartDate} - {formattedEndDate}
+            </b>
+            {duration} days | {startDay}-{endDay}
           </div>
         </div>
         <div className="row price">
