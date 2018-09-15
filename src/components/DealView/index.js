@@ -76,7 +76,7 @@ const DealView = ({ deal }) => {
             </div>
           </div>
         </div>
-        <TripDealList trips={deal.exampleFlights} />
+        <TripDealList flights={deal.exampleFlights} />
         <div className={signupCardStyle}>
           <strong>Not the dates you are looking for?</strong> <br /> <br />
           <Link to="/new-trip">Create a trip</Link> <br />
