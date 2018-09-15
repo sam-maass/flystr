@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
+import SelectLink from './selectLink';
 
 class exampleFlightTableRow extends Component {
   constructor(props) {
@@ -9,20 +10,33 @@ class exampleFlightTableRow extends Component {
   }
 
   handleFieldChange = e => {
-    const { flight } = this.props;
+    const { flight, index } = this.props;
     const { name: key, value } = e.target;
-    this.props.handleChangeFlight({ ...flight, [key]: value });
+    this.props.handleChangeFlight({ ...flight, [key]: value }, index);
+  };
+
+  handleLinkChange = link => {
+    const { flight, index } = this.props;
+    this.props.handleChangeFlight(
+      {
+        ...flight,
+        link: link.url,
+        selectedLink: link.displayName
+      },
+      index
+    );
   };
 
   render() {
-    const { flight, handleDeleteFlight } = this.props;
+    const { flight, index, handleDeleteFlight } = this.props;
     return (
       <Fragment>
-        <div className="link">
-          <a href={flight.link} target="_blank" rel="noopener noreferrer">
-            {flight.linkSource}
-          </a>
-        </div>
+        <SelectLink
+          flight={flight}
+          selectedLink={flight.selectedLink}
+          onChange={this.handleLinkChange}
+        />
+
         <div className="outDate ">
           <input
             type="text"
@@ -96,9 +110,7 @@ class exampleFlightTableRow extends Component {
           />
         </div>
         <div className="actions ">
-          <Button onClick={() => handleDeleteFlight(flight.link)}>
-            Delete
-          </Button>
+          <Button onClick={() => handleDeleteFlight(index)}>Delete</Button>
         </div>
       </Fragment>
     );
@@ -107,6 +119,7 @@ class exampleFlightTableRow extends Component {
 
 exampleFlightTableRow.propTypes = {
   flight: PropTypes.object,
+  index: PropTypes.number,
   handleDeleteFlight: PropTypes.func,
   handleChangeFlight: PropTypes.func
 };

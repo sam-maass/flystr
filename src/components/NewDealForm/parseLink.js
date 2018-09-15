@@ -24,7 +24,7 @@ export const parseLinksFromText = text => {
 export const parseLink = link => {
   const domain = link.match(domainRegex)[0];
   const path = link.split(domain)[1];
-  const linkSource = link.match(domainRegex)[1];
+  const linkSource = getLinkSource(link);
   let linkParams = {};
   try {
     switch (true) {
@@ -48,7 +48,11 @@ export const parseLink = link => {
     console.error('could not parse URL');
   }
 
-  return { link, linkSource, ...linkParams };
+  return {
+    link,
+    ...linkParams,
+    selectedLink: 'original'
+  };
 };
 
 const parseMomondoLink = (domain, path) => {
@@ -98,7 +102,10 @@ const parseGoogleLink = link => {
     outDestination: groups.outDestination,
     inOrigin: groups.inOrigin,
     inDate: groups.returnDate,
-    inDestination: groups.inDestination,
-    linkSource: groups.linkSource
+    inDestination: groups.inDestination
   };
 };
+
+export function getLinkSource(link) {
+  return link.match(domainRegex)[1];
+}
