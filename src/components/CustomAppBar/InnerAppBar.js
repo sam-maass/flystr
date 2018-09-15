@@ -19,17 +19,33 @@ const InnerAppBar = ({
   withReturn,
   title,
   button,
-  history
+  history,
+  routing
 }) => {
   const trackClick = () => {
     window.gtag('event', `${button.text} in AppBar clicked`);
   };
+  const goBack = () => {
+    if (routing.previousRoute) {
+      history.push(routing.previousRoute);
+    } else {
+      switch (true) {
+        case /deal\/s/.test(routing.currentRoute):
+          history.push('/deals');
+          break;
+        default:
+          history.push('/');
+          break;
+      }
+    }
+  };
+
   return (
     <AppBar className={classes.appBar}>
       <Toolbar>
         {withDrawer && !withReturn && <CustomDrawer />}
         {withReturn && (
-          <IconButton onClick={() => history.goBack()}>
+          <IconButton onClick={() => goBack()}>
             <BackIcon color="inherit" />
           </IconButton>
         )}
@@ -56,6 +72,7 @@ InnerAppBar.propTypes = {
   setAppbar: PropTypes.func,
   history: PropTypes.object,
   button: PropTypes.object,
+  routing: PropTypes.object,
   classes: PropTypes.object.isRequired,
   title: PropTypes.string,
   withDrawer: PropTypes.bool,
@@ -86,7 +103,8 @@ const mapStateToProps = (store, props) => {
     title: store.appBar.title,
     withDrawer: store.appBar.withDrawer,
     withReturn: store.appBar.withReturn,
-    button: store.appBar.button
+    button: store.appBar.button,
+    routing: store.routing
   };
 };
 
