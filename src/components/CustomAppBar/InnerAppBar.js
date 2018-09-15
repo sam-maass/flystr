@@ -30,7 +30,7 @@ const InnerAppBar = ({
       history.push(routing.previousRoute);
     } else {
       switch (true) {
-        case /deal\/s/.test(routing.currentRoute):
+        case /deal\//.test(routing.currentRoute):
           history.push('/deals');
           break;
         default:
