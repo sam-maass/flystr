@@ -62,7 +62,7 @@ class NewExampleFlight extends React.Component {
         <Fragment>
           <div>
             <div className="link">
-              <a href={props.values.link}>{props.values.linkSource}</a>
+              <a href={props.values.link}>{props.values.link}</a>
             </div>
           </div>
           <FormikTextField elemKey="outDate" {...props} />

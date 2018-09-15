@@ -84,18 +84,16 @@ class NewDealForm extends React.Component {
     });
   };
 
-  handleDeleteFlight = link => {
+  handleDeleteFlight = index => {
     const { exampleFlights: prevFlights } = this.props.values;
-    const exampleFlights = prevFlights.filter(flight => flight.link !== link);
+    prevFlights.splice(index, 1);
+    const exampleFlights = prevFlights;
     const dealData = this.calcDealData(exampleFlights);
     this.props.setValues({ ...dealData, exampleFlights });
   };
 
-  handleChangeFlight = flight => {
+  handleChangeFlight = (flight, index) => {
     const { exampleFlights } = this.props.values;
-    const index = exampleFlights.findIndex(
-      eFlight => eFlight.link === flight.link
-    );
     exampleFlights[index] = flight;
     const dealData = this.calcDealData(exampleFlights);
     this.props.setValues({ ...dealData, exampleFlights });
@@ -158,11 +156,12 @@ class NewDealForm extends React.Component {
               <div className="inCarriers header">In A/L</div>
               <div className="price header">Price</div>
               <div className="actions header">Actions</div>
-              {exampleFlights.map(flight => {
+              {exampleFlights.map((flight, index) => {
                 return (
                   <ExampleFlightTableRow
-                    key={flight.link}
+                    key={`flight-${index}`}
                     flight={flight}
+                    index={index}
                     handleChangeFlight={this.handleChangeFlight}
                     handleDeleteFlight={this.handleDeleteFlight}
                   />

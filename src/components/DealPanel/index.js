@@ -5,6 +5,7 @@ import { css } from 'emotion';
 import { classes, styles } from '../../styles';
 import TakeoffIcon from '@material-ui/icons/FlightTakeoffOutlined';
 import LandingIcon from '@material-ui/icons/Undo';
+import { getLinkSource } from '../NewDealForm/parseLink';
 const style = css`
   text-decoration: none;
   .container {
@@ -55,9 +56,9 @@ const DealRow = ({
   outDate,
   inDate,
   price,
-  link,
-  linkSource
+  link
 }) => {
+  const linkSource = getLinkSource(link);
   const format = 'DD.MM.YYYY';
   const formattedStartDate = moment(outDate).format(format);
   const formattedEndDate = moment(inDate).format(format);
