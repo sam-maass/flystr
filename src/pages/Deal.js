@@ -5,6 +5,7 @@ import { fetchDeal, copyDeal } from '../actions/dealActions';
 import DealView from '../components/DealView';
 import { setAppbar } from '../actions/appbarActions';
 import { Helmet } from 'react-helmet';
+import NoDeal from '../components/NoDeal';
 
 class DealsPage extends React.Component {
   componentDidMount() {
@@ -30,9 +31,22 @@ class DealsPage extends React.Component {
         title: `Flights to ${this.props.currentDeal.title}`
       });
     }
+    if (
+      this.props.currentDeal.noDealFound !==
+        prevProps.currentDeal.noDealFound &&
+      this.props.currentDeal.noDealFound
+    )
+      this.props.setAppbar({
+        button: false,
+        title: 'Deal expired',
+        withDrawer: true
+      });
   }
 
   render() {
+    if (this.props.currentDeal.noDealFound) {
+      return <NoDeal />;
+    }
     if (this.props.currentDeal.destinations === undefined) return null;
     const title = `Flystr | Flights to ${this.props.currentDeal.title} from ${
       this.props.currentDeal.subtitle

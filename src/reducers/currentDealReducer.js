@@ -4,6 +4,8 @@ export default function reducer(state = {}, action) {
       return action.payload;
     case 'FETCH_DEAL_FULFILLED':
       return action.payload.data;
+    case 'FETCH_DEAL_REJECTED':
+      return { noDealFound: true };
     default:
       return state;
   }
