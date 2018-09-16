@@ -43,11 +43,11 @@ const style = css`
   margin-top: 8;
   display: 'grid';
   .cityPair {
-    margin: 8px;
+    margin: 8px 16px;
     ${classes.typography.base};
     line-height: 2;
     padding-left: 16px;
-    background: ${styles.colors.midGray};
+    background: ${styles.colors.blue3};
     color: ${styles.colors.white};
     transform: skew(-20deg); /* SKEW */
     div {
