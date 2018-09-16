@@ -60,6 +60,12 @@ export default (req, res) => {
       });
     }
 
+    if (req.fetchDealFailed) {
+      store.dispatch({
+        type: 'FETCH_DEAL_REJECTED'
+      });
+    }
+
     // Create a sheetsRegistry instance.
     const sheetsRegistry = new SheetsRegistry();
     // Create a new class name generator.
@@ -102,26 +108,29 @@ export default (req, res) => {
       c => `<script type="text/javascript" src="/${c}"></script>`
     );
 
-    // now inject the rendered app into our html and send it to the client
-    return res.send(
-      htmlData
-        .replace(
-          '</head>',
-          `
+    const finalHtml = htmlData
+      .replace(
+        '</head>',
+        `
         ${helmet.title.toString()}
         ${helmet.meta.toString()}
         ${helmet.link.toString()}
         </head>`
-        )
-        // write the React app
-        .replace(
-          '<div id="root"></div>',
-          `<div id="root">${html}</div> <style id="jss-server-side">${css}</style>`
-        )
-        // write the string version of our state
-        .replace('__REDUX_STATE__={}', `__REDUX_STATE__=${reduxState}`)
-        // append the extra js assets
-        .replace('</body>', `${extraChunks.join('')}</body>`)
-    );
+      )
+      // write the React app
+      .replace(
+        '<div id="root"></div>',
+        `<div id="root">${html}</div> <style id="jss-server-side">${css}</style>`
+      )
+      // write the string version of our state
+      .replace('__REDUX_STATE__={}', `__REDUX_STATE__=${reduxState}`)
+      // append the extra js assets
+      .replace('</body>', `${extraChunks.join('')}</body>`);
+    // now inject the rendered app into our html and send it to the client
+    if (req.fetchDealFailed) {
+      return res.status(404).send(finalHtml);
+    } else {
+      return res.send(finalHtml);
+    }
   });
 };
