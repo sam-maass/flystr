@@ -11,7 +11,7 @@ class SelectLink extends React.Component {
   }
 
   render() {
-    const { selectedLink = 'original', onChange } = this.props;
+    const { selectedLink = 'original', onChange, index } = this.props;
     const { links } = this.state;
     return (
       <div className="link">
@@ -21,7 +21,7 @@ class SelectLink extends React.Component {
               <label htmlFor={link.displayName}>
                 <input
                   type="radio"
-                  name="selectedLink"
+                  name={`selectedLink${index}`}
                   value={link.displayName}
                   onChange={() => onChange(link)}
                   checked={selectedLink === link.displayName}
@@ -44,6 +44,7 @@ class SelectLink extends React.Component {
 }
 
 SelectLink.propTypes = {
+  index: PropTypes.number,
   selectedLink: PropTypes.string,
   flight: PropTypes.object,
   onChange: PropTypes.function

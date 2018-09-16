@@ -1,7 +1,7 @@
 import React from 'react';
 import { withFormik } from 'formik';
 import { connect } from 'react-redux';
-import NewTripForm from './component';
+import NewDealForm from './component';
 import { Redirect } from 'react-router-dom';
 import { api } from '../../settings';
 import { fetchUser } from '../../actions/userActions';
@@ -52,7 +52,7 @@ class RoutingWrapper extends React.Component {
         />
       );
     } else {
-      return <NewTripForm {...this.props} />;
+      return <NewDealForm {...this.props} />;
     }
   }
 }
