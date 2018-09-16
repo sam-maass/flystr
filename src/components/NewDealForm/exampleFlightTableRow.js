@@ -32,6 +32,7 @@ class exampleFlightTableRow extends Component {
     return (
       <Fragment>
         <SelectLink
+          index={index}
           flight={flight}
           selectedLink={flight.selectedLink}
           onChange={this.handleLinkChange}
