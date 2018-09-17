@@ -12,7 +12,49 @@ const trip = {
   budget: 200,
   destinations: ['BRE', 'SEZ'],
   origins: ['DUS', 'FRA', 'BRU'],
-  matchingFlights: []
+  matchingFlights: [
+    {
+      inOriginDetails: {
+        name: 'All Airports',
+        city: 'New York',
+        country: 'United States',
+        iata: 'NYC'
+      },
+      inDestinationDetails: {
+        name: 'Inverness',
+        city: 'Inverness',
+        country: 'United Kingdom',
+        iata: 'INV'
+      },
+      outOriginDetails: {
+        name: 'Inverness',
+        city: 'Inverness',
+        country: 'United Kingdom',
+        iata: 'INV'
+      },
+      outDestinationDetails: {
+        name: 'All Airports',
+        city: 'New York',
+        country: 'United States',
+        iata: 'NYC'
+      },
+      _id: '5b9feaf9ce8b3627d31fa258',
+      link:
+        'https://www.skyscanner.net/transport/d/INV/2019-01-13/NYCA/NYCA/2019-01-23/INV/',
+      outOrigin: 'INV',
+      outDate: '2019-01-13T00:00:00.000Z',
+      outDestination: 'NYC',
+      inOrigin: 'NYC',
+      inDate: '2019-01-23T00:00:00.000Z',
+      inDestination: 'INV',
+      price: 283,
+      currency: 'GBP',
+      duration: 10,
+      __v: 0,
+      createdAt: '2018-09-17T17:57:13.612Z',
+      updatedAt: '2018-09-17T18:29:03.845Z'
+    }
+  ]
 };
 
 it('Triprow: default', () => {
