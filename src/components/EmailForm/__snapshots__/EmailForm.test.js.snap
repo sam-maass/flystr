@@ -11,17 +11,18 @@ exports[`EmailForm: default 1`] = `
       className="MuiFormControl-root-1 MuiFormControl-marginNormal-2"
     >
       <label
-        className="MuiFormLabel-root-10 MuiInputLabel-root-5 MuiInputLabel-formControl-6 MuiInputLabel-animated-9"
+        className="MuiFormLabel-root-12 MuiInputLabel-root-5 MuiInputLabel-formControl-6 MuiInputLabel-animated-9"
         data-shrink={false}
       >
         Email
       </label>
       <div
-        className="MuiInput-root-17 MuiInput-formControl-18 MuiInput-underline-21"
+        className="MuiInputBase-root-32 MuiInput-root-19 MuiInput-underline-23 MuiInputBase-formControl-33 MuiInput-formControl-20"
+        onClick={[Function]}
       >
         <input
           aria-invalid={false}
-          className="MuiInput-input-25"
+          className="MuiInputBase-input-42 MuiInput-input-27"
           disabled={false}
           name="email"
           onBlur={[Function]}
@@ -36,17 +37,18 @@ exports[`EmailForm: default 1`] = `
       className="MuiFormControl-root-1 MuiFormControl-marginNormal-2"
     >
       <label
-        className="MuiFormLabel-root-10 MuiInputLabel-root-5 MuiInputLabel-formControl-6 MuiInputLabel-animated-9"
+        className="MuiFormLabel-root-12 MuiInputLabel-root-5 MuiInputLabel-formControl-6 MuiInputLabel-animated-9"
         data-shrink={false}
       >
         Password
       </label>
       <div
-        className="MuiInput-root-17 MuiInput-formControl-18 MuiInput-underline-21"
+        className="MuiInputBase-root-32 MuiInput-root-19 MuiInput-underline-23 MuiInputBase-formControl-33 MuiInput-formControl-20"
+        onClick={[Function]}
       >
         <input
           aria-invalid={false}
-          className="MuiInput-input-25 MuiInput-inputType-28"
+          className="MuiInputBase-input-42 MuiInput-input-27 MuiInputBase-inputType-45 MuiInput-inputType-30"
           disabled={false}
           name="password"
           onBlur={[Function]}
@@ -58,7 +60,7 @@ exports[`EmailForm: default 1`] = `
       </div>
     </div>
     <button
-      className="MuiButtonBase-root-54 MuiButton-root-30 MuiButton-contained-39 MuiButton-raised-42"
+      className="MuiButtonBase-root-75 MuiButton-root-49 MuiButton-contained-60 MuiButton-raised-63"
       disabled={false}
       onBlur={[Function]}
       onFocus={[Function]}
@@ -74,12 +76,12 @@ exports[`EmailForm: default 1`] = `
       type="submit"
     >
       <span
-        className="MuiButton-label-31"
+        className="MuiButton-label-50"
       >
         Signup with email
       </span>
       <span
-        className="MuiTouchRipple-root-57"
+        className="MuiTouchRipple-root-78"
       />
     </button>
   </div>

@@ -54,13 +54,17 @@ exports[`OriginSelection: default 1`] = `
     </h2>
     <div>
       <div
+        aria-expanded={false}
+        aria-haspopup="listbox"
+        aria-owns="react-autowhatever-1"
         className="IntegrationAutosuggest-container-1"
+        role="combobox"
       >
         <div
           className="MuiFormControl-root-8 IntegrationAutosuggest-textField-5"
         >
           <label
-            className="MuiFormLabel-root-17 MuiInputLabel-root-12 MuiInputLabel-formControl-13 MuiInputLabel-animated-16"
+            className="MuiFormLabel-root-19 MuiInputLabel-root-12 MuiInputLabel-formControl-13 MuiInputLabel-animated-16"
             data-shrink={false}
           >
             Select a departure airport
@@ -68,16 +72,15 @@ exports[`OriginSelection: default 1`] = `
           <div
             aria-activedescendant={null}
             aria-autocomplete="list"
-            aria-expanded={false}
-            aria-owns="react-autowhatever-1"
-            className="MuiInput-root-24 MuiInput-formControl-25 MuiInput-underline-28"
-            role="combobox"
+            aria-controls="react-autowhatever-1"
+            className="MuiInputBase-root-39 MuiInput-root-26 MuiInput-underline-30 MuiInputBase-formControl-40 MuiInput-formControl-27"
+            onClick={[Function]}
             style={Object {}}
           >
             <input
               aria-invalid={false}
               autoComplete="off"
-              className="MuiInput-input-32"
+              className="MuiInputBase-input-49 MuiInput-input-34"
               disabled={false}
               onBlur={[Function]}
               onChange={[Function]}
@@ -91,8 +94,9 @@ exports[`OriginSelection: default 1`] = `
           </div>
         </div>
         <div
-          className="MuiPaper-root-37 MuiPaper-elevation2-41"
+          className="MuiPaper-root-56 MuiPaper-elevation2-60"
           id="react-autowhatever-1"
+          role="listbox"
           style={Object {}}
         />
       </div>
@@ -110,7 +114,7 @@ exports[`OriginSelection: default 1`] = `
     className="button"
   >
     <button
-      className="MuiButtonBase-root-88 MuiButton-root-64 MuiButton-text-66 MuiButton-textSecondary-68 MuiButton-outlined-72 MuiButton-fullWidth-87"
+      className="MuiButtonBase-root-109 MuiButton-root-83 MuiButton-text-85 MuiButton-textSecondary-87 MuiButton-outlined-91 MuiButton-outlinedSecondary-93 MuiButton-fullWidth-108"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -127,12 +131,12 @@ exports[`OriginSelection: default 1`] = `
       type="button"
     >
       <span
-        className="MuiButton-label-65"
+        className="MuiButton-label-84"
       >
         Select your destinations
       </span>
       <span
-        className="MuiTouchRipple-root-91"
+        className="MuiTouchRipple-root-112"
       />
     </button>
   </div>

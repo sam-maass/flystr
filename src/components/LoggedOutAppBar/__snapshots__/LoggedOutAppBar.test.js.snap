@@ -2,10 +2,10 @@
 
 exports[`LoggedOutAppBar: default 1`] = `
 <header
-  className="MuiPaper-root-9 MuiPaper-elevation4-15 MuiAppBar-root-1 MuiAppBar-positionFixed-2 MuiAppBar-colorPrimary-7 mui-fixed"
+  className="MuiPaper-root-10 MuiPaper-elevation4-16 MuiAppBar-root-1 MuiAppBar-positionFixed-2 MuiAppBar-colorPrimary-8 mui-fixed"
 >
   <div
-    className="MuiToolbar-root-36 MuiToolbar-regular-38 MuiToolbar-gutters-37"
+    className="MuiToolbar-root-37 MuiToolbar-regular-39 MuiToolbar-gutters-38"
   >
     <a
       href="/"
