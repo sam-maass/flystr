@@ -23,7 +23,7 @@ const TripRow = ({
   destinations = []
 }) => {
   const minPrice = calcMinPrice(matchingFlights);
-  const currency = matchingFlights[0].currency || 'EUR';
+  const currency = (matchingFlights[0] && matchingFlights[0].currency) || 'EUR';
 
   return (
     <div className={style}>
