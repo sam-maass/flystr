@@ -23,6 +23,7 @@ const TripRow = ({
   destinations = []
 }) => {
   const minPrice = calcMinPrice(matchingFlights);
+  const currency = matchingFlights[0].currency || 'EUR';
 
   return (
     <div className={style}>
@@ -33,7 +34,7 @@ const TripRow = ({
           dealCount={matchingFlights.length}
           dates={getTimeframeString({ startDate, endDate })}
           duration={getDurationString({ toDuration, fromDuration })}
-          newPrice={minPrice ? `${minPrice} EUR` : undefined}
+          newPrice={minPrice ? `${minPrice} ${currency}` : undefined}
           oldPrice={`${budget} EUR`}
         />
       </Link>

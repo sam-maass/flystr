@@ -109,6 +109,12 @@ class exampleFlightTableRow extends Component {
             value={flight.price}
             onChange={this.handleFieldChange}
           />
+          <input
+            type="text"
+            name="currency"
+            value={flight.currency}
+            onChange={this.handleFieldChange}
+          />
         </div>
         <div className="actions ">
           <Button onClick={() => handleDeleteFlight(index)}>Delete</Button>
