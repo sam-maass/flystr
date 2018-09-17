@@ -83,7 +83,7 @@ exports[`Triprow: default 1`] = `
 }
 
 .emotion-0 {
-  background-image: url(https://flystr.com/destination-images/square/BRE.jpg);
+  background-image: url(https://flystr.com/destination-images/card/BRE.jpg);
   background-size: cover;
   padding: 8px;
   display: grid;
