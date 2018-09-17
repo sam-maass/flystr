@@ -54,7 +54,7 @@ class DealsPage extends React.Component {
     const description = `Fly to amazing ${this.props.currentDeal.title} from ${
       this.props.currentDeal.subtitle
     } for only ${this.props.currentDeal.minPrice} EUR`;
-    const twitterImage = `https://flystr.com/images/header/${
+    const twitterImage = `https://flystr.com/destination-images/header/${
       this.props.currentDeal.destinations
     }.jpg`;
 
