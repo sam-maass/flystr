@@ -44,28 +44,32 @@ class DealsPage extends React.Component {
   }
 
   render() {
-    if (this.props.currentDeal.noDealFound) {
+    const {
+      noDealFound,
+      title,
+      subtitle,
+      minPrice,
+      destinations,
+      currency = 'EUR'
+    } = this.props.currentDeal;
+    if (noDealFound) {
       return <NoDeal />;
     }
-    if (this.props.currentDeal.destinations === undefined) return null;
-    const title = `Flystr | Flights to ${this.props.currentDeal.title} from ${
-      this.props.currentDeal.subtitle
-    }`;
-    const description = `Fly to amazing ${this.props.currentDeal.title} from ${
-      this.props.currentDeal.subtitle
-    } for only ${this.props.currentDeal.minPrice} EUR`;
+    if (destinations === undefined) return null;
+    const metaTitle = `Flystr | Flights to ${title} from ${subtitle}`;
+    const description = `Fly to amazing ${title} from ${subtitle} for only ${minPrice} ${currency}`;
     const twitterImage = `https://flystr.com/destination-images/header/${
-      this.props.currentDeal.destinations
+      destinations[0]
     }.jpg`;
 
     return (
       <Fragment>
         <Helmet>
-          <title>{title}</title>
+          <title>{metaTitle}</title>
           <meta name="description" content={description} />
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:site" content="@flystr_com" />
-          <meta name="twitter:title" content={title} />
+          <meta name="twitter:title" content={metaTitle} />
           <meta name="twitter:description" content={description} />
           <meta name="twitter:image" content={twitterImage} />
         </Helmet>

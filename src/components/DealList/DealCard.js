@@ -83,7 +83,8 @@ const DealCard = props => {
     lastReturn,
     destinations,
     firstDeparture,
-    createdAt
+    createdAt,
+    currency = 'EUR'
   } = props.deal;
   const daysAgo = moment(createdAt).fromNow();
   const timeFrame = getTimeframeString({
@@ -96,7 +97,9 @@ const DealCard = props => {
         <Card>
           <div className="container">
             <div className="backdrop">
-              <span className="badge">from {minPrice} EUR </span>
+              <span className="badge">
+                from {minPrice} {currency}
+              </span>
               <div className="main">
                 <span className="title">{title}</span>
                 <br />

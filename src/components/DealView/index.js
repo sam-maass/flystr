@@ -63,7 +63,9 @@ const DealView = ({ deal }) => {
           <div className="header">
             <div className="backdrop">
               <div className="badgeContainer">
-                <span className="badge deal">from {deal.minPrice} EUR</span>
+                <span className="badge deal">
+                  from {deal.minPrice} {deal.currency || 'EUR'}
+                </span>
               </div>
               <div className="infos">
                 <div>

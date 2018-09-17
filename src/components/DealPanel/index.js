@@ -44,7 +44,7 @@ const style = css`
     }
   }
 `;
-const DealRow = ({ outDate, inDate, price, link }) => {
+const DealRow = ({ outDate, inDate, price, link, currency = 'EUR' }) => {
   const linkSource = getLinkSource(link);
   const format = 'DD MMM YYYY';
   const formatWithoutYear = 'DD MMM';
@@ -71,7 +71,7 @@ const DealRow = ({ outDate, inDate, price, link }) => {
           </div>
         </div>
         <div className="row price">
-          {price} EUR <br />
+          {price} {currency} <br />
           {linkSource && <span className="link">{linkSource}</span>}
         </div>
       </div>
@@ -90,7 +90,8 @@ DealRow.propTypes = {
   inDate: PropTypes.string,
   price: PropTypes.string,
   link: PropTypes.string,
-  linkSource: PropTypes.string
+  linkSource: PropTypes.string,
+  currency: PropTypes.string
 };
 
 export default DealRow;

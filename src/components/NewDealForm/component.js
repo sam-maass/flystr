@@ -103,6 +103,7 @@ class NewDealForm extends React.Component {
     const destinations = [
       ...new Set([...flights.map(flight => flight.outDestination)])
     ];
+    const currency = flights[0].currency;
     const origins = [...new Set([...flights.map(flight => flight.outOrigin)])];
     const minPrice = Math.min(...flights.map(f => f.price).filter(v => v >= 0));
     const firstDeparture = moment
@@ -112,6 +113,7 @@ class NewDealForm extends React.Component {
       .max(...flights.map(f => moment(f.inDate)))
       .format('YYYY-MM-DD');
     return {
+      currency,
       origins,
       destinations,
       minPrice,
