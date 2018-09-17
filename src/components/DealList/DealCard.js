@@ -15,8 +15,7 @@ const wrapperStyle = destination => css`
     text-decoration: none;
   }
   .container {
-    background-image: url(${getDestinationImage('header', destination)}),
-      url(${getDestinationImage('header', destination, { fallback: true })});
+    background-image: url(${getDestinationImage('header', destination)});
     background-size: cover;
     display: grid;
     min-height: 200px;

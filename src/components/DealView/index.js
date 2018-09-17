@@ -9,8 +9,7 @@ import { Link } from 'react-router-dom';
 const style = destination => css`
   ${classes.typography.base};
   height: 200px;
-  background-image: url(${getDestinationImage('header', destination)}),
-    url(${getDestinationImage('header', destination, { fallback: true })});
+  background-image: url(${getDestinationImage('header', destination)});
   background-size: cover;
   background-repeat: no-repeat;
   .backdrop {

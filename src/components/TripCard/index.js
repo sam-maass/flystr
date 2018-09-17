@@ -11,8 +11,7 @@ const wrapperStyle = css`
 `;
 
 const imgStyle = code => css`
-  background-image: url(${getDestinationImage('square', code)}),
-    url(${getDestinationImage('square', code, { fallback: true })});
+  background-image: url(${getDestinationImage('square', code)});
   background-size: cover;
   padding: 8px;
   display: grid;
