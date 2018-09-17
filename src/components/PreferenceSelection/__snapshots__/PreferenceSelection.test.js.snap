@@ -13,7 +13,7 @@ exports[`PreferenceSelection: default 1`] = `
     <WithStyles(IconButton)
       onClick={[Function]}
     >
-      <pure(Edit) />
+      <pure(EditIcon) />
     </WithStyles(IconButton)>
   </div>
   <div
