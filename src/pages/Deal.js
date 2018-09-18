@@ -6,6 +6,7 @@ import DealView from '../components/DealView';
 import { setAppbar } from '../actions/appbarActions';
 import { Helmet } from 'react-helmet';
 import NoDeal from '../components/NoDeal';
+import { getDealMetaData } from './getDealMetaData';
 
 class DealsPage extends React.Component {
   componentDidMount() {
@@ -44,33 +45,28 @@ class DealsPage extends React.Component {
   }
 
   render() {
-    const {
-      noDealFound,
-      title,
-      subtitle,
-      minPrice,
-      destinations,
-      currency = 'EUR'
-    } = this.props.currentDeal;
+    const { noDealFound, destinations } = this.props.currentDeal;
     if (noDealFound) {
       return <NoDeal />;
     }
     if (destinations === undefined) return null;
-    const metaTitle = `Flystr | Flights to ${title} from ${subtitle}`;
-    const description = `Fly to amazing ${title} from ${subtitle} for only ${minPrice} ${currency}`;
-    const twitterImage = `https://flystr.com/destination-images/header/${
-      destinations[0]
-    }.jpg`;
+    const {
+      metaTitle,
+      metaDescription,
+      twitterTitle,
+      twitterDescription,
+      twitterImage
+    } = getDealMetaData(this.props.currentDeal);
 
     return (
       <Fragment>
         <Helmet>
           <title>{metaTitle}</title>
-          <meta name="description" content={description} />
+          <meta name="description" content={metaDescription} />
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:site" content="@flystr_com" />
-          <meta name="twitter:title" content={metaTitle} />
-          <meta name="twitter:description" content={description} />
+          <meta name="twitter:title" content={twitterTitle} />
+          <meta name="twitter:description" content={twitterDescription} />
           <meta name="twitter:image" content={twitterImage} />
         </Helmet>
         <DealView deal={this.props.currentDeal} />;
