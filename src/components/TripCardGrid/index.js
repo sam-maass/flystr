@@ -1,6 +1,7 @@
 import React from 'react';
-import TripCard from '../TripCard';
 import { css } from 'emotion';
+import DealCard from '../DealList/DealCard';
+import PropTypes from 'prop-types';
 
 const gridStyle = css`
   margin-top: 32px;
@@ -9,40 +10,22 @@ const gridStyle = css`
   grid-gap: 16px;
   grid-template-columns: 1fr;
   justify-items: center;
-  @media only screen and (min-width: 1024px) {
+  @media only screen and (min-width: 1200px) {
     grid-template-columns: repeat(3, 1fr);
   }
 `;
 
-const TripCardGrid = () => {
+const TripCardGrid = ({ deals }) => {
   return (
     <div className={gridStyle}>
-      <TripCard
-        destinations={['NYC']}
-        title="USA"
-        dates="June 2019"
-        duration="16 Days"
-        oldPrice="700 EUR"
-        newPrice="412 EUR"
-      />
-      <TripCard
-        destinations={['ATH']}
-        title="Greece"
-        dates="April - August 2019"
-        duration="21 Days"
-        oldPrice="600 EUR"
-        newPrice="258 EUR"
-      />
-      <TripCard
-        destinations={['BLQ']}
-        title="Bologna/Italy"
-        dates="September 2018"
-        duration="5 Days"
-        oldPrice="200 EUR"
-        newPrice="46 EUR"
-      />
+      {deals.map((deal, index) => (
+        <DealCard key={index} deal={deal} />
+      ))}
     </div>
   );
+};
+TripCardGrid.propTypes = {
+  deals: PropTypes.array
 };
 
 export default TripCardGrid;

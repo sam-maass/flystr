@@ -1,16 +1,30 @@
 import axios from 'axios';
+import { getApiPath } from './settings';
+const apiPath = getApiPath();
+
 export const loadDeals = (req, res, next) => {
   axios
-    .get('https://api.flystr.com/deals')
+    .get(`${apiPath}/deals`)
     .then(deals => {
       req.fetchedDeals = deals;
       next();
     })
     .catch(() => next());
 };
+
+export const loadRecentDeals = (req, res, next) => {
+  axios
+    .get(`${apiPath}/recentDeals`)
+    .then(deals => {
+      req.fetchedLandingpageDeals = deals;
+      next();
+    })
+    .catch(() => next());
+};
+
 export const loadDeal = (req, res, next) => {
   axios
-    .get(`https://api.flystr.com/deal/${req.params.slug}`, { timeout: 500 })
+    .get(`${apiPath}/deal/${req.params.slug}`, { timeout: 500 })
     .then(deal => {
       req.currentDeal = deal;
       next();
