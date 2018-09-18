@@ -3,7 +3,7 @@ import helmet from 'helmet';
 
 // we'll talk about this in a minute:
 import serverRenderer from './middleware/renderer';
-import { loadDeals, loadDeal } from './loadDeals';
+import { loadDeals, loadDeal, loadRecentDeals } from './loadDeals';
 
 const PORT = 3100;
 const path = require('path');
@@ -24,7 +24,7 @@ app.use(
 // root (/) should always serve our server rendered page
 app.get('/deal/:slug', loadDeal, serverRenderer);
 app.get('/deals', loadDeals, serverRenderer);
-app.get(/^\/$/, serverRenderer);
+app.get(/^\/$/, loadRecentDeals, serverRenderer);
 
 // all other routes should return index.html
 // TODO: check if route exists

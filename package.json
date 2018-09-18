@@ -55,6 +55,7 @@
     "format": "prettier --write 'src/**/*.js'",
     "start": "PORT=3001 react-scripts start",
     "start-server": "NODE_ENV=production node server/bootstrap.js",
+    "start-dev-server": "NODE_ENV=development node server/bootstrap.js",
     "build": "react-scripts build",
     "lint": "eslint --fix 'src/**/*.js'",
     "test-watch": "jest -o",

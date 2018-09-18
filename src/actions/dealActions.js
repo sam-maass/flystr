@@ -20,3 +20,10 @@ export function fetchDeal(dealId) {
     payload: api().get(`/deal/${dealId}`)
   };
 }
+
+export function fetchLandingpageDeals() {
+  return {
+    type: 'FETCH_LANDINGPAGE_DEALS',
+    payload: api().get(`/recentDeals`)
+  };
+}

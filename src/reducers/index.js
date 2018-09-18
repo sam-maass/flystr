@@ -8,8 +8,10 @@ import allTrips from './allTrips';
 import deals from './dealReducer';
 import currentDeal from './currentDealReducer';
 import routing from './routingReducer';
+import landingpageDeals from './landingpageDealsReducer';
 
 export default combineReducers({
+  landingpageDeals,
   currentDeal,
   deals,
   user,
