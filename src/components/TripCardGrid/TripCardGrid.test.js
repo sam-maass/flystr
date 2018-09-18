@@ -3,7 +3,7 @@ import React from 'react';
 import TripCardGrid from '.';
 
 it('TripCardGrid: default', () => {
-  const component = renderer.create(<TripCardGrid />);
+  const component = renderer.create(<TripCardGrid deals={[]} />);
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
