@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import ImageHeader from '../components/ImageHeader';
 import SubHeadline from '../components/SubHeadline';
 import StepsGrid from '../components/StepsGrid';
@@ -8,6 +9,8 @@ import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import { classes, styles } from '../styles';
 import { Helmet } from 'react-helmet';
+import PropTypes from 'prop-types';
+import { fetchLandingpageDeals } from '../actions/dealActions';
 
 const maxWidth = css`
   max-width: 100vw;
@@ -15,8 +18,7 @@ const maxWidth = css`
   overflow: hidden;
   margin: auto;
   padding: 0 8px 0 8px;
-  .signup {
-    ${classes.typography.base};
+  .cta{
     max-width: 600px;
     margin: auto;
     text-align:center;
@@ -36,36 +38,51 @@ const maxWidth = css`
   }
 `;
 
-const Landing = () => {
-  return (
-    <div>
-      <Helmet>
-        <title>Flystr | All Cheap flights in one place</title>
-        <meta
-          name="description"
-          content="Find all the cheap flight deals in one place. We aggregate the cheapest fares daily so that you don't need too search"
-        />
-      </Helmet>
-      <ImageHeader />
-      <div className={maxWidth}>
-        <SubHeadline withBar>how it works</SubHeadline>
-        <StepsGrid />
-        <SubHeadline withBar>deals we found last week</SubHeadline>
-        <TripCardGrid />
-        <SubHeadline withBar>try flystr</SubHeadline>
-        <div className="signup">
-          <p>
-            We're still in beta but you can already use flystr to find the
-            cheapest flight deals.
-          </p>
-          <Link to="/deals">
-            <span className="button">Discover all deals</span>
-          </Link>
+class Landing extends React.Component {
+  componentDidMount() {
+    this.props.fetchLandingpageDeals();
+  }
+  render() {
+    return (
+      <div>
+        <Helmet>
+          <title>Flystr | All Cheap flights in one place</title>
+          <meta
+            name="description"
+            content="Find all the cheap flight deals in one place. We aggregate the cheapest fares daily so that you don't need too search"
+          />
+        </Helmet>
+        <ImageHeader />
+        <div className={maxWidth}>
+          <SubHeadline withBar>how it works</SubHeadline>
+          <StepsGrid />
+          <SubHeadline withBar>deals we found last week</SubHeadline>
+          <TripCardGrid deals={this.props.deals} />
+          <div className="cta">
+            <Link to="/deals">
+              <span className="button">Discover all deals</span>
+            </Link>
+          </div>
+          <Footer />
         </div>
-        <Footer />
       </div>
-    </div>
-  );
+    );
+  }
+}
+
+Landing.propTypes = {
+  deals: PropTypes.array,
+  fetchLandingpageDeals: PropTypes.func
 };
 
-export default Landing;
+const mapStateToProps = (store, props) => {
+  return {
+    ...props,
+    deals: store.landingpageDeals
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { fetchLandingpageDeals }
+)(Landing);

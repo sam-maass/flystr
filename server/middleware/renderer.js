@@ -53,6 +53,13 @@ export default (req, res) => {
       });
     }
 
+    if (req.fetchedLandingpageDeals) {
+      store.dispatch({
+        type: 'FETCH_LANDINGPAGE_DEALS_FULFILLED',
+        payload: { data: req.fetchedLandingpageDeals.data }
+      });
+    }
+
     if (req.currentDeal) {
       store.dispatch({
         type: 'FETCH_DEAL_FULFILLED',
