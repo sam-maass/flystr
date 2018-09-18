@@ -3,7 +3,7 @@ export const getDestinationImage = (type, code = {}) => {
     case 'header':
       return `https://flystr.com/destination-images/header/${code}.jpg`;
     case 'square':
-      return `https://flystr.com/destination-images/square/${code}.jpg`;
+      return `https://flystr.com/destination-images/card/${code}.jpg`;
     default:
       break;
   }

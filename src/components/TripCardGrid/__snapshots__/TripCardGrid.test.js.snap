@@ -93,7 +93,7 @@ exports[`TripCardGrid: default 1`] = `
 }
 
 .emotion-0 {
-  background-image: url(https://flystr.com/destination-images/square/NYC.jpg);
+  background-image: url(https://flystr.com/destination-images/card/NYC.jpg);
   background-size: cover;
   padding: 8px;
   display: grid;
@@ -132,7 +132,7 @@ exports[`TripCardGrid: default 1`] = `
 }
 
 .emotion-8 {
-  background-image: url(https://flystr.com/destination-images/square/ATH.jpg);
+  background-image: url(https://flystr.com/destination-images/card/ATH.jpg);
   background-size: cover;
   padding: 8px;
   display: grid;
@@ -171,7 +171,7 @@ exports[`TripCardGrid: default 1`] = `
 }
 
 .emotion-16 {
-  background-image: url(https://flystr.com/destination-images/square/BLQ.jpg);
+  background-image: url(https://flystr.com/destination-images/card/BLQ.jpg);
   background-size: cover;
   padding: 8px;
   display: grid;
