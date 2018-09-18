@@ -79,6 +79,7 @@ class NewDealForm extends React.Component {
     const flights = [...exampleFlights, ...flightDetails];
     const dealData = this.calcDealData(flights);
     this.props.setValues({
+      ...this.props.values,
       exampleFlights: flights,
       ...dealData
     });
@@ -89,14 +90,14 @@ class NewDealForm extends React.Component {
     prevFlights.splice(index, 1);
     const exampleFlights = prevFlights;
     const dealData = this.calcDealData(exampleFlights);
-    this.props.setValues({ ...dealData, exampleFlights });
+    this.props.setValues({ ...this.props.values, ...dealData, exampleFlights });
   };
 
   handleChangeFlight = (flight, index) => {
     const { exampleFlights } = this.props.values;
     exampleFlights[index] = flight;
     const dealData = this.calcDealData(exampleFlights);
-    this.props.setValues({ ...dealData, exampleFlights });
+    this.props.setValues({ ...this.props.values, ...dealData, exampleFlights });
   };
 
   calcDealData = flights => {
