@@ -1,15 +1,21 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import UrlParser from '../components/UrlParser';
+import { addFlightTemplates } from '../actions/flightTemplateActions';
+import { connect } from 'react-redux';
 
 class NewFlightPage extends Component {
-  componentDidMount() {
-    // load data
+  constructor(props) {
+    super(props);
     this.handleUrlParse = this.handleUrlParse.bind(this);
   }
 
-  handleUrlParse(val) {
-    console.log(val);
+  componentDidMount() {
+    // load data
+  }
+
+  handleUrlParse(flightTemplates) {
+    this.props.addFlightTemplates(flightTemplates);
   }
 
   render() {
@@ -22,7 +28,17 @@ class NewFlightPage extends Component {
 }
 
 NewFlightPage.propTypes = {
-  placeholder: PropTypes.bool
+  addFlightTemplates: PropTypes.func
 };
 
-export default NewFlightPage;
+const mapStateToProps = (store, props) => {
+  return {
+    flightTepmplates: store.flightTepmplates,
+    ...props
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { addFlightTemplates }
+)(NewFlightPage);

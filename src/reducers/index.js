@@ -9,8 +9,10 @@ import deals from './dealReducer';
 import currentDeal from './currentDealReducer';
 import routing from './routingReducer';
 import landingpageDeals from './landingpageDealsReducer';
+import flightTemplates from './flightTemplatesReducer';
 
 export default combineReducers({
+  flightTemplates,
   landingpageDeals,
   currentDeal,
   deals,
