@@ -7,19 +7,37 @@ import {
 } from '../actions/flightTemplateActions';
 import { connect } from 'react-redux';
 import FlightTemplate from '../components/FlightTemplate';
+import { fetchFlights } from '../actions/flightActions';
+import FlightRow from '../components/FlightRow';
 
 class NewFlightPage extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      selected: []
+    };
     this.handleUrlParse = this.handleUrlParse.bind(this);
+    this.selectFlight = this.selectFlight.bind(this);
   }
 
   componentDidMount() {
+    this.props.fetchFlights();
     // load data
   }
 
   handleUrlParse(flightTemplates) {
     this.props.addFlightTemplates(flightTemplates);
+  }
+
+  selectFlight(e) {
+    const selected = this.state.selected;
+    if (e.target.checked) {
+      selected.push(e.target.value);
+    } else {
+      const index = selected.indexOf(e.target.value);
+      selected.splice(index, 1);
+    }
+    this.setState({ selected });
   }
 
   render() {
@@ -34,6 +52,15 @@ class NewFlightPage extends Component {
             handleChange={this.props.changeFlightTemplate}
           />
         ))}
+        {this.props.flights.map((flight, index) => (
+          <FlightRow
+            isSelected={this.state.selected.includes(flight._id)}
+            onSelect={this.selectFlight}
+            key={`flight-${index}`}
+            flight={flight}
+            index={index}
+          />
+        ))}
       </div>
     );
   }
@@ -41,17 +68,20 @@ class NewFlightPage extends Component {
 
 NewFlightPage.propTypes = {
   addFlightTemplates: PropTypes.func,
+  fetchFlights: PropTypes.func,
   changeFlightTemplate: PropTypes.func,
-  flightTemplates: PropTypes.array
+  flightTemplates: PropTypes.array,
+  flights: PropTypes.array
 };
 const mapStateToProps = (store, props) => {
   return {
     ...props,
-    flightTemplates: store.flightTemplates
+    flightTemplates: store.flightTemplates,
+    flights: store.flights
   };
 };
 
 export default connect(
   mapStateToProps,
-  { addFlightTemplates, changeFlightTemplate }
+  { addFlightTemplates, changeFlightTemplate, fetchFlights }
 )(NewFlightPage);
