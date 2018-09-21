@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import UrlParser from '../components/UrlParser';
-import { addFlightTemplates } from '../actions/flightTemplateActions';
+import {
+  addFlightTemplates,
+  changeFlightTemplate
+} from '../actions/flightTemplateActions';
 import { connect } from 'react-redux';
+import FlightTemplate from '../components/FlightTemplate';
 
 class NewFlightPage extends Component {
   constructor(props) {
@@ -22,23 +26,32 @@ class NewFlightPage extends Component {
     return (
       <div>
         <UrlParser onParse={this.handleUrlParse} />
+        {this.props.flightTemplates.map((flightTemplate, index) => (
+          <FlightTemplate
+            key={index}
+            index={index}
+            template={flightTemplate}
+            handleChange={this.props.changeFlightTemplate}
+          />
+        ))}
       </div>
     );
   }
 }
 
 NewFlightPage.propTypes = {
-  addFlightTemplates: PropTypes.func
+  addFlightTemplates: PropTypes.func,
+  changeFlightTemplate: PropTypes.func,
+  flightTemplates: PropTypes.array
 };
-
 const mapStateToProps = (store, props) => {
   return {
-    flightTepmplates: store.flightTepmplates,
-    ...props
+    ...props,
+    flightTemplates: store.flightTemplates
   };
 };
 
 export default connect(
   mapStateToProps,
-  { addFlightTemplates }
+  { addFlightTemplates, changeFlightTemplate }
 )(NewFlightPage);
