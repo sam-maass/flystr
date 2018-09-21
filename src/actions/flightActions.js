@@ -6,3 +6,10 @@ export function fetchFlights() {
     payload: api().get(`/flights`)
   };
 }
+
+export function deleteFlight(id) {
+  return {
+    type: 'REMOVE_FLIGHT',
+    payload: api().delete(`/flight/${id}`)
+  };
+}

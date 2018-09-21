@@ -7,7 +7,7 @@ import {
 } from '../actions/flightTemplateActions';
 import { connect } from 'react-redux';
 import FlightTemplate from '../components/FlightTemplate';
-import { fetchFlights } from '../actions/flightActions';
+import { fetchFlights, deleteFlight } from '../actions/flightActions';
 import FlightRow from '../components/FlightRow';
 
 class NewFlightPage extends Component {
@@ -29,16 +29,23 @@ class NewFlightPage extends Component {
     this.props.addFlightTemplates(flightTemplates);
   }
 
-  selectFlight(e) {
+  selectFlight = id => () => {
     const selected = this.state.selected;
-    if (e.target.checked) {
-      selected.push(e.target.value);
-    } else {
-      const index = selected.indexOf(e.target.value);
+    if (selected.includes(id)) {
+      const index = selected.indexOf(id);
       selected.splice(index, 1);
+    } else {
+      selected.push(id);
     }
     this.setState({ selected });
-  }
+  };
+
+  deleteFlight = id => () => {
+    this.props.deleteFlight(id);
+    setTimeout(() => {
+      this.props.fetchFlights();
+    }, 100);
+  };
 
   render() {
     return (
@@ -55,7 +62,8 @@ class NewFlightPage extends Component {
         {this.props.flights.map((flight, index) => (
           <FlightRow
             isSelected={this.state.selected.includes(flight._id)}
-            onSelect={this.selectFlight}
+            onSelect={this.selectFlight(flight._id)}
+            onDelete={this.deleteFlight(flight._id)}
             key={`flight-${index}`}
             flight={flight}
             index={index}
@@ -69,6 +77,7 @@ class NewFlightPage extends Component {
 NewFlightPage.propTypes = {
   addFlightTemplates: PropTypes.func,
   fetchFlights: PropTypes.func,
+  deleteFlight: PropTypes.func,
   changeFlightTemplate: PropTypes.func,
   flightTemplates: PropTypes.array,
   flights: PropTypes.array
@@ -83,5 +92,10 @@ const mapStateToProps = (store, props) => {
 
 export default connect(
   mapStateToProps,
-  { addFlightTemplates, changeFlightTemplate, fetchFlights }
+  {
+    addFlightTemplates,
+    changeFlightTemplate,
+    fetchFlights,
+    deleteFlight
+  }
 )(NewFlightPage);
