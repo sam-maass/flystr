@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'emotion';
 import { classes } from '../../styles';
@@ -7,7 +7,11 @@ import { IconButton, Checkbox } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/DeleteOutline';
 import { getLinkSource } from '../NewDealForm/parseLink';
 
-class FlightRow extends PureComponent {
+class FlightRow extends Component {
+  shouldComponentUpdate() {
+    return false;
+  }
+
   render() {
     const {
       link,
