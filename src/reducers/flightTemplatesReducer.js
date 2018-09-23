@@ -4,6 +4,10 @@ export default function reducer(state = [test], action) {
       return [...state, ...action.payload];
     case 'CHANGE_FLIGHT_TEMPLATE':
       return changeFlightTemplate([...state], action.payload);
+    case 'REMOVE_FLIGHT_TEMPLATE':
+      return [
+        ...state.filter((elem, index) => index !== action.payload.templateIndex)
+      ];
     default:
       return state;
   }

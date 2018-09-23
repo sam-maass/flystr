@@ -13,3 +13,10 @@ export function deleteFlight(id) {
     payload: api().delete(`/flight/${id}`)
   };
 }
+
+export function addFlight(flight) {
+  return {
+    type: 'ADD_FLIGHT',
+    payload: api().post(`/flight`, { flight })
+  };
+}

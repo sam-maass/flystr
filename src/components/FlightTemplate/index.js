@@ -59,7 +59,12 @@ class FlightTemplate extends Component {
         <EditableField value={{ inDate }} onChange={this.handleFieldChange} />
         <EditableField value={{ price }} onChange={this.handleFieldChange} />
         <div className="actions">
-          <IconButton color="primary">
+          <IconButton
+            color="primary"
+            onClick={() =>
+              this.props.onAddFlight(this.props.template, this.props.index)
+            }
+          >
             <SaveIcon />
           </IconButton>
         </div>
@@ -70,6 +75,7 @@ class FlightTemplate extends Component {
 
 FlightTemplate.propTypes = {
   handleChange: PropTypes.func,
+  onAddFlight: PropTypes.func,
   template: PropTypes.object,
   index: PropTypes.index
 };
@@ -77,14 +83,13 @@ FlightTemplate.propTypes = {
 const style = css`
   margin: auto;
   margin-top: 8px;
-  max-width: 90%;
   display: grid;
-  gap: 8px;
+  gap: 32px;
   justify-content: center;
   align-content: space-around;
   align-items: center;
   background: #eee;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: 100px 70px 100px 70px 100px 70px 10px;
 `;
 
 export default FlightTemplate;

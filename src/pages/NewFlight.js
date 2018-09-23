@@ -3,11 +3,16 @@ import PropTypes from 'prop-types';
 import UrlParser from '../components/UrlParser';
 import {
   addFlightTemplates,
-  changeFlightTemplate
+  changeFlightTemplate,
+  removeFlightTemplate
 } from '../actions/flightTemplateActions';
 import { connect } from 'react-redux';
 import FlightTemplate from '../components/FlightTemplate';
-import { fetchFlights, deleteFlight } from '../actions/flightActions';
+import {
+  fetchFlights,
+  deleteFlight,
+  addFlight
+} from '../actions/flightActions';
 import FlightRow from '../components/FlightRow';
 
 class NewFlightPage extends Component {
@@ -47,6 +52,14 @@ class NewFlightPage extends Component {
     }, 100);
   };
 
+  addFlight = (flight, templateIndex) => {
+    this.props.addFlight(flight);
+    this.props.removeFlightTemplate(templateIndex);
+    setTimeout(() => {
+      this.props.fetchFlights();
+    }, 100);
+  };
+
   render() {
     return (
       <div>
@@ -57,6 +70,7 @@ class NewFlightPage extends Component {
             index={index}
             template={flightTemplate}
             handleChange={this.props.changeFlightTemplate}
+            onAddFlight={this.addFlight}
           />
         ))}
         {this.props.flights.map((flight, index) => (
@@ -79,6 +93,8 @@ NewFlightPage.propTypes = {
   fetchFlights: PropTypes.func,
   deleteFlight: PropTypes.func,
   changeFlightTemplate: PropTypes.func,
+  addFlight: PropTypes.func,
+  removeFlightTemplate: PropTypes.func,
   flightTemplates: PropTypes.array,
   flights: PropTypes.array
 };
@@ -96,6 +112,8 @@ export default connect(
     addFlightTemplates,
     changeFlightTemplate,
     fetchFlights,
-    deleteFlight
+    deleteFlight,
+    addFlight,
+    removeFlightTemplate
   }
 )(NewFlightPage);

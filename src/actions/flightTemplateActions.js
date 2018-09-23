@@ -11,3 +11,10 @@ export function changeFlightTemplate({ atIndex, key, value }) {
     payload: { atIndex, key, value }
   };
 }
+
+export function removeFlightTemplate(templateIndex) {
+  return {
+    type: 'REMOVE_FLIGHT_TEMPLATE',
+    payload: { templateIndex }
+  };
+}
