@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import EditableField from './editableField';
 import IconButton from '@material-ui/core/IconButton';
-import SaveIcon from '@material-ui/icons/CheckCircleOutline';
+import SaveIcon from '@material-ui/icons/AddCircleOutline';
 import { css } from 'emotion';
 import SelectLink from './selectLink';
 

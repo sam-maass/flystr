@@ -15,6 +15,7 @@ class FlightRow extends Component {
   render() {
     const {
       link,
+      createdAt,
       _id,
       outDestination,
       outOrigin,
@@ -23,10 +24,11 @@ class FlightRow extends Component {
       price,
       currency = 'EUR'
     } = this.props.flight;
-    const [outDateFormatted, inDateFormatted] = this.formatDates(
-      outDate,
-      inDate
-    );
+    const [
+      outDateFormatted,
+      inDateFormatted,
+      createdAtFormatted
+    ] = this.formatDates(outDate, inDate, createdAt);
 
     return (
       <div className={style}>
@@ -48,6 +50,8 @@ class FlightRow extends Component {
         </div>
         <div className="link">
           <a href={link}>{getLinkSource(link)}</a>
+          <br />
+          <small title="created">C: {createdAtFormatted}</small>
         </div>
         <div className="actions">
           <IconButton onClick={this.props.onDelete}>
@@ -58,8 +62,8 @@ class FlightRow extends Component {
     );
   }
 
-  formatDates(outDate, inDate) {
-    return [outDate, inDate].map(date => moment(date).format('DD.MM.YYYY'));
+  formatDates(...dates) {
+    return dates.map(date => moment(date).format('DD.MM.YYYY'));
   }
 }
 

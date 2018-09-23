@@ -19,8 +19,13 @@ class NewFlightPage extends Component {
   render() {
     return (
       <div>
+        <h2>Parse Links</h2>
         <UrlParser onParse={this.handleUrlParse} />
+        <hr />
+        <h2>Templates</h2>
         <FlightTemplateContainer />
+        <hr />
+        <h2>Flights</h2>
         <FlightList />
       </div>
     );
