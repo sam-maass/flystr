@@ -47,7 +47,7 @@ SelectLink.propTypes = {
   index: PropTypes.number,
   selectedLink: PropTypes.string,
   flight: PropTypes.object,
-  onChange: PropTypes.function
+  onChange: PropTypes.func
 };
 
 export default SelectLink;

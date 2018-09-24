@@ -4,6 +4,7 @@ import EditableField from './editableField';
 import IconButton from '@material-ui/core/IconButton';
 import SaveIcon from '@material-ui/icons/AddCircleOutline';
 import DeleteIcon from '@material-ui/icons/DeleteOutline';
+import PermaDeleteIcon from '@material-ui/icons/DeleteForeverOutlined';
 import { css } from 'emotion';
 import SelectLink from './selectLink';
 
@@ -36,7 +37,8 @@ class FlightTemplate extends Component {
       outDate,
       outDestination,
       inDate,
-      price
+      price,
+      _id
     } = this.props.template;
     return (
       <div className={style}>
@@ -66,6 +68,14 @@ class FlightTemplate extends Component {
           <IconButton color="primary" onClick={this.props.onRemoveFlight}>
             <DeleteIcon />
           </IconButton>
+          {_id && (
+            <IconButton
+              color="primary"
+              onClick={this.props.onRemoveFlightPermanently}
+            >
+              <PermaDeleteIcon />
+            </IconButton>
+          )}
         </div>
       </div>
     );
@@ -76,6 +86,7 @@ FlightTemplate.propTypes = {
   handleChange: PropTypes.func,
   onAddFlight: PropTypes.func,
   onRemoveFlight: PropTypes.func,
+  onRemoveFlightPermanently: PropTypes.func,
   template: PropTypes.object,
   index: PropTypes.index
 };
@@ -89,7 +100,7 @@ const style = css`
   align-content: space-around;
   align-items: center;
   background: #eee;
-  grid-template-columns: 100px 70px 100px 70px 100px 70px 100px;
+  grid-template-columns: 100px 70px 100px 70px 100px 70px 150px;
 `;
 
 export default FlightTemplate;
