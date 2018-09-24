@@ -91,7 +91,7 @@ const SideListComponent = ({ classes, user, logoutUser }) => {
                   <ListItemText primary="Settings" />
                 </ListItem>
               </Link>
-              <Link to={'/new-deal'}>
+              <Link to={'/new-flight'}>
                 <ListItem button>
                   <ListItemIcon>
                     <DealIcon />

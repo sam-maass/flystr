@@ -1,11 +1,12 @@
-import React, { Fragment, PureComponent } from 'react';
+import React, { Fragment, Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchFlights, deleteFlight } from '../../actions/flightActions';
 import FlightRow from '../FlightRow';
 import { addFlightTemplates } from '../../actions/flightTemplateActions';
+import DealPartialForm from './DealPartialForm';
 
-class FlightList extends PureComponent {
+class FlightList extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,6 +14,7 @@ class FlightList extends PureComponent {
     };
     this.selectFlight = this.selectFlight.bind(this);
     this.deleteFlight = this.deleteFlight.bind(this);
+    this.handleDealPost = this.handleDealPost.bind(this);
   }
 
   componentDidMount() {
@@ -42,11 +44,24 @@ class FlightList extends PureComponent {
     this.props.addFlightTemplates([flight]);
   };
 
+  handleDealPost = () => {
+    this.setState({ selected: [] });
+    this.props.fetchFlights();
+  };
+
   render() {
+    const { flights } = this.props;
+    const { selected } = this.state;
+
     return (
       <Fragment>
-        {this.props.flights.map(flight => {
-          const isSelected = this.state.selected.includes(flight._id);
+        <DealPartialForm
+          selectedFlights={selected}
+          afterPost={this.handleDealPost}
+        />
+        {flights.map(flight => {
+          const isSelected = selected.includes(flight._id);
+
           const key = `flight-${flight._id}`;
           return (
             <FlightRow
