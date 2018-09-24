@@ -15,7 +15,7 @@ class FlightTemplatesContainer extends Component {
     this.props.removeFlightTemplate(templateIndex);
     setTimeout(() => {
       this.props.fetchFlights();
-    }, 100);
+    }, 200);
   };
 
   render() {
