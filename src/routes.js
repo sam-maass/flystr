@@ -16,6 +16,12 @@ export const loggedInRoutes = [
     )
   },
   {
+    path: '/new-flight',
+    exact: true,
+    header: () => <CustomAppBar withReturn title="Add new flights" />,
+    main: () => <Pages.NewFlight />
+  },
+  {
     path: '/login',
     exact: true,
     main: () => (
