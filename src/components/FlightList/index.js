@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchFlights, deleteFlight } from '../../actions/flightActions';
 import FlightRow from '../FlightRow';
+import { addFlightTemplates } from '../../actions/flightTemplateActions';
 
 class FlightList extends PureComponent {
   constructor(props) {
@@ -37,6 +38,10 @@ class FlightList extends PureComponent {
     }, 10);
   };
 
+  updateFlight = flight => () => {
+    this.props.addFlightTemplates([flight]);
+  };
+
   render() {
     return (
       <Fragment>
@@ -48,6 +53,7 @@ class FlightList extends PureComponent {
               isSelected={isSelected}
               onSelect={this.selectFlight(flight._id)}
               onDelete={this.deleteFlight(flight._id)}
+              onUpdate={this.updateFlight(flight)}
               key={key}
               flight={flight}
             />
@@ -61,7 +67,8 @@ class FlightList extends PureComponent {
 FlightList.propTypes = {
   flights: PropTypes.array,
   fetchFlights: PropTypes.func,
-  deleteFlight: PropTypes.func
+  deleteFlight: PropTypes.func,
+  addFlightTemplates: PropTypes.func
 };
 
 const mapStateToProps = (store, props) => {
@@ -75,6 +82,7 @@ export default connect(
   mapStateToProps,
   {
     fetchFlights,
-    deleteFlight
+    deleteFlight,
+    addFlightTemplates
   }
 )(FlightList);

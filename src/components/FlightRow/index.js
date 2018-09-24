@@ -5,6 +5,7 @@ import { classes } from '../../styles';
 import moment from 'moment';
 import { IconButton, Checkbox } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/DeleteOutline';
+import UpdateIcon from '@material-ui/icons/UpdateOutlined';
 import { getLinkSource } from '../NewDealForm/parseLink';
 
 class FlightRow extends Component {
@@ -57,6 +58,9 @@ class FlightRow extends Component {
           <IconButton onClick={this.props.onDelete}>
             <DeleteIcon />
           </IconButton>
+          <IconButton onClick={this.props.onUpdate}>
+            <UpdateIcon />
+          </IconButton>
         </div>
       </div>
     );
@@ -71,7 +75,8 @@ FlightRow.propTypes = {
   flight: PropTypes.object,
   isSelected: PropTypes.bool,
   onSelect: PropTypes.func,
-  onDelete: PropTypes.func
+  onDelete: PropTypes.func,
+  onUpdate: PropTypes.func
 };
 
 const style = css`
@@ -82,7 +87,7 @@ const style = css`
   gap: 8px;
   margin-top: 8px;
   align-items: center;
-  grid-template-columns: 50px 1fr 2fr 1fr 1fr 50px;
+  grid-template-columns: 50px 1fr 2fr 1fr 1fr 100px;
   ${classes.typography.base};
 `;
 
