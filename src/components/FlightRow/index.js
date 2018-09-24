@@ -9,7 +9,8 @@ import UpdateIcon from '@material-ui/icons/UpdateOutlined';
 import { getLinkSource } from '../NewDealForm/parseLink';
 
 class FlightRow extends Component {
-  shouldComponentUpdate() {
+  shouldComponentUpdate(prevProps) {
+    if (prevProps.isSelected !== this.props.isSelected) return true;
     return false;
   }
 
@@ -35,7 +36,7 @@ class FlightRow extends Component {
       <div className={style}>
         <div className="selected">
           <Checkbox
-            checked={this.isSelected}
+            checked={this.props.isSelected}
             onChange={this.props.onSelect}
             value={_id}
           />
