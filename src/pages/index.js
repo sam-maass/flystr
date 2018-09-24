@@ -35,10 +35,17 @@ const NewDeal = Loadable({
   loader: () => import('./NewDeal'),
   loading: Loading
 });
+
 const NewTrip = Loadable({
   loader: () => import('./NewTrip'),
   loading: Loading
 });
+
+const NewFlight = Loadable({
+  loader: () => import('./NewFlight'),
+  loading: Loading
+});
+
 const Profile = Loadable({
   loader: () => import('./Profile'),
   loading: Loading
@@ -69,6 +76,7 @@ export {
   Login,
   Signup,
   NewTrip,
+  NewFlight,
   NewDeal,
   Profile,
   Trip,
