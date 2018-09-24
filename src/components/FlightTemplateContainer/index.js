@@ -10,12 +10,16 @@ import { fetchFlights, addFlight } from '../../actions/flightActions';
 import FlightTemplate from '../FlightTemplate';
 
 class FlightTemplatesContainer extends Component {
-  addFlight = (flight, templateIndex) => {
+  addFlight = (flight, templateIndex) => () => {
     this.props.addFlight(flight);
     this.props.removeFlightTemplate(templateIndex);
     setTimeout(() => {
       this.props.fetchFlights();
     }, 200);
+  };
+
+  removeFlightTemplate = templateIndex => () => {
+    this.props.removeFlightTemplate(templateIndex);
   };
 
   render() {
@@ -27,7 +31,8 @@ class FlightTemplatesContainer extends Component {
             index={index}
             template={flightTemplate}
             handleChange={this.props.changeFlightTemplate}
-            onAddFlight={this.addFlight}
+            onAddFlight={this.addFlight(flightTemplate, index)}
+            onRemoveFlight={this.removeFlightTemplate(index)}
           />
         ))}
       </Fragment>
