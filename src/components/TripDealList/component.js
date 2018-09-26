@@ -5,6 +5,7 @@ import { css } from 'emotion';
 import { classes, styles } from '../../styles';
 import InfoPanel from './InfoPanel';
 import { connect } from 'react-redux';
+import { CityPairString } from './CityPairString';
 
 const TripList = ({ flights = [], userId }) => {
   const augmentedFlights = flights.map(flight => {
@@ -25,9 +26,7 @@ const TripList = ({ flights = [], userId }) => {
     <div className={style}>
       {cityPairs.map((pair, key) => (
         <div key={key}>
-          <div className="cityPair">
-            <div>{pair}</div>
-          </div>
+          <CityPairString pair={pair} augmentedFlights={augmentedFlights} />
           {augmentedFlights
             .filter(f => f.cityPair === pair)
             .map((item, key) => (
