@@ -2,7 +2,9 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { css } from 'emotion';
 
-export const TooltipNode = ({ title: { city, iata, country, name } }) => {
+export const TooltipNode = ({
+  title: { city = '', iata = '', country = '', name = '' }
+}) => {
   return (
     <span className={style}>
       <b>
