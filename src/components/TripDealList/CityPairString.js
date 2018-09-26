@@ -11,9 +11,9 @@ export const CityPairString = ({ pair, augmentedFlights = [] }) => {
   );
   return (
     <div className={style}>
-      <div>
+      <div className="deskew">
         <Tooltip
-          disableFocusListener
+          enterTouchDelay={150}
           title={<TooltipNode title={outOriginDetails} />}
           placement="top"
         >
@@ -21,7 +21,7 @@ export const CityPairString = ({ pair, augmentedFlights = [] }) => {
         </Tooltip>{' '}
         -{' '}
         <Tooltip
-          disableFocusListener
+          enterTouchDelay={150}
           title={<TooltipNode title={outDestinationDetails} />}
           placement="top"
         >
@@ -46,7 +46,7 @@ const style = css`
   background: ${styles.colors.blue3};
   color: ${styles.colors.white};
   transform: skew(-20deg); /* SKEW */
-  div {
+  .deskew {
     transform: skew(20deg); /* SKEW */
   }
   span {

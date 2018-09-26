@@ -15,7 +15,7 @@ export const TooltipNode = ({ title: { city, iata, country, name } }) => {
 
 const style = css`
   line-height: 1.4;
-  font-size: 1.8em;
+  font-size: 16px;
 `;
 
 TooltipNode.propTypes = {
