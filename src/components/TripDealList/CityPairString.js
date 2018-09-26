@@ -6,9 +6,9 @@ import PropTypes from 'prop-types';
 import { TooltipNode } from './TooltipNode';
 
 export const CityPairString = ({ pair, augmentedFlights = [] }) => {
-  const [{ outDestinationDetails, outOriginDetails }] = augmentedFlights.filter(
-    f => f.cityPair === pair
-  );
+  const [
+    { outDestinationDetails, outOriginDetails, outOrigin, outDestination }
+  ] = augmentedFlights.filter(f => f.cityPair === pair);
   return (
     <div className={style}>
       <div className="deskew">
@@ -17,7 +17,7 @@ export const CityPairString = ({ pair, augmentedFlights = [] }) => {
           title={<TooltipNode title={outOriginDetails} />}
           placement="top"
         >
-          <span>{outOriginDetails.city}</span>
+          <span>{outOriginDetails.city || outOrigin}</span>
         </Tooltip>{' '}
         -{' '}
         <Tooltip
@@ -25,7 +25,7 @@ export const CityPairString = ({ pair, augmentedFlights = [] }) => {
           title={<TooltipNode title={outDestinationDetails} />}
           placement="top"
         >
-          <span>{outDestinationDetails.city}</span>
+          <span>{outDestinationDetails.city || outDestination}</span>
         </Tooltip>
       </div>
     </div>
