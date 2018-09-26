@@ -13,7 +13,7 @@ export const CityPairString = ({ pair, augmentedFlights = [] }) => {
     <div className={style}>
       <div className="deskew">
         <Tooltip
-          enterTouchDelay={150}
+          enterTouchDelay={50}
           title={<TooltipNode title={outOriginDetails} />}
           placement="top"
         >
@@ -21,7 +21,7 @@ export const CityPairString = ({ pair, augmentedFlights = [] }) => {
         </Tooltip>{' '}
         -{' '}
         <Tooltip
-          enterTouchDelay={150}
+          enterTouchDelay={50}
           title={<TooltipNode title={outDestinationDetails} />}
           placement="top"
         >
