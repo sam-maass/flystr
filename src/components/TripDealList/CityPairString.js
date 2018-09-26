@@ -7,7 +7,12 @@ import { TooltipNode } from './TooltipNode';
 
 export const CityPairString = ({ pair, augmentedFlights = [] }) => {
   const [
-    { outDestinationDetails, outOriginDetails, outOrigin, outDestination }
+    {
+      outDestinationDetails = {},
+      outOriginDetails = {},
+      outOrigin,
+      outDestination
+    }
   ] = augmentedFlights.filter(f => f.cityPair === pair);
   return (
     <div className={style}>
