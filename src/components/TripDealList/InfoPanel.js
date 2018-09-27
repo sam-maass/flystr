@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { css } from 'emotion';
 import { classes, styles } from '../../styles';
 import { Link } from 'react-router-dom';
+import { logClick } from '../../utils/logClick';
 const style = css`
   a{
   text-decoration: none;
@@ -48,7 +49,10 @@ const style = css`
 const InfoPanel = () => {
   return (
     <div className={style}>
-      <Link to="/trip">
+      <Link
+        to="/trip"
+        onClick={logClick('/trip', { category: 'Deal | More Dates Panel' })}
+      >
         <div className="container">
           <div className="row">
             <div className="header">

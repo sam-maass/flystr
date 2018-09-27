@@ -4,6 +4,8 @@ import moment from 'moment';
 import { css } from 'emotion';
 import { classes, styles } from '../../styles';
 import { getLinkSource } from '../NewDealForm/parseLink';
+import { logClick } from '../../utils/logClick';
+
 const style = css`
   text-decoration: none;
   .container {
@@ -60,7 +62,13 @@ const DealRow = ({ outDate, inDate, price, link, currency = 'EUR' }) => {
   const endDay = moment(inDate).format('ddd');
   const duration = moment(inDate).diff(outDate, 'days');
   return (
-    <a className={style} href={link} target="_blank" rel="noopener noreferrer">
+    <a
+      className={style}
+      href={link}
+      onClick={logClick(link, { category: 'Deal | Flight' })}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       <div className="container">
         <div className="row">
           <div className="dates">

@@ -12,6 +12,7 @@ import BackIcon from '@material-ui/icons/ArrowBack';
 import { withStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router';
 import { styles } from '../../styles';
+import { logClick } from '../../utils/logClick';
 
 const InnerAppBar = ({
   classes,
@@ -22,9 +23,6 @@ const InnerAppBar = ({
   history,
   routing
 }) => {
-  const trackClick = () => {
-    window.gtag('event', `${button.text} in AppBar clicked`);
-  };
   const goBack = () => {
     if (routing.previousRoute) {
       history.push(routing.previousRoute);
@@ -56,7 +54,9 @@ const InnerAppBar = ({
           <Link
             className={classes.noLink}
             to={button.link}
-            onClick={trackClick}
+            onClick={logClick(button.link, {
+              category: `Header | ${button.text} Button`
+            })}
           >
             <Button variant={button.variant} color={button.color}>
               {button.text}
