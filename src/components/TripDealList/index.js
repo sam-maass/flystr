@@ -16,7 +16,7 @@ const TripDealListContainer = ({ trips = [], tripId, setAppbar }) => {
   } else {
     return (
       <TripView trip={trip}>
-        <TripDealList trips={trip.matchingFlights} />
+        <TripDealList flights={trip.matchingFlights} />
       </TripView>
     );
   }
