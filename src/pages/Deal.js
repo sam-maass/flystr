@@ -14,24 +14,16 @@ class DealsPage extends React.Component {
     this.props.fetchDeal(this.props.dealId);
     if (!this.props.previousRoute) {
       this.props.setAppbar({
-        withDrawer: false,
         withReturn: false,
         button: {
           link: '/deals',
-          text: 'All Deals',
-          variant: 'raised',
-          color: 'primary'
+          text: 'All Deals'
         }
       });
     }
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.currentDeal.title !== prevProps.currentDeal.title) {
-      this.props.setAppbar({
-        title: `Flights to ${this.props.currentDeal.title}`
-      });
-    }
     if (
       this.props.currentDeal.noDealFound !==
         prevProps.currentDeal.noDealFound &&

@@ -101,13 +101,13 @@ export const loggedOutRoutes = [
   {
     path: '/deals',
     exact: true,
-    header: () => <CustomAppBar title="New Flight Deals" />,
+    header: () => <CustomAppBar withDrawer title="Deals" />,
     main: () => <Pages.Deals />
   },
   {
     path: '/deal/:dealId',
     exact: true,
-    header: () => <CustomAppBar withReturn />,
+    header: () => <CustomAppBar withReturn title="Example Dates" />,
     //eslint-disable-next-line
     main: props => <Pages.Deal {...props.match.params} />
   },
