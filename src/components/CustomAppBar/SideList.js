@@ -4,12 +4,13 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import PinDropIcon from '@material-ui/icons/PersonPinCircleOutlined';
-import SignOutIcon from '@material-ui/icons/PowerSettingsNew';
-import LoginIcon from '@material-ui/icons/Input';
+import TripIcon from '@material-ui/icons/MapOutlined';
+import LogoutIcon from '@material-ui/icons/LockOutlined';
+import LoginIcon from '@material-ui/icons/LockOpenOutlined';
+import SignupIcon from '@material-ui/icons/PersonAddOutlined';
 import UserIcon from '@material-ui/icons/PermIdentity';
 import DealIcon from '@material-ui/icons/MonetizationOnOutlined';
-import TakeOffIcon from '@material-ui/icons/FlightTakeoffOutlined';
+import DealsIcon from '@material-ui/icons/LocalAirportOutlined';
 import AllTripsIcon from '@material-ui/icons/List';
 import Divider from '@material-ui/core/Divider';
 import { withStyles } from '@material-ui/core/styles';
@@ -28,21 +29,29 @@ const SideListComponent = ({ classes, user, logoutUser }) => {
             </ListItem>
           </Link>
         </List>
+        <Divider />
         <Link to={'/deals'}>
           <ListItem button>
             <ListItemIcon>
-              <TakeOffIcon />
+              <DealsIcon />
             </ListItemIcon>
             <ListItemText primary="All Deals" />
           </ListItem>
         </Link>
-        <Divider />
         <Link to={'/login'}>
           <ListItem button>
             <ListItemIcon>
               <LoginIcon />
             </ListItemIcon>
             <ListItemText primary="Login" />
+          </ListItem>
+        </Link>
+        <Link to={'/signup'}>
+          <ListItem button>
+            <ListItemIcon>
+              <SignupIcon />
+            </ListItemIcon>
+            <ListItemText primary="Signup" />
           </ListItem>
         </Link>
       </div>
@@ -60,7 +69,7 @@ const SideListComponent = ({ classes, user, logoutUser }) => {
           <Link to={'/deals'}>
             <ListItem button>
               <ListItemIcon>
-                <TakeOffIcon />
+                <DealsIcon />
               </ListItemIcon>
               <ListItemText primary="All Deals" />
             </ListItem>
@@ -68,7 +77,7 @@ const SideListComponent = ({ classes, user, logoutUser }) => {
           <Link to={'/trips'}>
             <ListItem button>
               <ListItemIcon>
-                <PinDropIcon />
+                <TripIcon />
               </ListItemIcon>
               <ListItemText primary="My Trips" />
             </ListItem>
@@ -104,7 +113,7 @@ const SideListComponent = ({ classes, user, logoutUser }) => {
           <Divider />
           <ListItem button onClick={logoutUser}>
             <ListItemIcon>
-              <SignOutIcon />
+              <LogoutIcon />
             </ListItemIcon>
             <ListItemText primary="Logout" />
           </ListItem>
