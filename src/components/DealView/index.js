@@ -12,13 +12,22 @@ const style = destination => css`
   min-height: 200px;
   height: 40vh;
   background-image: url(${getDestinationImage('header', destination)});
+  background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
+  @media only screen and (min-width: 1024px) {
+    background-image: url(${getDestinationImage('header-wide', destination)});
+  }
   .backdrop {
     min-height: 200px;
     height: 40vh;
     display: grid;
-    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
+    grid-template-rows: repeat(3, 1fr);
+    background: linear-gradient(
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.2)
+    );
   }
   .badgeContainer {
     justify-self: end;
@@ -43,16 +52,12 @@ const style = destination => css`
     justify-self: center;
     text-align: center;
     .title {
-      ${classes.typography.h2};
+      ${classes.typography.h1};
       color: ${styles.colors.white};
+      font-size: 30px;
       line-height: 1;
     }
     .subtitle {
-      ${classes.typography.title};
-      color: ${styles.colors.white};
-    }
-    .main {
-      margin-top: 32px;
       ${classes.typography.title};
       color: ${styles.colors.white};
     }
@@ -87,8 +92,6 @@ const DealView = ({ deal }) => {
               <div className="infos">
                 <div className="title">{title}</div>
                 <div className="subtitle">from {subtitle}</div>
-
-                <div className="main">Example Dates: </div>
               </div>
             </div>
           </div>
