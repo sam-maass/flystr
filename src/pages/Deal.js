@@ -30,7 +30,6 @@ class DealsPage extends React.Component {
       this.props.currentDeal.noDealFound
     )
       this.props.setAppbar({
-        button: false,
         title: 'Deal expired',
         withDrawer: true
       });

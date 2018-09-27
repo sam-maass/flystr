@@ -12,8 +12,12 @@ const style = destination => css`
   min-height: 200px;
   height: 40vh;
   background-image: url(${getDestinationImage('header', destination)});
+  background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
+  @media only screen and (min-width: 1024px) {
+    background-image: url(${getDestinationImage('header-wide', destination)});
+  }
   .backdrop {
     min-height: 200px;
     height: 40vh;
