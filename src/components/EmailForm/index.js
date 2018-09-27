@@ -7,6 +7,8 @@ import { withFormik } from 'formik';
 import { connect } from 'react-redux';
 import { signupWithEmail, loginWithEmail } from '../../actions/userActions';
 import PropTypes from 'prop-types';
+import { logEvent } from '../../utils/logEvent';
+import { logClick } from '../../utils/logClick';
 
 const buttonLabel = label =>
   label === 'login' ? 'Login with email' : 'Signup with email';
@@ -28,6 +30,10 @@ const InnerEmailForm = ({
         label="Email"
         onChange={handleChange}
         onBlur={handleBlur}
+        onFocus={logEvent({
+          type: 'focus',
+          category: 'Signup | Email Field'
+        })}
         value={values.email}
         error={Boolean(errors.email)}
         helperText={errors.email}
@@ -39,11 +45,22 @@ const InnerEmailForm = ({
         type="password"
         onChange={handleChange}
         onBlur={handleBlur}
+        onFocus={logEvent({
+          type: 'focus',
+          category: 'Signup | Password Field'
+        })}
         value={values.password}
         error={Boolean(errors.password)}
         helperText={errors.password}
       />
-      <Button variant="contained" type="submit" disabled={isSubmitting}>
+      <Button
+        variant="contained"
+        type="submit"
+        disabled={isSubmitting}
+        onClick={logClick('/trips', {
+          category: 'Signup | Signup Button'
+        })}
+      >
         {buttonLabel(action)}
       </Button>
     </FormControl>

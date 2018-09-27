@@ -7,6 +7,7 @@ import moment from 'moment';
 import { getTimeframeString } from '../../utils';
 import { Link } from 'react-router-dom';
 import { getDestinationImage } from '../../getDestinationImage';
+import { logClick } from '../../utils/logClick';
 
 const wrapperStyle = destination => css`
   width: 100%;
@@ -93,7 +94,12 @@ const DealCard = props => {
   });
   return (
     <div className={wrapperStyle(destinations[0])}>
-      <Link to={`/deal/${slug || _id}`}>
+      <Link
+        to={`/deal/${slug || _id}`}
+        onClick={logClick(`/deal/${slug || _id}`, {
+          category: 'Deals | Deal Card'
+        })}
+      >
         <Card>
           <div className="container">
             <div className="backdrop">

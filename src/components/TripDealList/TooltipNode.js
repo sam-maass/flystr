@@ -3,16 +3,19 @@ import React from 'react';
 import { css } from 'emotion';
 
 export const TooltipNode = ({
-  title: { city = '', iata = '', country = '', name = '' }
+  title: { city = '', iata, country = '', name = '' }
 }) => {
-  return (
-    <span className={style}>
-      <b>
-        {name} ({iata})
-      </b>
-      <br /> {city}, {country}
-    </span>
-  );
+  if (!iata) {
+    return <span className={style}>Airport unknown</span>;
+  } else
+    return (
+      <span className={style}>
+        <b>
+          {name} ({iata})
+        </b>
+        <br /> {city}, {country}
+      </span>
+    );
 };
 
 const style = css`

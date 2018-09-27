@@ -4,6 +4,7 @@ import { css } from 'emotion';
 import { classes, styles } from '../../styles';
 import PropTypes from 'prop-types';
 import { TooltipNode } from './TooltipNode';
+import { logEvent } from '../../utils/logEvent';
 
 export const CityPairString = ({ pair, augmentedFlights = [] }) => {
   const [
@@ -21,6 +22,11 @@ export const CityPairString = ({ pair, augmentedFlights = [] }) => {
           enterTouchDelay={50}
           title={<TooltipNode title={outOriginDetails} />}
           placement="top"
+          onOpen={logEvent({
+            type: 'hover',
+            category: 'Deal | Airport Tooltip',
+            label: outOrigin
+          })}
         >
           <span>{outOriginDetails.city || outOrigin}</span>
         </Tooltip>{' '}
@@ -29,6 +35,11 @@ export const CityPairString = ({ pair, augmentedFlights = [] }) => {
           enterTouchDelay={50}
           title={<TooltipNode title={outDestinationDetails} />}
           placement="top"
+          onOpen={logEvent({
+            type: 'hover',
+            category: 'Deal | Airport Tooltip',
+            label: outDestination
+          })}
         >
           <span>{outDestinationDetails.city || outDestination}</span>
         </Tooltip>

@@ -3,6 +3,7 @@ import { css } from 'emotion';
 import Card from '@material-ui/core/Card';
 import { Link } from 'react-router-dom';
 import { styles, classes } from '../../styles';
+import { logClick } from '../../utils/logClick';
 
 const style = css`
   width: 100%;
@@ -38,14 +39,14 @@ const style = css`
     }
   }
 `;
-const trackClick = () => {
-  window.gtag('event', 'FilterDealsCard clicked');
-};
 
 const FilterDealsCard = () => {
   return (
     <div className={style}>
-      <Link to="/trips" onClick={trackClick}>
+      <Link
+        to="/trips"
+        onClick={logClick('/trips', { category: 'Deals | Filter Deals Card' })}
+      >
         <Card>
           <div className="card-content">
             <div className="backdrop">
