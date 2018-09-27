@@ -5,6 +5,7 @@ import { getDestinationImage } from '../../getDestinationImage';
 import { classes, styles } from '../../styles';
 import TripDealList from '../TripDealList/component';
 import { Link } from 'react-router-dom';
+import { logClick } from '../../utils/logClick';
 
 const style = destination => css`
   ${classes.typography.base};
@@ -109,15 +110,32 @@ const DealView = ({ deal }) => {
             href="flights.google.com"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={logClick('flights.google.com', {
+              category: 'Deal | Footer Text'
+            })}
           >
             Google Flights
           </a>{' '}
           and then use{' '}
-          <a href="momondo.com" target="_blank" rel="noopener noreferrer">
+          <a
+            href="momondo.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={logClick('momondo.com', {
+              category: 'Deal | Footer Text'
+            })}
+          >
             Momondo
           </a>{' '}
           or{' '}
-          <a href="skyscanner.com" target="_blank" rel="noopener noreferrer">
+          <a
+            href="skyscanner.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={logClick('skyscanner.com', {
+              category: 'Deal | Footer Text'
+            })}
+          >
             Skyscanner
           </a>
           .

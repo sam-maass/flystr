@@ -63,6 +63,7 @@ exports[`EmailForm: default 1`] = `
       className="MuiButtonBase-root-75 MuiButton-root-49 MuiButton-contained-60 MuiButton-raised-63"
       disabled={false}
       onBlur={[Function]}
+      onClick={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
