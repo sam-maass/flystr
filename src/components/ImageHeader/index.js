@@ -6,7 +6,7 @@ import { classes, styles } from '../../styles';
 import { Link } from 'react-router-dom';
 
 const header = css`
-  background-image: url('/landing.jpg');
+  background-image: url(https://flystr.com/destination-images/header/airplane1.jpg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position-y: 50%;
@@ -20,9 +20,8 @@ const header = css`
     'headline'
     'button';
   @media only screen and (min-width: 1024px) {
+    background-image: url(https://flystr.com/destination-images/header-wide/airplane1.jpg);
     grid-template-columns: 150px 1fr 150px;
-    height: 30vw;
-    max-height: 33vh;
     grid-template-areas:
       'logo . .'
       '. headline .'
