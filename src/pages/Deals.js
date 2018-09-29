@@ -6,6 +6,8 @@ import DealList from '../components/DealList';
 import { css } from 'emotion';
 import { setAppbar } from '../actions/appbarActions';
 import { Helmet } from 'react-helmet';
+import { withRouter } from 'react-router-dom';
+import { getDealMetaData } from './getDealMetaData';
 
 const style = css`
   margin: 16px;
@@ -20,10 +22,15 @@ class DealsPage extends React.Component {
         });
       }, 200);
     }
-    this.props.fetchDeals();
+
+    this.props.fetchDeals({ search: this.props.location.search });
   }
 
   render() {
+    if (!this.props.deals[0]) return null;
+    const { twitterTitle, twitterDescription, twitterImage } = getDealMetaData(
+      this.props.deals[0]
+    );
     return (
       <div className={style}>
         <Helmet>
@@ -32,6 +39,10 @@ class DealsPage extends React.Component {
             name="description"
             content="All cheap flight deals in one place. We crawl all major booking sites daily to provide you with the cheapest airline tickets"
           />
+          <meta name="twitter:site" content="@flystr_com" />
+          <meta name="twitter:title" content={twitterTitle} />
+          <meta name="twitter:description" content={twitterDescription} />
+          <meta name="twitter:image" content={twitterImage} />
         </Helmet>
         <DealList deals={this.props.deals} />
       </div>
@@ -43,7 +54,8 @@ DealsPage.propTypes = {
   fetchDeals: PropTypes.func,
   deals: PropTypes.array,
   loggedIn: PropTypes.bool,
-  setAppbar: PropTypes.func
+  setAppbar: PropTypes.func,
+  location: PropTypes.object
 };
 
 const mapStateToProps = (store, props) => {
@@ -54,7 +66,9 @@ const mapStateToProps = (store, props) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  { fetchDeals, setAppbar }
-)(DealsPage);
+export default withRouter(
+  connect(
+    mapStateToProps,
+    { fetchDeals, setAppbar }
+  )(DealsPage)
+);
