@@ -94,12 +94,12 @@ const FormikEmailForm = withFormik({
     if (props.action === 'signup' && !props.tocAccepted)
       alert('You need to accept our Terms and Conditions to proceed');
     if (props.action === 'signup' && props.tocAccepted) {
-      props.signupWithEmail(values);
       logEvent({
         category: 'Signup | User Signup',
         type: 'submit',
         label: 'Email Signup'
-      });
+      })();
+      props.signupWithEmail(values);
     }
 
     if (props.action === 'login') {
@@ -107,7 +107,7 @@ const FormikEmailForm = withFormik({
         category: 'Login | User Login',
         type: 'submit',
         label: 'Email Login'
-      });
+      })();
       props.loginWithEmail(values);
     }
     setSubmitting(false);

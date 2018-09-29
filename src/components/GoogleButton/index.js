@@ -22,7 +22,7 @@ class GoogleButtonContainer extends Component {
         category: 'Login | User Login',
         type: 'submit',
         label: 'Google Login'
-      });
+      })();
       loginUser();
     }
     if (action === 'signup' && tocAccepted) {
@@ -30,7 +30,7 @@ class GoogleButtonContainer extends Component {
         category: 'Login | User Signup',
         type: 'submit',
         label: 'Google Signup'
-      });
+      })();
       signupUser();
     }
     if (action === 'signup' && !tocAccepted)
