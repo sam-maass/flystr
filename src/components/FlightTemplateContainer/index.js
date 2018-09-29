@@ -51,7 +51,7 @@ class FlightTemplatesContainer extends Component {
                 flightTemplate,
                 index
               )}
-              onRemoveFlight={this.removeFlightTemplate(flightTemplate)}
+              onRemoveFlight={this.removeFlightTemplate(index)}
             />
           );
         })}
