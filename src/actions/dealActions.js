@@ -1,9 +1,9 @@
 import { api } from '../settings';
 
-export function fetchDeals() {
+export function fetchDeals({ search }) {
   return {
     type: 'FETCH_DEALS',
-    payload: api().get(`/deals`)
+    payload: api().get(`/deals${search}`)
   };
 }
 
