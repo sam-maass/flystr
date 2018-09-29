@@ -107,8 +107,7 @@ const DealCard = props => {
     destinations,
     firstDeparture,
     lastChecked = moment().subtract(3, 'days'),
-    currency = 'EUR'
-    createdAt,
+    currency = 'EUR',
     removed
   } = props.deal;
   const daysAgo = moment(lastChecked).fromNow();
