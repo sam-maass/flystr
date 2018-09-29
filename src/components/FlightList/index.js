@@ -5,6 +5,9 @@ import { fetchFlights, deleteFlight } from '../../actions/flightActions';
 import FlightRow from '../FlightRow';
 import { addFlightTemplates } from '../../actions/flightTemplateActions';
 import DealPartialForm from './DealPartialForm';
+import { Button } from '@material-ui/core';
+import moment from 'moment';
+import { css } from 'emotion';
 
 class FlightList extends Component {
   constructor(props) {
@@ -49,12 +52,24 @@ class FlightList extends Component {
     this.props.fetchFlights();
   };
 
+  updateOutdatedFlights = () => {
+    const outdatedFlights = this.props.flights.filter(flight => {
+      return moment().diff(moment(flight.createdAt), 'hour') > 72;
+    });
+    this.props.addFlightTemplates(outdatedFlights);
+  };
+
   render() {
     const { flights } = this.props;
     const { selected } = this.state;
 
     return (
       <Fragment>
+        <div className={buttonGroupStyle}>
+          <Button onClick={this.updateOutdatedFlights}>
+            Update outdated deals
+          </Button>
+        </div>
         <DealPartialForm
           selectedFlights={selected}
           afterPost={this.handleDealPost}
@@ -78,6 +93,13 @@ class FlightList extends Component {
     );
   }
 }
+
+const buttonGroupStyle = css`
+  max-width: 800px;
+  margin: auto;
+  display: grid;
+  justify-items: flex-end;
+`;
 
 FlightList.propTypes = {
   flights: PropTypes.array,
