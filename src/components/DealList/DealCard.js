@@ -9,9 +9,10 @@ import { Link } from 'react-router-dom';
 import { getDestinationImage } from '../../getDestinationImage';
 import { logClick } from '../../utils/logClick';
 
-const wrapperStyle = destination => css`
+const wrapperStyle = (destination, removed) => css`
   width: 100%;
   max-width: 400px;
+  position: relative;
   a {
     text-decoration: none;
   }
@@ -20,6 +21,7 @@ const wrapperStyle = destination => css`
     background-size: cover;
     display: grid;
     min-height: 200px;
+    ${removed ? 'filter: contrast(0.3) brightness(1.4) saturate(0.2)' : ''};
     .backdrop {
       height: 200px;
       display: grid;
@@ -58,6 +60,26 @@ const wrapperStyle = destination => css`
       }
     }
   }
+  .expired-overlay {
+    display: grid;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    align-items: flex-start;
+    justify-items: center;
+    .expired-box {
+      ${classes.typography.title};
+      color: ${styles.colors.white};
+      margin: 0;
+      padding: 8px 16px;
+      background: rgba(0, 0, 0, 0.4);
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+    }
+  }
 
   .bottomLayover {
     ${classes.typography.base};
@@ -85,46 +107,60 @@ const DealCard = props => {
     destinations,
     firstDeparture,
     createdAt,
-    currency = 'EUR'
+    currency = 'EUR',
+    removed
   } = props.deal;
   const daysAgo = moment(createdAt).fromNow();
   const timeFrame = getTimeframeString({
     startDate: firstDeparture,
     endDate: lastReturn
   });
-  return (
-    <div className={wrapperStyle(destinations[0])}>
-      <Link
-        to={`/deal/${slug || _id}`}
-        onClick={logClick(`/deal/${slug || _id}`, {
-          category: 'Deals | Deal Card'
-        })}
-      >
-        <Card>
-          <div className="container">
-            <div className="backdrop">
-              <span className="badge">
-                from {minPrice} {currency}
+  const renderInnerCard = () => {
+    return (
+      <Card>
+        <div className="container">
+          <div className="backdrop">
+            <span className="badge">
+              from {minPrice} {currency}
+            </span>
+            <div className="main">
+              <span className="title">{title}</span>
+              <br />
+              <span className="subtitle">from {subtitle}</span>
+            </div>
+            <div className="bottomLayover">
+              <span className="availability">
+                Availability <br />
+                <strong>{timeFrame}</strong>
               </span>
-              <div className="main">
-                <span className="title">{title}</span>
-                <br />
-                <span className="subtitle">from {subtitle}</span>
-              </div>
-              <div className="bottomLayover">
-                <span className="availability">
-                  Availability <br />
-                  <strong>{timeFrame}</strong>
-                </span>
-                <span className="age">
-                  posted <br />
-                  <strong>{daysAgo}</strong>
-                </span>
-              </div>
+              <span className="age">
+                posted <br />
+                <strong>{daysAgo}</strong>
+              </span>
             </div>
           </div>
-        </Card>
-      </Link>
+        </div>
+        {removed && (
+          <div className="expired-overlay">
+            <span className="expired-box">Deal Expired</span>
+          </div>
+        )}
+      </Card>
+    );
+  };
+  return (
+    <div className={wrapperStyle(destinations[0], removed)}>
+      {removed && renderInnerCard()}
+      {!removed && (
+        <Link
+          to={`/deal/${slug || _id}`}
+          onClick={logClick(`/deal/${slug || _id}`, {
+            category: 'Deals | Deal Card'
+          })}
+        >
+          {renderInnerCard()}
+        </Link>
+      )}
     </div>
   );
 };
