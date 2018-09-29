@@ -1,7 +1,15 @@
 export default function reducer(state = [], action) {
   switch (action.type) {
     case 'ADD_FLIGHT_TEMPLATES':
-      return [...state, ...action.payload];
+      return [
+        ...state,
+        ...action.payload.filter(
+          newTemplate =>
+            !state
+              .map(oldTemplate => oldTemplate.link)
+              .includes(newTemplate.link)
+        )
+      ];
     case 'CHANGE_FLIGHT_TEMPLATE':
       return changeFlightTemplate([...state], action.payload);
     case 'REMOVE_FLIGHT_TEMPLATE':
