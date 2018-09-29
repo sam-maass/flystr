@@ -5,6 +5,7 @@ import { loginUser, logoutUser, signupUser } from '../../actions/userActions';
 import React, { Component } from 'react';
 import { addError } from '../../actions/errorActions';
 import { api } from '../../settings';
+import { logEvent } from '../../utils/logEvent';
 
 class GoogleButtonContainer extends Component {
   constructor(props) {
@@ -16,8 +17,22 @@ class GoogleButtonContainer extends Component {
     const { loginUser, signupUser, action, tocAccepted } = this.props;
     window.localStorage.setItem('currentJWT', args.tokenObj.id_token);
     api().defaults.headers.common['Authorization'] = args.tokenObj.id_token;
-    if (action === 'login') loginUser();
-    if (action === 'signup' && tocAccepted) signupUser();
+    if (action === 'login') {
+      logEvent({
+        category: 'Login | User Login',
+        type: 'submit',
+        label: 'Google Login'
+      })();
+      loginUser();
+    }
+    if (action === 'signup' && tocAccepted) {
+      logEvent({
+        category: 'Login | User Signup',
+        type: 'submit',
+        label: 'Google Signup'
+      })();
+      signupUser();
+    }
     if (action === 'signup' && !tocAccepted)
       alert('You need to accept our Terms and Conditions to proceed');
   };
