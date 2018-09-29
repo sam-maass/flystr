@@ -106,11 +106,11 @@ const DealCard = props => {
     lastReturn,
     destinations,
     firstDeparture,
-    createdAt,
+    lastChecked = moment().subtract(3, 'days'),
     currency = 'EUR',
     removed
   } = props.deal;
-  const daysAgo = moment(createdAt).fromNow();
+  const daysAgo = moment(lastChecked).fromNow();
   const timeFrame = getTimeframeString({
     startDate: firstDeparture,
     endDate: lastReturn
@@ -134,7 +134,7 @@ const DealCard = props => {
                 <strong>{timeFrame}</strong>
               </span>
               <span className="age">
-                posted <br />
+                updated <br />
                 <strong>{daysAgo}</strong>
               </span>
             </div>
