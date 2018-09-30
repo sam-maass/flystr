@@ -85,7 +85,7 @@ const style = css`
   margin: auto;
   background: #eee;
   display: grid;
-  gap: 8px;
+  grid-gap: 8px;
   margin-top: 8px;
   align-items: center;
   grid-template-columns: 50px 1fr 2fr 1fr 1fr 100px;

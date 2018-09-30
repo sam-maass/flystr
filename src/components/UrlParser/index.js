@@ -51,7 +51,7 @@ const style = css`
   display: grid;
   align-items: flex-end;
   grid-template-columns: 1fr 150px;
-  gap: 16px;
+  grid-gap: 16px;
 `;
 
 export default UrlParser;

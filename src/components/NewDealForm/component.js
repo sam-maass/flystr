@@ -16,7 +16,7 @@ const style = css`
 
     display: grid;
     grid-template-columns: 2fr repeat(9, 1fr) 2fr;
-    gap: 8px;
+    grid-gap: 8px;
     .header {
       font-weight: bold;
     }
