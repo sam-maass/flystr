@@ -59,7 +59,7 @@ const style = css`
   margin: auto;
   grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
-  gap: 8px;
+  grid-gap: 8px;
   padding: 8px;
   background: #eee;
 `;

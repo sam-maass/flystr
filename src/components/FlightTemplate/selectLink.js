@@ -55,7 +55,7 @@ SelectLink.propTypes = {
 
 const style = css`
   display: grid;
-  gap: 8px;
+  grid-gap: 8px;
   grid-template-columns: repeat(auto-fit, minmax(10px, 1fr));
   text-align: center;
   justify-items: center;

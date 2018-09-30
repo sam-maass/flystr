@@ -95,7 +95,7 @@ const style = css`
   margin: auto;
   margin-top: 8px;
   display: grid;
-  gap: 32px;
+  grid-gap: 32px;
   justify-content: center;
   align-content: space-around;
   align-items: center;
