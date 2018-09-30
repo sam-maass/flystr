@@ -10,7 +10,7 @@ import { getDealMetaData } from './getDealMetaData';
 
 class DealsPage extends React.Component {
   componentDidMount() {
-    this.props.copyDeal(this.props.tempDeal);
+    // this.props.copyDeal(this.props.tempDeal);
     this.props.fetchDeal(this.props.dealId);
     if (!this.props.previousRoute) {
       this.props.setAppbar({

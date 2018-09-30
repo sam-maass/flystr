@@ -22,8 +22,13 @@ class DealsPage extends React.Component {
         });
       }, 200);
     }
-
     this.props.fetchDeals({ search: this.props.location.search });
+  }
+
+  shouldComponentUpdate(nextProps) {
+    if (this.props.deals !== nextProps.deals) return true;
+    if (this.props.loggedIn !== nextProps.loggedIn) return true;
+    return false;
   }
 
   render() {
@@ -63,7 +68,7 @@ const mapStateToProps = (store, props) => {
   return {
     ...props,
     loggedIn: Boolean(store.user._id),
-    deals: store.deals
+    deals: [...store.deals]
   };
 };
 
