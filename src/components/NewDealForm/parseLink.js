@@ -19,12 +19,12 @@ const destructureGoogleUrl = url => {
     inOrigin,
     inDestination,
     returnDate
-  ] = /(google.\w{2,3}.\w{0,3})\/.*#flt=(.*?)\.(.*?)\.(.*?)\*(.*?)\.(.*?)\.(.*?)/.exec(
+  ] = /.*(google.\w{2,3}.\w{0,3})\/.*#flt=(.*?)\.(.*?)\.(.*?)\*(.*?)\.(.*?)\.(.*?)/.exec(
     url
   );
 
   return {
-    group: {
+    groups: {
       linkSource,
       outOrigin,
       outDestination,
@@ -122,6 +122,7 @@ const parseSkyscannerLink = (domain, path) => {
 
 const parseGoogleLink = link => {
   const { groups } = destructureGoogleUrl(link);
+
   return {
     outOrigin: groups.outOrigin,
     outDate: groups.departureDate,
