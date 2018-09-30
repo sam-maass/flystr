@@ -10,8 +10,34 @@ const skyscannerRoute = new Route(
   '/transport/d/:origin/:departureDate/:destination/:inOrigin/:returnDate/:inDestination(/)'
 );
 
-const googleRegex = /(?<linkSource>google.\w{2,3}.\w{0,3})\/.*#flt=(?<outOrigin>.*?)\.(?<outDestination>.*?)\.(?<departureDate>.*?)\*(?<inOrigin>.*?)\.(?<inDestination>.*?)\.(?<returnDate>.*?);/;
+const destructureGoogleUrl = url => {
+  const [
+    linkSource,
+    outOrigin,
+    outDestination,
+    departureDate,
+    inOrigin,
+    inDestination,
+    returnDate
+  ] = /.*(google.\w{2,3}.\w{0,3})\/.*#flt=(.*?)\.(.*?)\.(.*?)\*(.*?)\.(.*?)\.(.*?)/.exec(
+    url
+  );
+
+  return {
+    groups: {
+      linkSource,
+      outOrigin,
+      outDestination,
+      departureDate,
+      inOrigin,
+      inDestination,
+      returnDate
+    }
+  };
+};
+
 const domainRegex = /^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:/\n?]+)/;
+
 export const parseLinksFromText = text => {
   const linkRegex = /https?:.*?((?="\s)|$)/g;
   const links = text.match(linkRegex);
@@ -95,7 +121,8 @@ const parseSkyscannerLink = (domain, path) => {
 };
 
 const parseGoogleLink = link => {
-  const { groups } = googleRegex.exec(link);
+  const { groups } = destructureGoogleUrl(link);
+
   return {
     outOrigin: groups.outOrigin,
     outDate: groups.departureDate,
