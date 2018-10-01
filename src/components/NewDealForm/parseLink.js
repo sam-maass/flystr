@@ -12,7 +12,7 @@ const skyscannerRoute = new Route(
 
 const destructureGoogleUrl = url => {
   const [
-    domain_Ignored,
+    domain,
     linkSource,
     outOrigin,
     outDestination,
@@ -26,6 +26,7 @@ const destructureGoogleUrl = url => {
 
   return {
     groups: {
+      domain,
       linkSource,
       outOrigin,
       outDestination,
