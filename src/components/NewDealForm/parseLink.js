@@ -123,7 +123,6 @@ const parseSkyscannerLink = (domain, path) => {
 
 const parseGoogleLink = link => {
   const { groups } = destructureGoogleUrl(link);
-  console.log(groups);
 
   return {
     outOrigin: groups.outOrigin,
