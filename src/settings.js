@@ -9,7 +9,7 @@ const getToken = () =>
 export const api = () => {
   return axios.create({
     baseURL: apiUrl,
-    timeout: 1000,
+    timeout: 10000,
     headers: { common: { Authorization: getToken() } }
   });
 };
