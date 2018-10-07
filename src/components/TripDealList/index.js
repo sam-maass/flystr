@@ -4,38 +4,55 @@ import TripDealList from './component';
 import { connect } from 'react-redux';
 import TripView from './TripView';
 import { setAppbar } from '../../actions/appbarActions';
+import { fetchTrip } from '../../actions/tripActions';
 
-const TripDealListContainer = ({ trips = [], tripId, setAppbar }) => {
-  const trip = trips.find(trip => trip._id === tripId);
-  setAppbar({
-    title: trip.name,
-    button: { text: 'edit', link: `/trip/${tripId}/edit` }
-  });
-  if (trip && trip.matchingFlights && trip.matchingFlights.length === 0) {
-    return <TripView trip={trip} />;
-  } else {
-    return (
-      <TripView trip={trip}>
-        <TripDealList flights={trip.matchingFlights} />
-      </TripView>
-    );
+class TripDealListContainer extends React.Component {
+  static propTypes = {
+    trip: PropTypes.object,
+    tripId: PropTypes.string,
+    setAppbar: PropTypes.func,
+    fetchTrip: PropTypes.func
+  };
+
+  componentDidMount() {
+    this.props.fetchTrip(this.props.tripId);
   }
-};
 
-TripDealListContainer.propTypes = {
-  trips: PropTypes.array,
-  tripId: PropTypes.string
-};
+  componentDidUpdate(prevProps) {
+    if (prevProps.trip._id !== this.props.trip._id) {
+      const { trip, setAppbar } = this.props;
+      setAppbar({
+        title: trip.name,
+        button: { text: 'edit', link: `/trip/${trip._id}/edit` }
+      });
+    }
+  }
+
+  render() {
+    const { trip } = this.props;
+    if (!trip || !trip._id) return null;
+
+    if (trip && trip.matchingFlights && trip.matchingFlights.length === 0) {
+      return <TripView trip={trip} />;
+    } else {
+      return (
+        <TripView trip={trip}>
+          <TripDealList flights={trip.matchingFlights} />
+        </TripView>
+      );
+    }
+  }
+}
 
 const mapStateToProps = (store, props) => {
   return {
     ...props,
     user: store.user,
-    trips: store.trips
+    trip: store.currentTrip
   };
 };
 
 export default connect(
   mapStateToProps,
-  { setAppbar }
+  { setAppbar, fetchTrip }
 )(TripDealListContainer);

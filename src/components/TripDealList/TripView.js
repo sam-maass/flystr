@@ -70,7 +70,7 @@ const TripView = ({ children, trip }) => {
 };
 
 TripView.propTypes = {
-  children: PropTypes.array,
+  children: PropTypes.object,
   trip: PropTypes.object
 };
 

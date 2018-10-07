@@ -20,11 +20,10 @@ const TripRow = ({
   endDate,
   _id,
   budget,
-  destinations = []
+  destinations = [],
+  minPrice,
+  currency
 }) => {
-  const minPrice = calcMinPrice(matchingFlights);
-  const currency = (matchingFlights[0] && matchingFlights[0].currency) || 'EUR';
-
   return (
     <div className={style}>
       <Link to={`/trip/${_id}`}>
@@ -52,16 +51,9 @@ TripRow.propTypes = {
   name: PropTypes.string,
   budget: PropTypes.number,
   destinations: PropTypes.arrayOf(PropTypes.string),
-  matchingFlights: PropTypes.array
+  matchingFlights: PropTypes.array,
+  minPrice: PropTypes.number,
+  currency: PropTypes.string
 };
 
 export default TripRow;
-
-function calcMinPrice(matchingFlights) {
-  const hasDeals = matchingFlights.length > 0;
-  let minPrice = undefined;
-  if (hasDeals) {
-    minPrice = Math.min(...matchingFlights.map(d => d.price));
-  }
-  return minPrice;
-}
