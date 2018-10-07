@@ -19,7 +19,7 @@ class TripDealListContainer extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.trip._id !== this.props.trip._id) {
+    if ((prevProps.trip || {})._id !== (this.props.trip || {})._id) {
       const { trip, setAppbar } = this.props;
       setAppbar({
         title: trip.name,
@@ -30,6 +30,7 @@ class TripDealListContainer extends React.Component {
 
   render() {
     const { trip } = this.props;
+    console.log(trip);
     if (!trip || !trip._id) return null;
 
     if (trip && trip.matchingFlights && trip.matchingFlights.length === 0) {
