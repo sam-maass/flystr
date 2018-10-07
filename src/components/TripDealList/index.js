@@ -30,7 +30,6 @@ class TripDealListContainer extends React.Component {
 
   render() {
     const { trip } = this.props;
-    console.log(trip);
     if (!trip || !trip._id) return null;
 
     if (trip && trip.matchingFlights && trip.matchingFlights.length === 0) {
