@@ -7,12 +7,14 @@ import appBar from './appBar';
 import allTrips from './allTrips';
 import deals from './dealReducer';
 import currentDeal from './currentDealReducer';
+import currentTrip from './currentTripReducer';
 import routing from './routingReducer';
 import landingpageDeals from './landingpageDealsReducer';
 import flightTemplates from './flightTemplatesReducer';
 import flights from './flightsReducer';
 
 export default combineReducers({
+  currentTrip,
   flights,
   flightTemplates,
   landingpageDeals,
