@@ -1,9 +1,9 @@
 require('ignore-styles');
 require('url-loader');
 require('file-loader');
-require('babel-register')({
+require('@babel/register')({
   ignore: [/(node_modules)/],
-  presets: ['es2015', 'react-app'],
-  plugins: ['syntax-dynamic-import', 'dynamic-import-node']
+  presets: ['@babel/preset-env', '@babel/preset-react'],
+  plugins: ['@babel/plugin-syntax-dynamic-import', 'dynamic-import-node']
 });
 require('./index');
