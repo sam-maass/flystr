@@ -44,7 +44,7 @@ const style = destination => css`
 `;
 
 const TripView = ({ children, trip }) => {
-  const dealCount = trip.matchingFlights.length;
+  const dealCount = trip.matchingFlights && trip.matchingFlights.length;
   const dealString =
     dealCount === 1 ? `${dealCount} Deal` : `${dealCount} Deals`;
   return (
@@ -70,7 +70,7 @@ const TripView = ({ children, trip }) => {
 };
 
 TripView.propTypes = {
-  children: PropTypes.array,
+  children: PropTypes.object,
   trip: PropTypes.object
 };
 
