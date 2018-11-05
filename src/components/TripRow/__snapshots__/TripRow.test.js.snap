@@ -14,17 +14,17 @@ exports[`Triprow: default 1`] = `
   line-height: 1.6em;
 }
 
-.emotion-5 {
+.emotion-6 {
   width: 100%;
   max-width: 400px;
 }
 
-.emotion-4 {
+.emotion-5 {
   display: grid;
   grid-template-columns: 40% 60%;
 }
 
-.emotion-4 .content {
+.emotion-5 .content {
   padding: 16px;
 }
 
@@ -46,7 +46,22 @@ exports[`Triprow: default 1`] = `
   text-overflow: ellipsis;
 }
 
-.emotion-6 a {
+.emotion-3 {
+  color: #263238;
+  font-family: 'Open Sans',sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: normal;
+  -webkit-letter-spacing: 0.05em;
+  -moz-letter-spacing: 0.05em;
+  -ms-letter-spacing: 0.05em;
+  letter-spacing: 0.05em;
+  line-height: 1.6em;
+  font-weight: bold;
+  color: #009688;
+}
+
+.emotion-7 a {
   -webkit-text-decoration: none;
   text-decoration: none;
 }
@@ -91,20 +106,20 @@ exports[`Triprow: default 1`] = `
 }
 
 <div
-  className="emotion-6"
+  className="emotion-7"
 >
   <a
     href="/trip/1234"
     onClick={[Function]}
   >
     <div
-      className="emotion-5"
+      className="emotion-6"
     >
       <div
         className="MuiPaper-root-2 MuiPaper-elevation1-5 MuiPaper-rounded-3 MuiCard-root-1"
       >
         <div
-          className="emotion-4"
+          className="emotion-5"
         >
           <div
             className="emotion-0"
@@ -133,7 +148,14 @@ exports[`Triprow: default 1`] = `
             </div>
             <div
               className="emotion-2"
-            />
+            >
+              <span
+                className="emotion-3"
+              >
+                for under 
+                200 EUR
+              </span>
+            </div>
           </div>
         </div>
       </div>
