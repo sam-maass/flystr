@@ -21,6 +21,9 @@ class Layout extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
+    if (this.props.loggedIn !== prevProps.loggedIn) {
+      this.props.fetchUser();
+    }
     const {
       location: { pathname }
     } = this.props;
