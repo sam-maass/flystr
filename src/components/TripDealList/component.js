@@ -8,18 +8,20 @@ import { connect } from 'react-redux';
 import { CityPairString } from './CityPairString';
 
 const TripList = ({ flights = [], userId }) => {
-  const augmentedFlights = flights.map(flight => {
-    const origin =
-      (flight.outOriginDetails && flight.outOriginDetails.city) ||
-      flight.outOrigin;
-    const destination =
-      (flight.outDestinationDetails && flight.outDestinationDetails.city) ||
-      flight.outDestination;
-    return {
-      ...flight,
-      cityPair: `${origin} - ${destination}`
-    };
-  });
+  const augmentedFlights = flights
+    .sort((a, b) => a.price - b.price)
+    .map(flight => {
+      const origin =
+        (flight.outOriginDetails && flight.outOriginDetails.city) ||
+        flight.outOrigin;
+      const destination =
+        (flight.outDestinationDetails && flight.outDestinationDetails.city) ||
+        flight.outDestination;
+      return {
+        ...flight,
+        cityPair: `${origin} - ${destination}`
+      };
+    });
   const cityPairs = [...new Set(augmentedFlights.map(f => f.cityPair))];
 
   return (
