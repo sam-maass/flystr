@@ -74,7 +74,8 @@ const FormikForm = withFormik({
       origins: (trip && trip.origins) || [],
       startDate: moment().format('YYYY-MM-DD'),
       endDate: moment()
-        .endOf('year')
+        .add(10, 'month')
+        .endOf('month')
         .format('YYYY-MM-DD'),
       budget: (trip && trip.budget) || '',
       name: (trip && trip.name) || '',
