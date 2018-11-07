@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import TripView from './TripView';
 import { setAppbar } from '../../actions/appbarActions';
 import { fetchTrip } from '../../actions/tripActions';
+import EmptyState from '../EmptyState';
+import LaterIcon from '@material-ui/icons/Search';
 
 class TripDealListContainer extends React.Component {
   static propTypes = {
@@ -33,7 +35,11 @@ class TripDealListContainer extends React.Component {
     if (!trip || !trip._id) return null;
 
     if (trip && trip.matchingFlights && trip.matchingFlights.length === 0) {
-      return <TripView trip={trip} />;
+      return (
+        <TripView trip={trip}>
+          <EmptyState title="No deals found yet" icon={<LaterIcon />} />
+        </TripView>
+      );
     } else {
       return (
         <TripView trip={trip}>
