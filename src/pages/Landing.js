@@ -56,7 +56,7 @@ class Landing extends React.Component {
         <div className={maxWidth}>
           <SubHeadline withBar>how it works</SubHeadline>
           <StepsGrid />
-          <SubHeadline withBar>deals we found last week</SubHeadline>
+          <SubHeadline withBar>our newest deals</SubHeadline>
           <TripCardGrid deals={this.props.deals} />
           <div className="cta">
             <Link to="/deals">
