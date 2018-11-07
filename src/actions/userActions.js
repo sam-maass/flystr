@@ -6,6 +6,20 @@ export function fetchUser() {
     payload: api().get(`/user/profile`)
   };
 }
+
+export function fetchNotifications() {
+  return {
+    type: 'FETCH_USER_NOTIFICATIONS',
+    payload: api().get(`/user/notifications`)
+  };
+}
+export function markNotificationsAsSeen() {
+  return {
+    type: 'MARK_USER_NOTIFICATIONS_READ',
+    payload: api().put(`/user/notifications/seen`)
+  };
+}
+
 export function signupUser() {
   return {
     type: 'SIGNUP_USER',
