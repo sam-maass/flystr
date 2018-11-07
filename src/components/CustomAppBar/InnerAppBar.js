@@ -13,6 +13,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { withRouter } from 'react-router';
 import { styles } from '../../styles';
 import { logClick } from '../../utils/logClick';
+import { StyledNotificationDrawer } from './NotificationDrawer';
 
 const InnerAppBar = ({
   classes,
@@ -21,7 +22,8 @@ const InnerAppBar = ({
   title,
   button,
   history,
-  routing
+  routing,
+  user = {}
 }) => {
   const goBack = () => {
     if (routing.previousRoute) {
@@ -63,6 +65,7 @@ const InnerAppBar = ({
             </Button>
           </Link>
         )}
+        {user._id && <StyledNotificationDrawer />}
       </Toolbar>
     </AppBar>
   );
@@ -73,6 +76,7 @@ InnerAppBar.propTypes = {};
 InnerAppBar.propTypes = {
   setAppbar: PropTypes.func,
   history: PropTypes.object,
+  user: PropTypes.object,
   button: PropTypes.object,
   routing: PropTypes.object,
   classes: PropTypes.object.isRequired,
@@ -102,6 +106,7 @@ const styledAppbar = withStyles(style)(RouterWrapper);
 const mapStateToProps = (store, props) => {
   return {
     ...props,
+    user: store.user,
     title: store.appBar.title,
     withDrawer: store.appBar.withDrawer,
     withReturn: store.appBar.withReturn,
