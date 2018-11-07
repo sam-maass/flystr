@@ -95,12 +95,15 @@ const TripCard = ({
               {duration}
             </div>
             <div className={classes.typography.base}>
-              {!newPrice &&
-                oldPrice && (
-                  <span className={noDealStyle}>for under {oldPrice}</span>
-                )}
-              {newPrice && <span className={oldPriceStyle}>{oldPrice}</span>}
-              {newPrice && <span className={newPriceStyle}>{newPrice}</span>}
+              {dealCount === 0 && (
+                <span className={noDealStyle}>for under {oldPrice}</span>
+              )}
+              {dealCount !== 0 && (
+                <span className={oldPriceStyle}>{oldPrice}</span>
+              )}
+              {dealCount !== 0 && (
+                <span className={newPriceStyle}>{newPrice}</span>
+              )}
             </div>
           </div>
         </div>
