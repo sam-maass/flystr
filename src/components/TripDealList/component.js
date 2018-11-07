@@ -9,6 +9,7 @@ import { CityPairString } from './CityPairString';
 
 const TripList = ({ flights = [], userId }) => {
   const augmentedFlights = flights
+    .sort((a, b) => new Date(a.outDate) - new Date(b.outDate))
     .sort((a, b) => a.price - b.price)
     .map(flight => {
       const origin =
