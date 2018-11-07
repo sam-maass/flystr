@@ -15,7 +15,7 @@ import FlightTemplate from '../FlightTemplate';
 
 class FlightTemplatesContainer extends Component {
   addFlight = (flight, templateIndex) => () => {
-    this.props.addFlight(flight);
+    this.props.addFlight({ ...flight, manuallyAdded: true });
     this.props.removeFlightTemplate(templateIndex);
     setTimeout(() => {
       this.props.fetchFlights();
