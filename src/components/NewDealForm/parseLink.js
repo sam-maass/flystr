@@ -1,4 +1,5 @@
 import Route from 'route-parser';
+import moment from 'moment';
 
 const momondoRoute = new Route(
   '/flight-search/:origin-:destination/:departureDate(/:inOrigin-:inDestination)/:returnDate(/:adultCount)(/)'
@@ -8,6 +9,10 @@ const kayakRoute = new Route(
 );
 const skyscannerRoute = new Route(
   '/transport/d/:origin/:departureDate/:destination/:inOrigin/:returnDate/:inDestination(/)'
+);
+
+const skyscannerRoute2 = new Route(
+  '/transport/flights/:origin/:destination/:departureDate/:returnDate(/)'
 );
 
 const destructureGoogleUrl = url => {
@@ -50,6 +55,7 @@ export const parseLinksFromText = text => {
 };
 
 export const parseLink = link => {
+  link = link.split('?')[0];
   const domain = link.match(domainRegex)[0];
   const path = link.split(domain)[1];
   const linkSource = getLinkSource(link);
@@ -73,7 +79,7 @@ export const parseLink = link => {
     }
   } catch (error) {
     //eslint-disable-next-line
-    console.error('could not parse URL');
+    console.error('could not parse URL', { error });
   }
 
   return {
@@ -110,15 +116,19 @@ const parseKayakLink = (domain, path) => {
 };
 
 const parseSkyscannerLink = (domain, path) => {
-  const params = skyscannerRoute.match(path);
+  let params = skyscannerRoute.match(path);
+  if (!params.origin) {
+    params = skyscannerRoute2.match(path);
+    params = normalizeDates(params, 'YYMMDD');
+  }
+
   return {
     outOrigin: params.origin.substr(0, 3),
     outDate: params.departureDate,
     outDestination: params.destination.substr(0, 3),
-    inOrigin: params.inOrigin.substr(0, 3),
+    inOrigin: params.origin.substr(0, 3),
     inDate: params.returnDate,
-    inDestination: params.inDestination.substr(0, 3),
-    link: domain + skyscannerRoute.reverse(params)
+    inDestination: params.destination.substr(0, 3)
   };
 };
 
@@ -134,6 +144,16 @@ const parseGoogleLink = link => {
     inDestination: groups.inDestination
   };
 };
+
+function normalizeDates(params, format) {
+  params.departureDate = normalizeDate(params.departureDate);
+  params.returnDate = normalizeDate(params.returnDate);
+  return params;
+
+  function normalizeDate(date) {
+    return moment(date, format).format('YYYY-MM-DD');
+  }
+}
 
 export function getLinkSource(link) {
   return link.match(domainRegex)[1];
