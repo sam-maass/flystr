@@ -82,7 +82,7 @@ InfoPanel.propTypes = {
   inDestination: PropTypes.string,
   outDate: PropTypes.string,
   inDate: PropTypes.string,
-  price: PropTypes.string,
+  price: PropTypes.number,
   link: PropTypes.string,
   linkSource: PropTypes.string,
   currency: PropTypes.string
