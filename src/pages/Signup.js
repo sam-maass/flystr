@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { PropTypes } from 'prop-types';
 import Card from '@material-ui/core/Card/Card';
@@ -12,63 +12,105 @@ import EmailForm from '../components/EmailForm';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { styles } from '../styles';
+import { isBrowser } from '../settings';
 
 class SignupPage extends React.Component {
-  state = { tocAccepted: false };
+  state = {
+    tocAccepted: false,
+    suggestLogin: isBrowser() && window.localStorage.getItem('hasFlystrAccount')
+  };
+  handleFalseSuggest = () => {
+    this.setState({ suggestLogin: false });
+    isBrowser() && window.localStorage.removeItem('hasFlystrAccount');
+  };
   handleChange = name => event => {
     this.setState({ [name]: event.target.checked });
   };
   render() {
     const { classes } = this.props;
-    const { tocAccepted } = this.state;
+    const { tocAccepted, suggestLogin } = this.state;
     return (
       <div className={classes.page}>
         <Card className={classes.card}>
           <CardContent>
-            <Typography variant="title"> Signup with Email</Typography>
-            <EmailForm action="signup" tocAccepted={tocAccepted} />
-
-            <br />
-            <Typography color="textSecondary" variant="body1">
-              or
-            </Typography>
-            <br />
-            <GoogleButton
-              action="signup"
-              text="Signup with Google"
-              tocAccepted={tocAccepted}
-            />
-            <p>
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={tocAccepted}
-                    onChange={this.handleChange('tocAccepted')}
-                    value="tocAccepted"
-                  />
-                }
-                label={
-                  <p className={classes.tocSpan}>
-                    I have read and accept the
-                    <Link to="/terms">Terms and Conditions</Link> and{' '}
-                    <Link to="/legal">Privacy Policy</Link> of Flystr
-                  </p>
-                }
-              />
-            </p>
-          </CardContent>
-          <CardActions className={classes.actions}>
-            <div>
-              <Typography className={classes.buttonText}>
-                already a user
-              </Typography>
-              <Link className={classes.noLink} to="/login">
-                <Button size="small" color="primary">
-                  Login
+            {suggestLogin && (
+              <Fragment>
+                <Typography variant="title">
+                  Looks like you have an account already
+                </Typography>
+                <Typography className={classes.buttonText}>
+                  are we wrong ?
+                </Typography>
+                <Button
+                  size="small"
+                  color="primary"
+                  onClick={this.handleFalseSuggest}
+                >
+                  Signup here
                 </Button>
-              </Link>
-            </div>
-          </CardActions>
+                <EmailForm action="login" />
+                <br />
+                <Typography color="textSecondary" variant="body1">
+                  or
+                </Typography>
+                <br />
+                <GoogleButton
+                  action="login"
+                  text="Login with Google"
+                  tocAccepted={tocAccepted}
+                />
+              </Fragment>
+            )}
+            {!suggestLogin && (
+              <Fragment>
+                <Typography variant="title"> Signup on Flystr</Typography>
+                <EmailForm action="signup" tocAccepted={tocAccepted} />
+
+                <br />
+                <Typography color="textSecondary" variant="body1">
+                  or
+                </Typography>
+                <br />
+                <GoogleButton
+                  action="signup"
+                  text="Signup with Google"
+                  tocAccepted={tocAccepted}
+                />
+                <p>
+                  <FormControlLabel
+                    control={
+                      <Checkbox
+                        checked={tocAccepted}
+                        onChange={this.handleChange('tocAccepted')}
+                        value="tocAccepted"
+                      />
+                    }
+                    label={
+                      <p className={classes.tocSpan}>
+                        I have read and agree to the{' '}
+                        <Link to="/terms">Terms and Conditions</Link> and{' '}
+                        <Link to="/legal">Privacy Policy</Link> of Flystr
+                      </p>
+                    }
+                  />
+                </p>
+              </Fragment>
+            )}
+          </CardContent>
+          {!suggestLogin && (
+            <CardActions className={classes.actions}>
+              <div>
+                <Typography className={classes.buttonText}>
+                  already a user
+                </Typography>
+                <Link className={classes.noLink} to="/login">
+                  <Button size="small" color="primary">
+                    Login
+                  </Button>
+                </Link>
+              </div>
+            </CardActions>
+          )}
         </Card>
       </div>
     );
@@ -89,7 +131,6 @@ const style = {
     display: 'grid',
     height: '100%',
     justifyItems: 'center',
-    gridTemplateRows: '1fr 300px 1fr',
     gridTemplateColumns: '1fr 300px 1fr'
   },
   card: {

@@ -18,7 +18,7 @@ class DealsPage extends React.Component {
     if (!this.props.loggedIn) {
       setTimeout(() => {
         this.props.setAppbar({
-          button: { text: 'Login / Signup', link: `/login` }
+          button: { text: 'Login / Signup', link: `/signup` }
         });
       }, 200);
     }

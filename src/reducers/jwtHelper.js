@@ -3,13 +3,16 @@ import { refreshToken } from '../actions/userActions';
 import ms from 'ms';
 
 export const setJWT = token => {
+  if (!token) return;
   window.localStorage.setItem('currentJWT', token);
+  window.localStorage.setItem('hasFlystrAccount', true);
+
   setJwtRefreshTimer(token);
 };
 
 export let refreshTimer = undefined;
 
-export const setJwtRefreshTimer = token => {
+const setJwtRefreshTimer = token => {
   import('jsonwebtoken').then(jwt => {
     const _token = token || window.localStorage.getItem('currentJWT');
     const { exp } = jwt.decode(_token);
