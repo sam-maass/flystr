@@ -161,17 +161,17 @@ class IntegrationAutosuggest extends React.Component {
     });
   };
 
-  selectByEnter = event => {
+  selectByEnter = (event, opts) => {
     if (event.key === 'Enter') {
-      this.onSelect();
+      this.onSelect(event, {});
     }
   };
 
-  onSelect = () => {
+  onSelect = (event, { suggestionValue }) => {
     this.setState(prevState => {
       const value = '';
       if (!prevState.suggestions[0]) return { value };
-      const suggestion = prevState.suggestions[0].value;
+      const suggestion = suggestionValue || prevState.suggestions[0].value;
       if (!suggestion) return { value };
       const nextAirport = suggestion;
       const selectedAirports = prevState.selectedAirports.add(nextAirport);
@@ -192,7 +192,6 @@ class IntegrationAutosuggest extends React.Component {
 
   onBlur = () => {
     this.props.setFieldTouched(this.props.elemKey, true);
-    this.onSelect();
   };
 
   render() {
