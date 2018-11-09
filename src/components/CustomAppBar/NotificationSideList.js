@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+import Divider from '@material-ui/core/Divider';
 import DealsIcon from '@material-ui/icons/TrendingDown';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
@@ -14,7 +15,7 @@ const style = css`
   .title {
     ${classes.typography.base};
     font-size: 20px;
-    padding: 8px;
+    padding: 8px 24px;
   }
 `;
 
@@ -22,7 +23,7 @@ export class NotificationSideList extends React.Component {
   shouldComponentUpdate(nextProps) {
     const { notifications: oldNotifications = [{}] } = this.props;
     const { notifications: nextNotifications = [{}] } = nextProps;
-    return nextNotifications[0]._id !== oldNotifications[0]._id;
+    return (nextNotifications[0] || {})._id !== (oldNotifications[0] || {})._id;
   }
 
   render() {
@@ -30,6 +31,7 @@ export class NotificationSideList extends React.Component {
     return (
       <div className={style}>
         <div className="title">Notifications</div>
+        <Divider />
         {notifications.map(notification => (
           <Link
             to={`/trip/${notification.payload.trip}`}
@@ -46,6 +48,7 @@ export class NotificationSideList extends React.Component {
                 secondary={moment(notification.createdAt).fromNow()}
               />
             </ListItem>
+            <Divider />
           </Link>
         ))}
       </div>
