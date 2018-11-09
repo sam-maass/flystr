@@ -68,7 +68,7 @@ const mapStateToProps = (store, props) => {
   return {
     ...props,
     loggedIn: Boolean(store.user._id),
-    deals: [...store.deals]
+    deals: store.deals
   };
 };
 

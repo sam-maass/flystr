@@ -23,6 +23,11 @@ class TemporaryDrawer extends React.Component {
     });
   };
 
+  shouldComponentUpdate(nextProps, nextState) {
+    if (this.state.left !== nextState.left) return true;
+    return false;
+  }
+
   render() {
     const { classes } = this.props;
     return (
