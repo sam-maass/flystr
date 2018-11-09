@@ -52,7 +52,6 @@ const styles = {
     display: 'grid',
     height: '100%',
     justifyItems: 'center',
-    gridTemplateRows: '1fr 300px 1fr',
     gridTemplateColumns: '1fr 300px 1fr'
   },
   card: {
