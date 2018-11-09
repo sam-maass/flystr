@@ -161,7 +161,7 @@ class IntegrationAutosuggest extends React.Component {
     });
   };
 
-  selectByEnter = (event, opts) => {
+  selectByEnter = event => {
     if (event.key === 'Enter') {
       this.onSelect(event, {});
     }
