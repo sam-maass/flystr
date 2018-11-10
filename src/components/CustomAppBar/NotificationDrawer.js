@@ -83,7 +83,6 @@ class NotificationDrawer extends React.Component {
 }
 
 NotificationDrawer.propTypes = {
-  classes: PropTypes.object.isRequired,
   notifications: PropTypes.array,
   fetchNotifications: PropTypes.func,
   markNotificationsAsSeen: PropTypes.func

@@ -1,26 +1,45 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import TripList from './component';
+import InnerTripList from './component';
 import { connect } from 'react-redux';
 import EmptyTripList from '../EmptyTripList';
+import { fetchUser } from '../../actions/userActions';
 
-const TripListContainer = ({ trips }) => {
-  if (trips.length === 0) {
-    return <EmptyTripList />;
-  } else {
-    return <TripList trips={trips} />;
+class TripListContainer extends React.Component {
+  shouldComponentUpdate(nextProps) {
+    if (this.props.trips !== nextProps.trips) return true;
+    if (
+      (this.props.notifcations[0] || {})._id !==
+      (nextProps.notifcations[0] || {})._id
+    ) {
+      this.props.fetchUser();
+    }
+    return false;
   }
-};
+
+  render() {
+    if (this.props.trips.length === 0) {
+      return <EmptyTripList />;
+    } else {
+      return <InnerTripList trips={this.props.trips} />;
+    }
+  }
+}
 
 TripListContainer.propTypes = {
-  trips: PropTypes.array
+  trips: PropTypes.array,
+  notifcations: PropTypes.array,
+  fetchUser: PropTypes.func
 };
 
 const mapStateToProps = store => {
   return {
-    user: store.user,
-    trips: store.trips
+    trips: store.trips,
+    notifcations: store.notifications
   };
 };
 
-export default connect(mapStateToProps)(TripListContainer);
+export default connect(
+  mapStateToProps,
+  { fetchUser }
+)(TripListContainer);
