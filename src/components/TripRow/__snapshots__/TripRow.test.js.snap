@@ -84,6 +84,8 @@ exports[`Triprow: default 1`] = `
 
 .emotion-0 {
   background-image: url(https://flystr.com/destination-images/card/BRE.jpg);
+  -webkit-filter: opacity(1);
+  filter: opacity(1);
   background-size: cover;
   padding: 8px;
   display: grid;
@@ -116,9 +118,21 @@ exports[`Triprow: default 1`] = `
   color: #FAFAFA;
 }
 
+.emotion-0 .badge.no-deal {
+  background-color: #00BCD4;
+  color: #FAFAFA;
+}
+
 .emotion-0 .badge.active {
   background-color: #009688;
   color: #FAFAFA;
+}
+
+.emotion-0 .spinner {
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
+  justify-self: center;
 }
 
 <div
