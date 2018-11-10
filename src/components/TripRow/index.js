@@ -22,7 +22,8 @@ const TripRow = ({
   budget,
   destinations = [],
   minPrice,
-  currency
+  currency,
+  createdAt
 }) => {
   return (
     <div className={style}>
@@ -30,6 +31,7 @@ const TripRow = ({
         <TripCard
           destinations={destinations}
           title={name}
+          createdAt={createdAt}
           dealCount={matchingFlights.length}
           dates={getTimeframeString({ startDate, endDate })}
           duration={getDurationString({ toDuration, fromDuration })}
@@ -53,7 +55,8 @@ TripRow.propTypes = {
   destinations: PropTypes.arrayOf(PropTypes.string),
   matchingFlights: PropTypes.array,
   minPrice: PropTypes.number,
-  currency: PropTypes.string
+  currency: PropTypes.string,
+  createdAt: PropTypes.string
 };
 
 export default TripRow;

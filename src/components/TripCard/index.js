@@ -1,17 +1,20 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Card from '@material-ui/core/Card';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import { css } from 'emotion';
 import { classes, styles } from '../../styles';
 import PropTypes from 'prop-types';
 import { getDestinationImage } from '../../getDestinationImage';
+import moment from 'moment';
 
 const wrapperStyle = css`
   width: 100%;
   max-width: 400px;
 `;
 
-const imgStyle = code => css`
+const imgStyle = (code, dealCount) => css`
   background-image: url(${getDestinationImage('square', code)});
+  filter: opacity(${dealCount > 0 ? 1 : 0.8});
   background-size: cover;
   padding: 8px;
   display: grid;
@@ -27,10 +30,18 @@ const imgStyle = code => css`
       background-color: ${styles.colors.orange};
       color: ${styles.colors.white};
     }
+    &.no-deal {
+      background-color: ${styles.colors.blue1};
+      color: ${styles.colors.white};
+    }
     &.active {
       background-color: ${styles.colors.green3};
       color: ${styles.colors.white};
     }
+  }
+  .spinner {
+    align-self: center;
+    justify-self: center;
   }
 `;
 
@@ -75,17 +86,32 @@ const TripCard = ({
   dates,
   duration,
   title,
-  destinations
+  destinations,
+  createdAt
 }) => {
   const dealString =
     dealCount === 1 ? `${dealCount} Deal` : `${dealCount} Deals`;
+  const freshlyCreated =
+    moment(createdAt)
+      .add(2, 'minutes')
+      .diff(moment()) > 0;
   return (
     <div className={wrapperStyle}>
       <Card>
         <div className={containerStyle}>
-          <div className={imgStyle(destinations[0])}>
+          <div className={imgStyle(destinations[0], dealCount)}>
             {dealCount > 0 && <span className="badge deal">{dealString}</span>}
-            {dealCount === 0 && <span className="badge active">active</span>}
+            {!freshlyCreated &&
+              dealCount === 0 && <span className="badge no-deal">0 Deals</span>}
+            {freshlyCreated &&
+              dealCount === 0 && (
+                <Fragment>
+                  <span className="badge active">searching ...</span>
+                  <div className="spinner">
+                    <CircularProgress disableShrink />
+                  </div>
+                </Fragment>
+              )}
           </div>
           <div className="content">
             <div className={titleStyle}>{title} </div>
@@ -119,7 +145,8 @@ TripCard.propTypes = {
   dates: PropTypes.string,
   duration: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  destinations: PropTypes.array.isRequired
+  destinations: PropTypes.array.isRequired,
+  createdAt: PropTypes.string
 };
 
 export default TripCard;
