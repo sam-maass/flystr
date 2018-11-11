@@ -1,6 +1,8 @@
+import { FETCH_LANDINGPAGE_DEALS } from '../actions/dealActions';
+
 export default function reducer(state = [], action) {
   switch (action.type) {
-    case 'FETCH_LANDINGPAGE_DEALS_FULFILLED':
+    case `${FETCH_LANDINGPAGE_DEALS}_FULFILLED`:
       return action.payload.data;
     default:
       return state;
