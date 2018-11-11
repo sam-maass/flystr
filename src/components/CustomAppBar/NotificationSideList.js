@@ -9,17 +9,25 @@ import { Link } from 'react-router-dom';
 import moment from 'moment';
 import { css } from 'emotion';
 import { styles, classes } from '../../styles';
+import { WebPushSwitch } from '../WebPushSwitch/WebPushSwitch';
 
 const style = css`
   max-width: 80vw;
+  ${classes.typography.base};
   .title {
-    ${classes.typography.base};
     font-size: 20px;
     padding: 8px 24px;
+  }
+  .webpush {
+    padding: 0px 24px;
   }
 `;
 
 export class NotificationSideList extends React.Component {
+  static propTypes = {
+    notifications: PropTypes.array
+  };
+
   shouldComponentUpdate(nextProps) {
     const { notifications: oldNotifications = [{}] } = this.props;
     const { notifications: nextNotifications = [{}] } = nextProps;
@@ -31,6 +39,10 @@ export class NotificationSideList extends React.Component {
     return (
       <div className={style}>
         <div className="title">Notifications</div>
+        <div className="webpush">
+          <span>Push Notifications:</span>
+          <WebPushSwitch />
+        </div>
         <Divider />
         {notifications.map(notification => (
           <Link
@@ -55,7 +67,3 @@ export class NotificationSideList extends React.Component {
     );
   }
 }
-
-NotificationSideList.propTypes = {
-  notifications: PropTypes.array
-};
