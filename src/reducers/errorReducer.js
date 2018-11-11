@@ -1,16 +1,24 @@
+import { DELETE_LAST_ERROR, ADD_ERROR } from '../actions/errorActions';
+import {
+  LOGIN_USER,
+  SIGNUP_USER,
+  SIGNUP_WITH_EMAIL,
+  LOGIN_WITH_EMAIL
+} from '../actions/userActions';
+
 export default function reducer(state = [], action) {
   switch (action.type) {
-    case 'DELETE_LAST_ERROR':
+    case DELETE_LAST_ERROR:
       return [...state.slice(1)];
-    case 'ADD_ERROR':
+    case ADD_ERROR:
       return [...state, { error: action.payload.error }];
-    case 'LOGIN_USER_REJECTED':
+    case `${LOGIN_USER}_REJECTED`:
       return [...state, { error: action.payload.response.data.error }];
-    case 'SIGNUP_USER_REJECTED':
+    case `${SIGNUP_USER}_REJECTED`:
       return [...state, { error: action.payload.response.data.error }];
-    case 'SIGNUP_WITH_EMAIL_REJECTED':
+    case `${SIGNUP_WITH_EMAIL}_REJECTED`:
       return [...state, { error: action.payload.response.data.error }];
-    case 'LOGIN_WITH_EMAIL_REJECTED':
+    case `${LOGIN_WITH_EMAIL}_REJECTED`:
       return [...state, { error: action.payload.response.data.error }];
     default:
       return state;

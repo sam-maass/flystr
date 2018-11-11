@@ -1,6 +1,12 @@
+import {
+  ADD_FLIGHT_TEMPLATES,
+  CHANGE_FLIGHT_TEMPLATE,
+  REMOVE_FLIGHT_TEMPLATE
+} from '../actions/flightTemplateActions';
+
 export default function reducer(state = [], action) {
   switch (action.type) {
-    case 'ADD_FLIGHT_TEMPLATES':
+    case ADD_FLIGHT_TEMPLATES:
       return [
         ...state,
         ...action.payload.filter(
@@ -10,9 +16,9 @@ export default function reducer(state = [], action) {
               .includes(newTemplate.link)
         )
       ];
-    case 'CHANGE_FLIGHT_TEMPLATE':
+    case CHANGE_FLIGHT_TEMPLATE:
       return changeFlightTemplate([...state], action.payload);
-    case 'REMOVE_FLIGHT_TEMPLATE':
+    case REMOVE_FLIGHT_TEMPLATE:
       return [
         ...state.filter((elem, index) => index !== action.payload.templateIndex)
       ];
