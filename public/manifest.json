@@ -1,5 +1,6 @@
 {
   "short_name": "Flystr",
+  "gcm_sender_id": "1059931024943",
   "name": "Tailored flight recommendations",
   "icons": [
     {

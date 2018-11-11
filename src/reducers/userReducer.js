@@ -1,7 +1,10 @@
 import { setJWT, refreshTimer } from './jwtHelper';
+import { UPDATE_USER_SETTINGS } from '../actions/userActions';
 
 export default function reducer(state = { ready: false }, action) {
   switch (action.type) {
+    case `${UPDATE_USER_SETTINGS}_FULFILLED`:
+      return { ...state, ...action.payload.data };
     case 'FETCH_USER_PENDING':
       return { ...state, fetching: true };
     case 'FETCH_USER_REJECTED':
