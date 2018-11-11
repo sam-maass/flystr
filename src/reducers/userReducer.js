@@ -8,7 +8,7 @@ import {
   LOGIN_WITH_EMAIL,
   LOGOUT_USER,
   REFRESH_USER_TOKEN
-} from '../actions/types';
+} from '../actions/userActions';
 
 export default function reducer(state = { ready: false }, action) {
   switch (action.type) {
