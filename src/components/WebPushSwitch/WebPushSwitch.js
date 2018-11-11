@@ -5,34 +5,54 @@ import { updateUserSettings } from '../../actions/userActions';
 import PropTypes from 'prop-types';
 import { getActiveSubscription, requestSubscription } from './webPushHelpers';
 
-function InnerWebPushSwitch({ userSettings = {}, updateUserSettings }) {
-  const handleChange = async () => {
+class InnerWebPushSwitch extends React.Component {
+  static propTypes = {
+    isPushActive: PropTypes.bool,
+    updateUserSettings: PropTypes.func
+  };
+
+  handleChange = async () => {
+    const { isPushActive, updateUserSettings } = this.props;
     let pushSubscription;
-    if (!active) {
+    if (!isPushActive) {
       pushSubscription =
         (await getActiveSubscription()) || (await requestSubscription());
       if (!pushSubscription) return;
     }
     updateUserSettings({
       pushSubscription,
-      pushNotificationsActive: !active
+      pushNotificationsActive: !isPushActive
     });
   };
 
-  const active = Boolean(userSettings.pushNotificationsActive);
-  return (
-    <Switch checked={active} value="webPushActive" onChange={handleChange} />
-  );
-}
+  componentDidMount() {
+    const { isPushActive, updateUserSettings } = this.props;
+    const getBrowserSettings = async () => {
+      const pushSubscription = await getActiveSubscription();
+      if (isPushActive && !pushSubscription)
+        updateUserSettings({
+          pushSubscription: {},
+          pushNotificationsActive: false
+        });
+    };
+    getBrowserSettings();
+  }
 
-InnerWebPushSwitch.propTypes = {
-  userSettings: PropTypes.object,
-  updateUserSettings: PropTypes.func
-};
+  render() {
+    return (
+      <Switch
+        checked={this.props.isPushActive}
+        value="webPushActive"
+        onChange={this.handleChange}
+      />
+    );
+  }
+}
 
 const mapStateToProps = store => {
   return {
-    userSettings: store.user.settings
+    isPushActive:
+      store.user.settings && store.user.settings.pushNotificationsActive
   };
 };
 

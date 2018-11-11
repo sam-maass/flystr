@@ -18,7 +18,7 @@ async function subscribeUser() {
   const convertedVapidKey = urlBase64ToUint8Array(vapidPublicKey);
   if ('serviceWorker' in navigator) {
     try {
-      const reg = await navigator.serviceWorker.ready;
+      const reg = await navigator.serviceWorker.getRegistration();
       const sub = await reg.pushManager.subscribe({
         userVisibleOnly: true,
         applicationServerKey: convertedVapidKey

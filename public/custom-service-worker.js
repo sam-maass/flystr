@@ -1,36 +1,31 @@
-self.addEventListener('notificationclose', e => {
+self.addEventListener('notificationclick', e => {
   const notification = e.notification;
-  const primaryKey = notification.data.primaryKey;
+  const action = e.action;
 
-  console.log(`Closed notification: ${primaryKey}`);
+  if (action === 'close') {
+    notification.close();
+  } else {
+    // eslint-disable-next-line no-undef
+    clients.openWindow(notification.data.url);
+    notification.close();
+  }
 });
 
 self.addEventListener('push', e => {
-  let body;
+  e.waitUntil(evaluateNotification(e));
+});
 
+async function evaluateNotification(e) {
+  let body;
   if (e.data) {
     body = e.data.text();
-  } else {
-    body = 'Push message no payload';
   }
-
-  const options = {
-    body,
-    icon: 'images/notification-flat.png',
-    vibrate: [100, 50, 100],
-    data: { dateOfArrival: Date.now(), primaryKey: 1 },
-    actions: [
-      {
-        action: 'explore',
-        title: 'Explore this new world',
-        icon: 'images/checkmark.png'
-      },
-      {
-        action: 'close',
-        title: 'I dont want any of this',
-        icon: 'images/xmark.png'
-      }
-    ]
-  };
-  e.waitUntil(self.registration.showNotification('Push Notification', options));
-});
+  if (body) {
+    fetch(body)
+      .then(res => res.json())
+      .then(async options => {
+        if (!options) return;
+        await self.registration.showNotification(options.title, options);
+      });
+  }
+}
