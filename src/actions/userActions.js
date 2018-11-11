@@ -1,5 +1,14 @@
 import { api } from '../settings';
 
+export const UPDATE_USER_SETTINGS = 'UPDATE_USER_SETTINGS';
+
+export function updateUserSettings(userSettings) {
+  return {
+    type: UPDATE_USER_SETTINGS,
+    payload: api().put(`/user`, userSettings)
+  };
+}
+
 export function fetchUser() {
   return {
     type: 'FETCH_USER',

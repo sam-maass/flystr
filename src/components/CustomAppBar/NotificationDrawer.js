@@ -93,7 +93,6 @@ const mapStateToProps = store => {
     notifications: store.notifications
   };
 };
-
 export const StyledNotificationDrawer = connect(
   mapStateToProps,
   { fetchNotifications, markNotificationsAsSeen }
