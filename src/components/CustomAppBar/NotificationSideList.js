@@ -19,10 +19,6 @@ const style = css`
 `;
 
 export class NotificationSideList extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   shouldComponentUpdate(nextProps) {
     const { _id: currentId } = this.props.notifications[0];
     const { _id: nextId } = nextProps.notifications[0];
