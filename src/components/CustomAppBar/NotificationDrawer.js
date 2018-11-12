@@ -1,23 +1,28 @@
 import React from 'react';
-import IconButton from '@material-ui/core/IconButton';
 import PropTypes from 'prop-types';
 import Drawer from '@material-ui/core/Drawer';
 import { NotificationSideList } from './NotificationSideList';
-import { Badge } from '@material-ui/core';
-import NotificationsIcon from '@material-ui/icons/NotificationsActiveOutlined';
 import { connect } from 'react-redux';
 import {
   fetchNotifications,
   markNotificationsAsSeen
 } from '../../actions/userActions';
+import { NotificationIconContainer } from './NotificationIconContainer';
 
 let myInterval;
 
 class NotificationDrawer extends React.Component {
+  static propTypes = {
+    notifications: PropTypes.array,
+    fetchNotifications: PropTypes.func,
+    markNotificationsAsSeen: PropTypes.func
+  };
+
   componentDidMount() {
     this.props.fetchNotifications();
     myInterval = setInterval(() => this.props.fetchNotifications(), 1000 * 5);
   }
+
   componentWillUnmount() {
     clearInterval(myInterval);
   }
@@ -49,20 +54,10 @@ class NotificationDrawer extends React.Component {
 
     return (
       <div>
-        <IconButton color="inherit">
-          {unseenNotifications.length > 0 && (
-            <Badge
-              badgeContent={unseenNotifications.length}
-              color="secondary"
-              onClick={this.toggleDrawer('right', true)}
-            >
-              <NotificationsIcon />
-            </Badge>
-          )}
-          {unseenNotifications.length === 0 && (
-            <NotificationsIcon onClick={this.toggleDrawer('right', true)} />
-          )}
-        </IconButton>
+        <NotificationIconContainer
+          unseenNotifications={unseenNotifications.length}
+          toggleDrawer={this.toggleDrawer}
+        />
         <Drawer
           anchor="right"
           open={this.state.right}
@@ -81,12 +76,6 @@ class NotificationDrawer extends React.Component {
     );
   }
 }
-
-NotificationDrawer.propTypes = {
-  notifications: PropTypes.array,
-  fetchNotifications: PropTypes.func,
-  markNotificationsAsSeen: PropTypes.func
-};
 
 const mapStateToProps = store => {
   return {
