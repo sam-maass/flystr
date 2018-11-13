@@ -1,11 +1,9 @@
+import { CityPairList } from './CityPairList';
 import React from 'react';
 import PropTypes from 'prop-types';
-import DealPanel from '../DealPanel';
 import { css } from 'emotion';
 import { classes, styles } from '../../styles';
-import InfoPanel from './InfoPanel';
 import { connect } from 'react-redux';
-import { CityPairString } from './CityPairString';
 import { Button, Paper, TextField } from '@material-ui/core';
 import { createDealFromTrip } from '../../actions/tripActions';
 
@@ -55,15 +53,12 @@ const TripList = ({
           </Paper>
         )}
       {cityPairs.map((pair, key) => (
-        <div key={key}>
-          <CityPairString pair={pair} augmentedFlights={augmentedFlights} />
-          {augmentedFlights
-            .filter(f => f.cityPair === pair)
-            .map((item, key) => (
-              <DealPanel elevation={0} key={key} {...item} />
-            ))}
-          {!userId && <InfoPanel />}
-        </div>
+        <CityPairList
+          key={key}
+          pair={pair}
+          flights={augmentedFlights.filter(f => f.cityPair === pair)}
+          showInfoPanel={!userId}
+        />
       ))}
     </div>
   );
