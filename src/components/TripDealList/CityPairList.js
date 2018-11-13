@@ -34,6 +34,7 @@ export class CityPairList extends React.Component {
     const { showInfoPanel, pair, flights } = this.props;
     const { isExpanded } = this.state;
     const itemsToShow = isExpanded ? flights.lenght : ITEMS_WHEN_COLLAPSED;
+    const flightsAfterButton = flights.length - ITEMS_WHEN_COLLAPSED;
     return (
       <div className={style}>
         <CityPairString pair={pair} augmentedFlights={flights} />
@@ -42,24 +43,26 @@ export class CityPairList extends React.Component {
         ))}
         {showInfoPanel && <InfoPanel />}
         <div className="buttonRow">
-          <Button
-            onClick={this.handleExpandToggle}
-            variant="outlined"
-            color="primary"
-            size="small"
-          >
-            {!isExpanded && (
-              <span className="button-content">
-                Show {flights.length - ITEMS_WHEN_COLLAPSED} more{' '}
-                <ExpandMoreIcon>more</ExpandMoreIcon>
-              </span>
-            )}
-            {isExpanded && (
-              <span className="button-content">
-                Show less <ExpandLessIcon>less</ExpandLessIcon>
-              </span>
-            )}
-          </Button>
+          {flightsAfterButton > 0 && (
+            <Button
+              onClick={this.handleExpandToggle}
+              variant="outlined"
+              color="primary"
+              size="small"
+            >
+              {!isExpanded && (
+                <span className="button-content">
+                  Show {flightsAfterButton} more{' '}
+                  <ExpandMoreIcon>more</ExpandMoreIcon>
+                </span>
+              )}
+              {isExpanded && (
+                <span className="button-content">
+                  Show less <ExpandLessIcon>less</ExpandLessIcon>
+                </span>
+              )}
+            </Button>
+          )}
         </div>
       </div>
     );
