@@ -43,7 +43,11 @@ class TripDealListContainer extends React.Component {
     } else {
       return (
         <TripView trip={trip}>
-          <TripDealList flights={trip.matchingFlights} />
+          <TripDealList
+            flights={trip.matchingFlights}
+            tripId={trip._id}
+            isTrip
+          />
         </TripView>
       );
     }
