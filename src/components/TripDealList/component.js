@@ -1,13 +1,20 @@
+import { CityPairList } from './CityPairList';
 import React from 'react';
 import PropTypes from 'prop-types';
-import DealPanel from '../DealPanel';
 import { css } from 'emotion';
 import { classes, styles } from '../../styles';
-import InfoPanel from './InfoPanel';
 import { connect } from 'react-redux';
-import { CityPairString } from './CityPairString';
+import { Button, Paper, TextField } from '@material-ui/core';
+import { createDealFromTrip } from '../../actions/tripActions';
 
-const TripList = ({ flights = [], userId }) => {
+const TripList = ({
+  flights = [],
+  userId,
+  isAdmin,
+  createDealFromTrip,
+  tripId,
+  isTrip
+}) => {
   const augmentedFlights = flights
     .sort((a, b) => new Date(a.outDate) - new Date(b.outDate))
     .sort((a, b) => a.price - b.price)
@@ -25,28 +32,56 @@ const TripList = ({ flights = [], userId }) => {
     });
   const cityPairs = [...new Set(augmentedFlights.map(f => f.cityPair))];
 
+  const handleCreateDealClick = () => {
+    const title = document.getElementById('deal-title').value;
+    const subtitle = document.getElementById('deal-subtitle').value;
+    if (title === '' || subtitle === '') return;
+    createDealFromTrip({ tripId, title, subtitle });
+  };
   return (
     <div className={style}>
+      {isAdmin &&
+        isTrip && (
+          <Paper>
+            <div className="deal-creation">
+              <TextField id="deal-title" label="title" />
+              <TextField id="deal-subtitle" label="subtitle" />
+              <Button onClick={handleCreateDealClick} color="primary">
+                Create Deal
+              </Button>
+            </div>
+          </Paper>
+        )}
       {cityPairs.map((pair, key) => (
-        <div key={key}>
-          <CityPairString pair={pair} augmentedFlights={augmentedFlights} />
-          {augmentedFlights
-            .filter(f => f.cityPair === pair)
-            .map((item, key) => (
-              <DealPanel elevation={0} key={key} {...item} />
-            ))}
-          {!userId && <InfoPanel />}
-        </div>
+        <CityPairList
+          key={key}
+          pair={pair}
+          flights={augmentedFlights.filter(f => f.cityPair === pair)}
+          showInfoPanel={!userId}
+        />
       ))}
     </div>
   );
 };
 
-TripList.propTypes = { flights: PropTypes.array, userId: PropTypes.string };
+TripList.propTypes = {
+  flights: PropTypes.array,
+  userId: PropTypes.string,
+  isAdmin: PropTypes.bool,
+  isTrip: PropTypes.bool,
+  createDealFromTrip: PropTypes.func,
+  tripId: PropTypes.string
+};
 
 const style = css`
   margin-top: 8;
   display: 'grid';
+  .deal-creation {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 16px;
+    padding: 8px;
+  }
   .cityPair {
     margin: 8px 16px;
     ${classes.typography.base};
@@ -68,8 +103,12 @@ const style = css`
 const mapStateToProps = (store, props) => {
   return {
     userId: store.user._id,
+    isAdmin: store.user.isAdmin,
     ...props
   };
 };
 
-export default connect(mapStateToProps)(TripList);
+export default connect(
+  mapStateToProps,
+  { createDealFromTrip }
+)(TripList);

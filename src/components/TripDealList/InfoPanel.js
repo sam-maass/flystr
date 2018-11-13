@@ -57,10 +57,10 @@ const InfoPanel = () => {
           <div className="row">
             <div className="header">
               <b>
-                Personalized dates
+                Find your dates
                 <br />
               </b>
-              for signed up users
+              sign up &amp; customize a trip
             </div>
           </div>
           <div className="row price">
