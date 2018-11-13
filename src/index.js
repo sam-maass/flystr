@@ -4,6 +4,7 @@ import App from './App';
 import { Provider } from 'react-redux';
 import store from './store';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { updateServiceWorker } from './updateServiceWorker';
 
 const rootElement = document.getElementById('root');
 const ClientApp = (
@@ -21,3 +22,4 @@ if (jssStyles && jssStyles.parentNode) {
 }
 
 hydrate(ClientApp, rootElement);
+updateServiceWorker();
