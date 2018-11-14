@@ -1,14 +1,8 @@
-import React from 'react';
-import {
-  Button,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-  DialogContentText
-} from '@material-ui/core';
-import { connect } from 'react-redux';
+import { Button, Dialog, DialogTitle } from '@material-ui/core';
 import PropTypes from 'prop-types';
+import React from 'react';
+import { connect } from 'react-redux';
+import { StripeCheckout } from './StripeCheckout';
 
 class InnerComponent extends React.Component {
   static propTypes = {
@@ -36,19 +30,7 @@ class InnerComponent extends React.Component {
           aria-describedby="alert-dialog-description"
         >
           <DialogTitle id="alert-dialog-title">Signup for premium</DialogTitle>
-          <DialogContent>
-            <DialogContentText id="alert-dialog-description">
-              Placeholder
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={this.handleClose} color="primary">
-              Disagree
-            </Button>
-            <Button onClick={this.handleClose} color="primary" autoFocus>
-              Agree
-            </Button>
-          </DialogActions>
+          <StripeCheckout />
         </Dialog>
       </>
     );
