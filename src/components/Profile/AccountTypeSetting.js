@@ -1,8 +1,8 @@
-import { Button, Dialog, DialogTitle } from '@material-ui/core';
+import { StripeDialog } from './StripeDialog';
+import { Button } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { connect } from 'react-redux';
-import { StripeCheckout } from './StripeCheckout';
 
 class InnerComponent extends React.Component {
   static propTypes = {
@@ -10,10 +10,7 @@ class InnerComponent extends React.Component {
   };
   handleOpen = () => this.setState({ open: true });
   handleClose = () => this.setState({ open: false });
-  state = { open: false };
-  constructor(props) {
-    super(props);
-  }
+  state = { open: true };
 
   render() {
     return (
@@ -23,15 +20,7 @@ class InnerComponent extends React.Component {
         <Button variant="outlined" color="primary" onClick={this.handleOpen}>
           Signup for premium
         </Button>
-        <Dialog
-          open={this.state.open}
-          onClose={this.handleClose}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
-        >
-          <DialogTitle id="alert-dialog-title">Signup for premium</DialogTitle>
-          <StripeCheckout />
-        </Dialog>
+        <StripeDialog open={this.state.open} handleClose={this.handleClose} />
       </>
     );
   }

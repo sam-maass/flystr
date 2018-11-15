@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { StripeProvider, Elements } from 'react-stripe-elements';
 import InjectedCheckoutForm from './CheckoutForm';
 
@@ -31,12 +32,16 @@ export class StripeCheckout extends React.Component {
     return (
       <StripeProvider stripe={this.state.stripe}>
         <Elements locale="en">
-          <InjectedCheckoutForm />
+          <InjectedCheckoutForm selectedPlan={this.props.selectedPlan} />
         </Elements>
       </StripeProvider>
     );
   }
 }
+
+StripeCheckout.propTypes = {
+  selectedPlan: PropTypes.string
+};
 
 function getStripeInstance() {
   return window.Stripe && window.Stripe('pk_test_xGpp4JhwiX7rpcffTTjiRkYU');
