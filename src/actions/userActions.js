@@ -9,7 +9,14 @@ export const FETCH_USER_NOTIFICATIONS = 'FETCH_USER_NOTIFICATIONS';
 export const MARK_USER_NOTIFICATIONS_READ = 'MARK_USER_NOTIFICATIONS_READ';
 export const SIGNUP_USER = 'SIGNUP_USER';
 export const SIGNUP_WITH_EMAIL = 'SIGNUP_WITH_EMAIL';
+export const PURCHASE_SUBSCRIPTION = 'PURCHASE_SUBSCRIPTION';
 
+export function purchaseSubscription(opts) {
+  return {
+    type: PURCHASE_SUBSCRIPTION,
+    payload: api().post(`/user/premiumSignup`, opts)
+  };
+}
 export function updateUserSettings(userSettings) {
   return {
     type: UPDATE_USER_SETTINGS,
