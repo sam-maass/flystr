@@ -13,7 +13,7 @@ export class FreeAccountInfo extends React.Component {
         <b>
           Flystr Free <br />
         </b>
-        <a href="#" onClick={this.handleOpen}>
+        <a href="#premium" onClick={this.handleOpen}>
           Purchase premium
         </a>{' '}
         today to get more customizable trips
