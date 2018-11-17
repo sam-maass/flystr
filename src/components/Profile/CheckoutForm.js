@@ -62,7 +62,6 @@ class CheckoutForm extends React.Component {
     ev.preventDefault();
 
     const token = await stripe.createToken({});
-    console.log('Received Stripe token:', token);
     if (token.error) {
       this.setState({ requestInProgress: false });
     } else {

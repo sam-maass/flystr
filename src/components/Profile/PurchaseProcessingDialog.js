@@ -12,7 +12,7 @@ const style = css`
   padding: 16px;
 `;
 
-export function PurchaseProcessingDialog({}) {
+export function PurchaseProcessingDialog() {
   return (
     <Dialog open={true}>
       <DialogTitle>Processing your payment</DialogTitle>
