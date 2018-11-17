@@ -18,6 +18,7 @@
   },
   "rules": {
     "semi": 2,
+    "jsx-a11y/anchor-is-valid": "off",
     "react/display-name": "off",
     "react/prefer-stateless-function": 1,
     "react/no-unescaped-entities": 0,
