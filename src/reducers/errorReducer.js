@@ -3,7 +3,8 @@ import {
   LOGIN_USER,
   SIGNUP_USER,
   SIGNUP_WITH_EMAIL,
-  LOGIN_WITH_EMAIL
+  LOGIN_WITH_EMAIL,
+  PURCHASE_SUBSCRIPTION
 } from '../actions/userActions';
 
 export default function reducer(state = [], action) {
@@ -19,6 +20,8 @@ export default function reducer(state = [], action) {
     case `${SIGNUP_WITH_EMAIL}_REJECTED`:
       return [...state, { error: action.payload.response.data.error }];
     case `${LOGIN_WITH_EMAIL}_REJECTED`:
+      return [...state, { error: action.payload.response.data.error }];
+    case `${PURCHASE_SUBSCRIPTION}_REJECTED`:
       return [...state, { error: action.payload.response.data.error }];
     default:
       return state;

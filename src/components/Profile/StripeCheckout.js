@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { StripeProvider, Elements } from 'react-stripe-elements';
 import InjectedCheckoutForm from './CheckoutForm';
+import { STRIPE_PUBLIC_KEY } from '../../settings';
 
 export class StripeCheckout extends React.Component {
   state = {
@@ -44,5 +45,5 @@ StripeCheckout.propTypes = {
 };
 
 function getStripeInstance() {
-  return window.Stripe && window.Stripe('pk_test_xGpp4JhwiX7rpcffTTjiRkYU');
+  return window.Stripe && window.Stripe(STRIPE_PUBLIC_KEY);
 }

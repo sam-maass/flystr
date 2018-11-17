@@ -6,6 +6,8 @@ import { css } from 'emotion';
 import { classes } from '../../styles';
 import { Button } from '@material-ui/core';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { purchaseSubscription } from '../../actions/userActions';
 
 const style = css`
   ${classes.typography.base};
@@ -37,7 +39,8 @@ class CheckoutForm extends React.Component {
   static propTypes = {
     stripe: PropTypes.object,
     selectedPlan: PropTypes.string,
-    error: PropTypes.object
+    error: PropTypes,
+    purchaseSubscription: PropTypes.func
   };
 
   constructor(props) {
@@ -46,30 +49,25 @@ class CheckoutForm extends React.Component {
   }
 
   state = {
+    requestInProgress: false,
     complete: false
   };
 
-  handleSubmit(ev) {
-    // We don't want to let default form submission happen here, which would refresh the page.
-    ev.preventDefault();
-    console.log(this.props.selectedPlan);
-
-    // Within the context of `Elements`, this call to createToken knows which Element to
-    // tokenize, since there's only one in this group.
-    this.props.stripe.createToken({}).then(({ token }) => {
-      console.log('Received Stripe token:', token);
+  async handleSubmit(ev) {
+    this.setState({
+      requestInProgress: true
     });
+    const { stripe, selectedPlan } = this.props;
 
-    // However, this line of code will do the same thing:
-    //
-    // this.props.stripe.createToken({type: 'card', name: 'Jenny Rosen'});
+    ev.preventDefault();
 
-    // You can also use createSource to create Sources. See our Sources
-    // documentation for more: https://stripe.com/docs/stripe-js/reference#stripe-create-source
-    //
-    // this.props.stripe.createSource({type: 'card', owner: {
-    //   name: 'Jenny Rosen'
-    // }});
+    const token = await stripe.createToken({});
+    console.log('Received Stripe token:', token);
+    if (token.error) {
+      this.setState({ requestInProgress: false });
+    } else {
+      this.props.purchaseSubscription({ ...token, selectedPlan });
+    }
   }
   handleChange = opts => this.setState(opts);
 
@@ -94,6 +92,7 @@ class CheckoutForm extends React.Component {
             <Button
               // disabled={!this.state.complete}
               variant="outlined"
+              disabled={this.state.requestInProgress}
               fullWidth
               onClick={this.handleSubmit}
               color="primary"
@@ -108,4 +107,7 @@ class CheckoutForm extends React.Component {
   }
 }
 
-export default injectStripe(CheckoutForm);
+export default connect(
+  null,
+  { purchaseSubscription }
+)(injectStripe(CheckoutForm));

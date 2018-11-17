@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import { fetchUser } from '../actions/userActions';
 import { api } from '../settings';
 import moment from 'moment';
+import { addError } from '../actions/errorActions';
 
 class NewTripPage extends React.Component {
   render() {
@@ -36,11 +37,15 @@ const FormikForm = withFormik({
   handleSubmit: async (values, { props, setStatus }) => {
     const [fromDuration, toDuration] = values.duration.split('-');
     if (!props.tripId) {
-      await api().post(`/trips`, {
-        fromDuration,
-        toDuration,
-        ...values
-      });
+      await api()
+        .post(`/trips`, {
+          fromDuration,
+          toDuration,
+          ...values
+        })
+        .catch(error => {
+          props.addError(error.response.data.error);
+        });
     } else {
       if (values.shouldDelete) {
         await api().delete(`/trips/${props.tripId}`);
@@ -94,7 +99,7 @@ const mapStateToProps = (store, props) => {
 
 const TripFormContainer = connect(
   mapStateToProps,
-  { fetchUser }
+  { fetchUser, addError }
 )(FormikForm);
 export default TripFormContainer;
 

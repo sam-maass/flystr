@@ -1,34 +1,48 @@
-import { StripeDialog } from './StripeDialog';
-import { Button } from '@material-ui/core';
-import PropTypes from 'prop-types';
+import { FreeAccountInfo } from './FreeAccountInfo';
+import { PremiumAccountInfo } from './PremiumAccountInfo';
+import { PurchaseProcessingDialog } from './PurchaseProcessingDialog';
 import React from 'react';
 import { connect } from 'react-redux';
+import moment from 'moment';
 
-class InnerComponent extends React.Component {
-  static propTypes = {
-    activeAccountType: PropTypes.string
-  };
-  handleOpen = () => this.setState({ open: true });
-  handleClose = () => this.setState({ open: false });
-  state = { open: true };
+const InnerComponent = props => {
+  const {
+    purchasePending,
+    stripeSubscription = {
+      plan: {}
+    }
+  } = props.user;
+  const {
+    interval,
+    interval_count,
+    amount,
+    currency
+  } = stripeSubscription.plan;
+  const activeAccountType = interval ? 'premium' : 'free';
+  const nextRenewal = moment
+    .unix(stripeSubscription.current_period_end)
+    .format('DD.MM.YYYY');
 
-  render() {
+  if (purchasePending) {
+    return <PurchaseProcessingDialog />;
+  } else if (activeAccountType === 'premium') {
     return (
-      <>
-        {' '}
-        <div>{this.props.activeAccountType}</div>
-        <Button variant="outlined" color="primary" onClick={this.handleOpen}>
-          Signup for premium
-        </Button>
-        <StripeDialog open={this.state.open} handleClose={this.handleClose} />
-      </>
+      <PremiumAccountInfo
+        interval_count={interval_count}
+        interval={interval}
+        nextRenewal={nextRenewal}
+        currency={currency}
+        amount={amount}
+      />
     );
+  } else {
+    return <FreeAccountInfo />;
   }
-}
+};
 
 const mapStateToProps = store => {
   return {
-    activeAccountType: store.user.accountType
+    user: store.user
   };
 };
 
