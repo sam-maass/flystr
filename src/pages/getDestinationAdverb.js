@@ -7,8 +7,8 @@ export function getDestinationAdverb(title) {
     'scenic',
     'spectacular',
     'astounding',
-    'astonishing',
-    'fantastic'
+    'mesmerizing',
+    'dazzling'
   ];
   const adverbIndex = stringHash(title) % adverbs.length;
   const adverb = adverbs[adverbIndex];

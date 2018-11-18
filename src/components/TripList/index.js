@@ -11,8 +11,8 @@ class TripListContainer extends React.Component {
   shouldComponentUpdate(nextProps) {
     if (this.props.trips !== nextProps.trips) return true;
     if (
-      (this.props.notifcations[0] || {})._id !==
-      (nextProps.notifcations[0] || {})._id
+      (this.props.notifications[0] || {})._id !==
+      (nextProps.notifications[0] || {})._id
     ) {
       this.props.fetchUser();
     }
@@ -44,7 +44,7 @@ class TripListContainer extends React.Component {
 TripListContainer.propTypes = {
   stripeSubscription: PropTypes.object,
   trips: PropTypes.array,
-  notifcations: PropTypes.array,
+  notifications: PropTypes.array,
   fetchUser: PropTypes.func
 };
 
@@ -52,7 +52,7 @@ const mapStateToProps = store => {
   return {
     stripeSubscription: store.user.stripeSubscription,
     trips: store.trips,
-    notifcations: store.notifications
+    notifications: store.notifications
   };
 };
 
