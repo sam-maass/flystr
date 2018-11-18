@@ -3,7 +3,7 @@ import React from 'react';
 import { injectStripe } from 'react-stripe-elements';
 import { CardElement } from 'react-stripe-elements';
 import { css } from 'emotion';
-import { classes } from '../../styles';
+import { classes, styles } from '../../styles';
 import { Button } from '@material-ui/core';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -32,6 +32,14 @@ const style = css`
     border-bottom: 1px solid #ddd;
     padding: 8px;
     background: #fafafa;
+  }
+  .stripe-info {
+    padding-top: 4px;
+  }
+  small {
+    line-height: 1.25;
+    letter-spacing: 0;
+    color: ${styles.colors.lightGray};
   }
 `;
 
@@ -86,6 +94,13 @@ class CheckoutForm extends React.Component {
           </div>
           <div className="error-container">
             {(this.state.error || {}).message}
+          </div>
+          <div className="stripe-info">
+            <small>
+              Your payment is securely encrypted and processed via our partner{' '}
+              <a href="https://www.stripe.com">Stripe</a>. Flystr has at no
+              point in time full access to your credit card data.
+            </small>
           </div>
           <div className="button-container">
             <Button

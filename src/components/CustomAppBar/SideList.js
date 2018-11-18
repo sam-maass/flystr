@@ -17,6 +17,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 import { logoutUser } from '../../actions/userActions';
 import { connect } from 'react-redux';
+import { Button } from '@material-ui/core';
 
 const SideListComponent = ({ classes, user, logoutUser }) => {
   if (!user._id) {
@@ -82,6 +83,14 @@ const SideListComponent = ({ classes, user, logoutUser }) => {
               <ListItemText primary="My Trips" />
             </ListItem>
           </Link>
+          <Link to={'/settings'}>
+            <ListItem button>
+              <ListItemIcon>
+                <UserIcon />
+              </ListItemIcon>
+              <ListItemText primary="Settings" />
+            </ListItem>
+          </Link>
           {user.isAdmin && (
             <Fragment>
               <Link to={'/admin/all-trips'}>
@@ -92,14 +101,6 @@ const SideListComponent = ({ classes, user, logoutUser }) => {
                   <ListItemText primary="Triplist" />
                 </ListItem>
               </Link>{' '}
-              <Link to={'/settings'}>
-                <ListItem button>
-                  <ListItemIcon>
-                    <UserIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="Settings" />
-                </ListItem>
-              </Link>
               <Link to={'/new-flight'}>
                 <ListItem button>
                   <ListItemIcon>
@@ -110,7 +111,6 @@ const SideListComponent = ({ classes, user, logoutUser }) => {
               </Link>
             </Fragment>
           )}
-          <Divider />
           <ListItem button onClick={logoutUser}>
             <ListItemIcon>
               <LogoutIcon />
@@ -118,6 +118,28 @@ const SideListComponent = ({ classes, user, logoutUser }) => {
             <ListItemText primary="Logout" />
           </ListItem>
         </List>
+        <div className={classes.bottomItems}>
+          {!isPremium(user) && (
+            <Link to="/settings#premium">
+              <ListItem>
+                <Button fullWidth variant="raised" color="primary">
+                  Upgrade to Premium
+                </Button>
+              </ListItem>
+            </Link>
+          )}
+          <Divider />
+          <Link to="/terms">
+            <ListItem button>
+              <ListItemText secondary="Terms & Conditions" />
+            </ListItem>
+          </Link>
+          <Link to="/legal">
+            <ListItem button>
+              <ListItemText secondary="Privacy" />
+            </ListItem>
+          </Link>
+        </div>
       </div>
     );
   }
@@ -145,6 +167,11 @@ const styles = {
   },
   list: {
     width: 250
+  },
+  bottomItems: {
+    position: 'absolute',
+    bottom: 0,
+    width: '100%'
   }
 };
 
@@ -159,3 +186,7 @@ export const SideList = connect(
   mapStateToProps,
   { logoutUser }
 )(withStyles(styles)(SideListComponent));
+
+function isPremium(user) {
+  return (user.stripeSubscription || {}).id;
+}

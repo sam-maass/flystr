@@ -1,19 +1,24 @@
+import { PremiumUpgradePanel } from './PremiumUpgradePanel';
 import React from 'react';
 import PropTypes from 'prop-types';
 import TripRow from '../TripRow';
 import { css } from 'emotion';
 
-const TripList = ({ trips = [] }) => {
+const TripList = ({ trips = [], showPremiumButton }) => {
   return (
     <div className={style}>
       {trips.map((item, key) => (
         <TripRow key={key} {...item} />
       ))}
+      {showPremiumButton && <PremiumUpgradePanel />}
     </div>
   );
 };
 
-TripList.propTypes = { trips: PropTypes.array, classes: PropTypes.object };
+TripList.propTypes = {
+  trips: PropTypes.array,
+  showPremiumButton: PropTypes.bool
+};
 
 const style = css`
   max-width: 1300px;
