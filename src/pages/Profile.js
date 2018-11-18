@@ -4,6 +4,7 @@ import React from 'react';
 import { css } from 'emotion';
 import { classes } from '../styles';
 import { WebPushSwitch } from '../components/WebPushSwitch/WebPushSwitch';
+import PropTypes from 'prop-types';
 
 const style = css`
   width: 100%;
@@ -15,7 +16,12 @@ const style = css`
   grid-gap: 48px;
   ${classes.typography.base};
 `;
-const ProfilePage = () => {
+const ProfilePage = ({ hash }) => {
+  let openPremiumDialog = false;
+  if (hash === '#premium') {
+    openPremiumDialog = true;
+  }
+
   return (
     <div className={style}>
       <SettingDescription
@@ -23,7 +29,7 @@ const ProfilePage = () => {
         secondary="Choose your account type"
       />
       <div>
-        <AccountTypeSetting />
+        <AccountTypeSetting openPremiumDialog={openPremiumDialog} />
       </div>
       <SettingDescription primary="Push Notifications" />
       <div>
@@ -31,6 +37,10 @@ const ProfilePage = () => {
       </div>
     </div>
   );
+};
+
+ProfilePage.propTypes = {
+  hash: PropTypes.string
 };
 
 export default ProfilePage;

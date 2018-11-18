@@ -12,6 +12,7 @@ const InnerComponent = props => {
       plan: {}
     }
   } = props.user;
+
   const {
     interval,
     interval_count,
@@ -36,12 +37,13 @@ const InnerComponent = props => {
       />
     );
   } else {
-    return <FreeAccountInfo />;
+    return <FreeAccountInfo openPremiumDialog={props.openPremiumDialog} />;
   }
 };
 
-const mapStateToProps = store => {
+const mapStateToProps = (store, props) => {
   return {
+    ...props,
     user: store.user
   };
 };

@@ -1,8 +1,9 @@
 import React from 'react';
 import { StripeDialog } from './StripeDialog';
+import PropTypes from 'prop-types';
 
 export class FreeAccountInfo extends React.Component {
-  state = { open: false };
+  state = { open: this.props.openPremiumDialog };
 
   handleOpen = () => this.setState({ open: true });
   handleClose = () => this.setState({ open: false });
@@ -22,3 +23,6 @@ export class FreeAccountInfo extends React.Component {
     );
   }
 }
+FreeAccountInfo.propTypes = {
+  openPremiumDialog: PropTypes.bool
+};
