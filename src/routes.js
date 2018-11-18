@@ -67,7 +67,8 @@ export const loggedInRoutes = [
     path: '/settings',
     exact: true,
     header: () => <CustomAppBar title="Profile" />,
-    main: () => <Pages.Profile />
+    // eslint-disable-next-line no-undef
+    main: props => <Pages.Profile {...props.location} /> // Profile uses hashes
   },
   {
     path: '/new-deal',
