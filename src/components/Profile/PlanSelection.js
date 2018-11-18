@@ -6,6 +6,7 @@ import CheckIcon from '@material-ui/icons/CheckCircleOutline';
 
 const style = css`
   ${classes.typography.base};
+  h3,
   h4 {
     margin: 24px 0 8px 0px;
     &:first-of-type {
@@ -63,7 +64,7 @@ export const PlanSelection = ({ handlePlanChange, selectedPlan }) => {
 
   return (
     <div className={style}>
-      <h4>With Premium you get</h4>
+      <h3>Upgrade to Premium</h3>
       <ul>
         <li>
           <CheckIcon />
