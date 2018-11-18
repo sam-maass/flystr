@@ -98,7 +98,7 @@ const DealView = ({ deal }) => {
         </div>
         <TripDealList flights={deal.exampleFlights} />
         <div className={signupCardStyle}>
-          <strong>Why are there not more dates?</strong> <br /> <br />
+          <strong>Why aren't there more dates?</strong> <br /> <br />
           Creating and maintaining deals takes a lot of time. That is why we
           only show some dates to give you an idea of the general availability.
           <br />
