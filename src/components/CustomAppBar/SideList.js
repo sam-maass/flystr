@@ -83,6 +83,14 @@ const SideListComponent = ({ classes, user, logoutUser }) => {
               <ListItemText primary="My Trips" />
             </ListItem>
           </Link>
+          <Link to={'/settings'}>
+            <ListItem button>
+              <ListItemIcon>
+                <UserIcon />
+              </ListItemIcon>
+              <ListItemText primary="Settings" />
+            </ListItem>
+          </Link>
           {user.isAdmin && (
             <Fragment>
               <Link to={'/admin/all-trips'}>
@@ -93,14 +101,6 @@ const SideListComponent = ({ classes, user, logoutUser }) => {
                   <ListItemText primary="Triplist" />
                 </ListItem>
               </Link>{' '}
-              <Link to={'/settings'}>
-                <ListItem button>
-                  <ListItemIcon>
-                    <UserIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="Settings" />
-                </ListItem>
-              </Link>
               <Link to={'/new-flight'}>
                 <ListItem button>
                   <ListItemIcon>
