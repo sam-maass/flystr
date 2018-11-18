@@ -39,7 +39,7 @@ class SignupPage extends React.Component {
                   Looks like you have an account already
                 </Typography>
                 <Typography className={classes.buttonText}>
-                  are we wrong ?
+                  No account yet?
                 </Typography>
                 <Button
                   size="small"
