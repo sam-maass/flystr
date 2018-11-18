@@ -7,6 +7,7 @@ import { setAppbar } from '../actions/appbarActions';
 import { Helmet } from 'react-helmet';
 import NoDeal from '../components/NoDeal';
 import { getDealMetaData } from './getDealMetaData';
+import { Card, Button } from '@material-ui/core';
 
 class DealsPage extends React.Component {
   componentDidMount() {
@@ -49,6 +50,11 @@ class DealsPage extends React.Component {
       twitterImage
     } = getDealMetaData(this.props.currentDeal);
 
+    const bufferUrl = `https://flystr.com/deals?activeDeal=${
+      this.props.currentDeal.slug
+    }`;
+    const bufferLink = `https://buffer.com/add?text=${metaDescription}&url=${bufferUrl}`;
+
     return (
       <Fragment>
         <Helmet>
@@ -60,6 +66,13 @@ class DealsPage extends React.Component {
           <meta name="twitter:description" content={twitterDescription} />
           <meta name="twitter:image" content={twitterImage} />
         </Helmet>
+        {this.props.isAdmin && (
+          <Card>
+            <a href={bufferLink} target="_blank" rel="noopener noreferrer">
+              <Button>Share with Buffer</Button>
+            </a>
+          </Card>
+        )}
         <DealView deal={this.props.currentDeal} />;
       </Fragment>
     );
@@ -73,12 +86,14 @@ DealsPage.propTypes = {
   setAppbar: PropTypes.func,
   tempDeal: PropTypes.object,
   dealId: PropTypes.string,
-  previousRoute: PropTypes.string
+  previousRoute: PropTypes.string,
+  isAdmin: PropTypes.bool
 };
 
 const mapStateToProps = (store, props) => {
   return {
     ...props,
+    isAdmin: store.user.isAdmin,
     tempDeal: store.deals.find(deal => (deal._id = props.dealId)) || {},
     currentDeal: store.currentDeal,
     previousRoute: store.routing.previousRoute
