@@ -3,7 +3,7 @@ import { getTimeframeString } from '../utils';
 export function getDealMetaData({
   title,
   subtitle,
-  firstDepatrue,
+  firstDeparture,
   lastReturn,
   minPrice,
   currency = 'EUR',
@@ -12,10 +12,10 @@ export function getDealMetaData({
   const metaTitle = `Flystr | Flights to ${title} from ${subtitle}`;
   const adverb = getDestinationAdverb(title);
   const timeframe = getTimeframeString({
-    startDate: firstDepatrue,
+    startDate: firstDeparture,
     endDate: lastReturn
   });
-  const metaDescription = `Fly to ${adverb} ${title}. We found flights from ${subtitle} during ${timeframe} for only ${minPrice} ${currency}. Book your next vacation to ${title} now.`;
+  const metaDescription = `Flights to ${adverb} ${title}. We found flights from ${subtitle} for only ${minPrice} ${currency} during ${timeframe}. Check available dates today and book your next vacation to ${title}.`;
   const twitterImage = `https://flystr.com/destination-images/header/${
     destinations[0]
   }.jpg`;

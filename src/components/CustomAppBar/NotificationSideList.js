@@ -20,8 +20,8 @@ const style = css`
 
 export class NotificationSideList extends React.Component {
   shouldComponentUpdate(nextProps) {
-    const { _id: currentId } = this.props.notifications[0];
-    const { _id: nextId } = nextProps.notifications[0];
+    const { _id: currentId } = this.props.notifications[0] || {};
+    const { _id: nextId } = nextProps.notifications[0] || {};
     if (currentId !== nextId) return true;
     return false;
   }
