@@ -98,6 +98,11 @@ const DealView = ({ deal }) => {
         </div>
         <TripDealList flights={deal.exampleFlights} />
         <div className={signupCardStyle}>
+          <strong>Why are the prices not always accurate?</strong> <br /> <br />
+          Prices change all the time. We do our best to keep the prices up to
+          date but sometimes a deal is just gone.
+          <br />
+          <br />
           <strong>Why aren't there more dates?</strong> <br /> <br />
           Creating and maintaining deals takes a lot of time. That is why we
           only show some dates to give you an idea of the general availability.
@@ -110,7 +115,7 @@ const DealView = ({ deal }) => {
           <br /> If you don't want to sign up you can search for cheap flights
           on{' '}
           <a
-            href="flights.google.com"
+            href="https://flights.google.com"
             target="_blank"
             rel="noopener noreferrer"
             onClick={logClick('flights.google.com', {
@@ -121,7 +126,7 @@ const DealView = ({ deal }) => {
           </a>{' '}
           and then use{' '}
           <a
-            href="momondo.com"
+            href="https://momondo.com"
             target="_blank"
             rel="noopener noreferrer"
             onClick={logClick('momondo.com', {
@@ -132,7 +137,7 @@ const DealView = ({ deal }) => {
           </a>{' '}
           or{' '}
           <a
-            href="skyscanner.com"
+            href="https://skyscanner.com"
             target="_blank"
             rel="noopener noreferrer"
             onClick={logClick('skyscanner.com', {
