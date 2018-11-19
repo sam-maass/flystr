@@ -9,10 +9,19 @@ import { Link } from 'react-router-dom';
 import { getDestinationImage } from '../../getDestinationImage';
 import { logClick } from '../../utils/logClick';
 
-const wrapperStyle = (destination, removed) => css`
+const highlightCard = css`
+  max-width: 600px;
+  margin: 32px auto 48px auto;
+  grid-column-start: 1;
+  grid-column-end: -1;
+  justify-self: center;
+`;
+
+const wrapperStyle = (destination, removed, highlighted) => css`
   width: 100%;
   max-width: 400px;
   position: relative;
+  ${highlighted && highlightCard};
   a {
     text-decoration: none;
   }
@@ -110,6 +119,7 @@ const DealCard = props => {
     currency = 'EUR',
     removed
   } = props.deal;
+  const { highlighted } = props;
   const daysAgo = moment(lastChecked).fromNow();
   const timeFrame = getTimeframeString({
     startDate: firstDeparture,
@@ -149,7 +159,7 @@ const DealCard = props => {
     );
   };
   return (
-    <div className={wrapperStyle(destinations[0], removed)}>
+    <div className={wrapperStyle(destinations[0], removed, highlighted)}>
       {removed && renderInnerCard()}
       {!removed && (
         <Link
@@ -166,7 +176,8 @@ const DealCard = props => {
 };
 
 DealCard.propTypes = {
-  deal: PropTypes.object
+  deal: PropTypes.object,
+  highlighted: PropTypes.bool
 };
 
 export default DealCard;

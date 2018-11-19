@@ -76,6 +76,8 @@ TripList.propTypes = {
 const style = css`
   margin-top: 8;
   display: 'grid';
+  max-width: 1024px;
+  margin: auto;
   .deal-creation {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;

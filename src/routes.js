@@ -103,7 +103,7 @@ export const loggedOutRoutes = [
     path: '/deals',
     exact: true,
     header: () => <CustomAppBar withDrawer title="Deals" />,
-    main: () => <Pages.Deals />
+    main: props => <Pages.Deals {...props.match.params} />
   },
   {
     path: '/deal/:dealId',
