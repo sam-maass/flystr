@@ -2,13 +2,13 @@
 
 exports[`PreferenceSelection: default 1`] = `
 <div
-  className="css-nslx1d"
+  className="css-1tjdwnz"
 >
   <div
     className="header"
   >
     <AirportChips />
-     to
+    to
     <AirportChips />
     <WithStyles(IconButton)
       onClick={[Function]}
@@ -49,7 +49,7 @@ exports[`PreferenceSelection: default 1`] = `
     <FormikTextField
       elemKey="duration"
       handleSubmit={[Function]}
-      label="Duration (in days)"
+      label="Trip duration in days (optional)"
       placeholder="eg. 14 or 14-21"
       setFieldValue={[Function]}
       type="text"
@@ -74,12 +74,17 @@ exports[`PreferenceSelection: default 1`] = `
     className="button"
   >
     <WithStyles(Button)
-      color="secondary"
+      color="primary"
       fullWidth={true}
       onClick={[Function]}
-      variant="outlined"
+      variant="raised"
     >
-      Find flights
+      <span
+        className="content"
+      >
+        Find flights 
+        <pure(KeyboardArrowRightOutlinedIcon) />
+      </span>
     </WithStyles(Button)>
   </div>
 </div>

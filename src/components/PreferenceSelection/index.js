@@ -7,12 +7,13 @@ import PropTypes from 'prop-types';
 import AirportChips from '../AirportChips';
 import { IconButton } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
+import NextIcon from '@material-ui/icons/KeyboardArrowRightOutlined';
 
 const style = css`
   max-width: 1024px;
   display: grid;
   grid-template-rows: min-content 1fr;
-  padding: 8px;
+  padding: 16px;
   margin: auto;
   height: 100%;
   ${classes.typography.base};
@@ -27,9 +28,21 @@ const style = css`
   }
   .button {
     align-self: flex-end;
-    bottom: 8px;
+    justify-self: center;
+    margin: 16px;
+    display:grid;
+    &.two-buttons {
+      grid-template-columns: 1fr 1fr;
+    grid-gap: 16px;
     display: grid;
-    grid-gap: 8px;
+}
+    }
+    .content {
+      display: grid;
+      grid-gap: 8px;
+      align-items: center;
+      grid-template-columns: 1fr 24px;
+    }
   }
   .header {
     text-align: center;
@@ -44,7 +57,8 @@ const PreferenceSelection = props => {
   return (
     <div className={style}>
       <div className="header">
-        <AirportChips airports={props.values.origins} /> to
+        <AirportChips airports={props.values.origins} />
+        to
         <AirportChips airports={props.values.destinations} />
         <IconButton onClick={() => props.setFieldValue('page', 1)}>
           <EditIcon />
@@ -72,7 +86,7 @@ const PreferenceSelection = props => {
         />
         <FormikTextField
           elemKey="duration"
-          label="Duration (in days)"
+          label="Trip duration in days (optional)"
           placeholder="eg. 14 or 14-21"
           type="text"
           {...props}
@@ -92,20 +106,22 @@ const PreferenceSelection = props => {
         <div className="button">
           <Button
             fullWidth
-            variant="outlined"
-            color="secondary"
+            variant="raised"
+            color="primary"
             onClick={() => props.handleSubmit()}
           >
-            Find flights
+            <span className="content">
+              Find flights <NextIcon />
+            </span>
           </Button>
         </div>
       )}
       {props.values.deleteable && (
-        <div className="button">
+        <div className="button two-buttons">
           <Button
             fullWidth
-            variant="outlined"
-            color="secondary"
+            variant="raised"
+            color="primary"
             onClick={() => props.handleSubmit()}
           >
             Update
@@ -113,7 +129,7 @@ const PreferenceSelection = props => {
           <Button
             fullWidth
             variant="outlined"
-            color="default"
+            color="primary"
             onClick={() => deleteTrip()}
           >
             Delete
