@@ -26,9 +26,13 @@ const style = css`
       font-size: 14px;
       display: grid;
       align-items: center;
-      margin: 2px;
       justify-self: baseline;
-}
+      line-height:1.35;
+      b{
+        padding:8px 0;
+        line-height:1em
+      }
+    }
     }
     .price {
       color: ${styles.colors.orange};
@@ -41,12 +45,20 @@ const style = css`
       justify-items: center;
       .link {
         color: ${styles.colors.lightGray};
-        font-size: 0.8em;
+        font-size: 0.7em;
+        line-height:1.35
       }
     }
   }
 `;
-const DealRow = ({ outDate, inDate, price, link, currency = 'EUR' }) => {
+const DealRow = ({
+  outDate,
+  inDate,
+  price,
+  link,
+  currency = 'EUR',
+  updatedAt
+}) => {
   const linkSource = getLinkSource(link);
   const format = 'DD MMM YYYY';
   const formatWithoutYear = 'DD MMM';
@@ -61,6 +73,7 @@ const DealRow = ({ outDate, inDate, price, link, currency = 'EUR' }) => {
   const startDay = moment(outDate).format('ddd');
   const endDay = moment(inDate).format('ddd');
   const duration = moment(inDate).diff(outDate, 'days');
+  const lastSeen = moment(updatedAt).fromNow();
   return (
     <a
       className={style}
@@ -75,12 +88,18 @@ const DealRow = ({ outDate, inDate, price, link, currency = 'EUR' }) => {
             <b>
               {formattedStartDate} - {formattedEndDate}
             </b>
-            {duration} days | {startDay}-{endDay}
+            {duration} days <br />
+            {startDay}-{endDay}
           </div>
         </div>
         <div className="row price">
           {price} {currency} <br />
-          {linkSource && <span className="link">{linkSource}</span>}
+          {linkSource && (
+            <span className="link">
+              {lastSeen} <br />
+              on {linkSource}
+            </span>
+          )}
         </div>
       </div>
     </a>
@@ -99,7 +118,8 @@ DealRow.propTypes = {
   price: PropTypes.number,
   link: PropTypes.string,
   linkSource: PropTypes.string,
-  currency: PropTypes.string
+  currency: PropTypes.string,
+  updatedAt: PropTypes.string
 };
 
 export default DealRow;
