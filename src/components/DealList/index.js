@@ -1,9 +1,13 @@
+//@ts-check
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import DealCard from './DealCard';
 import { css } from 'emotion';
 import MoreDealsCard from '../MoreDealsCard';
 import FilterDealsCard from '../FilterDealsCard';
+import { classes, styles } from '../../styles';
+import SubHeadline from '../SubHeadline';
 
 const style = css`
   max-width: 1400px;
@@ -17,6 +21,13 @@ const style = css`
     margin-top: 16px;
     grid-gap: 32px 64px;
   }
+  .related-deals {
+    grid-column: 1;
+    grid-column-end: -1;
+    ${classes.typography.base};
+    text-align: center;
+    color: ${styles.colors.darkGray};
+  }
 `;
 
 function getRandomInt(min, max) {
@@ -24,16 +35,37 @@ function getRandomInt(min, max) {
 }
 const minFirstDeals = 4;
 const minRestDeals = 1;
-
-const DealList = ({ deals = [] }) => {
+/**
+ * @param {object} props
+ * @param {object[]} props.deals - list of deals
+ * @param {string=} props.activeDeal - list of deals
+ * @returns
+ */
+const DealList = ({ deals = [], activeDeal }) => {
   if (deals[0] === undefined) return null;
   const filterDealsCardPosition = getRandomInt(
     minFirstDeals,
     deals.length - minRestDeals
   );
+  let activeDeals = [];
+  if (activeDeal) {
+    activeDeals = deals.splice(0, 1);
+  }
   const firstDeals = deals.splice(0, filterDealsCardPosition);
   return (
     <div className={style}>
+      {activeDeal && (
+        <>
+          {activeDeals.map(deal => (
+            <DealCard key={Math.random()} deal={deal} highlighted />
+          ))}
+          <div className="related-deals">
+            <SubHeadline withBar marginTop={false}>
+              Related Deals
+            </SubHeadline>
+          </div>
+        </>
+      )}
       {firstDeals.map(deal => (
         <DealCard key={Math.random()} deal={deal} /> // deal._id was not working as key. It was complaining about duplicate keys
       ))}
@@ -47,7 +79,8 @@ const DealList = ({ deals = [] }) => {
 };
 
 DealList.propTypes = {
-  deals: PropTypes.array
+  deals: PropTypes.array,
+  activeDeal: PropTypes.string
 };
 
 export default DealList;

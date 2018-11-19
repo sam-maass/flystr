@@ -3,10 +3,10 @@ import { css } from 'emotion';
 import PropTypes from 'prop-types';
 import { styles, classes } from '../../styles';
 
-const container = css`
+const container = withMarginTop => css`
   width: 100%;
-  margin-top: 96px;
   margin-bottom: 32px;
+  ${withMarginTop && 'margin-top: 96px'};
 `;
 
 const typography = css`
@@ -19,9 +19,9 @@ const bar = css`
   background-color: ${styles.colors.orange};
 `;
 
-const SubHeadline = ({ children, withBar }) => {
+const SubHeadline = ({ children, withBar, marginTop = true }) => {
   return (
-    <div className={container}>
+    <div className={container(marginTop)}>
       <div className={typography}>{children}</div>
       {withBar && <div className={bar} />}
     </div>
@@ -30,7 +30,8 @@ const SubHeadline = ({ children, withBar }) => {
 
 SubHeadline.propTypes = {
   children: PropTypes.node.isRequired,
-  withBar: PropTypes.bool
+  withBar: PropTypes.bool,
+  marginTop: PropTypes.bool
 };
 
 export default SubHeadline;

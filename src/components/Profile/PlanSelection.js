@@ -55,6 +55,14 @@ const style = css`
       }
     }
   }
+  .plan-info {
+    padding-top: 4px;
+  }
+  small {
+    line-height: 1.25;
+    letter-spacing: 0;
+    color: ${styles.colors.lightGray};
+  }
 `;
 
 export const PlanSelection = ({ handlePlanChange, selectedPlan }) => {
@@ -85,29 +93,35 @@ export const PlanSelection = ({ handlePlanChange, selectedPlan }) => {
           className={`selection-item ${isActive('monthly')}`}
           onClick={handlePlanChange('monthly')}
         >
-          <b>monthly</b>
+          <b>1 Month Membership</b>
           <br />
           1,99 EUR <br />
-          <small>1,99 EUR / month</small>
+          <small>1,99 EUR/month</small>
         </div>
         <div
           className={`selection-item ${isActive('quarterly')}`}
           onClick={handlePlanChange('quarterly')}
         >
-          <b>3 monthly</b>
+          <b>3 Months Membership</b>
           <br />
           5,49 EUR <br />
-          <small>1,83 EUR/ month</small>
+          <small>1,83 EUR/month</small>
         </div>
         <div
           className={`selection-item ${isActive('yearly')}`}
           onClick={handlePlanChange('yearly')}
         >
-          <b>yearly</b>
+          <b>1 Year Membership</b>
           <br />
           19,99 EUR <br />
-          <small>1,67 EUR / month</small>
+          <small>1,67 EUR/month</small>
         </div>
+      </div>
+      <div className="plan-info">
+        <small>
+          All memberships will auto-renew. You can cancel up to 24 hours before
+          the expiry date of your membership.
+        </small>
       </div>
       <h4>Enter Payment Details</h4>
     </div>

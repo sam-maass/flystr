@@ -1,12 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SubHeadline: default 1`] = `
-.emotion-1 {
-  width: 100%;
-  margin-top: 96px;
-  margin-bottom: 32px;
-}
-
 .emotion-0 {
   color: #263238;
   font-family: 'Comfortaa';
@@ -25,6 +19,12 @@ exports[`SubHeadline: default 1`] = `
   .emotion-0 {
     font-size: 36px;
   }
+}
+
+.emotion-1 {
+  width: 100%;
+  margin-bottom: 32px;
+  margin-top: 96px;
 }
 
 <div
