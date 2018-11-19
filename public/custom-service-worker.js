@@ -39,6 +39,7 @@ self.addEventListener('fetch', event => {
     })
   );
 });
+
 async function evaluateNotification(e) {
   let body;
   if (e.data) {
