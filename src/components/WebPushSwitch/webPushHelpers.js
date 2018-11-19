@@ -1,9 +1,9 @@
 export async function getActiveSubscription() {
   if ('serviceWorker' in navigator) {
     try {
-      const reg = await navigator.serviceWorker.register(
-        'custom-service-worker.js'
-      );
+      const reg =
+        (await navigator.serviceWorker.getRegistration('/')) ||
+        (await navigator.serviceWorker.register('custom-service-worker.js'));
       const sub = await reg.pushManager.getSubscription();
       return sub;
     } catch (error) {
