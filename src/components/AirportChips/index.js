@@ -40,7 +40,7 @@ const getColor = term => {
 const AirportChips = ({ airports, styleClass, onDelete }) => {
   return airports.map(airport => (
     <Chip
-      style={{ backgroundColor: getColor(airport) }}
+      style={{ backgroundColor: getColor(airport), margin: '4px' }}
       className={styleClass}
       tabIndex="-1"
       key={airport}

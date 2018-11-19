@@ -4,12 +4,13 @@ import { css } from 'emotion';
 import { classes, styles } from '../../styles';
 import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
+import NextIcon from '@material-ui/icons/KeyboardArrowRightOutlined';
 
 const style = css`
   max-width: 1024px;
   display: grid;
   grid-template-rows: min-content 1fr;
-  padding: 8px;
+  padding: 16px;
   margin: auto;
   height: 100%;
   ${classes.typography.base};
@@ -22,7 +23,14 @@ const style = css`
   }
   .button {
     align-self: flex-end;
-    bottom: 8px;
+    justify-self: center;
+    margin: 16px;
+    .content {
+      display: grid;
+      grid-gap: 8px;
+      align-items: center;
+      grid-template-columns: 1fr 24px;
+    }
   }
 `;
 
@@ -53,11 +61,14 @@ const OriginSelection = props => {
       <div className="button">
         <Button
           fullWidth
-          variant="outlined"
-          color="secondary"
+          variant="raised"
+          color="primary"
+          size="large"
           onClick={() => goToNextPage()}
         >
-          Select your destinations
+          <span className="content">
+            Select your destinations <NextIcon />
+          </span>
         </Button>
       </div>
     </div>
