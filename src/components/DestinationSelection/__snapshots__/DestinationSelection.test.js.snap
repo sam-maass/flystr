@@ -2,7 +2,7 @@
 
 exports[`DestinationSelection: default 1`] = `
 <div
-  className="css-kfest3"
+  className="css-i3tuh4"
 >
   <div>
     <h2>
@@ -54,12 +54,17 @@ exports[`DestinationSelection: default 1`] = `
     className="button"
   >
     <WithStyles(Button)
-      color="secondary"
+      color="primary"
       fullWidth={true}
       onClick={[Function]}
-      variant="outlined"
+      variant="raised"
     >
-      Set Preferences
+      <span
+        className="content"
+      >
+        Set Preferences 
+        <pure(KeyboardArrowRightOutlinedIcon) />
+      </span>
     </WithStyles(Button)>
   </div>
 </div>

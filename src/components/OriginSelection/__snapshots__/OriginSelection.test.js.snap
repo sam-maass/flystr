@@ -5,7 +5,7 @@ exports[`OriginSelection: default 1`] = `
   max-width: 1024px;
   display: grid;
   grid-template-rows: min-content 1fr;
-  padding: 8px;
+  padding: 16px;
   margin: auto;
   height: 100%;
   color: #263238;
@@ -42,7 +42,18 @@ exports[`OriginSelection: default 1`] = `
   -webkit-align-self: flex-end;
   -ms-flex-item-align: end;
   align-self: flex-end;
-  bottom: 8px;
+  justify-self: center;
+  margin: 16px;
+}
+
+.emotion-0 .button .content {
+  display: grid;
+  grid-gap: 8px;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  grid-template-columns: 1fr 24px;
 }
 
 <div
@@ -114,7 +125,7 @@ exports[`OriginSelection: default 1`] = `
     className="button"
   >
     <button
-      className="MuiButtonBase-root-109 MuiButton-root-83 MuiButton-text-85 MuiButton-textSecondary-87 MuiButton-outlined-91 MuiButton-outlinedSecondary-93 MuiButton-fullWidth-108"
+      className="MuiButtonBase-root-109 MuiButton-root-83 MuiButton-contained-94 MuiButton-containedPrimary-95 MuiButton-raised-97 MuiButton-raisedPrimary-98 MuiButton-sizeLarge-107 MuiButton-fullWidth-108"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -133,10 +144,31 @@ exports[`OriginSelection: default 1`] = `
       <span
         className="MuiButton-label-84"
       >
-        Select your destinations
+        <span
+          className="content"
+        >
+          Select your destinations 
+          <svg
+            aria-hidden="true"
+            className="MuiSvgIcon-root-112"
+            focusable="false"
+            role="presentation"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M0 0h24v24H0V0z"
+              fill="none"
+            />
+            <g>
+              <path
+                d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"
+              />
+            </g>
+          </svg>
+        </span>
       </span>
       <span
-        className="MuiTouchRipple-root-112"
+        className="MuiTouchRipple-root-121"
       />
     </button>
   </div>
