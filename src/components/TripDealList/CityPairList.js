@@ -1,11 +1,11 @@
+import { ExpandDealButton } from './ExpandDealButton';
+import { LoginMoreButton } from './LoginMoreButton';
 import React from 'react';
 import DealPanel from '../DealPanel';
 import InfoPanel from './InfoPanel';
 import { CityPairString } from './CityPairString';
-import { Button } from '@material-ui/core';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import { css } from 'emotion';
+import { connect } from 'react-redux';
 
 const ITEMS_WHEN_COLLAPSED = 4;
 
@@ -19,11 +19,15 @@ const style = css`
     display: grid;
     align-items: center;
     justify-items: center;
-    grid-template-columns: 1fr 24px;
+    grid-gap: 8px;
+    grid-template-columns: max-content max-content;
+    &.extra-icon {
+      grid-template-columns: max-content max-content max-content;
+    }
   }
 `;
 
-export class CityPairList extends React.Component {
+export class InnerCityPairList extends React.Component {
   state = { isExpanded: false };
 
   handleExpandToggle = () => {
@@ -31,7 +35,7 @@ export class CityPairList extends React.Component {
   };
 
   render() {
-    const { showInfoPanel, pair, flights } = this.props;
+    const { showInfoPanel, pair, flights, isLoggedIn } = this.props;
     const { isExpanded } = this.state;
     const itemsToShow = isExpanded ? flights.lenght : ITEMS_WHEN_COLLAPSED;
     const flightsAfterButton = flights.length - ITEMS_WHEN_COLLAPSED;
@@ -43,28 +47,28 @@ export class CityPairList extends React.Component {
         ))}
         {showInfoPanel && <InfoPanel />}
         <div className="buttonRow">
-          {flightsAfterButton > 0 && (
-            <Button
-              onClick={this.handleExpandToggle}
-              variant="outlined"
-              color="primary"
-              size="small"
-            >
-              {!isExpanded && (
-                <span className="button-content">
-                  Show {flightsAfterButton} more{' '}
-                  <ExpandMoreIcon>more</ExpandMoreIcon>
-                </span>
-              )}
-              {isExpanded && (
-                <span className="button-content">
-                  Show less <ExpandLessIcon>less</ExpandLessIcon>
-                </span>
-              )}
-            </Button>
-          )}
+          {flightsAfterButton > 0 &&
+            !isLoggedIn && (
+              <LoginMoreButton flightsAfterButton={flightsAfterButton} />
+            )}
+          {flightsAfterButton > 0 &&
+            isLoggedIn && (
+              <ExpandDealButton
+                isExpanded={isExpanded}
+                flightsAfterButton={flightsAfterButton}
+                handleExpandToggle={this.handleExpandToggle}
+              />
+            )}
         </div>
       </div>
     );
   }
 }
+
+const mapStateToProps = store => {
+  return {
+    isLoggedIn: Boolean(store.user._id)
+  };
+};
+
+export const CityPairList = connect(mapStateToProps)(InnerCityPairList);

@@ -1,3 +1,5 @@
+//@ts-check
+
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -9,17 +11,13 @@ import NoDeal from '../components/NoDeal';
 import { getDealMetaData } from './getDealMetaData';
 import { Card, Button } from '@material-ui/core';
 
-class DealsPage extends React.Component {
+class DealPage extends React.Component {
   componentDidMount() {
     // this.props.copyDeal(this.props.tempDeal);
     this.props.fetchDeal(this.props.dealId);
-    if (!this.props.previousRoute) {
+    if (!this.props.loggedIn) {
       this.props.setAppbar({
-        withReturn: false,
-        button: {
-          link: '/deals',
-          text: 'All Deals'
-        }
+        button: { text: 'Login / Signup', link: `/signup` }
       });
     }
   }
@@ -79,28 +77,28 @@ class DealsPage extends React.Component {
   }
 }
 
-DealsPage.propTypes = {
+DealPage.propTypes = {
   fetchDeal: PropTypes.func,
   copyDeal: PropTypes.func,
   currentDeal: PropTypes.object,
   setAppbar: PropTypes.func,
   tempDeal: PropTypes.object,
   dealId: PropTypes.string,
-  previousRoute: PropTypes.string,
-  isAdmin: PropTypes.bool
+  isAdmin: PropTypes.bool,
+  loggedIn: PropTypes.bool
 };
 
 const mapStateToProps = (store, props) => {
   return {
     ...props,
     isAdmin: store.user.isAdmin,
+    loggedIn: Boolean(store.user._id),
     tempDeal: store.deals.find(deal => (deal._id = props.dealId)) || {},
-    currentDeal: store.currentDeal,
-    previousRoute: store.routing.previousRoute
+    currentDeal: store.currentDeal
   };
 };
 
 export default connect(
   mapStateToProps,
   { fetchDeal, copyDeal, setAppbar }
-)(DealsPage);
+)(DealPage);

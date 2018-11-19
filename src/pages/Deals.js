@@ -1,3 +1,5 @@
+//@ts-check
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
@@ -8,6 +10,7 @@ import { setAppbar } from '../actions/appbarActions';
 import { Helmet } from 'react-helmet';
 import { withRouter } from 'react-router-dom';
 import { getDealMetaData } from './getDealMetaData';
+import qs from 'qs';
 
 const style = css`
   margin: 16px;
@@ -32,6 +35,10 @@ class DealsPage extends React.Component {
   }
 
   render() {
+    if (this.props.deals.length === 0) return null;
+    const urlParams = this.props.location.search;
+    const { activeDeal } = qs.parse(urlParams, { ignoreQueryPrefix: true });
+
     if (!this.props.deals[0]) return null;
     const { twitterTitle, twitterDescription, twitterImage } = getDealMetaData(
       this.props.deals[0]
@@ -50,7 +57,7 @@ class DealsPage extends React.Component {
           <meta name="twitter:description" content={twitterDescription} />
           <meta name="twitter:image" content={twitterImage} />
         </Helmet>
-        <DealList deals={this.props.deals} />
+        <DealList deals={this.props.deals} activeDeal={activeDeal} />
       </div>
     );
   }
