@@ -21,7 +21,8 @@ const LogoContainer = ({ height = 40, variant = 'light' }) => {
 };
 
 LogoContainer.propTypes = {
-  height: PropTypes.number
+  height: PropTypes.number,
+  variant: PropTypes.string
 };
 
 export default LogoContainer;
