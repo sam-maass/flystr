@@ -10,7 +10,14 @@ export const MARK_USER_NOTIFICATIONS_READ = 'MARK_USER_NOTIFICATIONS_READ';
 export const SIGNUP_USER = 'SIGNUP_USER';
 export const SIGNUP_WITH_EMAIL = 'SIGNUP_WITH_EMAIL';
 export const PURCHASE_SUBSCRIPTION = 'PURCHASE_SUBSCRIPTION';
+export const CANCEL_SUBSCRIPTION = 'CANCEL_SUBSCRIPTION';
 
+export function cancelSubscription() {
+  return {
+    type: CANCEL_SUBSCRIPTION,
+    payload: api().post(`/user/cancelSubscription`)
+  };
+}
 export function purchaseSubscription(opts) {
   return {
     type: PURCHASE_SUBSCRIPTION,
