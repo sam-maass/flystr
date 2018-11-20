@@ -22,6 +22,14 @@ const wrapperStyle = (destination, removed, highlighted) => css`
   max-width: 400px;
   position: relative;
   ${highlighted && highlightCard};
+  border-radius: 4px;
+  transition: all 0.15s;
+
+  :hover {
+    filter: brightness(1.15);
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.32), 0 2px 2px 0 rgba(0, 0, 0, 0.16),
+      0 0 0 1px rgba(0, 0, 0, 0.08);
+  }
   a {
     text-decoration: none;
   }
