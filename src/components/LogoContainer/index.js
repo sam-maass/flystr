@@ -1,9 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const style = ({ height }) => {
+const style = ({ height, variant }) => {
+  const lightLogo = `url("/logo.svg")`;
+  const darkLogo = `url("/logo-dark.svg")`;
+  const logoUrl = variant === 'light' ? lightLogo : darkLogo;
   return {
-    backgroundImage: 'url("/logo.svg")',
+    backgroundImage: logoUrl,
     backgoundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundSize: 'contain',
@@ -13,12 +16,13 @@ const style = ({ height }) => {
   };
 };
 
-const LogoContainer = ({ height = 40 }) => {
-  return <div style={style({ height })} />;
+const LogoContainer = ({ height = 40, variant = 'light' }) => {
+  return <div style={style({ height, variant })} />;
 };
 
 LogoContainer.propTypes = {
-  height: PropTypes.number
+  height: PropTypes.number,
+  variant: PropTypes.string
 };
 
 export default LogoContainer;
