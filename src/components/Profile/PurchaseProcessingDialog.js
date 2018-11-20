@@ -15,7 +15,7 @@ const style = css`
 export function PurchaseProcessingDialog() {
   return (
     <Dialog open={true}>
-      <DialogTitle>Processing your payment</DialogTitle>
+      <DialogTitle>Processing ...</DialogTitle>
       <DialogContent>
         <div className={style}>
           <CircularProgress color="primary" />

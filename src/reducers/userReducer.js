@@ -8,7 +8,8 @@ import {
   LOGIN_WITH_EMAIL,
   LOGOUT_USER,
   REFRESH_USER_TOKEN,
-  PURCHASE_SUBSCRIPTION
+  PURCHASE_SUBSCRIPTION,
+  CANCEL_SUBSCRIPTION
 } from '../actions/userActions';
 
 const fulfilled = action => `${action}_FULFILLED`;
@@ -17,6 +18,12 @@ const rejected = action => `${action}_REJECTED`;
 
 export default function reducer(state = { ready: false }, action) {
   switch (action.type) {
+    case pending(CANCEL_SUBSCRIPTION):
+      return { ...state, purchasePending: true };
+    case fulfilled(CANCEL_SUBSCRIPTION):
+      return { ...state, ...action.payload.data, purchasePending: false };
+    case rejected(CANCEL_SUBSCRIPTION):
+      return { ...state, purchasePending: false, purchaseFailed: true };
     case pending(PURCHASE_SUBSCRIPTION):
       return { ...state, purchasePending: true };
     case fulfilled(PURCHASE_SUBSCRIPTION):
