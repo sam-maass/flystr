@@ -7,14 +7,25 @@ import { classes, styles } from '../../styles';
 
 const style = destination => css`
   ${classes.typography.base};
-  height: 200px;
+  min-height: 200px;
+  height: 40vh;
   background-image: url(${getDestinationImage('header', destination)});
+  background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
+  @media only screen and (min-width: 1024px) {
+    background-image: url(${getDestinationImage('header-wide', destination)});
+  }
   .backdrop {
-    height: 200px;
+    min-height: 200px;
+    height: 40vh;
     display: grid;
-    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
+    grid-template-rows: repeat(3, 1fr);
+    background: linear-gradient(
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.4),
+      rgba(0, 0, 0, 0.4)
+    );
   }
   .badgeContainer {
     justify-self: end;
@@ -33,6 +44,12 @@ const style = destination => css`
         color: ${styles.colors.white};
       }
     }
+  }
+  .title {
+    ${classes.typography.h2};
+    color: ${styles.colors.white};
+    align-self: center;
+    justify-self: center;
   }
   .infos {
     letter-spacing: 0.1em;
@@ -55,6 +72,7 @@ const TripView = ({ children, trip }) => {
             {dealCount > 0 && <span className="badge deal">{dealString}</span>}
             {dealCount === 0 && <span className="badge active">active</span>}
           </div>
+          <div className="title">{trip.name}</div>
           <div className="infos">
             <div>
               <b>{getSubheaderString(trip)}</b>
