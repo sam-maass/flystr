@@ -10,6 +10,7 @@ import { Helmet } from 'react-helmet';
 import NoDeal from '../components/NoDeal';
 import { getDealMetaData } from './getDealMetaData';
 import { Card, Button } from '@material-ui/core';
+import moment from 'moment';
 
 class DealPage extends React.Component {
   componentDidMount() {
@@ -48,10 +49,7 @@ class DealPage extends React.Component {
       twitterImage
     } = getDealMetaData(this.props.currentDeal);
 
-    const bufferUrl = `https://flystr.com/deals?activeDeal=${
-      this.props.currentDeal.slug
-    }`;
-    const bufferLink = `https://buffer.com/add?text=${metaDescription}&url=${bufferUrl}`;
+    const bufferLink = this.getBufferLink();
 
     return (
       <Fragment>
@@ -74,6 +72,26 @@ class DealPage extends React.Component {
         <DealView deal={this.props.currentDeal} />;
       </Fragment>
     );
+  }
+
+  getBufferLink() {
+    const bufferUrl = `https://flystr.com/deals?activeDeal=${
+      this.props.currentDeal.slug
+    }`;
+    const {
+      title,
+      subtitle,
+      minPrice,
+      currency,
+      firstDeparture,
+      lastReturn
+    } = this.props.currentDeal;
+    const bufferTimeframe = `${moment(firstDeparture).format('MMM')} - ${moment(
+      lastReturn
+    ).format('MMM')}`;
+    const bufferDescription = `🌐 ${subtitle} - ${title} | 💸 ${minPrice} ${currency} return | 🗓  ${bufferTimeframe}`;
+    const bufferLink = `https://buffer.com/add?text=${bufferDescription}&url=${bufferUrl}`;
+    return bufferLink;
   }
 }
 
