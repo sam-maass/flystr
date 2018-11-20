@@ -15,7 +15,14 @@ const style = css`
     grid-template-columns: 2fr 1fr;
     align-items: center;
     justify-items: center;
-    margin-bottom: 8px;
+    margin-bottom:8px;
+    transition: all 0.15s;
+    :hover{
+      background-color:#fcfcfc;
+      .price{
+        background-color:#ffece3;
+      }
+    }
     .row {
       padding: 8px;
       display: grid;
@@ -37,13 +44,14 @@ const style = css`
     .price {
       color: ${styles.colors.orange};
       text-align: center;
-      background: rgba(255, 109, 0, 0.1);
+      background: #fff0e9;
       height: 100%;
       width: 100%;
       display: grid;
       align-items: center;
       justify-items: center;
       .link {
+        font-weight:normal;
         color: ${styles.colors.lightGray};
         font-size: 0.7em;
         line-height:1.35
