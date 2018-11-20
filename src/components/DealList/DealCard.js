@@ -43,6 +43,9 @@ const wrapperStyle = (destination, removed, highlighted) => css`
       height: 200px;
       display: grid;
       background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5));
+      @media only screen and (min-width: 1024px) {
+        height: ${highlighted ? '250px' : '200px'};
+      }
     }
     .badge {
       ${classes.typography.base};

@@ -35,26 +35,23 @@ function getRandomInt(min, max) {
 }
 const minFirstDeals = 4;
 const minRestDeals = 1;
-/**
- * @param {object} props
- * @param {object[]} props.deals - list of deals
- * @param {string=} props.activeDeal - list of deals
- * @returns
- */
+
 const DealList = ({ deals = [], activeDeal }) => {
   if (deals[0] === undefined) return null;
   const filterDealsCardPosition = getRandomInt(
     minFirstDeals,
     deals.length - minRestDeals
   );
+  const hasActiveDeal = activeDeal === deals[0].slug;
   let activeDeals = [];
-  if (activeDeal) {
+
+  if (hasActiveDeal) {
     activeDeals = deals.splice(0, 1);
   }
   const firstDeals = deals.splice(0, filterDealsCardPosition);
   return (
     <div className={style}>
-      {activeDeal && (
+      {hasActiveDeal && (
         <>
           {activeDeals.map(deal => (
             <DealCard key={Math.random()} deal={deal} highlighted />
