@@ -75,7 +75,7 @@ exports[`OriginSelection: default 1`] = `
           className="MuiFormControl-root-8 IntegrationAutosuggest-textField-5"
         >
           <label
-            className="MuiFormLabel-root-19 MuiInputLabel-root-12 MuiInputLabel-formControl-13 MuiInputLabel-animated-16"
+            className="MuiFormLabel-root-23 MuiInputLabel-root-12 MuiInputLabel-formControl-17 MuiInputLabel-animated-20"
             data-shrink={false}
           >
             Select a departure airport
@@ -84,14 +84,14 @@ exports[`OriginSelection: default 1`] = `
             aria-activedescendant={null}
             aria-autocomplete="list"
             aria-controls="react-autowhatever-1"
-            className="MuiInputBase-root-39 MuiInput-root-26 MuiInput-underline-30 MuiInputBase-formControl-40 MuiInput-formControl-27"
+            className="MuiInputBase-root-43 MuiInput-root-30 MuiInput-underline-34 MuiInputBase-formControl-44 MuiInput-formControl-31"
             onClick={[Function]}
             style={Object {}}
           >
             <input
               aria-invalid={false}
               autoComplete="off"
-              className="MuiInputBase-input-49 MuiInput-input-34"
+              className="MuiInputBase-input-53 MuiInput-input-38"
               disabled={false}
               onBlur={[Function]}
               onChange={[Function]}
@@ -105,7 +105,7 @@ exports[`OriginSelection: default 1`] = `
           </div>
         </div>
         <div
-          className="MuiPaper-root-56 MuiPaper-elevation2-60"
+          className="MuiPaper-root-60 MuiPaper-elevation2-64"
           id="react-autowhatever-1"
           role="listbox"
           style={Object {}}
@@ -125,7 +125,7 @@ exports[`OriginSelection: default 1`] = `
     className="button"
   >
     <button
-      className="MuiButtonBase-root-109 MuiButton-root-83 MuiButton-contained-94 MuiButton-containedPrimary-95 MuiButton-raised-97 MuiButton-raisedPrimary-98 MuiButton-sizeLarge-107 MuiButton-fullWidth-108"
+      className="MuiButtonBase-root-113 MuiButton-root-87 MuiButton-contained-98 MuiButton-containedPrimary-99 MuiButton-raised-101 MuiButton-raisedPrimary-102 MuiButton-sizeLarge-111 MuiButton-fullWidth-112"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}
@@ -142,7 +142,7 @@ exports[`OriginSelection: default 1`] = `
       type="button"
     >
       <span
-        className="MuiButton-label-84"
+        className="MuiButton-label-88"
       >
         <span
           className="content"
@@ -150,7 +150,7 @@ exports[`OriginSelection: default 1`] = `
           Select your destinations 
           <svg
             aria-hidden="true"
-            className="MuiSvgIcon-root-112"
+            className="MuiSvgIcon-root-116"
             focusable="false"
             role="presentation"
             viewBox="0 0 24 24"
@@ -168,7 +168,7 @@ exports[`OriginSelection: default 1`] = `
         </span>
       </span>
       <span
-        className="MuiTouchRipple-root-121"
+        className="MuiTouchRipple-root-125"
       />
     </button>
   </div>
