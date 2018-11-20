@@ -101,17 +101,17 @@ const TripCard = ({
         <div className={containerStyle}>
           <div className={imgStyle(destinations[0], dealCount)}>
             {dealCount > 0 && <span className="badge deal">{dealString}</span>}
-            {!freshlyCreated &&
-              dealCount === 0 && <span className="badge no-deal">0 Deals</span>}
-            {freshlyCreated &&
-              dealCount === 0 && (
-                <Fragment>
-                  <span className="badge active">searching ...</span>
-                  <div className="spinner">
-                    <CircularProgress disableShrink />
-                  </div>
-                </Fragment>
-              )}
+            {!freshlyCreated && dealCount === 0 && (
+              <span className="badge no-deal">0 Deals</span>
+            )}
+            {freshlyCreated && dealCount === 0 && (
+              <Fragment>
+                <span className="badge active">searching ...</span>
+                <div className="spinner">
+                  <CircularProgress disableShrink />
+                </div>
+              </Fragment>
+            )}
           </div>
           <div className="content">
             <div className={titleStyle}>{title} </div>

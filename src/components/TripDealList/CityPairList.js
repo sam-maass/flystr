@@ -37,7 +37,7 @@ export class InnerCityPairList extends React.Component {
   render() {
     const { showInfoPanel, pair, flights, isLoggedIn } = this.props;
     const { isExpanded } = this.state;
-    const itemsToShow = isExpanded ? flights.lenght : ITEMS_WHEN_COLLAPSED;
+    const itemsToShow = isExpanded ? flights.length : ITEMS_WHEN_COLLAPSED;
     const flightsAfterButton = flights.length - ITEMS_WHEN_COLLAPSED;
     return (
       <div className={style}>
@@ -47,18 +47,16 @@ export class InnerCityPairList extends React.Component {
         ))}
         {showInfoPanel && <InfoPanel />}
         <div className="buttonRow">
-          {flightsAfterButton > 0 &&
-            !isLoggedIn && (
-              <LoginMoreButton flightsAfterButton={flightsAfterButton} />
-            )}
-          {flightsAfterButton > 0 &&
-            isLoggedIn && (
-              <ExpandDealButton
-                isExpanded={isExpanded}
-                flightsAfterButton={flightsAfterButton}
-                handleExpandToggle={this.handleExpandToggle}
-              />
-            )}
+          {flightsAfterButton > 0 && !isLoggedIn && (
+            <LoginMoreButton flightsAfterButton={flightsAfterButton} />
+          )}
+          {flightsAfterButton > 0 && isLoggedIn && (
+            <ExpandDealButton
+              isExpanded={isExpanded}
+              flightsAfterButton={flightsAfterButton}
+              handleExpandToggle={this.handleExpandToggle}
+            />
+          )}
         </div>
       </div>
     );
