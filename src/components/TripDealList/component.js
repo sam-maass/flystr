@@ -40,18 +40,17 @@ const TripList = ({
   };
   return (
     <div className={style}>
-      {isAdmin &&
-        isTrip && (
-          <Paper>
-            <div className="deal-creation">
-              <TextField id="deal-title" label="title" />
-              <TextField id="deal-subtitle" label="subtitle" />
-              <Button onClick={handleCreateDealClick} color="primary">
-                Create Deal
-              </Button>
-            </div>
-          </Paper>
-        )}
+      {isAdmin && isTrip && (
+        <Paper>
+          <div className="deal-creation">
+            <TextField id="deal-title" label="title" />
+            <TextField id="deal-subtitle" label="subtitle" />
+            <Button onClick={handleCreateDealClick} color="primary">
+              Create Deal
+            </Button>
+          </div>
+        </Paper>
+      )}
       {cityPairs.map((pair, key) => (
         <CityPairList
           key={key}

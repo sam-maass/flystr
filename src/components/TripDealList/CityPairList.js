@@ -47,18 +47,16 @@ export class InnerCityPairList extends React.Component {
         ))}
         {showInfoPanel && <InfoPanel />}
         <div className="buttonRow">
-          {flightsAfterButton > 0 &&
-            !isLoggedIn && (
-              <LoginMoreButton flightsAfterButton={flightsAfterButton} />
-            )}
-          {flightsAfterButton > 0 &&
-            isLoggedIn && (
-              <ExpandDealButton
-                isExpanded={isExpanded}
-                flightsAfterButton={flightsAfterButton}
-                handleExpandToggle={this.handleExpandToggle}
-              />
-            )}
+          {flightsAfterButton > 0 && !isLoggedIn && (
+            <LoginMoreButton flightsAfterButton={flightsAfterButton} />
+          )}
+          {flightsAfterButton > 0 && isLoggedIn && (
+            <ExpandDealButton
+              isExpanded={isExpanded}
+              flightsAfterButton={flightsAfterButton}
+              handleExpandToggle={this.handleExpandToggle}
+            />
+          )}
         </div>
       </div>
     );
