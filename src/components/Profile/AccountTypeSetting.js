@@ -19,6 +19,7 @@ const InnerComponent = props => {
     amount,
     currency
   } = stripeSubscription.plan;
+
   const activeAccountType = interval ? 'premium' : 'free';
   const nextRenewal = moment
     .unix(stripeSubscription.current_period_end)
@@ -29,6 +30,7 @@ const InnerComponent = props => {
   } else if (activeAccountType === 'premium') {
     return (
       <PremiumAccountInfo
+        isCanceled={Boolean(stripeSubscription.canceled_at)}
         interval_count={interval_count}
         interval={interval}
         nextRenewal={nextRenewal}
