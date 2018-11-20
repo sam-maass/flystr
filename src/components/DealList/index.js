@@ -7,7 +7,8 @@ import { css } from 'emotion';
 import MoreDealsCard from '../MoreDealsCard';
 import FilterDealsCard from '../FilterDealsCard';
 import { classes, styles } from '../../styles';
-import SubHeadline from '../SubHeadline';
+import { Underlined } from '../Typography/Underlined';
+import { Typography } from '../Typography/Typography';
 
 const style = css`
   max-width: 1400px;
@@ -27,6 +28,7 @@ const style = css`
     ${classes.typography.base};
     text-align: center;
     color: ${styles.colors.darkGray};
+    justify-self: center;
   }
 `;
 
@@ -57,9 +59,9 @@ const DealList = ({ deals = [], activeDeal }) => {
             <DealCard key={Math.random()} deal={deal} highlighted />
           ))}
           <div className="related-deals">
-            <SubHeadline withBar marginTop={false}>
-              Related Deals
-            </SubHeadline>
+            <Underlined>
+              <Typography variant="h2">Similar Deals</Typography>
+            </Underlined>
           </div>
         </>
       )}

@@ -55,6 +55,19 @@ const SideListComponent = ({ classes, user, logoutUser }) => {
             <ListItemText primary="Signup" />
           </ListItem>
         </Link>
+        <div className={classes.bottomItems}>
+          <Divider />
+          <Link to="/terms">
+            <ListItem button>
+              <ListItemText secondary="Terms & Conditions" />
+            </ListItem>
+          </Link>
+          <Link to="/legal">
+            <ListItem button>
+              <ListItemText secondary="Privacy" />
+            </ListItem>
+          </Link>
+        </div>
       </div>
     );
   } else {

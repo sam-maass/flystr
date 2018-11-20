@@ -11,9 +11,23 @@ import { Helmet } from 'react-helmet';
 import { withRouter } from 'react-router-dom';
 import { getDealMetaData } from './getDealMetaData';
 import qs from 'qs';
+import { Typography } from '../components/Typography/Typography';
+import LogoContainer from '../components/LogoContainer';
+import { Underlined } from '../components/Typography/Underlined';
 
 const style = css`
   margin: 16px;
+  .teaser {
+    display: grid;
+    text-align: center;
+    justify-items: center;
+    margin: 16px;
+    margin-bottom: 32px;
+    grid-gap: 12px;
+    .logo-container {
+      margin: 8px;
+    }
+  }
 `;
 
 class DealsPage extends React.Component {
@@ -57,6 +71,19 @@ class DealsPage extends React.Component {
           <meta name="twitter:description" content={twitterDescription} />
           <meta name="twitter:image" content={twitterImage} />
         </Helmet>
+        {!this.props.loggedIn && (
+          <div className="teaser">
+            <div className="logo-container">
+              <LogoContainer variant="dark" height={60} />
+            </div>
+            <Underlined color="lightGray" variant="small">
+              <Typography variant="h2">All deals in one place</Typography>
+            </Underlined>
+            <Typography variant="title">
+              Discover cheap flights and create custom trip alerts
+            </Typography>
+          </div>
+        )}
         <DealList deals={this.props.deals} activeDeal={activeDeal} />
       </div>
     );
