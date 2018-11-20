@@ -36,7 +36,7 @@ const wrapperStyle = (destination, removed, highlighted) => css`
       display: grid;
       background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5));
       @media only screen and (min-width: 1024px) {
-        height: ${highlighted ? '300px' : '200px'};
+        height: ${highlighted ? '250px' : '200px'};
       }
     }
     .badge {
