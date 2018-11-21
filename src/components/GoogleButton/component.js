@@ -14,7 +14,6 @@ export const GoogleButtonComponent = ({
       <GoogleLogin
         clientId="1059931024943-1u64m1fh6glpodhalllbkbul1hbsdbfh.apps.googleusercontent.com"
         style={{ width: '100%' }}
-        tag="div"
         render={renderProps => (
           <Button
             onClick={renderProps.onClick}

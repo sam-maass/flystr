@@ -1,3 +1,4 @@
+import { AuthModal } from './components/AuthModal/index';
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -64,6 +65,7 @@ class Layout extends React.Component {
             ))}
           </Switch>
         </div>
+        <AuthModal />
         <Snackbar
           anchorOrigin={{
             vertical: 'bottom',
