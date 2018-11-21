@@ -18,7 +18,7 @@ class DealPage extends React.Component {
     this.props.fetchDeal(this.props.dealId);
     if (!this.props.loggedIn) {
       this.props.setAppbar({
-        button: { text: 'Login / Signup', link: `/signup` }
+        button: { name: 'loginButton' }
       });
     }
   }

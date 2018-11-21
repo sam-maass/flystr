@@ -1,6 +1,6 @@
 import { SET_APPBAR } from '../actions/appbarActions';
 
-export default function reducer(state = { title: 'test' }, action) {
+export default function reducer(state = {}, action) {
   switch (action.type) {
     case SET_APPBAR:
       return { ...state, ...action.payload };

@@ -14,6 +14,7 @@ import { withRouter } from 'react-router';
 import { styles } from '../../styles';
 import { logClick } from '../../utils/logClick';
 import { StyledNotificationDrawer } from './NotificationDrawer';
+import { openGlobalModal } from '../../actions/modalActions';
 
 const InnerAppBar = ({
   classes,
@@ -23,7 +24,8 @@ const InnerAppBar = ({
   button,
   history,
   routing,
-  user = {}
+  user = {},
+  openGlobalModal
 }) => {
   const goBack = () => {
     if (routing.previousRoute) {
@@ -39,7 +41,12 @@ const InnerAppBar = ({
       }
     }
   };
-
+  const openSignup = () => {
+    logClick('/signup', {
+      category: `Header | Login/Signup Button`
+    });
+    openGlobalModal('signup');
+  };
   return (
     <AppBar className={classes.appBar}>
       <Toolbar>
@@ -52,16 +59,15 @@ const InnerAppBar = ({
         <Typography variant="title" color="inherit" className={classes.flex}>
           {title}
         </Typography>
-        {button && (
-          <Link
-            className={classes.noLink}
-            to={button.link}
-            onClick={logClick(button.link, {
-              category: `Header | ${button.text} Button`
-            })}
-          >
-            <Button variant={button.variant} color={button.color}>
-              {button.text}
+        {button && button.name === 'loginButton' && (
+          <Button variant="flat" color="primary" onClick={openSignup}>
+            Login / Signup
+          </Button>
+        )}{' '}
+        {button && button.name === 'editButton' && (
+          <Link to={button.link}>
+            <Button variant="flat" color="primary">
+              Edit
             </Button>
           </Link>
         )}
@@ -82,7 +88,8 @@ InnerAppBar.propTypes = {
   classes: PropTypes.object.isRequired,
   title: PropTypes.string,
   withDrawer: PropTypes.bool,
-  withReturn: PropTypes.bool
+  withReturn: PropTypes.bool,
+  openGlobalModal: PropTypes.func
 };
 
 const style = {
@@ -115,4 +122,7 @@ const mapStateToProps = (store, props) => {
   };
 };
 
-export default connect(mapStateToProps)(styledAppbar);
+export default connect(
+  mapStateToProps,
+  { openGlobalModal }
+)(styledAppbar);
