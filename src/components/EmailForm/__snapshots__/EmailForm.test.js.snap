@@ -59,8 +59,9 @@ exports[`EmailForm: default 1`] = `
         />
       </div>
     </div>
+    <br />
     <button
-      className="MuiButtonBase-root-79 MuiButton-root-53 MuiButton-contained-64 MuiButton-raised-67"
+      className="MuiButtonBase-root-79 MuiButton-root-53 MuiButton-outlined-61 MuiButton-outlinedPrimary-62"
       disabled={false}
       onBlur={[Function]}
       onClick={[Function]}

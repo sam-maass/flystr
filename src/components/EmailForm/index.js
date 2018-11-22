@@ -53,8 +53,10 @@ const InnerEmailForm = ({
         error={Boolean(errors.password)}
         helperText={errors.password}
       />
+      <br />
       <Button
-        variant="contained"
+        variant="outlined"
+        color="primary"
         type="submit"
         disabled={isSubmitting}
         onClick={logClick('/trips', {

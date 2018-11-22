@@ -13,6 +13,7 @@ import landingpageDeals from './landingpageDealsReducer';
 import flightTemplates from './flightTemplatesReducer';
 import flights from './flightsReducer';
 import notifications from './notificationReducer';
+import modal from './modalReducer';
 
 export default combineReducers({
   notifications,
@@ -27,5 +28,6 @@ export default combineReducers({
   allTrips,
   errors,
   appBar,
-  routing
+  routing,
+  modal
 });
