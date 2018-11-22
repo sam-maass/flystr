@@ -25,7 +25,7 @@ class TripDealListContainer extends React.Component {
       const { trip, setAppbar } = this.props;
       setAppbar({
         title: trip.name,
-        button: { text: 'edit', link: `/trip/${trip._id}/edit` }
+        button: { name: 'editButton', link: `/trip/${trip._id}/edit` }
       });
     }
   }

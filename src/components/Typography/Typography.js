@@ -3,12 +3,17 @@ import { css } from 'emotion';
 import { styles } from '../../styles';
 import PropTypes from 'prop-types';
 
-const style = variant => `
-    ${typography[variant]}
+const style = ({ variant, secondary }) => {
+  const variantStyle = typography[variant];
+  const color = secondary ? styles.colors.midGray : styles.colors.darkGray;
+  return css`
+  ${variantStyle}
+  color: ${color}
 `;
+};
 
-export function Typography({ variant = 'base', children }) {
-  return <span className={style(variant)}>{children}</span>;
+export function Typography({ variant = 'base', children, secondary = false }) {
+  return <span className={style({ variant, secondary })}>{children}</span>;
 }
 
 const typography = {
@@ -86,5 +91,6 @@ const typography = {
 
 Typography.propTypes = {
   variant: PropTypes.oneOf(Object.keys(typography)),
-  children: PropTypes.element
+  secondary: PropTypes.bool,
+  children: PropTypes.node
 };

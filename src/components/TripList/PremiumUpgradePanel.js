@@ -27,7 +27,7 @@ export function PremiumUpgradePanel() {
         </h4>
         <div>
           <Link to="/settings#premium">
-            <Button variant="raised" color="primary" size="large">
+            <Button variant="contained" color="primary" size="large">
               Upgrade to Premium
             </Button>
           </Link>

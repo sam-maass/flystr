@@ -177,7 +177,7 @@ class NewDealForm extends React.Component {
             </div>
           </div>
           <Button
-            variant="raised"
+            variant="contained"
             color="primary"
             onClick={this.props.handleSubmit}
           >

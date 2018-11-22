@@ -14,6 +14,7 @@ import { withRouter } from 'react-router';
 import { styles } from '../../styles';
 import { logClick } from '../../utils/logClick';
 import { StyledNotificationDrawer } from './NotificationDrawer';
+import { ModalLink } from '../ModalLink';
 
 const InnerAppBar = ({
   classes,
@@ -39,7 +40,11 @@ const InnerAppBar = ({
       }
     }
   };
-
+  const logSignup = () => {
+    logClick('/signup', {
+      category: `Header | Login/Signup Button`
+    });
+  };
   return (
     <AppBar className={classes.appBar}>
       <Toolbar>
@@ -52,16 +57,17 @@ const InnerAppBar = ({
         <Typography variant="title" color="inherit" className={classes.flex}>
           {title}
         </Typography>
-        {button && (
-          <Link
-            className={classes.noLink}
-            to={button.link}
-            onClick={logClick(button.link, {
-              category: `Header | ${button.text} Button`
-            })}
-          >
-            <Button variant={button.variant} color={button.color}>
-              {button.text}
+        {button && button.name === 'loginButton' && (
+          <ModalLink modal="signup" onClick={logSignup}>
+            <Button variant="text" color="primary">
+              Login / Signup
+            </Button>
+          </ModalLink>
+        )}{' '}
+        {button && button.name === 'editButton' && (
+          <Link to={button.link}>
+            <Button variant="text" color="primary">
+              Edit
             </Button>
           </Link>
         )}

@@ -80,7 +80,7 @@ class DestinationSelection extends React.Component {
         <div className="button">
           <Button
             fullWidth
-            variant="raised"
+            variant="contained"
             color="primary"
             onClick={goToNextPage}
           >

@@ -61,7 +61,7 @@ const OriginSelection = props => {
       <div className="button">
         <Button
           fullWidth
-          variant="raised"
+          variant="contained"
           color="primary"
           size="large"
           onClick={() => goToNextPage()}

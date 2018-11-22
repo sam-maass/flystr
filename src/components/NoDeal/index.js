@@ -11,7 +11,7 @@ const NoDeal = () => {
       <div>
         <EmptyState title="This deal has expired" icon={<SadIcon />} />
         <Link to="/deals">
-          <Button fullWidth variant="raised" color="primary">
+          <Button fullWidth variant="contained" color="primary">
             Find other deals
           </Button>
         </Link>

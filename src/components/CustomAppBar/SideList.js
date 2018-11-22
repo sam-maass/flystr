@@ -18,6 +18,7 @@ import { Link } from 'react-router-dom';
 import { logoutUser } from '../../actions/userActions';
 import { connect } from 'react-redux';
 import { Button } from '@material-ui/core';
+import { ModalLink } from '../ModalLink';
 
 const SideListComponent = ({ classes, user, logoutUser }) => {
   if (!user._id) {
@@ -39,22 +40,22 @@ const SideListComponent = ({ classes, user, logoutUser }) => {
             <ListItemText primary="All Deals" />
           </ListItem>
         </Link>
-        <Link to={'/login'}>
+        <ModalLink modal="login">
           <ListItem button>
             <ListItemIcon>
               <LoginIcon />
             </ListItemIcon>
             <ListItemText primary="Login" />
           </ListItem>
-        </Link>
-        <Link to={'/signup'}>
+        </ModalLink>
+        <ModalLink modal="signup">
           <ListItem button>
             <ListItemIcon>
               <SignupIcon />
             </ListItemIcon>
             <ListItemText primary="Signup" />
           </ListItem>
-        </Link>
+        </ModalLink>
         <div className={classes.bottomItems}>
           <Divider />
           <Link to="/terms">
@@ -135,7 +136,7 @@ const SideListComponent = ({ classes, user, logoutUser }) => {
           {!isPremium(user) && (
             <Link to="/settings#premium">
               <ListItem>
-                <Button fullWidth variant="raised" color="primary">
+                <Button fullWidth variant="contained" color="primary">
                   Upgrade to Premium
                 </Button>
               </ListItem>
