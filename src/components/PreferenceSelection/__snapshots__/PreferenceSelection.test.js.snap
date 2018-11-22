@@ -77,7 +77,7 @@ exports[`PreferenceSelection: default 1`] = `
       color="primary"
       fullWidth={true}
       onClick={[Function]}
-      variant="raised"
+      variant="contained"
     >
       <span
         className="content"
