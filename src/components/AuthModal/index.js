@@ -1,13 +1,15 @@
 import React from 'react';
-import { Dialog } from '@material-ui/core';
+import { Dialog, Button, withMobileDialog } from '@material-ui/core';
 import { Typography } from '../Typography/Typography';
 import EmailForm from '../EmailForm';
 import { css } from 'emotion';
 import { GoogleButton } from '../GoogleButton';
 import { DialogCloseIcon } from '../DialogCloseIcon';
 import { connect } from 'react-redux';
-import { closeGlobalModal } from '../../actions/modalActions';
+import { closeGlobalModal, openGlobalModal } from '../../actions/modalActions';
 import PropTypes from 'prop-types';
+import { InnerSignupPage } from '../../pages/InnerSignupPage';
+import { isBrowser } from '../../settings';
 
 const style = css`
   margin: 16px;
@@ -15,28 +17,77 @@ const style = css`
   @media screen and (min-width: 500px) {
     min-width: 300px;
   }
+  .signup {
+    display: grid;
+    margin-top: 32px;
+    grid-template-columns: max-content 1fr;
+    align-items: center;
+    justify-items: flex-start;
+  }
+  .google-login {
+    margin: 16px 0 0 0;
+  }
 `;
 
-function InnerAuthModal({ modalContent, closeGlobalModal }) {
-  const open = Boolean(modalContent);
-  return (
-    <div className="auth-modal">
-      <Dialog open={open} onClose={closeGlobalModal}>
-        <DialogCloseIcon handleClose={closeGlobalModal} />
-        <div className={style}>
-          <Typography variant="title"> Login </Typography>
-          <EmailForm action="login" />
-          <br />
-          <GoogleButton action="login" text="Login with Google" />
-        </div>
-      </Dialog>
-    </div>
-  );
+class InnerAuthModal extends React.Component {
+  state = {
+    shouldSuggestLogin:
+      isBrowser() && window.localStorage.getItem('hasFlystrAccount')
+  };
+
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    const open = Boolean(this.props.modalContent);
+    const showSignup =
+      this.props.modalContent === 'signup' && !this.state.shouldSuggestLogin;
+    const showLogin =
+      this.props.modalContent === 'login' || this.state.shouldSuggestLogin;
+
+    const openSignup = () => {
+      this.setState({ shouldSuggestLogin: false });
+      this.props.openGlobalModal('signup');
+    };
+
+    return (
+      <div className="auth-modal">
+        <Dialog
+          open={open}
+          onClose={this.props.closeGlobalModal}
+          fullScreen={this.props.fullScreen}
+        >
+          <DialogCloseIcon handleClose={this.props.closeGlobalModal} />
+          <div className={style}>
+            {showLogin && (
+              <>
+                <Typography variant="title"> Login </Typography>
+                <EmailForm action="login" />
+                <div className="google-login">
+                  <GoogleButton action="login" text="Login with Google" />
+                </div>
+                <div className="signup">
+                  <Typography secondary>New to flystr?</Typography>
+                  <Button color="primary" onClick={openSignup}>
+                    Sign up
+                  </Button>
+                </div>
+              </>
+            )}
+            {showSignup && <InnerSignupPage />}
+          </div>
+        </Dialog>
+      </div>
+    );
+  }
 }
 
 InnerAuthModal.propTypes = {
   modalContent: PropTypes.string,
-  closeGlobalModal: PropTypes.func
+  closeGlobalModal: PropTypes.func,
+  openGlobalModal: PropTypes.func,
+  fullScreen: PropTypes.bool
 };
 
 const mapStateToProps = store => {
@@ -47,5 +98,5 @@ const mapStateToProps = store => {
 
 export const AuthModal = connect(
   mapStateToProps,
-  { closeGlobalModal }
-)(InnerAuthModal);
+  { closeGlobalModal, openGlobalModal }
+)(withMobileDialog()(InnerAuthModal));
