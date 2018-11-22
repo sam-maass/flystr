@@ -92,5 +92,5 @@ const typography = {
 Typography.propTypes = {
   variant: PropTypes.oneOf(Object.keys(typography)),
   secondary: PropTypes.bool,
-  children: PropTypes.element
+  children: PropTypes.node
 };

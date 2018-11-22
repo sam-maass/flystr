@@ -59,14 +59,14 @@ const InnerAppBar = ({
         </Typography>
         {button && button.name === 'loginButton' && (
           <ModalLink modal="signup" onClick={logSignup}>
-            <Button variant="flat" color="primary">
+            <Button variant="text" color="primary">
               Login / Signup
             </Button>
           </ModalLink>
         )}{' '}
         {button && button.name === 'editButton' && (
           <Link to={button.link}>
-            <Button variant="flat" color="primary">
+            <Button variant="text" color="primary">
               Edit
             </Button>
           </Link>
