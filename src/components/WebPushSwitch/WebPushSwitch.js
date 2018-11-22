@@ -25,19 +25,6 @@ class InnerWebPushSwitch extends React.Component {
     });
   };
 
-  componentDidMount() {
-    const { isPushActive, updateUserSettings } = this.props;
-    const getBrowserSettings = async () => {
-      const pushSubscription = await getActiveSubscription();
-      if (isPushActive && !pushSubscription)
-        updateUserSettings({
-          pushSubscription: {},
-          pushNotificationsActive: false
-        });
-    };
-    getBrowserSettings();
-  }
-
   render() {
     return (
       <Switch
