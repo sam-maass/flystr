@@ -18,12 +18,10 @@ import { Link } from 'react-router-dom';
 import { logoutUser } from '../../actions/userActions';
 import { connect } from 'react-redux';
 import { Button } from '@material-ui/core';
-import { openGlobalModal } from '../../actions/modalActions';
+import { ModalLink } from '../ModalLink';
 
-const SideListComponent = ({ classes, user, logoutUser, openGlobalModal }) => {
+const SideListComponent = ({ classes, user, logoutUser }) => {
   if (!user._id) {
-    const openLogin = () => openGlobalModal('login');
-    const openSignup = () => openGlobalModal('signup');
     return (
       <div className={classes.list}>
         <List>
@@ -42,18 +40,22 @@ const SideListComponent = ({ classes, user, logoutUser, openGlobalModal }) => {
             <ListItemText primary="All Deals" />
           </ListItem>
         </Link>
-        <ListItem button onClick={openLogin}>
-          <ListItemIcon>
-            <LoginIcon />
-          </ListItemIcon>
-          <ListItemText primary="Login" />
-        </ListItem>
-        <ListItem button onClick={openSignup}>
-          <ListItemIcon>
-            <SignupIcon />
-          </ListItemIcon>
-          <ListItemText primary="Signup" />
-        </ListItem>
+        <ModalLink modal="login">
+          <ListItem button>
+            <ListItemIcon>
+              <LoginIcon />
+            </ListItemIcon>
+            <ListItemText primary="Login" />
+          </ListItem>
+        </ModalLink>
+        <ModalLink modal="signup">
+          <ListItem button>
+            <ListItemIcon>
+              <SignupIcon />
+            </ListItemIcon>
+            <ListItemText primary="Signup" />
+          </ListItem>
+        </ModalLink>
         <div className={classes.bottomItems}>
           <Divider />
           <Link to="/terms">
@@ -196,7 +198,7 @@ const mapStateToProps = (store, props) => {
 
 export const SideList = connect(
   mapStateToProps,
-  { logoutUser, openGlobalModal }
+  { logoutUser }
 )(withStyles(styles)(SideListComponent));
 
 function isPremium(user) {

@@ -14,7 +14,7 @@ import { withRouter } from 'react-router';
 import { styles } from '../../styles';
 import { logClick } from '../../utils/logClick';
 import { StyledNotificationDrawer } from './NotificationDrawer';
-import { openGlobalModal } from '../../actions/modalActions';
+import { ModalLink } from '../ModalLink';
 
 const InnerAppBar = ({
   classes,
@@ -24,8 +24,7 @@ const InnerAppBar = ({
   button,
   history,
   routing,
-  user = {},
-  openGlobalModal
+  user = {}
 }) => {
   const goBack = () => {
     if (routing.previousRoute) {
@@ -41,11 +40,10 @@ const InnerAppBar = ({
       }
     }
   };
-  const openSignup = () => {
+  const logSignup = () => {
     logClick('/signup', {
       category: `Header | Login/Signup Button`
     });
-    openGlobalModal('signup');
   };
   return (
     <AppBar className={classes.appBar}>
@@ -60,9 +58,11 @@ const InnerAppBar = ({
           {title}
         </Typography>
         {button && button.name === 'loginButton' && (
-          <Button variant="flat" color="primary" onClick={openSignup}>
-            Login / Signup
-          </Button>
+          <ModalLink modal="signup" onClick={logSignup}>
+            <Button variant="flat" color="primary">
+              Login / Signup
+            </Button>
+          </ModalLink>
         )}{' '}
         {button && button.name === 'editButton' && (
           <Link to={button.link}>
@@ -88,8 +88,7 @@ InnerAppBar.propTypes = {
   classes: PropTypes.object.isRequired,
   title: PropTypes.string,
   withDrawer: PropTypes.bool,
-  withReturn: PropTypes.bool,
-  openGlobalModal: PropTypes.func
+  withReturn: PropTypes.bool
 };
 
 const style = {
@@ -122,7 +121,4 @@ const mapStateToProps = (store, props) => {
   };
 };
 
-export default connect(
-  mapStateToProps,
-  { openGlobalModal }
-)(styledAppbar);
+export default connect(mapStateToProps)(styledAppbar);

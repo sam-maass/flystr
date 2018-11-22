@@ -7,10 +7,8 @@ import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { isBrowser } from '../settings';
 import { Typography } from '../components/Typography/Typography';
-import { openGlobalModal } from '../actions/modalActions';
-import { connect } from 'react-redux';
 import { css } from 'emotion';
-import PropTypes from 'prop-types';
+import { ModalLink } from '../components/ModalLink';
 
 const style = css`
   display: grid;
@@ -24,7 +22,7 @@ const style = css`
   }
 `;
 
-class InnerSignupPage2 extends React.Component {
+export class InnerSignupPage extends React.Component {
   state = {
     tocAccepted: false,
     suggestLogin: isBrowser() && window.localStorage.getItem('hasFlystrAccount')
@@ -32,7 +30,6 @@ class InnerSignupPage2 extends React.Component {
   handleChange = name => event => {
     this.setState({ [name]: event.target.checked });
   };
-  openLogin = () => this.props.openGlobalModal('login');
   render() {
     const { tocAccepted } = this.state;
 
@@ -67,20 +64,11 @@ class InnerSignupPage2 extends React.Component {
         </p>
         <div className="open-login">
           <Typography secondary>Already have an account?</Typography>
-          <Button color="primary" onClick={this.openLogin}>
-            Log in
-          </Button>
+          <ModalLink modal="login">
+            <Button color="primary">Log in</Button>
+          </ModalLink>
         </div>
       </div>
     );
   }
 }
-
-InnerSignupPage2.propTypes = {
-  openGlobalModal: PropTypes.func
-};
-
-export const InnerSignupPage = connect(
-  null,
-  { openGlobalModal }
-)(InnerSignupPage2);

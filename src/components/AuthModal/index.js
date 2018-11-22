@@ -6,10 +6,11 @@ import { css } from 'emotion';
 import { GoogleButton } from '../GoogleButton';
 import { DialogCloseIcon } from '../DialogCloseIcon';
 import { connect } from 'react-redux';
-import { closeGlobalModal, openGlobalModal } from '../../actions/modalActions';
+import { closeGlobalModal } from '../../actions/modalActions';
 import PropTypes from 'prop-types';
 import { InnerSignupPage } from '../../pages/InnerSignupPage';
 import { isBrowser } from '../../settings';
+import { ModalLink } from '../ModalLink';
 
 const style = css`
   margin: 16px;
@@ -46,9 +47,8 @@ class InnerAuthModal extends React.Component {
     const showLogin =
       this.props.modalContent === 'login' || this.state.shouldSuggestLogin;
 
-    const openSignup = () => {
+    const removeSuggestion = () => {
       this.setState({ shouldSuggestLogin: false });
-      this.props.openGlobalModal('signup');
     };
 
     return (
@@ -69,9 +69,11 @@ class InnerAuthModal extends React.Component {
                 </div>
                 <div className="signup">
                   <Typography secondary>New to flystr?</Typography>
-                  <Button color="primary" onClick={openSignup}>
-                    Sign up
-                  </Button>
+                  <ModalLink modal="signup">
+                    <Button color="primary" onClick={removeSuggestion}>
+                      Sign up
+                    </Button>
+                  </ModalLink>
                 </div>
               </>
             )}
@@ -86,7 +88,6 @@ class InnerAuthModal extends React.Component {
 InnerAuthModal.propTypes = {
   modalContent: PropTypes.string,
   closeGlobalModal: PropTypes.func,
-  openGlobalModal: PropTypes.func,
   fullScreen: PropTypes.bool
 };
 
@@ -98,5 +99,5 @@ const mapStateToProps = store => {
 
 export const AuthModal = connect(
   mapStateToProps,
-  { closeGlobalModal, openGlobalModal }
+  { closeGlobalModal }
 )(withMobileDialog()(InnerAuthModal));

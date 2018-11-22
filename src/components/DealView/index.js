@@ -4,8 +4,8 @@ import { css } from 'emotion';
 import { getDestinationImage } from '../../getDestinationImage';
 import { classes, styles } from '../../styles';
 import TripDealList from '../TripDealList/component';
-import { Link } from 'react-router-dom';
 import { logClick } from '../../utils/logClick';
+import { ModalLink } from '../ModalLink';
 
 const style = destination => css`
   ${classes.typography.base};
@@ -109,9 +109,9 @@ const DealView = ({ deal }) => {
           <br />
           <br />
           The easiest way to get your perfect dates is to{' '}
-          <Link to="/signup">sign up</Link>. As a flystr user you can create a
-          trip and we will try to find deals matching your date preferences.{' '}
-          <br />
+          <ModalLink modal="signup">sign up</ModalLink>
+          . As a flystr user you can create a trip and we will try to find deals
+          matching your date preferences. <br />
           <br /> If you don't want to sign up you can search for cheap flights
           on{' '}
           <a
