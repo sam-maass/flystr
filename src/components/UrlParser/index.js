@@ -32,7 +32,7 @@ class UrlParser extends Component {
           onChange={this.handleChange}
         />
         <div>
-          <Button variant="raised" color="primary" onClick={this.parseUrls}>
+          <Button variant="contained" color="primary" onClick={this.parseUrls}>
             Parse Links
           </Button>
         </div>

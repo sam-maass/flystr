@@ -136,7 +136,7 @@ const SideListComponent = ({ classes, user, logoutUser }) => {
           {!isPremium(user) && (
             <Link to="/settings#premium">
               <ListItem>
-                <Button fullWidth variant="raised" color="primary">
+                <Button fullWidth variant="contained" color="primary">
                   Upgrade to Premium
                 </Button>
               </ListItem>

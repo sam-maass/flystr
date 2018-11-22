@@ -36,10 +36,6 @@ class InnerAuthModal extends React.Component {
       isBrowser() && window.localStorage.getItem('hasFlystrAccount')
   };
 
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     const open = Boolean(this.props.modalContent);
     const showSignup =

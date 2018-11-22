@@ -85,7 +85,7 @@ const NewTripForm = ({ classes, buttonText, ...props }) => {
 
       <Button
         className={classes.button}
-        variant="raised"
+        variant="contained"
         color="primary"
         onClick={props.handleSubmit}
       >

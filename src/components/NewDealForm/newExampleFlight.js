@@ -75,7 +75,7 @@ class NewExampleFlight extends React.Component {
           <FormikTextField elemKey="inCarriers" {...props} />
           <FormikTextField elemKey="price" type="number" {...props} />
           <Button
-            variant="raised"
+            variant="contained"
             color="primary"
             onClick={this.handleAddFlight}
           >

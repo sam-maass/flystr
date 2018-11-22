@@ -4,8 +4,6 @@ import React from 'react';
 import { Dialog, withMobileDialog } from '@material-ui/core';
 import { StripeCheckout } from './StripeCheckout';
 import PropTypes from 'prop-types';
-import { css } from 'emotion';
-import { styles } from '../../styles';
 
 export class ResponisveDialog extends React.Component {
   state = { selectedPlan: 'quarterly' };

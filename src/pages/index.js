@@ -62,10 +62,6 @@ const Deal = Loadable({
   loader: () => import('./Deal'),
   loading: Loading
 });
-const Signup = Loadable({
-  loader: () => import('./Signup'),
-  loading: Loading
-});
 export {
   Terms,
   Deal,
@@ -74,7 +70,6 @@ export {
   AdminTrips,
   Legal,
   Login,
-  Signup,
   NewTrip,
   NewFlight,
   NewDeal,

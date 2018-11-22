@@ -18,7 +18,7 @@ export const GoogleButtonComponent = ({
           <Button
             onClick={renderProps.onClick}
             fullWidth
-            variant="raised"
+            variant="contained"
             color="primary"
           >
             {text}

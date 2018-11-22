@@ -22,28 +22,6 @@ export const loggedInRoutes = [
     main: () => <Pages.NewFlight />
   },
   {
-    path: '/login',
-    exact: true,
-    main: () => (
-      <Redirect
-        to={{
-          pathname: '/trips'
-        }}
-      />
-    )
-  },
-  {
-    path: '/signup',
-    exact: true,
-    main: () => (
-      <Redirect
-        to={{
-          pathname: '/trips'
-        }}
-      />
-    )
-  },
-  {
     path: '/new-trip',
     exact: true,
     header: () => <CustomAppBar withReturn title="Create a new trip" />,
@@ -121,14 +99,8 @@ export const loggedOutRoutes = [
   {
     path: '/login',
     exact: true,
-    header: () => <CustomAppBar withDrawer={false} title="Login" />,
+    header: () => <CustomAppBar title="Flystr" />,
     main: () => <Pages.Login />
-  },
-  {
-    path: '/signup',
-    exact: true,
-    header: () => <CustomAppBar withDrawer={false} title="Sign up" />,
-    main: () => <Pages.Signup />
   },
   {
     path: '/legal',

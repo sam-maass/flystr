@@ -106,7 +106,7 @@ const PreferenceSelection = props => {
         <div className="button">
           <Button
             fullWidth
-            variant="raised"
+            variant="contained"
             color="primary"
             onClick={() => props.handleSubmit()}
           >
@@ -120,7 +120,7 @@ const PreferenceSelection = props => {
         <div className="button two-buttons">
           <Button
             fullWidth
-            variant="raised"
+            variant="contained"
             color="primary"
             onClick={() => props.handleSubmit()}
           >
