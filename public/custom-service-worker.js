@@ -28,9 +28,6 @@ self.addEventListener('fetch', event => {
     fetch(event.request)
       .then(response => response)
       .catch(async () => {
-        //Check to see if you have it in the cache
-        //Return response
-        //If not in the cache, then return error page
         const cache = await caches.open('cache');
         const matching = await cache.match(event.request);
         const report =
