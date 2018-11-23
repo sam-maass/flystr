@@ -17,26 +17,24 @@ self.addEventListener('push', e => {
 
 self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open('cache').then(cache => {
-      return cache.addAll(['/deals', '/manifest.json']);
+    caches.open('flystr-cache').then(cache => {
+      return cache.addAll([`/deals`, `/manifest.json`]);
     })
   );
 });
 
 self.addEventListener('fetch', event => {
-  event.respondWith(
-    fetch(event.request)
-      .then(response => response)
-      .catch(async () => {
-        const cache = await caches.open('cache');
-        const matching = await cache.match(event.request);
-        const report =
-          !matching || matching.status === 404
-            ? Promise.reject('no-match')
-            : matching;
-        return report;
-      })
+  const cachedSites = [`/deals`, `/manifest.json`];
+  const shouldHandleRequest = cachedSites.some(path =>
+    event.request.url.includes(path)
   );
+  if (shouldHandleRequest) {
+    event.respondWith(
+      fetch(event.request).catch(() => {
+        return caches.match(event.request);
+      })
+    );
+  }
 });
 
 async function evaluateNotification(e) {
