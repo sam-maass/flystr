@@ -125,7 +125,7 @@ const styles = {
   main: {
     display: 'grid',
     height: '100vh',
-    gridTemplateRows: 'min-content auto'
+    gridTemplateRows: 'min-content 1fr'
   },
   scrollContainer: {
     overflowX: 'none',
