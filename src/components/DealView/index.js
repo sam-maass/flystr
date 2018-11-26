@@ -99,9 +99,8 @@ const signupCardStyle = css`
   text-align: center;
 `;
 
-const DealView = ({ deal, addDealToWatchlist }) => {
+const DealView = ({ deal }) => {
   const { title, subtitle } = deal;
-  const addToWatchlist = () => addDealToWatchlist(deal);
   if (deal.destinations === undefined) {
     return null;
   } else {
