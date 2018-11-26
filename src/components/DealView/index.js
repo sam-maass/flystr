@@ -6,6 +6,8 @@ import { classes, styles } from '../../styles';
 import TripDealList from '../TripDealList/component';
 import { logClick } from '../../utils/logClick';
 import { ModalLink } from '../ModalLink';
+import HeartIcon from '@material-ui/icons/FavoriteBorderOutlined';
+import { Link } from 'react-router-dom';
 
 const style = destination => css`
   ${classes.typography.base};
@@ -60,6 +62,29 @@ const style = destination => css`
     .subtitle {
       ${classes.typography.title};
       color: ${styles.colors.white};
+      margin-bottom: 32px;
+    }
+    button {
+      cursor: pointer;
+      ${classes.typography.base};
+      color: #fff;
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid #fff;
+      border-radius: 4px;
+      padding: 7px 8px;
+      transition: all 0.3s;
+      justify-items: center;
+      :hover {
+        background-color: rgba(255, 255, 255, 0.3);
+      }
+      :focus {
+        outline: none;
+      }
+      .button-content {
+        display: grid;
+        grid-template-columns: 24px 1fr;
+        grid-gap: 8px;
+      }
     }
   }
 `;
@@ -74,8 +99,9 @@ const signupCardStyle = css`
   text-align: center;
 `;
 
-const DealView = ({ deal }) => {
+const DealView = ({ deal, addDealToWatchlist }) => {
   const { title, subtitle } = deal;
+  const addToWatchlist = () => addDealToWatchlist(deal);
   if (deal.destinations === undefined) {
     return null;
   } else {
@@ -92,6 +118,14 @@ const DealView = ({ deal }) => {
               <div className="infos">
                 <div className="title">{title}</div>
                 <div className="subtitle">from {subtitle}</div>
+                <Link to={`/trips?copyFromDeal=${deal._id}`}>
+                  <button className="add-watchlist">
+                    <div className="button-content">
+                      <HeartIcon />
+                      <span>Add to Watchlist</span>
+                    </div>
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

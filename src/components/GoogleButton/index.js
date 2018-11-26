@@ -37,7 +37,8 @@ class GoogleButtonContainer extends Component {
       alert('You need to accept our Terms and Conditions to proceed');
   };
 
-  onLoginFailure = () => {
+  onLoginFailure = e => {
+    console.log(e);
     this.props.addError('Network issues. Please try again');
   };
 

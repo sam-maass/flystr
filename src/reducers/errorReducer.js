@@ -6,6 +6,7 @@ import {
   LOGIN_WITH_EMAIL,
   PURCHASE_SUBSCRIPTION
 } from '../actions/userActions';
+import { CREATE_TRIP_FROM_DEAL } from '../actions/tripActions';
 
 export default function reducer(state = [], action) {
   switch (action.type) {
@@ -22,6 +23,8 @@ export default function reducer(state = [], action) {
     case `${LOGIN_WITH_EMAIL}_REJECTED`:
       return [...state, { error: action.payload.response.data.error }];
     case `${PURCHASE_SUBSCRIPTION}_REJECTED`:
+      return [...state, { error: action.payload.response.data.error }];
+    case `${CREATE_TRIP_FROM_DEAL}_REJECTED`:
       return [...state, { error: action.payload.response.data.error }];
     default:
       return state;
