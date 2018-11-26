@@ -86,7 +86,7 @@ const SideListComponent = ({ classes, user, logoutUser }) => {
               <ListItemIcon>
                 <DealsIcon />
               </ListItemIcon>
-              <ListItemText primary="All Deals" />
+              <ListItemText primary="New Deals" />
             </ListItem>
           </Link>
           <Link to={'/trips'}>
@@ -94,7 +94,7 @@ const SideListComponent = ({ classes, user, logoutUser }) => {
               <ListItemIcon>
                 <TripIcon />
               </ListItemIcon>
-              <ListItemText primary="My Trips" />
+              <ListItemText primary="Watchlist" />
             </ListItem>
           </Link>
           <Link to={'/settings'}>

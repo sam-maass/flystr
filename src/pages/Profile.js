@@ -5,7 +5,7 @@ import { css } from 'emotion';
 import { classes } from '../styles';
 import { WebPushSwitch } from '../components/WebPushSwitch/WebPushSwitch';
 import PropTypes from 'prop-types';
-
+import { EmailNotificationSwitch } from '../components/EmailNotificationSwitch/EmailNotificationSwitch';
 const style = css`
   width: 100%;
   max-width: 1024px;
@@ -31,9 +31,12 @@ const ProfilePage = ({ hash }) => {
       <div>
         <AccountTypeSetting openPremiumDialog={openPremiumDialog} />
       </div>
-      <SettingDescription primary="Push Notifications" />
+      <SettingDescription primary="Notifications" />
       <div>
-        <WebPushSwitch />
+        <div className="notification-settings">
+          <WebPushSwitch /> via Push <br />
+          <EmailNotificationSwitch /> via Email
+        </div>
       </div>
     </div>
   );

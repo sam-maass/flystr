@@ -3,10 +3,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TripRow from '../TripRow';
 import { css } from 'emotion';
+import EmailNotificationsHint from '../EmailNotificationHint';
 
 const TripList = ({ trips = [], showPremiumButton }) => {
   return (
     <div className={style}>
+      <EmailNotificationsHint />
       {trips.map((item, key) => (
         <TripRow key={key} {...item} />
       ))}
