@@ -2,6 +2,7 @@ import { OPEN_MODAL, CLOSE_MODAL } from '../actions/modalActions';
 import {
   LOGIN_USER,
   SIGNUP_USER,
+  SIGNUP_WITH_EMAIL,
   LOGIN_WITH_EMAIL
 } from '../actions/userActions';
 
@@ -14,6 +15,8 @@ export default function reducer(state = {}, action) {
     case `${LOGIN_USER}_FULFILLED`:
       return {};
     case `${SIGNUP_USER}_FULFILLED`:
+      return {};
+    case `${SIGNUP_WITH_EMAIL}_FULFILLED`:
       return {};
     case `${LOGIN_WITH_EMAIL}_FULFILLED`:
       return {};
