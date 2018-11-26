@@ -32,8 +32,8 @@ export class NotificationSideList extends React.Component {
       <div className={style}>
         <div className="title">Notifications</div>
         <div className="webpush">
-          <span>Push Notifications:</span>
           <WebPushSwitch />
+          <span>Push Notifications</span>
         </div>
         <Divider />
         <NotificationList notifications={notifications.slice(0, 5)} />

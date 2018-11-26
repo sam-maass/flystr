@@ -30,7 +30,7 @@ export const loggedInRoutes = [
   {
     path: '/trips',
     exact: true,
-    header: () => <CustomAppBar title="Upcoming trips" />,
+    header: () => <CustomAppBar title="Watchlist" />,
     main: () => <Pages.Trips />
   },
 
