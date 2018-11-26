@@ -5,8 +5,25 @@ import AddIcon from '@material-ui/icons/Add';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
+import { createTripFromDeal } from '../actions/tripActions';
+import { connect } from 'react-redux';
+import qs from 'qs';
 
-const TripsPage = ({ classes }) => {
+const TripsPage = ({
+  classes,
+  location: { search, pathname },
+  createTripFromDeal
+}) => {
+  if (search) {
+    const { copyFromDeal: dealId } = qs.parse(search, {
+      ignoreQueryPrefix: true
+    });
+    if (dealId) {
+      createTripFromDeal(dealId);
+      window.history.pushState({ pathname }, null, pathname);
+    }
+  }
+
   return (
     <div className={classes.pageContainer}>
       <TripList />
@@ -25,7 +42,12 @@ const TripsPage = ({ classes }) => {
 };
 
 TripsPage.propTypes = {
-  classes: PropTypes.object
+  classes: PropTypes.object,
+  location: PropTypes.shape({
+    search: PropTypes.string,
+    pathname: PropTypes.string
+  }),
+  createTripFromDeal: PropTypes.func
 };
 
 const styles = {
@@ -40,4 +62,7 @@ const styles = {
     right: 16
   }
 };
-export default withStyles(styles)(TripsPage);
+export default connect(
+  null,
+  { createTripFromDeal }
+)(withStyles(styles)(TripsPage));

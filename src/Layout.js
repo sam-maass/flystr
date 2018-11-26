@@ -17,7 +17,9 @@ import { isBrowser } from './settings';
 
 class Layout extends React.Component {
   componentDidMount() {
-    this.props.updateRoute({ route: this.props.location.pathname });
+    this.props.updateRoute({
+      route: this.props.location.pathname + this.props.location.search
+    });
     this.props.fetchUser();
   }
 
@@ -26,10 +28,10 @@ class Layout extends React.Component {
       this.props.fetchUser();
     }
     const {
-      location: { pathname }
+      location: { pathname, search }
     } = this.props;
     if (pathname !== prevProps.location.pathname) {
-      this.props.updateRoute({ route: pathname });
+      this.props.updateRoute({ route: pathname + search });
     }
   }
 
