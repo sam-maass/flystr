@@ -5,6 +5,7 @@ import Divider from '@material-ui/core/Divider';
 import { css } from 'emotion';
 import { classes } from '../../styles';
 import { WebPushSwitch } from '../WebPushSwitch/WebPushSwitch';
+import { EmailNotificationSwitch } from '../EmailNotificationSwitch/EmailNotificationSwitch';
 
 const style = css`
   max-width: 80vw;
@@ -32,8 +33,11 @@ export class NotificationSideList extends React.Component {
       <div className={style}>
         <div className="title">Notifications</div>
         <div className="webpush">
-          <span>Push Notifications:</span>
           <WebPushSwitch />
+          <span>Push Notifications</span>
+          <br />
+          <EmailNotificationSwitch />
+          <span>Email Notifications</span>
         </div>
         <Divider />
         <NotificationList notifications={notifications.slice(0, 5)} />
