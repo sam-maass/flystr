@@ -15,6 +15,7 @@ injectGlobal`
     margin:0;
     padding:0;
     display:inline;
-    color: ${styles.colors.blue3}
+    color: ${styles.colors.blue3};
+    cursor: pointer
   }
 `;

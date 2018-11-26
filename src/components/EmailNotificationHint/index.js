@@ -30,7 +30,7 @@ const EmailNotificationsHint = ({
     <div className={style}>
       <InfoIcon style={{ color: '#b71c1c' }} />{' '}
       <span>
-        You have not activated notifications, yet.{' '}
+        You have not activated notifications yet.{' '}
         <button className="link" onClick={enableNotifications}>
           Activate Email Notifications
         </button>{' '}
