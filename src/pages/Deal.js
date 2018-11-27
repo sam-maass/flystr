@@ -75,9 +75,7 @@ class DealPage extends React.Component {
   }
 
   getBufferLink() {
-    const bufferUrl = `https://flystr.com/deals?activeDeal=${
-      this.props.currentDeal.slug
-    }`;
+    const bufferUrl = `https://flystr.com/deal/${this.props.currentDeal.slug}`;
     const {
       title,
       subtitle,
@@ -89,8 +87,14 @@ class DealPage extends React.Component {
     const bufferTimeframe = `${moment(firstDeparture).format('MMM')} - ${moment(
       lastReturn
     ).format('MMM')}`;
-    const bufferDescription = `🌐 ${subtitle} - ${title} | 💸 ${minPrice} ${currency} return | 🗓  ${bufferTimeframe}`;
-    const bufferLink = `https://buffer.com/add?text=${bufferDescription}&url=${bufferUrl}`;
+    const bufferDescription = `
+      ✈️ #${subtitle} to ${title}
+      💸 from ${minPrice} ${currency} return 
+      🗓 available ${bufferTimeframe}
+      `;
+    const bufferLink = `https://buffer.com/add?text=${encodeURIComponent(
+      bufferDescription
+    )}&url=${bufferUrl}`;
     return bufferLink;
   }
 }
