@@ -62,6 +62,10 @@ const Deal = Loadable({
   loader: () => import('./Deal'),
   loading: Loading
 });
+const Product = Loadable({
+  loader: () => import('./Product'),
+  loading: Loading
+});
 export {
   Terms,
   Deal,
@@ -75,5 +79,6 @@ export {
   NewDeal,
   Profile,
   Trip,
-  Trips
+  Trips,
+  Product
 };

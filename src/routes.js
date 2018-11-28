@@ -15,6 +15,7 @@ export const loggedInRoutes = [
       />
     )
   },
+
   {
     path: '/new-flight',
     exact: true,
@@ -77,6 +78,12 @@ export const loggedInRoutes = [
 ];
 
 export const loggedOutRoutes = [
+  {
+    path: '/about',
+    exact: true,
+    header: () => <CustomAppBar withReturn title="About Flystr" />,
+    main: () => <Pages.Product />
+  },
   {
     path: '/deals',
     exact: true,
