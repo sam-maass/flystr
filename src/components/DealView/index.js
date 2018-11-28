@@ -1,3 +1,4 @@
+import { WatchlistButton } from './../WatchlistButton/index';
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'emotion';
@@ -5,7 +6,6 @@ import { getDestinationImage } from '../../getDestinationImage';
 import { classes, styles } from '../../styles';
 import TripDealList from '../TripDealList/component';
 import { ModalLink } from '../ModalLink';
-import HeartIcon from '@material-ui/icons/FavoriteBorderOutlined';
 import { Link } from 'react-router-dom';
 import { Button } from '@material-ui/core';
 
@@ -64,28 +64,6 @@ const style = destination => css`
       color: ${styles.colors.white};
       margin-bottom: 32px;
     }
-    button {
-      cursor: pointer;
-      ${classes.typography.base};
-      color: #fff;
-      background: rgba(255, 255, 255, 0.2);
-      border: 1px solid #fff;
-      border-radius: 4px;
-      padding: 7px 8px;
-      transition: all 0.3s;
-      justify-items: center;
-      :hover {
-        background-color: rgba(255, 255, 255, 0.3);
-      }
-      :focus {
-        outline: none;
-      }
-      .button-content {
-        display: grid;
-        grid-template-columns: 24px 1fr;
-        grid-gap: 8px;
-      }
-    }
   }
 `;
 
@@ -117,14 +95,7 @@ const DealView = ({ deal }) => {
               <div className="infos">
                 <div className="title">{title}</div>
                 <div className="subtitle">from {subtitle}</div>
-                <Link to={`/trips?copyFromDeal=${deal._id}`}>
-                  <button className="add-watchlist">
-                    <div className="button-content">
-                      <HeartIcon />
-                      <span>Add to Watchlist</span>
-                    </div>
-                  </button>
-                </Link>
+                <WatchlistButton dealId={deal._id} />
               </div>
             </div>
           </div>
