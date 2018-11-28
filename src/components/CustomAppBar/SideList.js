@@ -7,11 +7,11 @@ import ListItemText from '@material-ui/core/ListItemText';
 import TripIcon from '@material-ui/icons/MapOutlined';
 import LogoutIcon from '@material-ui/icons/LockOutlined';
 import LoginIcon from '@material-ui/icons/LockOpenOutlined';
-import SignupIcon from '@material-ui/icons/PersonAddOutlined';
 import UserIcon from '@material-ui/icons/PermIdentity';
 import DealIcon from '@material-ui/icons/MonetizationOnOutlined';
 import DealsIcon from '@material-ui/icons/LocalAirportOutlined';
 import AllTripsIcon from '@material-ui/icons/List';
+import AboutIcon from '@material-ui/icons/DescriptionOutlined';
 import Divider from '@material-ui/core/Divider';
 import { withStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
@@ -40,20 +40,20 @@ const SideListComponent = ({ classes, user, logoutUser }) => {
             <ListItemText primary="All Deals" />
           </ListItem>
         </Link>
-        <ModalLink modal="login">
+        <Link to={'/about'}>
+          <ListItem button>
+            <ListItemIcon>
+              <AboutIcon />
+            </ListItemIcon>
+            <ListItemText primary="About Flystr" />
+          </ListItem>
+        </Link>
+        <ModalLink modal="signup">
           <ListItem button>
             <ListItemIcon>
               <LoginIcon />
             </ListItemIcon>
-            <ListItemText primary="Login" />
-          </ListItem>
-        </ModalLink>
-        <ModalLink modal="signup">
-          <ListItem button>
-            <ListItemIcon>
-              <SignupIcon />
-            </ListItemIcon>
-            <ListItemText primary="Signup" />
+            <ListItemText primary="Login / Signup" />
           </ListItem>
         </ModalLink>
         <div className={classes.bottomItems}>
