@@ -26,6 +26,8 @@ export default function reducer(state = [], action) {
       return [...state, { error: action.payload.response.data.error }];
     case `${CREATE_TRIP_FROM_DEAL}_REJECTED`:
       return [...state, { error: action.payload.response.data.error }];
+    case `${CREATE_TRIP_FROM_DEAL}_FULFILLED`:
+      return [...state, { error: 'Added 1 Trip to Wishlist' }];
     default:
       return state;
   }
