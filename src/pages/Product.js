@@ -29,6 +29,9 @@ const style = css`
     height: 40vw;
     max-height: 300px;
     border-radius: 4px;
+    display: grid;
+    align-content: center;
+    justify-content: center;
   }
   .table {
     max-width: 600px;
@@ -69,10 +72,11 @@ const style = css`
 const ProductPage = () => {
   return (
     <div className={style}>
-      <div className="header-image" />
-      <Underlined>
-        <Typography variant="h2">Why you should use Flystr</Typography>
-      </Underlined>
+      <div className="header-image">
+        <Underlined>
+          <Typography variant="h1">About Flystr</Typography>
+        </Underlined>
+      </div>
       <section>
         <Card>
           <CardContent>

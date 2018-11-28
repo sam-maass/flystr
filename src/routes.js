@@ -79,9 +79,9 @@ export const loggedInRoutes = [
 
 export const loggedOutRoutes = [
   {
-    path: '/how-to-book-cheap-flights',
+    path: '/about',
     exact: true,
-    header: () => <CustomAppBar withReturn title="How to book cheap flights" />,
+    header: () => <CustomAppBar withReturn title="About Flystr" />,
     main: () => <Pages.Product />
   },
   {
