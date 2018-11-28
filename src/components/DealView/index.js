@@ -152,6 +152,8 @@ const DealView = ({ deal }) => {
           </ModalLink>{' '}
           and let us search for flights or you can take a look at similar flight
           deals to this.
+          <br />
+          <br />
           <Link to={`/deals?activeDeal=${slug}`}>
             <Button fullWidth variant="contained" color="primary">
               Find Similar Deals

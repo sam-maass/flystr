@@ -56,7 +56,6 @@ class Layout extends React.Component {
         </Switch>
         <div className={classes.scrollContainer}>
           <Switch>
-            {/* <Route path="/" exact component={() => <Landing />} /> */}
             {routes.map((route, index) => (
               <Route
                 key={index}
