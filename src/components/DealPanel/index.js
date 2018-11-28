@@ -65,7 +65,9 @@ const DealRow = ({
   price,
   link,
   currency = 'EUR',
-  updatedAt
+  updatedAt,
+  direct,
+  carrier
 }) => {
   const linkSource = getLinkSource(link);
   const format = 'DD MMM YYYY';
@@ -96,8 +98,12 @@ const DealRow = ({
             <b>
               {formattedStartDate} - {formattedEndDate}
             </b>
-            {duration} days <br />
-            {startDay}-{endDay}
+            {carrier && (
+              <span>
+                {carrier} {direct && <b>(direct)</b>} <br />
+              </span>
+            )}
+            {duration} days | {startDay}-{endDay}
           </div>
         </div>
         <div className="row price">
@@ -127,7 +133,9 @@ DealRow.propTypes = {
   link: PropTypes.string,
   linkSource: PropTypes.string,
   currency: PropTypes.string,
-  updatedAt: PropTypes.string
+  updatedAt: PropTypes.string,
+  direct: PropTypes.bool,
+  carrier: PropTypes.string
 };
 
 export default DealRow;
