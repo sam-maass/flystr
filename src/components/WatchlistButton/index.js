@@ -35,9 +35,6 @@ let clicked = false;
 
 export class InnerWatchlistButton extends React.PureComponent {
   state = { clicked: false };
-  constructor(props) {
-    super(props);
-  }
 
   handleClick = () => {
     if (!this.props.isLoggedIn) {
