@@ -125,12 +125,14 @@ const SideListComponent = ({ classes, user, logoutUser }) => {
               </Link>
             </Fragment>
           )}
-          <ListItem button onClick={logoutUser}>
-            <ListItemIcon>
-              <LogoutIcon />
-            </ListItemIcon>
-            <ListItemText primary="Logout" />
-          </ListItem>
+          <Link to={'/deals'}>
+            <ListItem button onClick={logoutUser}>
+              <ListItemIcon>
+                <LogoutIcon />
+              </ListItemIcon>
+              <ListItemText primary="Logout" />
+            </ListItem>
+          </Link>
         </List>
         <div className={classes.bottomItems}>
           {!isPremium(user) && (
