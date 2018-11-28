@@ -69,7 +69,7 @@ class DealPage extends React.Component {
             </a>
           </Card>
         )}
-        <DealView deal={this.props.currentDeal} />;
+        <DealView deal={this.props.currentDeal} />
       </Fragment>
     );
   }

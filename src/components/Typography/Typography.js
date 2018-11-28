@@ -37,7 +37,7 @@ const typography = {
     font-family: 'Comfortaa';
     font-style: normal;
     line-height: 1.7em;
-    font-size: 24px;
+    font-size: 22px;
     margin-bottom: 8px;
     letter-spacing: 0.1em;
     @media only screen and (min-width: 1024px) {

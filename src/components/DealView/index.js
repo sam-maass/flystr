@@ -4,10 +4,10 @@ import { css } from 'emotion';
 import { getDestinationImage } from '../../getDestinationImage';
 import { classes, styles } from '../../styles';
 import TripDealList from '../TripDealList/component';
-import { logClick } from '../../utils/logClick';
 import { ModalLink } from '../ModalLink';
 import HeartIcon from '@material-ui/icons/FavoriteBorderOutlined';
 import { Link } from 'react-router-dom';
+import { Button } from '@material-ui/core';
 
 const style = destination => css`
   ${classes.typography.base};
@@ -100,7 +100,7 @@ const signupCardStyle = css`
 `;
 
 const DealView = ({ deal }) => {
-  const { title, subtitle } = deal;
+  const { title, subtitle, slug } = deal;
   if (deal.destinations === undefined) {
     return null;
   } else {
@@ -132,54 +132,33 @@ const DealView = ({ deal }) => {
         <TripDealList flights={deal.exampleFlights} />
         <div className={signupCardStyle}>
           <strong>Why are the prices not always accurate?</strong> <br /> <br />
-          Prices change all the time. We do our best to keep the prices up to
-          date but sometimes a deal is just gone.
+          Ticket prices to {title} change all the time. We do our best to keep
+          the prices up to date but sometimes a good deal is just gone.
           <br />
           <br />
-          <strong>Why aren't there more dates?</strong> <br /> <br />
-          Creating and maintaining deals takes a lot of time. That is why we
-          only show some dates to give you an idea of the general availability.
+          <strong>Why can't I find the dates I need.</strong> <br /> <br />
+          The easiest way to stay updated on cheap flights to {title} for your
+          particular dates is to <ModalLink modal="signup">sign up</ModalLink>{' '}
+          and add this deal to your watchlist. We will notify you as soon as we
+          get new dates.
           <br />
           <br />
-          The easiest way to get your perfect dates is to{' '}
-          <ModalLink modal="signup">sign up</ModalLink>
-          . As a flystr user you can create a trip and we will try to find deals
-          matching your date preferences. <br />
-          <br /> If you don't want to sign up you can search for cheap flights
-          on{' '}
-          <a
-            href="https://flights.google.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={logClick('flights.google.com', {
-              category: 'Deal | Footer Text'
-            })}
-          >
-            Google Flights
-          </a>{' '}
-          and then use{' '}
-          <a
-            href="https://momondo.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={logClick('momondo.com', {
-              category: 'Deal | Footer Text'
-            })}
-          >
-            Momondo
-          </a>{' '}
-          or{' '}
-          <a
-            href="https://skyscanner.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={logClick('skyscanner.com', {
-              category: 'Deal | Footer Text'
-            })}
-          >
-            Skyscanner
-          </a>
-          .
+          <strong>Where can I find flights to XXX?</strong>
+          <br />
+          <br />
+          You can either{' '}
+          <ModalLink modal="signup">
+            create a trip in you watchlist
+          </ModalLink>{' '}
+          and let us search for flights or you can take a look at similar flight
+          deals to this.
+          <br />
+          <br />
+          <Link to={`/deals?activeDeal=${slug}`}>
+            <Button fullWidth variant="contained" color="primary">
+              Find Similar Deals
+            </Button>
+          </Link>
         </div>
       </Fragment>
     );
