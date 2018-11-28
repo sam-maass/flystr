@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { openGlobalModal } from '../../actions/modalActions';
 import { createTripFromDeal } from '../../actions/tripActions';
 import PropTypes from 'prop-types';
+import { Redirect } from 'react-router-dom';
 
 const style = css`
   cursor: pointer;
@@ -33,6 +34,7 @@ const style = css`
 let clicked = false;
 
 export class InnerWatchlistButton extends React.PureComponent {
+  state = { clicked: false };
   constructor(props) {
     super(props);
   }
@@ -42,14 +44,15 @@ export class InnerWatchlistButton extends React.PureComponent {
       this.props.openGlobalModal('signup');
       clicked = true;
     } else {
-      this.props.createTripFromDeal(this.props.dealId);
+      this.setState({ clicked: true });
     }
   };
 
   render() {
-    if (clicked && this.props.isLoggedIn) {
+    if ((clicked || this.state.clicked) && this.props.isLoggedIn) {
       this.props.createTripFromDeal(this.props.dealId);
       clicked = false;
+      return <Redirect to="/trips" />;
     }
     return (
       <button className={style} onClick={this.handleClick}>
