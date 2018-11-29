@@ -39,8 +39,12 @@ const style = css`
     color: ${styles.colors.green3};
     border: 1px solid ${styles.colors.green3};
     border-radius: 4px;
-    padding:7px 8px;
+    padding:7px 16px;
     font-weight:bold;
+    transition: all 0.32s;
+    :hover{
+      background-color:#cee7e3
+    }
   }
   }
 `;
