@@ -106,7 +106,12 @@ const DealRow = ({
         <div className="days">
           <small>{duration} day trip</small>
         </div>
-        <a href={link} onClick={logClick(link, { category: 'Deal | Flight' })}>
+        <a
+          href={link}
+          target="_blank"
+          rel="noreferrer noopener"
+          onClick={logClick(link, { category: 'Deal | Flight' })}
+        >
           <div className="button">
             {price} {currency}
           </div>
