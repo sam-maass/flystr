@@ -2,7 +2,6 @@ import { ExpandDealButton } from './ExpandDealButton';
 import { LoginMoreButton } from './LoginMoreButton';
 import React from 'react';
 import DealPanel from '../DealPanel';
-import InfoPanel from './InfoPanel';
 import { CityPairString } from './CityPairString';
 import { css } from 'emotion';
 import { connect } from 'react-redux';
@@ -14,6 +13,7 @@ const style = css`
     display: grid;
     align-items: center;
     justify-items: center;
+    margin: 16px;
   }
   .button-content {
     display: grid;
@@ -35,7 +35,7 @@ export class InnerCityPairList extends React.Component {
   };
 
   render() {
-    const { showInfoPanel, pair, flights, isLoggedIn } = this.props;
+    const { pair, flights, isLoggedIn } = this.props;
     const { isExpanded } = this.state;
     const itemsToShow = isExpanded ? flights.length : ITEMS_WHEN_COLLAPSED;
     const flightsAfterButton = flights.length - ITEMS_WHEN_COLLAPSED;
@@ -45,7 +45,6 @@ export class InnerCityPairList extends React.Component {
         {flights.slice(0, itemsToShow).map((item, key) => (
           <DealPanel elevation={0} key={key} {...item} />
         ))}
-        {showInfoPanel && <InfoPanel />}
         <div className="buttonRow">
           {flightsAfterButton > 0 && !isLoggedIn && (
             <LoginMoreButton flightsAfterButton={flightsAfterButton} />
