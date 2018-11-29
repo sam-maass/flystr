@@ -3,60 +3,50 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import { css } from 'emotion';
 import { classes, styles } from '../../styles';
-import { getLinkSource } from '../NewDealForm/parseLink';
 import { logClick } from '../../utils/logClick';
+import AirplaneIcon from '@material-ui/icons/FlightTakeoffRounded';
+import OtaMenu from './OtaMenu';
 
 const style = css`
-  text-decoration: none;
-  .container {
-    background-color: #fff;
-    ${classes.typography.base};
+  ${classes.typography.base}
+  color:${styles.colors.midGray};
+  display: grid;
+  grid-template-columns: 1fr 140px;
+  background-color: #fff;
+  margin-bottom:8px;
+  .head {
+    grid-column: span 2;
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    align-items: center;
-    justify-items: center;
-    margin-bottom:8px;
-    transition: all 0.15s;
+    align-items:center;
+    grid-gap: 8px;
+    padding: 8px;
+    grid-template-columns: 24px 1fr 24px;
+    border-bottom: 1px solid #ddd;
+
+  }
+  .details{
+    padding:8px;    
+    .direct{
+      font-weight:bold;
+      color: ${styles.colors.green3}
+    }
+  }
+  .cta-area{
+    padding:8px;
+    display:grid;
+    justify-items:center;
+  .button{
+    background-color:#fff;
+    color: ${styles.colors.green3};
+    border: 1px solid ${styles.colors.green3};
+    border-radius: 4px;
+    padding:7px 16px;
+    font-weight:bold;
+    transition: all 0.32s;
     :hover{
-      background-color:#fcfcfc;
-      .price{
-        background-color:#ffece3;
-      }
+      background-color:#cee7e3
     }
-    .row {
-      padding: 8px;
-      display: grid;
-      justify-self:baseline;
-    }
-    .dates {
-      color: ${styles.colors.midGray};
-      font-size: 14px;
-      display: grid;
-      align-items: center;
-      justify-self: baseline;
-      line-height:1.35;
-      b{
-        padding:8px 0;
-        line-height:1em
-      }
-    }
-    }
-    .price {
-      color: ${styles.colors.orange};
-      text-align: center;
-      background: #fff0e9;
-      height: 100%;
-      width: 100%;
-      display: grid;
-      align-items: center;
-      justify-items: center;
-      .link {
-        font-weight:normal;
-        color: ${styles.colors.lightGray};
-        font-size: 0.7em;
-        line-height:1.35
-      }
-    }
+  }
   }
 `;
 const DealRow = ({
@@ -67,9 +57,10 @@ const DealRow = ({
   currency = 'EUR',
   updatedAt,
   direct,
-  carrier
+  carrier,
+  outOrigin,
+  outDestination
 }) => {
-  const linkSource = getLinkSource(link);
   const format = 'DD MMM YYYY';
   const formatWithoutYear = 'DD MMM';
   const formatOnlyDay = 'DD';
@@ -85,38 +76,43 @@ const DealRow = ({
   const duration = moment(inDate).diff(outDate, 'days');
   const lastSeen = moment(updatedAt).fromNow();
   return (
-    <a
-      className={style}
-      href={link}
-      onClick={logClick(link, { category: 'Deal | Flight' })}
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <div className="container">
-        <div className="row">
-          <div className="dates">
-            <b>
-              {formattedStartDate} - {formattedEndDate}
-            </b>
-            {carrier && (
-              <span>
-                {carrier} {direct && <b>(direct)</b>} <br />
-              </span>
-            )}
-            {duration} days | {startDay}-{endDay}
-          </div>
-        </div>
-        <div className="row price">
-          {price} {currency} <br />
-          {linkSource && (
-            <span className="link">
-              {lastSeen} <br />
-              on {linkSource}
+    <div className={style}>
+      <div className="head">
+        <AirplaneIcon />
+        <span>
+          {formattedStartDate} - {formattedEndDate}
+        </span>
+        <OtaMenu
+          flight={{ outOrigin, outDestination, outDate, inDate, link }}
+        />
+      </div>
+      <div className="details">
+        <div className="airline">
+          <b>{carrier}</b>{' '}
+          {direct && (
+            <span>
+              | <span className="direct">direct</span>
             </span>
           )}
         </div>
+        <div className="days">
+          {startDay} - {endDay}
+        </div>
+        <div className="last-seen">
+          <small>found {lastSeen}</small>
+        </div>
       </div>
-    </a>
+      <div className="cta-area">
+        <div className="days">
+          <small>{duration} day trip</small>
+        </div>
+        <a href={link} onClick={logClick(link, { category: 'Deal | Flight' })}>
+          <div className="button">
+            {price} {currency}
+          </div>
+        </a>
+      </div>
+    </div>
   );
 };
 
