@@ -4,8 +4,8 @@ import moment from 'moment';
 import { css } from 'emotion';
 import { classes, styles } from '../../styles';
 import { logClick } from '../../utils/logClick';
-import MoreIcon from '@material-ui/icons/MoreHorizRounded';
 import AirplaneIcon from '@material-ui/icons/FlightTakeoffRounded';
+import OtaMenu from './OtaMenu';
 
 const style = css`
   ${classes.typography.base}
@@ -17,6 +17,7 @@ const style = css`
   .head {
     grid-column: span 2;
     display: grid;
+    align-items:center;
     grid-gap: 8px;
     padding: 8px;
     grid-template-columns: 24px 1fr 24px;
@@ -56,7 +57,9 @@ const DealRow = ({
   currency = 'EUR',
   updatedAt,
   direct,
-  carrier
+  carrier,
+  outOrigin,
+  outDestination
 }) => {
   const format = 'DD MMM YYYY';
   const formatWithoutYear = 'DD MMM';
@@ -79,7 +82,9 @@ const DealRow = ({
         <span>
           {formattedStartDate} - {formattedEndDate}
         </span>
-        <MoreIcon />
+        <OtaMenu
+          flight={{ outOrigin, outDestination, outDate, inDate, link }}
+        />
       </div>
       <div className="details">
         <div className="airline">
