@@ -6,6 +6,7 @@ import OutIcon from '@material-ui/icons/ExitToAppOutlined';
 import { Divider, ListItemIcon, ListItemText } from '@material-ui/core';
 import { createOtaLinks } from '../FlightTemplate/createOtaLinks';
 import PropTypes from 'prop-types';
+import { logClick } from '../../utils/logClick';
 
 class OtaMenu extends React.Component {
   state = {
@@ -54,6 +55,7 @@ class OtaMenu extends React.Component {
               href={link.url}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={logClick(link.url, { category: 'Deal | Flight' })}
             >
               <MenuItem onClick={this.handleClose}>
                 <ListItemIcon>
