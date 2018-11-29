@@ -9,7 +9,6 @@ import { createDealFromTrip } from '../../actions/tripActions';
 
 const TripList = ({
   flights = [],
-  userId,
   isAdmin,
   createDealFromTrip,
   tripId,
@@ -56,7 +55,6 @@ const TripList = ({
           key={key}
           pair={pair}
           flights={augmentedFlights.filter(f => f.cityPair === pair)}
-          showInfoPanel={!userId}
         />
       ))}
     </div>
@@ -103,7 +101,6 @@ const style = css`
 
 const mapStateToProps = (store, props) => {
   return {
-    userId: store.user._id,
     isAdmin: store.user.isAdmin,
     ...props
   };
