@@ -152,7 +152,10 @@ const SideListComponent = ({ classes, user, logoutUser }) => {
             <Link to="/settings#premium">
               <ListItem>
                 <Button fullWidth variant="contained" color="primary">
-                  Upgrade to Premium
+                  <span>
+                    Try Premium <br />
+                    <small>14 days free</small>{' '}
+                  </span>
                 </Button>
               </ListItem>
             </Link>
