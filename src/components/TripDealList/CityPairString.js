@@ -28,7 +28,10 @@ export const CityPairString = ({ pair, augmentedFlights = [] }) => {
             label: outOrigin
           })}
         >
-          <span>{outOriginDetails.city || outOrigin}</span>
+          <span>
+            {outOriginDetails.city || outOrigin}{' '}
+            {outOriginDetails.city && <small>({outOrigin})</small>}
+          </span>
         </Tooltip>{' '}
         -{' '}
         <Tooltip
@@ -41,7 +44,10 @@ export const CityPairString = ({ pair, augmentedFlights = [] }) => {
             label: outDestination
           })}
         >
-          <span>{outDestinationDetails.city || outDestination}</span>
+          <span>
+            {outDestinationDetails.city || outDestination}{' '}
+            {outDestinationDetails.city && <small>({outDestination})</small>}
+          </span>
         </Tooltip>
       </div>
     </div>
@@ -54,19 +60,17 @@ CityPairString.propTypes = {
 };
 
 const style = css`
-  margin: 8px 16px;
-  padding-bottom: 5px;
+  padding: 16px 0 8px 8px;
   ${classes.typography.base};
   line-height: 1.5;
-  padding-left: 16px;
-  background: ${styles.colors.blue3};
-  color: ${styles.colors.white};
-  transform: skew(-20deg); /* SKEW */
-  .deskew {
-    transform: skew(20deg); /* SKEW */
-  }
+  color: ${styles.colors.midGray};
   span {
-    border-bottom: 2px dashed rgba(255, 255, 255, 0.4);
+    font-weight: bold;
+    border-bottom: 1px dashed #ccc;
+    small {
+      color: ${styles.colors.lightGray};
+      font-weight: normal;
+    }
   }
 `;
 
