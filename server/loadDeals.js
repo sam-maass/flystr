@@ -24,7 +24,7 @@ export const loadRecentDeals = (req, res, next) => {
 
 export const loadDeal = (req, res, next) => {
   axios
-    .get(`${apiPath}/deal/${req.params.slug}`, { timeout: 500 })
+    .get(`${apiPath}/deal/${req.params.slug}`, { timeout: 2000 })
     .then(deal => {
       req.currentDeal = deal;
       next();
