@@ -5,14 +5,22 @@ import { Provider } from 'react-redux';
 import store from './store';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { updateServiceWorker } from './updateServiceWorker';
+import * as Sentry from '@sentry/browser';
+import { SentryErrorBoundary } from './SentryErrorBoundary';
+
+Sentry.init({
+  dsn: 'https://14223c501b2b4b2382c75b6e2df2166f@sentry.io/1334792'
+});
 
 const rootElement = document.getElementById('root');
 const ClientApp = (
-  <Provider store={store}>
-    <Router>
-      <App />
-    </Router>
-  </Provider>
+  <SentryErrorBoundary>
+    <Provider store={store}>
+      <Router>
+        <App />
+      </Router>
+    </Provider>
+  </SentryErrorBoundary>
 );
 
 //remove server renderered jssStyles
