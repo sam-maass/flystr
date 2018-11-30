@@ -107,12 +107,24 @@ const SideListComponent = ({ classes, user, logoutUser }) => {
           </Link>
           {user.isAdmin && (
             <Fragment>
+              <Divider />
+              <ListItem disabled button>
+                <ListItemText primary="Admin Panel" />
+              </ListItem>
               <Link to={'/admin/all-trips'}>
                 <ListItem button>
                   <ListItemIcon>
                     <AllTripsIcon />
                   </ListItemIcon>
                   <ListItemText primary="Triplist" />
+                </ListItem>
+              </Link>{' '}
+              <Link to={'/admin/users'}>
+                <ListItem button>
+                  <ListItemIcon>
+                    <UserIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Admin Users" />
                 </ListItem>
               </Link>{' '}
               <Link to={'/new-flight'}>
@@ -123,6 +135,7 @@ const SideListComponent = ({ classes, user, logoutUser }) => {
                   <ListItemText primary="Report a Deal" />
                 </ListItem>
               </Link>
+              <Divider />
             </Fragment>
           )}
           <Link to={'/deals'}>
