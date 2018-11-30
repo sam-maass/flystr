@@ -84,7 +84,7 @@ export const PlanSelection = ({ handlePlanChange, selectedPlan }) => {
         </li>
         <li>
           <CheckIcon />
-          access to premium deals
+          14 day trial period
         </li>
       </ul>
       <h4>Choose your plan</h4>
