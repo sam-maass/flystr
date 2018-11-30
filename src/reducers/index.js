@@ -14,6 +14,7 @@ import flightTemplates from './flightTemplatesReducer';
 import flights from './flightsReducer';
 import notifications from './notificationReducer';
 import modal from './modalReducer';
+import userOverview from './userOverviewReducer';
 
 export default combineReducers({
   notifications,
@@ -29,5 +30,6 @@ export default combineReducers({
   errors,
   appBar,
   routing,
+  userOverview,
   modal
 });
