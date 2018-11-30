@@ -20,7 +20,11 @@ export class SentryErrorBoundary extends React.Component {
   render() {
     if (this.state.error) {
       //render fallback UI
-      return <a onClick={() => Sentry.showReportDialog()}>Report feedback</a>;
+      return (
+        <a href="#feedback" onClick={() => Sentry.showReportDialog()}>
+          Report feedback
+        </a>
+      );
     } else {
       //when there's not an error, render children untouched
       // eslint-disable-next-line react/prop-types
