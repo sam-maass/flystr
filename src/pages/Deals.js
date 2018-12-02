@@ -72,6 +72,9 @@ class DealsPage extends React.Component {
           <meta name="twitter:title" content={twitterTitle} />
           <meta name="twitter:description" content={twitterDescription} />
           <meta name="twitter:image" content={twitterImage} />
+          <meta property="og:title" content={twitterTitle} />
+          <meta property="og:description" content={twitterDescription} />
+          <meta property="og:image" content={twitterImage} />
         </Helmet>
         {!this.props.loggedIn && (
           <div className="teaser">
