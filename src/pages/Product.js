@@ -22,7 +22,7 @@ const style = css`
     }
   }
   .header-image {
-    background: url('https://flystr.com/destination-images/header-wide/FLL.jpg');
+    background: url('https://tripfixed.com/destination-images/header-wide/FLL.jpg');
     background-position: center center;
     background-size: cover;
     width: 100%;
