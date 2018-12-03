@@ -28,7 +28,7 @@ const InnerAppBar = ({
 }) => {
   const goBack = () => {
     if (routing.previousRoute) {
-      history.push(routing.previousRoute);
+      history.goBack();
     } else {
       switch (true) {
         case /deal\//.test(routing.currentRoute):
