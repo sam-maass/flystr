@@ -9,7 +9,7 @@ export function getDealMetaData({
   currency = 'EUR',
   destinations
 }) {
-  const metaTitle = `Flystr | Flights to ${title} from ${subtitle}`;
+  const metaTitle = `Flights to ${title} from ${subtitle} | Tripfixed`;
   const adverb = getDestinationAdverb(title);
   const timeframe = getTimeframeString({
     startDate: firstDeparture,

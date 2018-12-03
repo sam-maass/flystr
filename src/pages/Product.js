@@ -74,7 +74,7 @@ const ProductPage = () => {
     <div className={style}>
       <div className="header-image">
         <Underlined>
-          <Typography variant="h1">About Flystr</Typography>
+          <Typography variant="h1">Tripfixed Advantages</Typography>
         </Underlined>
       </div>
       <section>
@@ -93,10 +93,10 @@ const ProductPage = () => {
                 need to query hundreds of online travel agencies.
               </p>
               <p>
-                Flystr is here to change all this. We check thousands of flight
-                prices every day and send you notifications when your future
-                trip is on sale. Starting is easy. Just copy one of our deals to
-                your watchlist or create a trip from scratch. Activate
+                Tripfixed is here to change all this. We check thousands of
+                flight prices every day and send you notifications when your
+                future trip is on sale. Starting is easy. Just copy one of our
+                deals to your watchlist or create a trip from scratch. Activate
                 notifications and we will keep you informed. Never miss a cheap
                 flight again.
               </p>
@@ -239,12 +239,12 @@ const ProductPage = () => {
                 make much sense to look for these flights on your own.
               </p>
               <p>
-                Flystr is here to help. Set up your watchlist once and we will
-                do all the hard work. We update 200.000 flights every few hours
-                so that you can enjoy your life. And once we find the flight
-                deal you were looking for we let you know. Start for free with
-                up to 2 trips in your watchlist and once you need more plans
-                start from 2,49 EUR/month.
+                Tripfixed is here to help. Set up your watchlist once and we
+                will do all the hard work. We update 200.000 flights every few
+                hours so that you can enjoy your life. And once we find the
+                flight deal you were looking for we let you know. Start for free
+                with up to 2 trips in your watchlist and once you need more
+                plans start from 2,49 EUR/month.
               </p>
             </Typography>
           </CardContent>

@@ -28,7 +28,7 @@ const EmptyTripList = () => {
     <div className={style}>
       <div className="content">
         <img src="/world.svg" alt="icon" />
-        <h2>Hi and welcome to flystr</h2>
+        <h2>Hi and welcome to Tripfixed</h2>
         <p>This is the place where you can see all your planned trips.</p>
         <p>
           Add a new trip by clicking the <span className="button"> + </span>{' '}

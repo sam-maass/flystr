@@ -64,7 +64,7 @@ class InnerAuthModal extends React.Component {
                   <GoogleButton action="login" text="Login with Google" />
                 </div>
                 <div className="signup">
-                  <Typography secondary>New to flystr?</Typography>
+                  <Typography secondary>New to Tripfixed?</Typography>
                   <ModalLink modal="signup">
                     <Button color="primary" onClick={removeSuggestion}>
                       Sign up

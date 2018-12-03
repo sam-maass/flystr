@@ -56,7 +56,7 @@ export class InnerSignupPage extends React.Component {
                 <p>
                   I have read and agree to the{' '}
                   <Link to="/terms">Terms and Conditions</Link> and{' '}
-                  <Link to="/legal">Privacy Policy</Link> of Flystr
+                  <Link to="/legal">Privacy Policy</Link> of Tripfixed
                 </p>
               </Typography>
             }

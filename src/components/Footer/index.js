@@ -32,7 +32,7 @@ const Footer = () => (
     <a href="https://www.instagram.com/flystr_dot_com/">Instagram</a>
     <Link to="/legal">Privacy Policy</Link>
     <Link to="/terms">Terms & Conditions</Link>
-    <div className="copyright"> &copy; Flyster, 2018</div>
+    <div className="copyright"> &copy; Tripfixed, 2018</div>
   </div>
 );
 

@@ -87,7 +87,7 @@ export const loggedOutRoutes = [
   {
     path: '/about',
     exact: true,
-    header: () => <CustomAppBar withReturn title="About Flystr" />,
+    header: () => <CustomAppBar withReturn title="About Tripfixed" />,
     main: () => <Pages.Product />
   },
   {
@@ -112,7 +112,7 @@ export const loggedOutRoutes = [
   {
     path: '/login',
     exact: true,
-    header: () => <CustomAppBar title="Flystr" />,
+    header: () => <CustomAppBar title="Tripfixed" />,
     main: () => <Pages.Login />
   },
   {
