@@ -62,7 +62,7 @@ const FormikForm = withFormik({
   validationSchema: yup.object().shape({
     destinations: yup.array().min(1),
     origins: yup.array().min(1),
-    budget: yup.number().required(),
+    budget: yup.number(),
     name: yup.string().required(),
     startDate: yup.date(),
     duration: yup.string().matches(/(^\d+$|^\d+-\d+$)/, {
@@ -71,20 +71,36 @@ const FormikForm = withFormik({
     })
   }),
   mapPropsToValues: ({ trips, tripId }) => {
-    const trip = trips.find(trip => trip._id === tripId);
+    const trip = trips.find(trip => trip._id === tripId) || {};
+    const {
+      destinations,
+      origins,
+      startDate: tripStartDate,
+      endDate: tripEndDate,
+      budget,
+      name,
+      duration,
+      _id
+    } = trip;
+    const startDate = tripStartDate
+      ? moment(tripStartDate, 'YYYY-MM-DD').format('YYYY-MM-DD')
+      : moment().format('YYYY-MM-DD');
+    const endDate = tripEndDate
+      ? moment(tripEndDate, 'YYYY-MM-DD').format('YYYY-MM-DD')
+      : moment()
+          .add(10, 'month')
+          .endOf('month')
+          .format('YYYY-MM-DD');
     return {
-      deleteable: Boolean(trip),
-      page: trip ? 3 : 1,
-      destinations: (trip && trip.destinations) || [],
-      origins: (trip && trip.origins) || [],
-      startDate: moment().format('YYYY-MM-DD'),
-      endDate: moment()
-        .add(10, 'month')
-        .endOf('month')
-        .format('YYYY-MM-DD'),
-      budget: (trip && trip.budget) || '',
-      name: (trip && trip.name) || '',
-      duration: (trip && trip.duration) || ''
+      deleteable: Boolean(_id),
+      page: _id ? 3 : 1,
+      destinations: destinations || [],
+      origins: origins || [],
+      startDate,
+      endDate,
+      budget: budget || '',
+      name: name || '',
+      duration: duration || ''
     };
   }
 })(RoutingWrapper);

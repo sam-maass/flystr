@@ -68,7 +68,7 @@ class DealsPage extends React.Component {
             content="All cheap flight deals in one place. We crawl all major booking sites daily to provide you with the cheapest airline tickets"
           />
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:site" content="@flystr_com" />
+          <meta name="twitter:site" content="@tripfixed" />
           <meta name="twitter:title" content={twitterTitle} />
           <meta name="twitter:description" content={twitterDescription} />
           <meta name="twitter:image" content={twitterImage} />
