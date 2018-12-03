@@ -77,7 +77,9 @@ class DealPage extends React.Component {
   }
 
   getBufferLink() {
-    const bufferUrl = `https://flystr.com/deal/${this.props.currentDeal.slug}`;
+    const bufferUrl = `https://tripfixed.com/deal/${
+      this.props.currentDeal.slug
+    }`;
     const {
       title,
       subtitle,
