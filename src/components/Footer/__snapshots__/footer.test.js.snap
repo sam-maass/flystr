@@ -69,7 +69,7 @@ exports[`Footer: default 1`] = `
   <div
     className="copyright"
   >
-     © Flyster, 2018
+     © Tripfixed, 2018
   </div>
 </div>
 `;

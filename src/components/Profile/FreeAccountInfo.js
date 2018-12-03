@@ -13,7 +13,7 @@ export class FreeAccountInfo extends React.Component {
     return (
       <div>
         <b>
-          Flystr Free <br />
+          TripFixed Free <br />
         </b>{' '}
         <br />
         <a href="#premium" onClick={this.handleOpen}>

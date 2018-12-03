@@ -45,7 +45,7 @@ const SideListComponent = ({ classes, user, logoutUser }) => {
             <ListItemIcon>
               <AboutIcon />
             </ListItemIcon>
-            <ListItemText primary="About Flystr" />
+            <ListItemText primary="Advantages" />
           </ListItem>
         </Link>
         <ModalLink modal="signup">

@@ -46,7 +46,7 @@ class Landing extends React.Component {
     return (
       <div>
         <Helmet>
-          <title>Flystr | All Cheap flights in one place</title>
+          <title>All Cheap flights in one place | Tripfixed</title>
           <meta
             name="description"
             content="Find all the cheap flight deals in one place. We aggregate the cheapest fares daily so that you don't need too search"

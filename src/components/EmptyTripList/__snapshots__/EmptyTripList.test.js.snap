@@ -46,7 +46,7 @@ exports[`EmptyTripList: default 1`] = `
       src="/world.svg"
     />
     <h2>
-      Hi and welcome to flystr
+      Hi and welcome to Tripfixed
     </h2>
     <p>
       This is the place where you can see all your planned trips.
