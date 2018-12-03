@@ -133,7 +133,7 @@ const Legal = () => {
           such information represents your agreement to that transfer.
         </p>
         <p>
-          flystr will take all steps reasonably necessary to ensure that your
+          Tripfixed will take all steps reasonably necessary to ensure that your
           data is treated securely and in accordance with this Privacy Policy
           and no transfer of your Personal Data will take place to an
           organization or a country unless there are adequate controls in place
@@ -144,12 +144,12 @@ const Legal = () => {
 
         <h3>Legal Requirements</h3>
         <p>
-          flystr may disclose your Personal Data in the good faith belief that
-          such action is necessary to:
+          Tripfixed may disclose your Personal Data in the good faith belief
+          that such action is necessary to:
         </p>
         <ul>
           <li>To comply with a legal obligation</li>
-          <li>To protect and defend the rights or property of flystr</li>
+          <li>To protect and defend the rights or property of Tripfixed</li>
           <li>
             To prevent or investigate possible wrongdoing in connection with the
             Service
@@ -249,7 +249,7 @@ const Legal = () => {
           us:
         </p>
         <ul>
-          <li>By email: privacy@flystr.com</li>
+          <li>By email: privacy@tripfixed.com</li>
         </ul>
       </div>
     </div>

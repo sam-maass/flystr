@@ -98,7 +98,7 @@ class CheckoutForm extends React.Component {
           <div className="stripe-info">
             <small>
               Your payment is securely encrypted and processed via our partner{' '}
-              <a href="https://www.stripe.com">Stripe</a>. Flystr has at no
+              <a href="https://www.stripe.com">Stripe</a>. Tripfixed has at no
               point in time full access to your credit card data.
             </small>
           </div>

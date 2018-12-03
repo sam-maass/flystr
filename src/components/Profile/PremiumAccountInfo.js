@@ -16,7 +16,7 @@ export function InnerPremiumAccountInfo({
   return (
     <div>
       <b>
-        Flystr Premium <br />
+        Tripfixed Premium <br />
       </b>
       {(amount / 100).toFixed(2)} {currency.toUpperCase()} /{' '}
       {interval_count > 1 && interval_count} {interval}

@@ -62,7 +62,7 @@ class DealsPage extends React.Component {
     return (
       <div className={style}>
         <Helmet>
-          <title>Flystr | Deals</title>
+          <title>Deals | Tripfixed</title>
           <meta
             name="description"
             content="All cheap flight deals in one place. We crawl all major booking sites daily to provide you with the cheapest airline tickets"
