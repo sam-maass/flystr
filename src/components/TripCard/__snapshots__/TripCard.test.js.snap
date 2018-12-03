@@ -78,7 +78,7 @@ exports[`TripCard: default 1`] = `
 }
 
 .emotion-0 {
-  background-image: url(https://flystr.com/destination-images/card/NYC.jpg);
+  background-image: url(https://tripfixed.com/destination-images/card/NYC.jpg);
   -webkit-filter: opacity(0.8);
   filter: opacity(0.8);
   background-size: cover;
