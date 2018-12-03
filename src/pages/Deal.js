@@ -56,7 +56,7 @@ class DealPage extends React.Component {
           <title>{metaTitle}</title>
           <meta name="description" content={metaDescription} />
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:site" content="@flystr_com" />
+          <meta name="twitter:site" content="@tripfixed" />
           <meta name="twitter:title" content={twitterTitle} />
           <meta name="twitter:description" content={twitterDescription} />
           <meta name="twitter:image" content={twitterImage} />
