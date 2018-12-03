@@ -36,7 +36,7 @@ const TripRow = ({
           dates={getTimeframeString({ startDate, endDate })}
           duration={getDurationString({ toDuration, fromDuration })}
           newPrice={minPrice ? `${minPrice} ${currency}` : undefined}
-          oldPrice={`${budget} EUR`}
+          oldPrice={budget > 0 && `${budget} EUR`}
         />
       </Link>
     </div>
