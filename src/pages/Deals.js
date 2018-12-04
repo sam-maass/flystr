@@ -57,6 +57,7 @@ class DealsPage extends React.Component {
     const { twitterTitle, twitterDescription, twitterImage } = getDealMetaData(
       this.props.deals[0]
     );
+
     return (
       <div className={style}>
         <Helmet>
@@ -84,7 +85,11 @@ class DealsPage extends React.Component {
             </Underlined>
           </div>
         )}
-        <DealList deals={this.props.deals} activeDeal={activeDeal} />
+        <DealList
+          deals={this.props.deals}
+          activeDeal={activeDeal}
+          isLoggedIn={this.props.loggedIn}
+        />
       </div>
     );
   }
