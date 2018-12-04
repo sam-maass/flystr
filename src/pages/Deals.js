@@ -63,7 +63,7 @@ class DealsPage extends React.Component {
           <title>Deals | Tripfixed</title>
           <meta
             name="description"
-            content="All cheap flight deals in one place. We crawl all major booking sites daily to provide you with the cheapest airline tickets"
+            content="Tripfixed makes cheap trips easy. Save up to 67% on flights and get notifications so you never miss a cheap flight again."
           />
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:site" content="@tripfixed" />

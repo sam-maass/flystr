@@ -32,10 +32,6 @@ const style = css`
   }
 `;
 
-function getRandomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
 const DealList = ({ deals = [], activeDeal }) => {
   if (deals[0] === undefined) return null;
   const dealsBetweenCards = 3;
