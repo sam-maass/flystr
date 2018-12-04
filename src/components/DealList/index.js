@@ -32,7 +32,8 @@ const style = css`
   }
 `;
 
-const DealList = ({ deals = [], activeDeal }) => {
+
+const DealList = ({ deals = [], activeDeal, isLoggedIn }) => {
   if (deals[0] === undefined) return null;
   const dealsBetweenCards = 3;
   const hasActiveDeal = activeDeal === deals[0].slug;
@@ -61,15 +62,17 @@ const DealList = ({ deals = [], activeDeal }) => {
       {firstDeals.map(deal => (
         <DealCard key={Math.random()} deal={deal} /> // deal._id was not working as key. It was complaining about duplicate keys
       ))}
-      <PayLessCard />
+      {!isLoggedIn && <PayLessCard />}
+
       {secondDeals.map(deal => (
         <DealCard key={Math.random()} deal={deal} /> // deal._id was not working as key. It was complaining about duplicate keys
       ))}
-      <NoHassleCard />
+      {!isLoggedIn && <NoHassleCard />}
+
       {thridDeals.map(deal => (
         <DealCard key={Math.random()} deal={deal} /> // deal._id was not working as key. It was complaining about duplicate keys
       ))}
-      <BucketListCard />
+      {!isLoggedIn && <BucketListCard />}
       {deals.map(deal => (
         <DealCard key={Math.random()} deal={deal} />
       ))}
@@ -80,7 +83,8 @@ const DealList = ({ deals = [], activeDeal }) => {
 
 DealList.propTypes = {
   deals: PropTypes.array,
-  activeDeal: PropTypes.string
+  activeDeal: PropTypes.string,
+  isLoggedIn: PropTypes.bool
 };
 
 export default DealList;
