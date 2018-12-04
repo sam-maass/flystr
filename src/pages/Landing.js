@@ -49,7 +49,7 @@ class Landing extends React.Component {
           <title>All Cheap flights in one place | Tripfixed</title>
           <meta
             name="description"
-            content="Find all the cheap flight deals in one place. We aggregate the cheapest fares daily so that you don't need too search"
+            content="Tripfixed makes cheap trips easy. Save up to 67% on flights and get notifications so you never miss a cheap flight again."
           />
         </Helmet>
         <ImageHeader />
