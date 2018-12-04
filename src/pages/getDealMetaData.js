@@ -1,21 +1,12 @@
-import { getDestinationAdverb } from './getDestinationAdverb';
-import { getTimeframeString } from '../utils';
 export function getDealMetaData({
   title,
   subtitle,
-  firstDeparture,
-  lastReturn,
   minPrice,
   currency = 'EUR',
   destinations
 }) {
-  const metaTitle = `Flights to ${title} from ${subtitle} | Tripfixed`;
-  const adverb = getDestinationAdverb(title);
-  const timeframe = getTimeframeString({
-    startDate: firstDeparture,
-    endDate: lastReturn
-  });
-  const metaDescription = `Flights to ${adverb} ${title}. We found flights from ${subtitle} for only ${minPrice} ${currency} during ${timeframe}. Check available dates today and book your next vacation to ${title}.`;
+  const metaTitle = `Flights to ${title} from ${subtitle} from ${minPrice} ${currency}`;
+  const metaDescription = `Tripfixed makes cheap trips easy. Save up to 67% on flights and get notifications so you never miss a cheap flight again.`;
   const twitterImage = `https://tripfixed.com/destination-images/header/${
     destinations[0]
   }.jpg`;
