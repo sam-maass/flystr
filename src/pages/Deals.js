@@ -14,8 +14,6 @@ import qs from 'qs';
 import { Typography } from '../components/Typography/Typography';
 import LogoContainer from '../components/LogoContainer';
 import { Underlined } from '../components/Typography/Underlined';
-import { Button } from '@material-ui/core';
-import { Link } from 'react-router-dom';
 
 const style = css`
   margin: 16px;
@@ -82,16 +80,8 @@ class DealsPage extends React.Component {
               <LogoContainer variant="dark" height={60} />
             </div>
             <Underlined color="lightGray" variant="small">
-              <Typography variant="h2">Your Flight Deal Tracker</Typography>
+              <Typography variant="h2">Cheap Trips Made Easy</Typography>
             </Underlined>
-            <Typography variant="title">
-              Find cheap flights effortless and get notified
-            </Typography>
-            <Link to="/about">
-              <Button variant="outlined" color="primary">
-                Learn more
-              </Button>
-            </Link>
           </div>
         )}
         <DealList deals={this.props.deals} activeDeal={activeDeal} />
