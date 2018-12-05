@@ -32,7 +32,6 @@ const style = css`
   }
 `;
 
-
 const DealList = ({ deals = [], activeDeal, isLoggedIn }) => {
   if (deals[0] === undefined) return null;
   const dealsBetweenCards = 3;

@@ -23,15 +23,7 @@ const getColor = term => {
     indigo.a100,
     blue.a100,
     lightblue.a100,
-    lime.a100,
-    cyan.a200,
-    teal.a200,
-    green.a200,
-    lightgreen.a200,
-    indigo.a200,
-    blue.a200,
-    lightblue.a200,
-    lime.a200
+    lime.a100
   ];
   const bghash = hash(term) % bgColors.length;
   return bgColors[bghash];
@@ -40,7 +32,12 @@ const getColor = term => {
 const AirportChips = ({ airports, styleClass, onDelete }) => {
   return airports.map(airport => (
     <Chip
-      style={{ backgroundColor: getColor(airport), margin: '4px' }}
+      style={{
+        backgroundColor: getColor(airport),
+        margin: '4px',
+        fontWeight: 'bold',
+        minWidth: '60px'
+      }}
       className={styleClass}
       tabIndex="-1"
       key={airport}

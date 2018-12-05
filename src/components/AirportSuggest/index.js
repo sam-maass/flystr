@@ -47,8 +47,9 @@ function renderSuggestion(suggestion, { query, isHighlighted }) {
   const parts = parse(suggestion.label, matches);
 
   return (
-    <MenuItem selected={isHighlighted} component="div">
+    <MenuItem disableGutters selected={isHighlighted} component="div">
       <div>
+        <AirportChips airports={[suggestion.value]} />{' '}
         {parts.map((part, index) => {
           return part.highlight ? (
             <span key={String(index)} style={{ fontWeight: 300, color: 'red' }}>
