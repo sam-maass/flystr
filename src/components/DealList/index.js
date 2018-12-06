@@ -45,9 +45,10 @@ const DealList = ({ deals = [], activeDeal, isLoggedIn, region }) => {
   }
   const firstDeals = deals.splice(0, dealsBetweenCards - 1);
   const secondDeals = deals.splice(0, dealsBetweenCards + 1);
-  const thridDeals = deals.splice(0, dealsBetweenCards + 1);
+  const thirdDeals = deals.splice(0, dealsBetweenCards + 1);
   return (
     <div className={style}>
+      <RegionMenu region={region} />
       {hasActiveDeal && (
         <>
           {activeDeals.map(deal => (
@@ -60,7 +61,6 @@ const DealList = ({ deals = [], activeDeal, isLoggedIn, region }) => {
           </div>
         </>
       )}
-      {!hasActiveDeal && <RegionMenu region={region} />}
       {firstDeals.map(deal => (
         <DealCard key={Math.random()} deal={deal} /> // deal._id was not working as key. It was complaining about duplicate keys
       ))}
@@ -71,7 +71,7 @@ const DealList = ({ deals = [], activeDeal, isLoggedIn, region }) => {
       ))}
       {!isLoggedIn && dealCount > 6 && <NoHassleCard />}
 
-      {thridDeals.map(deal => (
+      {thirdDeals.map(deal => (
         <DealCard key={Math.random()} deal={deal} /> // deal._id was not working as key. It was complaining about duplicate keys
       ))}
       {!isLoggedIn && dealCount > 10 && <BucketListCard />}

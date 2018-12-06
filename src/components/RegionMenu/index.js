@@ -3,6 +3,7 @@ import { Button, Menu, MenuItem } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { css } from 'emotion';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMoreOutlined';
+import FilterIcon from '@material-ui/icons/FlightTakeoffOutlined';
 import slugify from 'slugify';
 import { api } from '../../settings';
 import PropTypes from 'prop-types';
@@ -12,6 +13,9 @@ const style = css`
   grid-column-start: 1;
   grid-column-end: -1;
   justify-content: center;
+  .button-content {
+    padding: 0 4px 0 16px;
+  }
 `;
 
 class RegionMenu extends React.Component {
@@ -48,7 +52,7 @@ class RegionMenu extends React.Component {
     const { region } = this.props;
     const buttonText = region
       ? `Flights from ${region.replace('-', ' ')}`
-      : `Select Region`;
+      : `Select a Region`;
     return (
       <div className={style}>
         <Button
@@ -58,7 +62,8 @@ class RegionMenu extends React.Component {
           aria-haspopup="true"
           onClick={this.handleClick}
         >
-          {buttonText}
+          <FilterIcon>Filter</FilterIcon>
+          <span className="button-content">{buttonText}</span>
           <ExpandMoreIcon>more</ExpandMoreIcon>
         </Button>
         <Menu
