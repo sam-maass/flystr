@@ -85,6 +85,7 @@ const DealList = ({ deals = [], activeDeal, isLoggedIn, region }) => {
 
 DealList.propTypes = {
   deals: PropTypes.array,
+  region: PropTypes.string,
   activeDeal: PropTypes.string,
   isLoggedIn: PropTypes.bool
 };
