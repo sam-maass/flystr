@@ -97,6 +97,12 @@ export const loggedOutRoutes = [
     main: props => <Pages.Deals {...props.match.params} />
   },
   {
+    path: '/deals/from-:region',
+    exact: true,
+    header: () => <CustomAppBar withDrawer title="Deals" />,
+    main: props => <Pages.Deals {...props.match.params} />
+  },
+  {
     path: '/deal/:dealId',
     exact: true,
     header: () => <CustomAppBar withReturn title="Example Dates" />,
