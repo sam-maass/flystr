@@ -45,7 +45,8 @@ class DealPage extends React.Component {
       metaDescription,
       twitterTitle,
       twitterDescription,
-      twitterImage
+      twitterImage,
+      fbDescription
     } = getDealMetaData(this.props.currentDeal);
 
     const bufferLink = this.getBufferLink();
@@ -53,7 +54,7 @@ class DealPage extends React.Component {
     return (
       <Fragment>
         <Helmet>
-          <title>{`${metaTitle}| Tripfixed`}</title>
+          <title>{metaTitle}</title>
           <meta name="description" content={metaDescription} />
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:site" content="@tripfixed" />
@@ -61,7 +62,7 @@ class DealPage extends React.Component {
           <meta name="twitter:description" content={twitterDescription} />
           <meta name="twitter:image" content={twitterImage} />
           <meta property="og:title" content={twitterTitle} />
-          <meta property="og:description" content={twitterDescription} />
+          <meta property="og:description" content={fbDescription} />
           <meta property="og:image" content={twitterImage} />
         </Helmet>
         {this.props.isAdmin && (
@@ -77,7 +78,7 @@ class DealPage extends React.Component {
   }
 
   getBufferLink() {
-    const bufferUrl = `https://tripfixed.com/deal/${
+    const bufferUrl = `https://tripfixed.com/deals?activeDeal=${
       this.props.currentDeal.slug
     }`;
     const {
@@ -92,9 +93,10 @@ class DealPage extends React.Component {
       lastReturn
     ).format('MMM')}`;
     const bufferDescription = `
-      ✈️ #${subtitle} to ${title}
-      💸 from ${minPrice} ${currency} return 
-      🗓 available ${bufferTimeframe}
+✈️ Fly from ${subtitle} to ${title}
+💸 from ${minPrice} ${currency} return
+🗓 available ${bufferTimeframe}
+-
       `;
     const bufferLink = `https://buffer.com/add?text=${encodeURIComponent(
       bufferDescription
