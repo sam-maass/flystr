@@ -4,7 +4,7 @@ const apiPath = getApiPath();
 
 export const loadDeals = (req, res, next) => {
   axios
-    .get(`${apiPath}/deals`, { params: { ...req.query } })
+    .get(`${apiPath}/deals`, { params: { ...req.query, ...req.params } })
     .then(deals => {
       req.fetchedDeals = deals;
       next();
