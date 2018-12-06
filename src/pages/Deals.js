@@ -39,10 +39,27 @@ class DealsPage extends React.Component {
         });
       }, 200);
     }
-    this.props.fetchDeals({ search: this.props.location.search });
+    this.fetchDeals();
+  }
+
+  fetchDeals = () => {
+    const opts = {};
+    if (this.props.region) opts.region = this.props.region;
+    const { activeDeal } = qs.parse(this.props.location.search, {
+      ignoreQueryPrefix: true
+    });
+    if (activeDeal) opts.activeDeal = activeDeal;
+    this.props.fetchDeals(opts);
+  };
+
+  componentDidUpdate(prevProps) {
+    if (this.props.region !== prevProps.region) {
+      this.fetchDeals();
+    }
   }
 
   shouldComponentUpdate(nextProps) {
+    if (this.props.region !== nextProps.region) return true;
     if (this.props.deals !== nextProps.deals) return true;
     if (this.props.loggedIn !== nextProps.loggedIn) return true;
     return false;
@@ -86,6 +103,7 @@ class DealsPage extends React.Component {
           </div>
         )}
         <DealList
+          region={this.props.region}
           deals={this.props.deals}
           activeDeal={activeDeal}
           isLoggedIn={this.props.loggedIn}
@@ -100,7 +118,8 @@ DealsPage.propTypes = {
   deals: PropTypes.array,
   loggedIn: PropTypes.bool,
   setAppbar: PropTypes.func,
-  location: PropTypes.object
+  location: PropTypes.object,
+  region: PropTypes.string
 };
 
 const mapStateToProps = (store, props) => {

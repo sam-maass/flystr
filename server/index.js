@@ -25,6 +25,7 @@ app.use(
 // root (/) should always serve our server rendered page
 app.get('/deal/:slug', loadDeal, serverRenderer);
 app.get('/deals', loadDeals, serverRenderer);
+app.get('/deals/from-:region', loadDeals, serverRenderer);
 app.get(/^\/$/, loadRecentDeals, serverRenderer);
 
 // all other routes should return index.html

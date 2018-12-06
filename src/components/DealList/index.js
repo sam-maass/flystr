@@ -9,6 +9,7 @@ import { PayLessCard, NoHassleCard, BucketListCard } from '../UspCards';
 import { classes, styles } from '../../styles';
 import { Underlined } from '../Typography/Underlined';
 import { Typography } from '../Typography/Typography';
+import { RegionMenu } from '../RegionMenu';
 
 const style = css`
   max-width: 1400px;
@@ -32,8 +33,9 @@ const style = css`
   }
 `;
 
-const DealList = ({ deals = [], activeDeal, isLoggedIn }) => {
+const DealList = ({ deals = [], activeDeal, isLoggedIn, region }) => {
   if (deals[0] === undefined) return null;
+  const dealCount = deals.length;
   const dealsBetweenCards = 3;
   const hasActiveDeal = activeDeal === deals[0].slug;
   let activeDeals = [];
@@ -58,20 +60,21 @@ const DealList = ({ deals = [], activeDeal, isLoggedIn }) => {
           </div>
         </>
       )}
+      {!hasActiveDeal && <RegionMenu region={region} />}
       {firstDeals.map(deal => (
         <DealCard key={Math.random()} deal={deal} /> // deal._id was not working as key. It was complaining about duplicate keys
       ))}
-      {!isLoggedIn && <PayLessCard />}
+      {!isLoggedIn && dealCount > 2 && <PayLessCard />}
 
       {secondDeals.map(deal => (
         <DealCard key={Math.random()} deal={deal} /> // deal._id was not working as key. It was complaining about duplicate keys
       ))}
-      {!isLoggedIn && <NoHassleCard />}
+      {!isLoggedIn && dealCount > 6 && <NoHassleCard />}
 
       {thridDeals.map(deal => (
         <DealCard key={Math.random()} deal={deal} /> // deal._id was not working as key. It was complaining about duplicate keys
       ))}
-      {!isLoggedIn && <BucketListCard />}
+      {!isLoggedIn && dealCount > 10 && <BucketListCard />}
       {deals.map(deal => (
         <DealCard key={Math.random()} deal={deal} />
       ))}
@@ -82,6 +85,7 @@ const DealList = ({ deals = [], activeDeal, isLoggedIn }) => {
 
 DealList.propTypes = {
   deals: PropTypes.array,
+  region: PropTypes.string,
   activeDeal: PropTypes.string,
   isLoggedIn: PropTypes.bool
 };
