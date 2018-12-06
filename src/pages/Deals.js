@@ -71,14 +71,17 @@ class DealsPage extends React.Component {
     const { activeDeal } = qs.parse(urlParams, { ignoreQueryPrefix: true });
 
     if (!this.props.deals[0]) return null;
-    const { twitterTitle, twitterDescription, twitterImage } = getDealMetaData(
-      this.props.deals[0]
-    );
+    const {
+      twitterTitle,
+      twitterDescription,
+      twitterImage,
+      fbDescription
+    } = getDealMetaData(this.props.deals[0]);
 
     return (
       <div className={style}>
         <Helmet>
-          <title>Deals | Tripfixed</title>
+          <title>Deals - Tripfixed</title>
           <meta
             name="description"
             content="Tripfixed makes cheap trips easy. Save up to 67% on flights and get notifications so you never miss a cheap flight again."
@@ -89,7 +92,7 @@ class DealsPage extends React.Component {
           <meta name="twitter:description" content={twitterDescription} />
           <meta name="twitter:image" content={twitterImage} />
           <meta property="og:title" content={twitterTitle} />
-          <meta property="og:description" content={twitterDescription} />
+          <meta property="og:description" content={fbDescription} />
           <meta property="og:image" content={twitterImage} />
         </Helmet>
         {!this.props.loggedIn && (

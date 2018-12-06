@@ -11,7 +11,7 @@ import { logClick } from '../../utils/logClick';
 
 const highlightCard = css`
   max-width: 600px;
-  margin: 8px auto 32px auto;
+  margin: 8px auto 8px auto;
   grid-column-start: 1;
   grid-column-end: -1;
   justify-self: center;

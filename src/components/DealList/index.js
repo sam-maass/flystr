@@ -10,6 +10,9 @@ import { classes, styles } from '../../styles';
 import { Underlined } from '../Typography/Underlined';
 import { Typography } from '../Typography/Typography';
 import { RegionMenu } from '../RegionMenu';
+import { Button } from '@material-ui/core';
+import { Link } from 'react-router-dom';
+import CalendarIcon from '@material-ui/icons/DateRangeOutlined';
 
 const style = css`
   max-width: 1400px;
@@ -31,6 +34,17 @@ const style = css`
     color: ${styles.colors.darkGray};
     justify-self: center;
   }
+  .dates-button-container {
+    grid-column-start: 1;
+    grid-column-end: -1;
+    align-content: center;
+    justify-content: center;
+    display: grid;
+    margin-bottom: 32px;
+    .dates-button-content {
+      margin: 0 8px;
+    }
+  }
 `;
 
 const DealList = ({ deals = [], activeDeal, isLoggedIn, region }) => {
@@ -45,13 +59,25 @@ const DealList = ({ deals = [], activeDeal, isLoggedIn, region }) => {
   }
   const firstDeals = deals.splice(0, dealsBetweenCards - 1);
   const secondDeals = deals.splice(0, dealsBetweenCards + 1);
-  const thridDeals = deals.splice(0, dealsBetweenCards + 1);
+  const thirdDeals = deals.splice(0, dealsBetweenCards + 1);
   return (
     <div className={style}>
       {hasActiveDeal && (
         <>
           {activeDeals.map(deal => (
-            <DealCard key={Math.random()} deal={deal} highlighted />
+            <>
+              <DealCard key={Math.random()} deal={deal} highlighted />
+              <div className="dates-button-container">
+                <Link to={`/deal/${deal.slug}`}>
+                  <Button variant="outlined" color="primary" size="large">
+                    <CalendarIcon>Dates</CalendarIcon>
+                    <span className="dates-button-content">
+                      Show Available Dates
+                    </span>
+                  </Button>
+                </Link>
+              </div>
+            </>
           ))}
           <div className="related-deals">
             <Underlined>
@@ -60,7 +86,7 @@ const DealList = ({ deals = [], activeDeal, isLoggedIn, region }) => {
           </div>
         </>
       )}
-      {!hasActiveDeal && <RegionMenu region={region} />}
+      <RegionMenu region={region} />
       {firstDeals.map(deal => (
         <DealCard key={Math.random()} deal={deal} /> // deal._id was not working as key. It was complaining about duplicate keys
       ))}
@@ -71,7 +97,7 @@ const DealList = ({ deals = [], activeDeal, isLoggedIn, region }) => {
       ))}
       {!isLoggedIn && dealCount > 6 && <NoHassleCard />}
 
-      {thridDeals.map(deal => (
+      {thirdDeals.map(deal => (
         <DealCard key={Math.random()} deal={deal} /> // deal._id was not working as key. It was complaining about duplicate keys
       ))}
       {!isLoggedIn && dealCount > 10 && <BucketListCard />}
