@@ -78,7 +78,7 @@ class DealPage extends React.Component {
   }
 
   getBufferLink() {
-    const bufferUrl = `https://tripfixed.com/deal/${
+    const bufferUrl = `https://tripfixed.com/deals?activeDeal=${
       this.props.currentDeal.slug
     }`;
     const {
@@ -93,9 +93,10 @@ class DealPage extends React.Component {
       lastReturn
     ).format('MMM')}`;
     const bufferDescription = `
-      ✈️ #${subtitle} to ${title}
-      💸 from ${minPrice} ${currency} return 
-      🗓 available ${bufferTimeframe}
+✈️ Fly from ${subtitle} to ${title}
+💸 from ${minPrice} ${currency} return
+🗓 available ${bufferTimeframe}
+-
       `;
     const bufferLink = `https://buffer.com/add?text=${encodeURIComponent(
       bufferDescription
