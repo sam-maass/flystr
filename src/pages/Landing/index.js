@@ -36,13 +36,16 @@ class Landing extends React.Component {
               <div className="advantage-box-container">
                 <AdvantageBox heading="Stay Flexible">
                   Sometimes you don’t need to travel on fixed dates. You just
-                  want to know what is the best time to do your planned citytrip
-                  on a budget. Tripfixed searches across all possible dates for
-                  the next year and will always find the cheapest flight option.
-                  No guesswork if it is cheaper to depart on thursdays. No trial
-                  and error for each month. Just 60.000 date combinations with
-                  one click.
+                  want to know what is the best time to do your planned
+                  city-trip on a budget. Tripfixed searches across all possible
+                  dates for the next year and will always find the cheapest
+                  flight option. No guesswork if it is cheaper to depart on
+                  Thursdays. No trial and error for each month. Just 60.000 date
+                  combinations with one click.
                 </AdvantageBox>
+              </div>
+              <div className="image-container double-height">
+                <img src="/phone-with-tripfixed.png" />
               </div>
               <div className="advantage-box-container">
                 <AdvantageBox heading="Notifications Included">
@@ -53,13 +56,10 @@ class Landing extends React.Component {
                   drops significantly we will inform you right away.
                 </AdvantageBox>
               </div>
-              <div className="image-container double-height">
-                <img src="/phone-with-tripfixed.png" />
-              </div>
               <div className="advantage-box-container">
                 <AdvantageBox heading="Find Travel Inspiration">
                   Not sure where you should go next? Browse through our daily
-                  updated catalogue of flight deals and find travel inspiration.
+                  updated catalog of flight deals and find travel inspiration.
                   You can simply favorite public deals and customize them to
                   your needs. Change to your preferred travel duration or add
                   new departure airports.
@@ -67,7 +67,7 @@ class Landing extends React.Component {
               </div>
               <div className="advantage-box-container">
                 <AdvantageBox heading="All Airports, One Search">
-                  With normal flight search tools you have to get flight prices
+                  With common flight search tools, you have to get flight prices
                   for each destination separately. But sometimes you just want
                   to know where it is cheap to fly to in South East Asia.
                   Tripfixed allows you to search ticket prices for multiple
