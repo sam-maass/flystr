@@ -72,8 +72,8 @@ exports[`ImageHeader: default 1`] = `
 
 @media only screen and (min-width:1024px) {
   .emotion-2 .logo {
-    margin: 0;
-    width: 300px;
+    margin: 16px;
+    width: 150px;
   }
 }
 

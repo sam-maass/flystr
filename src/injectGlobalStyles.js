@@ -1,5 +1,5 @@
 import { injectGlobal } from 'emotion';
-import { styles } from './styles';
+import { styles, classes } from './styles';
 
 injectGlobal`
   body{
@@ -17,5 +17,21 @@ injectGlobal`
     display:inline;
     color: ${styles.colors.blue3};
     cursor: pointer
+  }
+  .h1-text{
+    ${classes.typography.h1}
+  }
+  .h2-text{
+    ${classes.typography.h2}
+  }
+  .h3-text{
+    ${classes.typography.h3}
+  }
+  .base-text{
+    ${classes.typography.base}
+  }
+
+  .text-center{
+    text-align:center;
   }
 `;

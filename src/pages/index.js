@@ -2,7 +2,7 @@ import Loadable from 'react-loadable';
 import Loading from '../components/Loading';
 
 const Landing = Loadable({
-  loader: () => import('./Landing'),
+  loader: () => import('./Landing/index'),
   loading: Loading
 });
 
