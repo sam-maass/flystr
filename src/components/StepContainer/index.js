@@ -2,11 +2,7 @@ import React from 'react';
 import { css } from 'emotion';
 import FlowText from '../FlowText';
 import PropTypes from 'prop-types';
-import { classes } from '../../styles';
 
-const headlineStyle = css`
-  ${classes.typography.h2} font-weight: bold;
-`;
 const containerStyle = css`
   display: grid;
   grid-template-rows: 100px;
@@ -21,7 +17,7 @@ const StepContainer = ({ title, text, icon }) => {
   return (
     <div className={containerStyle}>
       <img src={icon} alt="icon" />
-      <div className={headlineStyle}>{title}</div>
+      <h3 className="h3-text">{title}</h3>
       <FlowText>{text}</FlowText>
     </div>
   );
