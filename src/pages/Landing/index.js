@@ -45,7 +45,10 @@ class Landing extends React.Component {
                 </AdvantageBox>
               </div>
               <div className="image-container double-height">
-                <img src="/phone-with-tripfixed.png" />
+                <img
+                  src="/phone-with-tripfixed.png"
+                  alt="Phone with Tripfixed Page"
+                />
               </div>
               <div className="advantage-box-container">
                 <AdvantageBox heading="Notifications Included">
@@ -75,7 +78,7 @@ class Landing extends React.Component {
                 </AdvantageBox>
               </div>
               <div className="image-container">
-                <img src="/example-trip.png" />
+                <img src="/example-trip.png" alt="Example Trip" />
               </div>
             </div>
           </section>
