@@ -44,8 +44,8 @@ const header = css`
     background-repeat: no-repeat;
     margin-bottom: 20px;
     @media only screen and (min-width: 1024px) {
-      margin: 0;
-      width: 300px;
+      margin: 16px;
+      width: 150px;
     }
   }
   .buttonbox {

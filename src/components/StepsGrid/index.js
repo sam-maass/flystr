@@ -18,7 +18,11 @@ const StepsGrid = () => {
     <div className={threeItemGrid}>
       <StepContainer
         icon={'/world.svg'}
-        title={<span>choose your destinations</span>}
+        title={
+          <span>
+            choose your <br /> destinations
+          </span>
+        }
         text="Select your favorite destinations, add travel periods and budget. Looking for a flight to New York in October and to Japan in April or May? We've got you covered!"
       />
       <StepContainer
