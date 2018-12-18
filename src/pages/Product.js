@@ -86,7 +86,7 @@ const ProductPage = () => {
             <Typography>
               <p>
                 Finding cheap flights is time-consuming. There are over 60.000
-                possible date combinations for outbound and inbound flight.
+                possible date combinations for outbound and inbound flights.
                 Flight prices change multiple times each day. You need to find
                 and compare flights to and from different airports in the same
                 region. And finally, in order to find the cheapest flight you
