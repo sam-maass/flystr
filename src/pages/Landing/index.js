@@ -10,11 +10,20 @@ import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 import { fetchLandingpageDeals } from '../../actions/dealActions';
 import { style } from './style';
+import { api } from '../../settings';
 
 class Landing extends React.Component {
+  state = { regions: [] };
   componentDidMount() {
     this.props.fetchLandingpageDeals();
+    this.getRegions();
   }
+  getRegions = async () => {
+    const {
+      data: { countries: regions }
+    } = await api().get('/deals/countries');
+    this.setState({ regions });
+  };
   render() {
     return (
       <div>
@@ -97,8 +106,8 @@ class Landing extends React.Component {
               </Link>
             </div>
           </section>
-          <Footer />
         </div>
+        <Footer regions={this.state.regions} />
       </div>
     );
   }
