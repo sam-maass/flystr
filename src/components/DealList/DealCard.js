@@ -51,13 +51,14 @@ const wrapperStyle = (destination, removed, highlighted) => css`
       ${classes.typography.base};
       font-size: 0.8em;
       margin: 8px;
-      padding: 2px 6px;
+      padding: 2px 12px;
       font-weight: bold;
       border-radius: 8px;
       background-color: ${styles.colors.orange};
       color: ${styles.colors.white};
       justify-self: right;
       align-self: start;
+      text-align: center;
     }
     .main {
       margin-bottom: 8px;
@@ -127,11 +128,14 @@ const DealCard = props => {
     destinations,
     firstDeparture,
     lastChecked = moment().subtract(3, 'days'),
-    currency = 'EUR',
+    priceLimit,
     removed
   } = props.deal;
+  const currency = '€';
   const { highlighted } = props;
   const daysAgo = moment(lastChecked).fromNow();
+  const roundedPriceLimit = Math.round(priceLimit / 10) * 10;
+  const showSavingBadge = minPrice < roundedPriceLimit;
   const timeFrame = getTimeframeString({
     startDate: firstDeparture,
     endDate: lastReturn
@@ -142,7 +146,19 @@ const DealCard = props => {
         <div className="container">
           <div className="backdrop">
             <span className="badge">
-              from {minPrice} {currency}
+              {showSavingBadge && (
+                <>
+                  <small>
+                    <s>
+                      {currency}
+                      {roundedPriceLimit}
+                    </s>
+                  </small>
+                  <br />
+                </>
+              )}
+              {currency}
+              {minPrice}
             </span>
             <div className="main">
               <span className="title">{title}</span>
