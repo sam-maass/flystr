@@ -2,6 +2,26 @@
 
 exports[`Footer: default 1`] = `
 .emotion-0 {
+  background: #eaeaea;
+  padding-bottom: 16px;
+  padding-top: 32px;
+}
+
+.emotion-0 .grid {
+  margin: auto;
+  max-width: 1024px;
+  display: grid;
+  grid-gap: 8px;
+  grid-template-columns: 1fr;
+}
+
+@media only screen and (min-width:1024px) {
+  .emotion-0 .grid {
+    grid-template-columns: repeat(3,1fr);
+  }
+}
+
+.emotion-0 .grid * {
   color: #263238;
   font-family: 'Open Sans',sans-serif;
   font-size: 16px;
@@ -12,64 +32,155 @@ exports[`Footer: default 1`] = `
   -ms-letter-spacing: 0.05em;
   letter-spacing: 0.05em;
   line-height: 1.6em;
-  display: grid;
-  grid-gap: 8px;
-  grid-template-columns: 1fr;
-  justify-items: center;
-  margin-top: 96px;
-  margin-bottom: 16px;
+  font-size: 0.9rem;
 }
 
-@media only screen and (min-width:1024px) {
-  .emotion-0 {
-    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
-  }
-}
-
-.emotion-0 a {
+.emotion-0 .grid a {
   -webkit-text-decoration: none;
   text-decoration: none;
   color: #607D8B;
 }
 
-.emotion-0 a:hover {
+.emotion-0 .grid a:hover {
   color: #263238;
 }
 
-.emotion-0 .copyright {
+.emotion-0 .grid b {
+  border-bottom: 1px solid #607D8B;
+  font-weight: bold;
+  color: #263238;
+}
+
+.emotion-0 .grid ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 8px 4px;
+}
+
+.emotion-0 .grid .social {
+  grid-column-start: 1;
+}
+
+.emotion-0 .grid .about {
+  grid-column-start: 1;
+}
+
+.emotion-0 .grid .origins {
+  grid-column: span 1;
+  width: 100%;
+}
+
+@media only screen and (min-width:1024px) {
+  .emotion-0 .grid .origins {
+    grid-column: 2 / span 2;
+    grid-row: 1 / span 2;
+  }
+}
+
+.emotion-0 .grid .origins ul {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+@media only screen and (min-width:1024px) {
+  .emotion-0 .grid .origins ul {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.emotion-0 .grid .copyright {
   grid-column: 1 / -1;
+  justify-self: center;
   color: #90A4AE;
 }
 
 <div
   className="emotion-0"
 >
-  <a
-    href="https://twitter.com/flystr_com"
-  >
-    Twitter
-  </a>
-  <a
-    href="https://www.instagram.com/flystr_dot_com/"
-  >
-    Instagram
-  </a>
-  <a
-    href="/legal"
-    onClick={[Function]}
-  >
-    Privacy Policy
-  </a>
-  <a
-    href="/terms"
-    onClick={[Function]}
-  >
-    Terms & Conditions
-  </a>
   <div
-    className="copyright"
+    className="grid"
   >
-     © Tripfixed, 2018
+    <div
+      className="about"
+    >
+      <b>
+        About Tripfixed
+      </b>
+      <ul>
+        <li>
+          <a
+            href="/about"
+            onClick={[Function]}
+          >
+            What we do
+          </a>
+        </li>
+        <li>
+          <a
+            href="/legal"
+            onClick={[Function]}
+          >
+            Privacy Policy
+          </a>
+        </li>
+        <li>
+          <a
+            href="/terms"
+            onClick={[Function]}
+          >
+            Terms & Conditions
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div
+      className="social"
+    >
+      <b>
+        On Social Media
+      </b>
+      <ul>
+        <li>
+          <a
+            href="https://twitter.com/tripfixed"
+          >
+            Twitter
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://www.instagram.com/tripfixed/"
+          >
+            Instagram
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://www.facebook.com/tripfixedcom/"
+          >
+            Facebook
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div
+      className="origins"
+    >
+      <a
+        href="/deals"
+        onClick={[Function]}
+      >
+        <b>
+          Find Cheap Flights
+        </b>
+      </a>
+      <ul />
+    </div>
+    <div
+      className="copyright"
+    >
+       © Tripfixed, 2018
+    </div>
   </div>
 </div>
 `;
