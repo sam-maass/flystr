@@ -50,9 +50,7 @@ class RegionMenu extends React.Component {
   render() {
     const { anchorEl, regions } = this.state;
     const { region } = this.props;
-    const buttonText = region
-      ? `Flights from ${region.replace('-', ' ')}`
-      : `Select a Region`;
+    const buttonText = `Select your Region`;
     return (
       <div className={style}>
         <Button

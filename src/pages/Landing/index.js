@@ -10,37 +10,52 @@ import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 import { fetchLandingpageDeals } from '../../actions/dealActions';
 import { style } from './style';
-import { api } from '../../settings';
 
 class Landing extends React.Component {
-  state = { regions: [] };
+  state = {
+    regions: [
+      'Austria',
+      'Belgium',
+      'Czech Republic',
+      'Denmark',
+      'Finland',
+      'France',
+      'Germany',
+      'Hungary',
+      'Ireland',
+      'Italy',
+      'Latvia',
+      'Luxembourg',
+      'Netherlands',
+      'Norway',
+      'Poland',
+      'Portugal',
+      'Spain',
+      'Sweden',
+      'Switzerland',
+      'United Kingdom'
+    ]
+  };
   componentDidMount() {
     this.props.fetchLandingpageDeals();
-    this.getRegions();
   }
-  getRegions = async () => {
-    const {
-      data: { countries: regions }
-    } = await api().get('/deals/countries');
-    this.setState({ regions });
-  };
   render() {
     return (
       <div>
         <Helmet>
-          <title>All Cheap flights in one place | Tripfixed</title>
+          <title>Find The Cheapest Flights With Ease - Tripfixed</title>
           <meta
             name="description"
-            content="Tripfixed makes cheap trips easy. Save up to 67% on flights and get notifications so you never miss a cheap flight again."
+            content="Find cheap flights to your favorite vacation destinations. Save up to 67% and get notifications so you never miss a bargain flight again."
           />
         </Helmet>
         <ImageHeader />
 
         <div className={style}>
           <section>
-            <h2 className="h2-text text-center">
-              Find cheap travel destinations with ease
-            </h2>
+            <h1 className="h2-text text-center">
+              Discover cheap flight destinations with ease
+            </h1>
             <div className="grid">
               <div className="advantage-box-container">
                 <AdvantageBox heading="Stay Flexible">
