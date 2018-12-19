@@ -78,14 +78,33 @@ class DealsPage extends React.Component {
       fbDescription
     } = getDealMetaData(this.props.deals[0]);
 
+    let title = 'Cheap Flight Deals To Anywhere';
+    let h1 = 'Cheap Trips Made Easy';
+    let description =
+      'Tripfixed makes cheap trips easy. Save up to 67% on flights and get notifications so you never miss a cheap flight again.';
+    if (this.props.region) {
+      title = `Flight Deals from ${this.props.region.replace('-', ' ')}`;
+      h1 = `Cheap Flights from ${this.props.region.replace('-', ' ')}`;
+      description = `Find the cheapest flights from ${this.props.region.replace(
+        '-',
+        ' '
+      )}, track prices and get notifications when flights to your dream destination are on sale.`;
+    }
+    if (activeDeal) {
+      title = `Flight Deals from ${this.props.deals[0].subtitle} to ${
+        this.props.deals[0].title
+      }`;
+      h1 = `Cheap Flights Made Easy`;
+      description = `Bargain flights from ${this.props.deals[0].subtitle} to ${
+        this.props.deals[0].title
+      }. Check available dates, track prices and get notifications for free.`;
+    }
+
     return (
       <div className={style}>
         <Helmet>
-          <title>Deals - Tripfixed</title>
-          <meta
-            name="description"
-            content="Tripfixed makes cheap trips easy. Save up to 67% on flights and get notifications so you never miss a cheap flight again."
-          />
+          <title>{title} - Tripfixed</title>
+          <meta name="description" content={description} />
           <meta name="twitter:card" content="summary_large_image" />
           <meta name="twitter:site" content="@tripfixed" />
           <meta name="twitter:title" content={twitterTitle} />
@@ -101,7 +120,9 @@ class DealsPage extends React.Component {
               <LogoContainer variant="dark" height={60} />
             </div>
             <Underlined color="lightGray" variant="small">
-              <Typography variant="h2">Cheap Trips Made Easy</Typography>
+              <h1>
+                <Typography variant="h1">{h1}</Typography>
+              </h1>
             </Underlined>
           </div>
         )}
