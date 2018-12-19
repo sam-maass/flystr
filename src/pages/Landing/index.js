@@ -10,20 +10,35 @@ import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 import { fetchLandingpageDeals } from '../../actions/dealActions';
 import { style } from './style';
-import { api } from '../../settings';
 
 class Landing extends React.Component {
-  state = { regions: [] };
+  state = {
+    regions: [
+      'Austria',
+      'Belgium',
+      'Czech Republic',
+      'Denmark',
+      'Finland',
+      'France',
+      'Germany',
+      'Hungary',
+      'Ireland',
+      'Italy',
+      'Latvia',
+      'Luxembourg',
+      'Netherlands',
+      'Norway',
+      'Poland',
+      'Portugal',
+      'Spain',
+      'Sweden',
+      'Switzerland',
+      'United Kingdom'
+    ]
+  };
   componentDidMount() {
     this.props.fetchLandingpageDeals();
-    this.getRegions();
   }
-  getRegions = async () => {
-    const {
-      data: { countries: regions }
-    } = await api().get('/deals/countries');
-    this.setState({ regions });
-  };
   render() {
     return (
       <div>
