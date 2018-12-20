@@ -8,6 +8,7 @@ import TripDealList from '../TripDealList/component';
 import { ModalLink } from '../ModalLink';
 import { Link } from 'react-router-dom';
 import { Button } from '@material-ui/core';
+import { PriceHistory } from './PriceHistory';
 
 const style = destination => css`
   ${classes.typography.base};
@@ -77,6 +78,11 @@ const signupCardStyle = css`
   text-align: center;
 `;
 
+const priceHistoryStyle = css`
+  max-width: 1024px;
+  margin: 16px auto;
+`;
+
 const DealView = ({ deal }) => {
   const { title, subtitle, slug } = deal;
   if (deal.destinations === undefined) {
@@ -100,6 +106,15 @@ const DealView = ({ deal }) => {
             </div>
           </div>
         </div>
+        {deal.priceHistory.length > 2 && (
+          <div className={priceHistoryStyle}>
+            <PriceHistory
+              priceHistory={deal.priceHistory}
+              from={deal.subtitle}
+              to={deal.title}
+            />
+          </div>
+        )}
         <TripDealList flights={deal.exampleFlights} />
         <div className={signupCardStyle}>
           <strong>Why are the prices not always accurate?</strong> <br /> <br />
