@@ -45,11 +45,11 @@ export class PriceHistory extends React.Component {
     return (
       <div ref={this.containingElement}>
         <Paper style={{ padding: '16px', margin: '8px' }}>
-          <Typography align="center" variant="subtitle1" component="h1">
-            Flight Prices From {this.props.from} To {this.props.to}
+          <Typography align="center" variant="subtitle1" component="h2">
+            Price Trend From {this.props.from} To {this.props.to}
           </Typography>
-          <Typography align="center" color="textSecondary" component="h2">
-            (Historic Lowest Prices)
+          <Typography align="center" color="textSecondary" component="h3">
+            Historic Lowest Flight Prices
           </Typography>
           <XYPlot
             width={this.state.plotWidth - 32}

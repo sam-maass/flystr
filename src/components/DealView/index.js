@@ -9,6 +9,7 @@ import { ModalLink } from '../ModalLink';
 import { Link } from 'react-router-dom';
 import { Button } from '@material-ui/core';
 import { PriceHistory } from './PriceHistory';
+import PriceMatrix from './PriceMatrix';
 
 const style = destination => css`
   ${classes.typography.base};
@@ -107,13 +108,22 @@ const DealView = ({ deal }) => {
           </div>
         </div>
         {deal.priceHistory.length > 2 && (
-          <div className={priceHistoryStyle}>
-            <PriceHistory
-              priceHistory={deal.priceHistory}
-              from={deal.subtitle}
-              to={deal.title}
-            />
-          </div>
+          <>
+            <div className={priceHistoryStyle}>
+              <PriceMatrix
+                priceMatrix={deal.priceMatrix}
+                minPrice={deal.minPrice}
+                destination={deal.title}
+              />
+            </div>
+            <div className={priceHistoryStyle}>
+              <PriceHistory
+                priceHistory={deal.priceHistory}
+                from={deal.subtitle}
+                to={deal.title}
+              />
+            </div>
+          </>
         )}
         <TripDealList flights={deal.exampleFlights} />
         <div className={signupCardStyle}>
