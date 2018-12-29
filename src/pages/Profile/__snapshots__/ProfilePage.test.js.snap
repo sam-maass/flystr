@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`shallow renders correctly 1`] = `
+<div
+  className="css-10zw8gi"
+>
+  <SettingDescription
+    primary="Accounttype"
+    secondary="Choose your account type"
+  />
+  <div>
+    <Connect(InnerComponent)
+      openPremiumDialog={false}
+    />
+  </div>
+  <SettingDescription
+    primary="Notifications"
+  />
+  <div>
+    <div
+      className="notification-settings"
+    >
+      <Connect(InnerWebPushSwitch) />
+       via Push 
+      <br />
+      <Connect(InnerEmailNotificationSwitch) />
+       via Email
+    </div>
+  </div>
+</div>
+`;
