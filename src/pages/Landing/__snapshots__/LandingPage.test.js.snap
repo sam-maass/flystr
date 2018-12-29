@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AdminTrips: default 1`] = `
-<AdminTrips
-  allTrips={Array []}
-  fetchAllTrips={[Function]}
+exports[`shallow renders correctly 1`] = `
+<Landing
+  deals={Array []}
+  fetchLandingpageDeals={[Function]}
   store={
     Object {
       "dispatch": [Function],

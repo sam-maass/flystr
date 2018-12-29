@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`shallow renders correctly 1`] = `
+<TripsPage
+  classes={
+    Object {
+      "fab": "TripsPage-fab-2",
+      "pageContainer": "TripsPage-pageContainer-1",
+    }
+  }
+  store={
+    Object {
+      "dispatch": [Function],
+      "getState": [Function],
+      "replaceReducer": [Function],
+      "subscribe": [Function],
+      Symbol(observable): [Function],
+    }
+  }
+/>
+`;
