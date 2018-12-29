@@ -1,8 +1,8 @@
 import React from 'react';
-import { Typography } from '../components/Typography/Typography';
-import { Underlined } from '../components/Typography/Underlined';
+import { Typography } from '../../components/Typography/Typography';
+import { Underlined } from '../../components/Typography/Underlined';
 import { css } from 'emotion';
-import { classes } from '../styles';
+import { classes } from '../../styles';
 import { Card, CardContent } from '@material-ui/core';
 
 const style = css`

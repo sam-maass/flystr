@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import NewDealForm from '../components/NewDealForm';
+import NewDealForm from '../../components/NewDealForm';
 
 const NewDealPage = props => {
   return (

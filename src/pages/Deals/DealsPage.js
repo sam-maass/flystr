@@ -3,17 +3,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchDeals } from '../actions/dealActions';
-import DealList from '../components/DealList';
+import { fetchDeals } from '../../actions/dealActions';
+import DealList from '../../components/DealList';
 import { css } from 'emotion';
-import { setAppbar } from '../actions/appbarActions';
+import { setAppbar } from '../../actions/appbarActions';
 import { Helmet } from 'react-helmet';
 import { withRouter } from 'react-router-dom';
-import { getDealMetaData } from './getDealMetaData';
+import { getDealMetaData } from '../../utils/getDealMetaData';
 import qs from 'qs';
-import { Typography } from '../components/Typography/Typography';
-import LogoContainer from '../components/LogoContainer';
-import { Underlined } from '../components/Typography/Underlined';
+import { Typography } from '../../components/Typography/Typography';
+import LogoContainer from '../../components/LogoContainer';
+import { Underlined } from '../../components/Typography/Underlined';
 
 const style = css`
   margin: 16px;
@@ -45,11 +45,10 @@ class DealsPage extends React.Component {
   fetchDeals = () => {
     const opts = {};
     if (this.props.region) opts.region = this.props.region;
-    const { activeDeal } = qs.parse(this.props.location.search, {
+    const qsParams = qs.parse(this.props.location.search, {
       ignoreQueryPrefix: true
     });
-    if (activeDeal) opts.activeDeal = activeDeal;
-    this.props.fetchDeals(opts);
+    this.props.fetchDeals({ ...opts, ...qsParams });
   };
 
   componentDidUpdate(prevProps) {

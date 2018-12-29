@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import UrlParser from '../components/UrlParser';
+import UrlParser from '../../components/UrlParser';
 import { connect } from 'react-redux';
-import FlightTemplateContainer from '../components/FlightTemplateContainer';
-import { addFlightTemplates } from '../actions/flightTemplateActions';
-import FlightList from '../components/FlightList';
+import FlightTemplateContainer from '../../components/FlightTemplateContainer';
+import { addFlightTemplates } from '../../actions/flightTemplateActions';
+import FlightList from '../../components/FlightList';
 
 class NewFlightPage extends Component {
   constructor(props) {

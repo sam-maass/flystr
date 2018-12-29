@@ -1,15 +1,15 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import * as yup from 'yup';
-import DestinationSelection from '../components/DestinationSelection';
-import OriginSelection from '../components/OriginSelection';
-import PreferenceSelection from '../components/PreferenceSelection';
+import DestinationSelection from '../../components/DestinationSelection';
+import OriginSelection from '../../components/OriginSelection';
+import PreferenceSelection from '../../components/PreferenceSelection';
 import { withFormik } from 'formik';
 import { connect } from 'react-redux';
-import { fetchUser } from '../actions/userActions';
-import { api } from '../settings';
+import { fetchUser } from '../../actions/userActions';
+import { api } from '../../settings';
 import moment from 'moment';
-import { addError } from '../actions/errorActions';
+import { addError } from '../../actions/errorActions';
 
 class NewTripPage extends React.Component {
   render() {

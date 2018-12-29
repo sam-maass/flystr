@@ -1,7 +1,7 @@
 import ShallowRenderer from 'react-test-renderer/shallow';
-import AdminTrips from './AdminTrips.js';
+import AdminTrips from './AdminTripsPage';
 import React from 'react';
-import store from '../store';
+import store from '../../store';
 
 it('AdminTrips: default', () => {
   const renderer = new ShallowRenderer();
