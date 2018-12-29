@@ -3,12 +3,12 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchDeal } from '../actions/dealActions';
-import DealView from '../components/DealView';
-import { setAppbar } from '../actions/appbarActions';
+import { fetchDeal } from '../../actions/dealActions';
+import DealView from './components/DealView';
+import { setAppbar } from '../../actions/appbarActions';
 import { Helmet } from 'react-helmet';
-import NoDeal from '../components/NoDeal';
-import { getDealMetaData } from './getDealMetaData';
+import NoDeal from '../../components/NoDeal';
+import { getDealMetaData } from '../../utils/getDealMetaData';
 import { Card, Button } from '@material-ui/core';
 import moment from 'moment';
 

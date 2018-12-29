@@ -1,11 +1,11 @@
-import { AccountTypeSetting } from './../components/Profile/AccountTypeSetting';
-import { SettingDescription } from './../components/Profile/SettingDescription';
+import { AccountTypeSetting } from '../../components/Profile/AccountTypeSetting';
+import { SettingDescription } from '../../components/Profile/SettingDescription';
 import React from 'react';
 import { css } from 'emotion';
-import { classes } from '../styles';
-import { WebPushSwitch } from '../components/WebPushSwitch/WebPushSwitch';
+import { classes } from '../../styles';
+import { WebPushSwitch } from '../../components/WebPushSwitch/WebPushSwitch';
 import PropTypes from 'prop-types';
-import { EmailNotificationSwitch } from '../components/EmailNotificationSwitch/EmailNotificationSwitch';
+import { EmailNotificationSwitch } from '../../components/EmailNotificationSwitch/EmailNotificationSwitch';
 const style = css`
   width: 100%;
   max-width: 1024px;

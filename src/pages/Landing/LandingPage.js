@@ -1,4 +1,4 @@
-import { AdvantageBox } from './../components/advantageBox';
+import { AdvantageBox } from './components/AdvantageBox';
 import React from 'react';
 import { connect } from 'react-redux';
 import ImageHeader from '../../components/ImageHeader';

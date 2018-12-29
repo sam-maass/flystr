@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchUserOverview } from '../actions/adminActions';
+import { fetchUserOverview } from 'actions/adminActions';
 import { css } from 'emotion';
-import { classes, styles } from '../styles';
+import { classes, styles } from 'styles';
 import moment from 'moment';
 
 const style = css`

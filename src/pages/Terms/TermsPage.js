@@ -1,5 +1,5 @@
 import React from 'react';
-import { classes } from '../styles';
+import { classes } from '../../styles';
 import { css } from 'emotion';
 
 const containerStyle = css`

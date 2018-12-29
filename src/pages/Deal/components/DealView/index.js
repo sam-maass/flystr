@@ -1,15 +1,15 @@
-import { WatchlistButton } from './../WatchlistButton/index';
+import { WatchlistButton } from '../../../../components/WatchlistButton/index';
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { css } from 'emotion';
-import { getDestinationImage } from '../../getDestinationImage';
-import { classes, styles } from '../../styles';
-import TripDealList from '../TripDealList/component';
-import { ModalLink } from '../ModalLink';
+import { classes, styles } from '../../../../styles';
+import TripDealList from '../../../../components/TripDealList/component';
+import { ModalLink } from '../../../../components/ModalLink';
 import { Link } from 'react-router-dom';
 import { Button } from '@material-ui/core';
 import { PriceHistory } from './PriceHistory';
 import PriceMatrix from './PriceMatrix';
+import { getDestinationImage } from '../../../../getDestinationImage';
 
 const style = destination => css`
   ${classes.typography.base};

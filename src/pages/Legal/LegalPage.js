@@ -1,5 +1,5 @@
 import React from 'react';
-import { classes } from '../styles';
+import { classes } from 'styles';
 import { css } from 'emotion';
 
 const containerStyle = css`
@@ -59,7 +59,7 @@ const Legal = () => {
         <ul>
           <li>Email address</li>
           <li>Planned trips</li>
-          <li>Trip prefernces</li>
+          <li>Trip preferences</li>
         </ul>
 
         <h4>Usage Data</h4>

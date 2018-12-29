@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Paper, Typography } from '@material-ui/core';
 import { css } from 'emotion';
-import { classes } from '../../styles';
+import { classes } from '../../../../styles';
 import moment from 'moment';
 
 const gridStyle = css`

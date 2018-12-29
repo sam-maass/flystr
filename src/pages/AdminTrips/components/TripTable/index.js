@@ -1,7 +1,7 @@
 import React from 'react';
 import { css } from 'emotion';
 import moment from 'moment';
-import { classes } from '../../styles';
+import { classes } from '../../../../styles';
 import PropTypes from 'prop-types';
 
 const style = css`

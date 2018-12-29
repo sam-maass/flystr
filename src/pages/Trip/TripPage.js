@@ -1,5 +1,5 @@
 import React from 'react';
-import TripDealList from '../components/TripDealList';
+import TripDealList from '../../components/TripDealList';
 import PropTypes from 'prop-types';
 
 const TripPage = ({ tripId }) => {

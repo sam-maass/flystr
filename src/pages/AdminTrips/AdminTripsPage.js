@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchAllTrips } from '../actions/adminActions';
-import TripTable from '../components/TripTable';
+import { fetchAllTrips } from '../../actions/adminActions';
+import TripTable from './components/TripTable';
 import PropTypes from 'prop-types';
 
 class AdminTrips extends React.Component {
