@@ -1,37 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`shallow renders correctly 1`] = `
-<DealPage
-  currentDeal={Object {}}
-  fetchDeal={[Function]}
-  loggedIn={false}
-  setAppbar={[Function]}
-  store={
-    Object {
-      "dispatch": [Function],
-      "getState": [Function],
-      "replaceReducer": [Function],
-      "subscribe": [Function],
-      Symbol(observable): [Function],
-    }
-  }
-  storeSubscription={
-    Subscription {
-      "listeners": Object {
-        "notify": [Function],
-      },
-      "onStateChange": [Function],
-      "parentSub": undefined,
-      "store": Object {
+<Context.Provider
+  value={null}
+>
+  <DealPage
+    currentDeal={Object {}}
+    fetchDeal={[Function]}
+    loggedIn={false}
+    setAppbar={[Function]}
+    store={
+      Object {
         "dispatch": [Function],
         "getState": [Function],
         "replaceReducer": [Function],
         "subscribe": [Function],
         Symbol(observable): [Function],
-      },
-      "unsubscribe": null,
+      }
     }
-  }
-  tempDeal={Object {}}
-/>
+    tempDeal={Object {}}
+  />
+</Context.Provider>
 `;
