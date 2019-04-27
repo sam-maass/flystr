@@ -49,7 +49,7 @@ SelectLink.propTypes = {
   originalLink: PropTypes.string,
   selectedLink: PropTypes.string,
   flight: PropTypes.object,
-  onChange: PropTypes.function,
+  onChange: PropTypes.func,
   index: PropTypes.number
 };
 

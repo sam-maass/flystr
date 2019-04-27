@@ -88,7 +88,7 @@ FlightTemplate.propTypes = {
   onRemoveFlight: PropTypes.func,
   onRemoveFlightPermanently: PropTypes.func,
   template: PropTypes.object,
-  index: PropTypes.index
+  index: PropTypes.number
 };
 
 const style = css`
