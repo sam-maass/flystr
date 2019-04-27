@@ -36,7 +36,7 @@ jobs:
           key: v3-dependencies-{{ checksum "package.json" }}
 
       # run tests!
-      - run: npm run test
+      # - run: npm run test
 
   deploy-job:
     docker:

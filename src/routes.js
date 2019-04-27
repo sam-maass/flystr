@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { Redirect } from 'react-router-dom';
 import React from 'react';
 import * as Pages from './pages/index';

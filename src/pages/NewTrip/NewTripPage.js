@@ -10,6 +10,7 @@ import { fetchUser } from '../../actions/userActions';
 import { api } from '../../settings';
 import moment from 'moment';
 import { addError } from '../../actions/errorActions';
+import PropTypes from 'prop-types';
 
 class NewTripPage extends React.Component {
   render() {
@@ -31,6 +32,10 @@ const RoutingWrapper = props => {
   } else {
     return <NewTripPage {...props} />;
   }
+};
+
+NewTripPage.propTypes = {
+  value: PropTypes.object
 };
 
 const FormikForm = withFormik({
@@ -119,15 +124,15 @@ const TripFormContainer = connect(
 )(FormikForm);
 export default TripFormContainer;
 
-function getFormStep(props) {
-  switch (props.values.page) {
+function getFormStep(data) {
+  switch (data.values.page) {
     case 1:
-      return <OriginSelection {...props} />;
+      return <OriginSelection {...data} />;
     case 2:
-      return <DestinationSelection {...props} />;
+      return <DestinationSelection {...data} />;
     case 3:
-      return <PreferenceSelection {...props} />;
+      return <PreferenceSelection {...data} />;
     default:
-      return <OriginSelection {...props} />;
+      return <OriginSelection {...data} />;
   }
 }
