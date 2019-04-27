@@ -2,6 +2,6 @@
 
 exports[`shallow renders correctly 1`] = `
 <div>
-  <Connect(TripDealListContainer) />
+  <Memo(ConnectFunction) />
 </div>
 `;

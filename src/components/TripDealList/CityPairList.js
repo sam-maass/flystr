@@ -5,6 +5,7 @@ import DealPanel from '../DealPanel';
 import { CityPairString } from './CityPairString';
 import { css } from 'emotion';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 const ITEMS_WHEN_COLLAPSED = 4;
 
@@ -28,6 +29,11 @@ const style = css`
 `;
 
 export class InnerCityPairList extends React.Component {
+  static propTypes = {
+    pair: PropTypes.object,
+    flights: PropTypes.array,
+    isLoggedIn: PropTypes.bool
+  };
   state = { isExpanded: false };
 
   handleExpandToggle = () => {
