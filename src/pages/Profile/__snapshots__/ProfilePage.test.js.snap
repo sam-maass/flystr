@@ -9,7 +9,7 @@ exports[`shallow renders correctly 1`] = `
     secondary="Choose your account type"
   />
   <div>
-    <Connect(InnerComponent)
+    <Memo(ConnectFunction)
       openPremiumDialog={false}
     />
   </div>
@@ -20,10 +20,10 @@ exports[`shallow renders correctly 1`] = `
     <div
       className="notification-settings"
     >
-      <Connect(InnerWebPushSwitch) />
+      <Memo(ConnectFunction) />
        via Push 
       <br />
-      <Connect(InnerEmailNotificationSwitch) />
+      <Memo(ConnectFunction) />
        via Email
     </div>
   </div>
