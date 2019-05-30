@@ -19,35 +19,23 @@ import { logoutUser } from '../../actions/userActions';
 import { connect } from 'react-redux';
 import { Button } from '@material-ui/core';
 import { ModalLink } from '../ModalLink';
+import { UnstyledLink } from '../UnstyledLink';
+import { ListItemLink } from '../LinkListItem';
 
 const SideListComponent = ({ classes, user, logoutUser }) => {
   if (!user._id) {
     return (
       <div className={classes.list}>
         <List>
-          <Link to={'/'}>
+          <UnstyledLink to={'/'}>
             <ListItem button>
               <div className={classes.logo} />
             </ListItem>
-          </Link>
+          </UnstyledLink>
         </List>
         <Divider />
-        <Link to={'/deals'}>
-          <ListItem button>
-            <ListItemIcon>
-              <DealsIcon />
-            </ListItemIcon>
-            <ListItemText primary="All Deals" />
-          </ListItem>
-        </Link>
-        <Link to={'/about'}>
-          <ListItem button>
-            <ListItemIcon>
-              <AboutIcon />
-            </ListItemIcon>
-            <ListItemText primary="Advantages" />
-          </ListItem>
-        </Link>
+        <ListItemLink to={'/deals'} primary="Deals" icon={<DealsIcon />} />
+        <ListItemLink to={'/about'} primary="Advantages" icon={<AboutIcon />} />
         <ModalLink modal="signup">
           <ListItem button>
             <ListItemIcon>
@@ -81,71 +69,46 @@ const SideListComponent = ({ classes, user, logoutUser }) => {
             </ListItem>
           </Link>
           <Divider />
-          <Link to={'/deals'}>
-            <ListItem button>
-              <ListItemIcon>
-                <DealsIcon />
-              </ListItemIcon>
-              <ListItemText primary="Deals" />
-            </ListItem>
-          </Link>
-          <Link to={'/trips'}>
-            <ListItem button>
-              <ListItemIcon>
-                <TripIcon />
-              </ListItemIcon>
-              <ListItemText primary="Watchlist" />
-            </ListItem>
-          </Link>
-          <Link to={'/settings'}>
-            <ListItem button>
-              <ListItemIcon>
-                <UserIcon />
-              </ListItemIcon>
-              <ListItemText primary="Settings" />
-            </ListItem>
-          </Link>
+          <ListItemLink to={'/deals'} primary="Deals" icon={<DealsIcon />} />
+          <ListItemLink to={'/trips'} primary="Watchlist" icon={<TripIcon />} />
+          <ListItemLink
+            to={'/settings'}
+            primary="Settings"
+            icon={<UserIcon />}
+          />
+
           {user.isAdmin && (
             <Fragment>
               <Divider />
               <ListItem disabled button>
                 <ListItemText primary="Admin Panel" />
               </ListItem>
-              <Link to={'/admin/all-trips'}>
-                <ListItem button>
-                  <ListItemIcon>
-                    <AllTripsIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="Triplist" />
-                </ListItem>
-              </Link>{' '}
-              <Link to={'/admin/users'}>
-                <ListItem button>
-                  <ListItemIcon>
-                    <UserIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="Admin Users" />
-                </ListItem>
-              </Link>{' '}
-              <Link to={'/new-flight'}>
-                <ListItem button>
-                  <ListItemIcon>
-                    <DealIcon />
-                  </ListItemIcon>
-                  <ListItemText primary="Report a Deal" />
-                </ListItem>
-              </Link>
+              <ListItemLink
+                to={'/admin/all-trips'}
+                primary="All Trips"
+                icon={<AllTripsIcon />}
+              />
+              <ListItemLink
+                to={'/admin/users'}
+                primary="Admin Users"
+                icon={<AllTripsIcon />}
+              />
+              <ListItemLink
+                to={'/new-flight'}
+                primary="Report a Deal"
+                icon={<DealIcon />}
+              />
               <Divider />
             </Fragment>
           )}
-          <Link to={'/deals'}>
+          <UnstyledLink to={'/deals'}>
             <ListItem button onClick={logoutUser}>
               <ListItemIcon>
                 <LogoutIcon />
               </ListItemIcon>
               <ListItemText primary="Logout" />
             </ListItem>
-          </Link>
+          </UnstyledLink>
         </List>
         <div className={classes.bottomItems}>
           {!isPremium(user) && (
