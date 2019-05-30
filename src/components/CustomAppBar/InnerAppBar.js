@@ -54,7 +54,7 @@ const InnerAppBar = ({
             <BackIcon color="inherit" />
           </IconButton>
         )}
-        <Typography variant="title" color="inherit" className={classes.flex}>
+        <Typography color="inherit" className={classes.flex}>
           {title}
         </Typography>
         {button && button.name === 'loginButton' && (

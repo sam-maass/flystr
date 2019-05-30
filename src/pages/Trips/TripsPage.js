@@ -2,7 +2,7 @@ import React from 'react';
 import TripList from '../../components/TripList';
 import { Link } from 'react-router-dom';
 import AddIcon from '@material-ui/icons/Add';
-import Button from '@material-ui/core/Button';
+import Fab from '@material-ui/core/Fab';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 
@@ -11,14 +11,9 @@ const TripsPage = ({ classes }) => {
     <div className={classes.pageContainer}>
       <TripList />
       <Link to="/new-trip">
-        <Button
-          variant="fab"
-          color="primary"
-          aria-label="add"
-          className={classes.fab}
-        >
+        <Fab color="primary" aria-label="add" className={classes.fab}>
           <AddIcon />
-        </Button>
+        </Fab>
       </Link>
     </div>
   );
