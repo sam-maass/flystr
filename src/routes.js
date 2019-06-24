@@ -81,6 +81,12 @@ export const loggedInRoutes = [
     exact: true,
     header: () => <CustomAppBar title="User Overview" />,
     main: () => <Pages.AdminUsers />
+  },
+  {
+    path: '/admin/routes',
+    exact: true,
+    header: () => <CustomAppBar title="Routes Overview" />,
+    main: () => <Pages.AdminRoutes />
   }
 ];
 

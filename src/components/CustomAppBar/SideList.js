@@ -94,6 +94,11 @@ const SideListComponent = ({ classes, user, logoutUser }) => {
                 icon={<AllTripsIcon />}
               />
               <ListItemLink
+                to={'/admin/routes'}
+                primary="Admin Routes"
+                icon={<AllTripsIcon />}
+              />
+              <ListItemLink
                 to={'/new-flight'}
                 primary="Report a Deal"
                 icon={<DealIcon />}

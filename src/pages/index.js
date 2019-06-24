@@ -70,6 +70,10 @@ const AdminUsers = Loadable({
   loader: () => import('./AdminUsers/AdminUsersPage'),
   loading: Loading
 });
+const AdminRoutes = Loadable({
+  loader: () => import('./AdminRoutes/AdminRoutesPage'),
+  loading: Loading
+});
 export {
   Terms,
   Deal,
@@ -85,5 +89,6 @@ export {
   Trip,
   Trips,
   Product,
-  AdminUsers
+  AdminUsers,
+  AdminRoutes
 };
